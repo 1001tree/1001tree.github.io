@@ -86,8 +86,8 @@ addLayer("304", {
             fl3answer:0,
             fl3answer1:0,
             fl4progress:0,
-            fl5timeleft:15,
-            fl5timecap:15,
+            fl5timeleft:20,
+            fl5timecap:20,
             fl7answer:0,
             fl7answer1:0,
             fl7trig:false,
@@ -105,9 +105,9 @@ addLayer("304", {
             fl13points:_D0,
             fl14mode:0,
             fl14progress:0,
-            fl15timeleft:24,
+            fl15timeleft:36,
             fl15pos:15,
-            wptrig:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
+            wptrig:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         }
     },
     type: "none",
@@ -255,7 +255,7 @@ addLayer("304", {
             currencyLayer:"304",
             unlocked(){return player['304'].Fl==13 && player['304'].started},
             onPurchase(){
-                player['304'].fl5timecap = (hasUpgrade("304",32)?20:15)
+                player['304'].fl5timecap = (hasUpgrade("304",32)?25:20)
             }
         },
         17: {
@@ -304,7 +304,7 @@ addLayer("304", {
         23: {
             title: "Time3",
             description: "倒计时增加10s",
-            cost: _D(3),
+            cost: _D(2),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=6},
@@ -315,7 +315,7 @@ addLayer("304", {
         24: {
             title: "Time4",
             description: "倒计时增加20s",
-            cost: _D(4),
+            cost: _D(3),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=6},
@@ -359,7 +359,7 @@ addLayer("304", {
         34: {
             title: "F10-2",
             description: "Floor10炸弹重置不再减少8层点击数",
-            cost: _D(3),
+            cost: _D(1),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=11},
@@ -381,7 +381,7 @@ addLayer("304", {
         42: {
             title: "B-2",
             description: "大幅简化Floor3的运算",
-            cost: _D(3),
+            cost: _D(2),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=7},
@@ -392,7 +392,7 @@ addLayer("304", {
         43: {
             title: "B-3",
             description: "Floor4的长按时间消耗更短",
-            cost: _D(2),
+            cost: _D(1),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=7},
@@ -403,7 +403,7 @@ addLayer("304", {
         44: {
             title: "B-4",
             description: "Floor1燃料消耗速度降低",
-            cost: _D(2),
+            cost: _D(1),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=6},
@@ -436,7 +436,7 @@ addLayer("304", {
         53: {
             title: "B-7",
             description: "Floor9的目标角度分布更加平均(60~120)",
-            cost: _D(3),
+            cost: _D(2),
             currencyInternalName:`shoppoints`,
             currencyLayer:"304",
             unlocked(){return player['304'].lv>=10},
@@ -474,7 +474,7 @@ addLayer("304", {
             s = `或许我该再给你加点时间....记得在完成其他层任务的同时别忘了给1层加燃料`
         }
         if(l==5){
-            s = `倒计时的确增加了20s!<br>第5层有一个炸弹,它有15s的倒计时,你需要在它爆炸前点击它将它重置回到15s<br>新的指示灯同样可以提示你何时重置倒计时`
+            s = `倒计时的确增加了20s!<br>第5层有一个炸弹,它有20s的倒计时,你需要在它爆炸前点击它将它重置回到20s<br>新的指示灯同样可以提示你何时重置倒计时<br>值得一提的是,你可以通过点击指示灯直接到达对应的楼层,你需要合理运用这一点`
         }
         if(l==6){
             s = `在完成第5关之后,你解锁了商店<br>每完成1关,就可以获得1点数,你可以用点数购买降低游戏难度的升级<br>为了防止你在倒计时增加之后没事干,我给你做了一个增量游戏!好耶`
@@ -504,7 +504,7 @@ addLayer("304", {
             s = `这估计将会是迄今为止最难的一关了,如果你到现在还没有使用连点器和分屏的话说明你的水平极高`
         }
         if(l==15){
-            s = `欢迎来到15关,你又获得了20s倒计时,通过这关,你就完成了额外挑战的一半了<br>15层是一个24s倒计时的炸弹,但每点击一次它的重置按钮,它就会到另一个层,这非常考验你的手速`
+            s = `欢迎来到15关,你又获得了20s倒计时,通过这关,你就完成了额外挑战的一半了<br>15层是一个36s倒计时的炸弹,但每点击一次它的重置按钮,它就会到另一个层,这非常考验你的手速`
         }
         return s
     },
@@ -536,7 +536,7 @@ addLayer("304", {
             s = `毁灭倒计时:<p class="p5pt">${format(player['304'].fl10timeleft)}s</p>`
         }
         if(l==12){
-            s = (player['304'].fl12digit <= player['304'].fl12cur ? `默写完成,恭喜!`:(`请默写圆周率小数点后的${formatWhole(player['304'].fl12digit)}位,每默对1位倒计时增加1s<br>如果默错,增加的倒计时归零并需要重新开始默写<br>${player['304'].fl12text}<br>`+(player['304'].wptrig[9]?`pi的下一位是${formatWhole(player['304'].pi[player['304'].fl12cur+1])}`:``)))
+            s = (player['304'].fl12digit <= player['304'].fl12cur ? `默写完成,恭喜!`:(`请默写圆周率小数点后的${formatWhole(player['304'].fl12digit)}位,每默对1位10层炸弹倒计时增加1s<br>如果默错,需要重新开始默写<br>${player['304'].fl12text}<br>`+(player['304'].wptrig[9]?`pi的下一位是${formatWhole(player['304'].pi[player['304'].fl12cur+1])}`:``)))
         }
         if(l==13){
             s = `你有<h2 class = 'p5pt'>${format(player['304'].fl13points)}声望点数</h2>,使得倒计时增加${format(player['304'].fl13points.pow(0.8))}s`
@@ -624,8 +624,8 @@ addLayer("304", {
                 player['304'].fl3answer = 0
                 player['304'].fl3trig = false
                 player['304'].fl4progress = 0
-                player['304'].fl5timeleft = (hasUpgrade("304",31)?30:15)
-                player['304'].fl5timecap = (hasUpgrade("304",32)?20:15)
+                player['304'].fl5timeleft = (hasUpgrade("304",31)?35:20)
+                player['304'].fl5timecap = (hasUpgrade("304",32)?25:20)
                 player['304'].upgrades = player['304'].upgrades.filter(n => (n>15||(hasUpgrade("304",52)&&(n<14))))
                 player['304'].points = _D0
                 player['304'].fl7trig = false
@@ -658,7 +658,7 @@ addLayer("304", {
             },
             unlocked() { return true },
             canClick() { return player['304'].Fl<player['304'].lv },
-            style:{"height":"30px","min-height":"30px","width":"60px"}
+            style:{"height":"40px","min-height":"40px","width":"60px"}
         },
         13: {
             title() { return `FLOOR ${formatWhole(player['304'].Fl)}` },
@@ -668,7 +668,7 @@ addLayer("304", {
             },
             unlocked() { return true },
             canClick() { return false },
-            style:{"border":"2px solid","border-color":"white","background-color":"#000000","color":"white","font-family":"Times New Roman","height":"30px","min-height":"30px"}
+            style:{"border":"2px solid","border-color":"white","background-color":"#000000","color":"white","font-family":"Times New Roman","height":"40px","min-height":"40px"}
         },
         14: {
             title() { return `下楼` },
@@ -678,7 +678,7 @@ addLayer("304", {
             },
             unlocked() { return true},
             canClick() { return player['304'].Fl>1 },
-            style:{"height":"30px","min-height":"30px","width":"60px"}
+            style:{"height":"40px","min-height":"40px","width":"60px"}
         },
         15: {
             title() { return `补充燃料` },
@@ -1162,7 +1162,7 @@ addLayer("304", {
             title() { return `重置十五号炸弹倒计时` },
             display() {return ``},
             onClick() {
-                player['304'].fl15timeleft = 24
+                player['304'].fl15timeleft = 36
                 player['304'].fl15pos = chooseOneInArray([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
             },
             unlocked() { return player['304'].Fl==player['304'].fl15pos && player['304'].started },
@@ -1173,10 +1173,10 @@ addLayer("304", {
             title() { return `1` },
             display() {return ``},
             onClick() {
-                return
+                player['304'].Fl=1
             },
             unlocked() { return player['304'].lv>=1 && player['304'].started },
-            canClick() { return false },
+            canClick() { return true },
             style:{"height":"40px","min-height":"40px","width":"40px","margin":"0px","border":"2px solid white","color":"#FFFFFF","background-color"(){
                 if(player['304'].fl1fuel<=20) return '#FF0000'
                 return "#00000000"
@@ -1186,10 +1186,10 @@ addLayer("304", {
             title() { return `5` },
             display() {return ``},
             onClick() {
-                return
+                player['304'].Fl=5
             },
             unlocked() { return player['304'].lv>=5 && player['304'].started },
-            canClick() { return false },
+            canClick() { return true },
             style:{"height":"40px","min-height":"40px","width":"40px","margin":"0px","border":"2px solid white","color":"#FFFFFF","background-color"(){
                 if(player['304'].fl5timeleft<=3) return '#FF0000'
                 return "#00000000"
@@ -1199,10 +1199,10 @@ addLayer("304", {
             title() { return `10` },
             display() {return ``},
             onClick() {
-                return
+                player['304'].Fl=10
             },
             unlocked() { return player['304'].lv>=10 && player['304'].started },
-            canClick() { return false },
+            canClick() { return true },
             style:{"height":"40px","min-height":"40px","width":"40px","margin":"0px","border":"2px solid white","color":"#FFFFFF","background-color"(){
                 if(player['304'].fl10timeleft<=5) return '#FF0000'
                 return "#00000000"
@@ -1212,12 +1212,12 @@ addLayer("304", {
             title() { return `15` },
             display() {return ``},
             onClick() {
-                return
+                player['304'].Fl=15
             },
             unlocked() { return player['304'].lv>=15 && player['304'].started },
-            canClick() { return false },
+            canClick() { return true },
             style:{"height":"40px","min-height":"40px","width":"40px","margin":"0px","border":"2px solid white","color":"#FFFFFF","background-color"(){
-                if(player['304'].fl15timeleft<=3) return '#FF0000'
+                if(player['304'].fl15timeleft<=10) return '#FF0000'
                 return "#00000000"
             }}
         },
