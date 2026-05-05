@@ -390,7 +390,7 @@ addLayer("ach", {
         },
         203: {
             name: "也许<br>你真的开挂了",
-            done() { return player._501.trigach },
+            done() { return player._501.trig[5] },
             onComplete() { achievementComplete() },
             tooltip: "访问未使用的愚人节失败方法",
             style: {

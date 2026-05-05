@@ -89,7 +89,6 @@ function addedPlayerData() {
 			rc: "",
 			complete: false,
 			lose: false,
-			trigach: false
 		},
 		_502: {
 			inGame: false,
