@@ -637,6 +637,7 @@ function loadVue() {
 	Vue.component('bg', systemComponents['bg'])
 	Vue.component('song', systemComponents['song'])
 	Vue.component('tracksong', systemComponents['tracksong'])
+	Vue.component('anticheat', systemComponents['anticheat'])
 	Vue.component('ct', systemComponents['ct'])
 
 

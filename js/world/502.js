@@ -5,7 +5,12 @@ addLayer("502", {
     startData() {
         return {
             unlocked: true,
-            points: _D0
+            points: _D0,
+            inGame: false,
+            final: false,
+            ai: 0,
+            board: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]],
+            aiopen: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]],
         }
     },
     type: "none",
@@ -26,7 +31,7 @@ addLayer("502", {
         "blank",
     ],
     normalEndGame() {
-        let p = player._502
+        let p = player[502]
         p.board = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
         p.aiopen = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
         p.inGame = false
@@ -44,21 +49,25 @@ addLayer("502", {
             return { x: id % 100 - 1, y: ~~(id / 100) - 1 }
         },
         getCanClick(data, id) {
-            return data < 0 && player._502.inGame
+            return data < 0 && player[502].inGame
         },
         onClick(data, id) {
             if (data >= 0) return
 
             let xy = this.idtoxy(id)
-            let d = this.getValue(xy, player._502.board)
+            let d = this.getValue(xy, player[502].board)
             let a = this.getArrow(d)
 
             setGridData(this.layer, id, d)
 
-            let aim = player._502.ai == 9 ? 10 : player._502.ai
+            let aim = player[502].ai == 9 ? 10 : player[502].ai
 
             if (d == 16) {
                 player[this.layer].points = player[this.layer].points.add(_D(30).add(_D2.mul(aim)))
+
+                let tb = this.analyzeGrid()
+                if (tb.length == 0) player[502].final = true
+
                 layers[this.layer].normalEndGame()
                 return
             }
@@ -69,14 +78,14 @@ addLayer("502", {
                 player[this.layer].points = decimalMax(player[this.layer].points.sub(_D(1.5).sub(_D(0.1).mul(aim)).mul(a)), 0)
             }
 
-            layers[this.layer].ai[`ai${player._502.ai}`]()
+            layers[this.layer].ai[`ai${player[502].ai}`]()
         },
         getStyle(data, id) {
             let backgroundImage, border
 
             let { x, y } = this.idtoxy(id)
 
-            if (player._502.aiopen[y][x] && player._502.ai == 9) {
+            if (player[502].aiopen[y][x] && player[502].ai == 9) {
                 backgroundImage = `url(resources/pic/502_ai.png)`
             } else if (data >= 0) {
                 backgroundImage = `url(resources/pic/502_${data}.png)`
@@ -93,7 +102,7 @@ addLayer("502", {
                 border = "10px inset #888"
             }
 
-            if (!player._502.inGame) border = "10px solid #aaa"
+            if (!player[502].inGame) border = "10px solid #aaa"
 
             return {
                 width: "120px",
@@ -129,6 +138,25 @@ addLayer("502", {
             const v = d[0] * 8 + d[1] * 4 + d[2] * 2 + d[3] * 1;
             return v;
         },
+        analyzeGrid() {
+            const g = player[this.layer].grid
+
+            const grid2D = []
+            for (let y = 0; y < 5; y++) {
+                grid2D[y] = []
+                for (let x = 0; x < 5; x++) {
+                    const id = this.xytoid(x, y)
+                    grid2D[y][x] = g[id]
+                }
+            }
+
+            const tb = []
+            for (const i in g) {
+                if (g[i] < 0) tb.push(i)
+            }
+
+            return tb;
+        }
     },
     clickables: {
         11: {
@@ -140,7 +168,7 @@ addLayer("502", {
                 return true
             },
             onClick() {
-                let _p = player._502
+                let _p = player[502]
                 let p = player[502]
                 _p.board = this.getBoard()
                 _p.aiopen = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
@@ -192,7 +220,7 @@ addLayer("502", {
                 return true
             },
             onClick() {
-                let _p = player._502
+                let _p = player[502]
                 let p = player[502]
                 _p.board = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
                 _p.aiopen = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
@@ -236,15 +264,15 @@ addLayer("502", {
             }
         },
         13: {
-            title() { return `AI强度 ${player._502.ai}` },
+            title() { return `AI强度 ${player[502].ai}` },
             canClick() {
-                return !player._502.inGame
+                return !player[502].inGame
             },
             onClick() {
-                player._502.ai = (player._502.ai + 1) % 10
+                player[502].ai = (player[502].ai + 1) % 10
             },
             progress() {
-                let result = player._502.ai / 9
+                let result = player[502].ai / 9
                 return decimalBetween(result, 0, 1)
             },
             width: "600px",
@@ -285,11 +313,6 @@ addLayer("502", {
         layer: 502,
         ai0() {
             let { sb, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (sb.length != 0) {
                 this.click(chooseOneInArray(sb))
@@ -299,21 +322,11 @@ addLayer("502", {
         },
         ai1() {
             let { tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             this.click(chooseOneInArray(tb))
         },
         ai2() {
             let { sb, db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (sb.length == 0) {
                 this.click(chooseOneInArray(db))
@@ -326,11 +339,6 @@ addLayer("502", {
         },
         ai3() {
             let { sb, db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (sb.length == 0) {
                 this.click(chooseOneInArray(db))
@@ -343,11 +351,6 @@ addLayer("502", {
         },
         ai4() {
             let { sb, db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (sb.length == 0) {
                 this.click(chooseOneInArray(db))
@@ -360,11 +363,6 @@ addLayer("502", {
         },
         ai5() {
             let { db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (db.length == 0) {
                 this.click(chooseOneInArray.tb)
@@ -374,11 +372,6 @@ addLayer("502", {
         },
         ai6() {
             let { db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (db.length == 0) {
                 this.click(chooseOneInArray.tb)
@@ -402,11 +395,6 @@ addLayer("502", {
         },
         ai7() {
             let { db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (Math.random() < 0.05) {
                 this.click(this.find25())
@@ -435,11 +423,6 @@ addLayer("502", {
         },
         ai8() {
             let { db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (Math.random() < 0.1) {
                 this.click(this.find25())
@@ -468,11 +451,6 @@ addLayer("502", {
         },
         ai9() {
             let { db, tb } = this.analyzeGrid()
-            if (tb.length == 0) {
-                player._502.final = true
-                layers[this.layer].normalEndGame()
-                return
-            }
 
             if (Math.random() < 0.15) {
                 this.click(this.find25())
@@ -501,9 +479,9 @@ addLayer("502", {
         },
         click(id) {
             let xy = this.idtoxy(id)
-            let d = this.getValue(xy, player._502.board)
+            let d = this.getValue(xy, player[502].board)
 
-            player._502.aiopen[xy.y][xy.x] = 1
+            player[502].aiopen[xy.y][xy.x] = 1
 
             setGridData(this.layer, id, d)
 
@@ -516,7 +494,7 @@ addLayer("502", {
             return { x: id % 100 - 1, y: ~~(id / 100) - 1 }
         },
         find25() {
-            let b = player._502.board
+            let b = player[502].board
             for (y = 0; y < b.length; y++) {
                 let a = b[y]
                 for (x = 0; x < a.length; x++) {

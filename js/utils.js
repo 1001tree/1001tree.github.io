@@ -486,7 +486,7 @@ function Cal_TPS() {
 	const tickTime = player.global.tickTime;
 
 	if (tickTime.length < 2) {
-		return "---";
+		return [0,0];
 	}
 
 	const totalTime = tickTime.reduce((sum, time) => sum + time, 0);

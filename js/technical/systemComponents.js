@@ -528,7 +528,7 @@ var systemComponents = {
 					{ name: '失落花园_、Nommi - 破窗效应', src: './resources/song/background25.mp3' },
 					{ name: 'Aika - CALAMITY RHAPSODY', src: './resources/song/background26.mp3' },
 					{ name: "Zekk、Minhyuk Choi - The King's Return", src: './resources/song/background27.mp3' },
-					
+
 				]
 			};
 		},
@@ -692,6 +692,63 @@ var systemComponents = {
 		}
 	},
 
+	'anticheat': {
+		template: `
+        	<div v-if="showWarning" class="bs">
+        	    <div class="tips" @click="dismissWarning">
+        	        <h1>>:(</h1><br>
+					<h3>请不要使用变速齿轮作弊!!!</h3><br><br>
+
+					<br>
+        	        <button class="pb" @click="dismissWarning">
+        	            好的
+        	        </button>
+        	    </div>
+        	</div>
+		`,
+		methods: {
+			dismissWarning() {
+				this.showWarning = false;
+				this.tpsCounter = 0;
+			},
+			
+			checkTPS() {
+				const currentTPS = Cal_TPS()[0];
+
+				console.log(1)
+				
+				if (currentTPS > 21) {
+					this.tpsCounter++;
+					if (this.tpsCounter >= 5 && !this.showWarning) {
+						this.showWarning = true;
+					}
+				} else {
+					if (this.tpsCounter > 0) {
+						this.tpsCounter = 0;
+					}
+				}
+			},
+			
+			startMonitoring() {
+				if (this.monitorInterval) clearInterval(this.monitorInterval);
+				this.monitorInterval = setInterval(() => this.checkTPS(), 60);
+			},
+		},
+		data() {
+			return {
+				showWarning: false,
+				tpsCounter: 0,
+				monitorInterval: null,
+			};
+		},
+		mounted() {
+			this.startMonitoring();
+		},
+		beforeDestroy() {
+			this.stopMonitoring();
+		}
+	},
+
 	'tracksong': {
 		template: `<div :style="{
         position: 'fixed',
@@ -722,7 +779,7 @@ var systemComponents = {
 
 					301: { src: '/resources/song/track301.ogg' },
 					302: { src: '/resources/song/track302.ogg' },
-					
+
 					401: { src: '/resources/song/track401.ogg' },
 				}
 			};

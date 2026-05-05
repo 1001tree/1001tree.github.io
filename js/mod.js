@@ -90,13 +90,6 @@ function addedPlayerData() {
 			complete: false,
 			lose: false,
 		},
-		_502: {
-			inGame: false,
-			final: false,
-			ai: 0,
-			board: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]],
-			aiopen: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]],
-		},
 		world: {
 			"101": false, "102": false, "103": false, "104": false, "105": false,
 			"201": false, "202": false, "203": false, "204": false, "205": false,
