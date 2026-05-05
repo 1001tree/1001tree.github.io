@@ -48,23 +48,24 @@ addLayer("304", {
                 player['304'].started = false
                 player['304'].losetrig304 = true
             }else{
-                player['304'].lv++
+                if(!player['304'].wptrig[2])player['304'].lv++
                 player['304'].shoppoints = player['304'].shoppoints.add(1)
-                player['304'].lv = Math.min(player['304'].lv,11)
+                player['304'].hlv = Math.max(player['304'].lv,player['304'].hlv)
+                player['304'].lv = Math.min(player['304'].lv,16)
                 player['304'].started = false
             }
         }
         if(player['304'].started){
-            player['304'].fl1fuel -= ((hasUpgrade("304",44)?1.2:3)+player['304'].lv/(hasUpgrade("304",51)?100:4))*diff
-            if(player['304'].lv>=5) player['304'].fl5timeleft -= diff
+            if(!player['304'].wptrig[1])player['304'].fl1fuel -= ((hasUpgrade("304",44)?1.2:3)+player['304'].lv/(hasUpgrade("304",51)?100:4))*diff
+            if(player['304'].lv>=5 && (!player['304'].wptrig[3])) player['304'].fl5timeleft -= diff
             if(player['304'].lv>=6) player['304'].points = player['304'].points.add((layers['304'].getfl6mult()).times(diff))
             if(player['304'].lv>=9 && player['304'].fl9degree == player['304'].fl9target){
                 player['304'].fl9target = (hasUpgrade("304",53)? chooseOneInArray([60,70,80,90,100,110,120]):chooseOneInArray([0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180]))
                 player['304'].fl9progress += 20
                 player['304'].fl9progress = Math.min(player['304'].fl9progress,100)
             }
-            if(player['304'].lv>=10) player['304'].fl10timeleft -= diff
-            if(player['304'].lv>=15) player['304'].fl15timeleft -= diff
+            if(player['304'].lv>=10 && (!player['304'].wptrig[4])) player['304'].fl10timeleft -= diff
+            if(player['304'].lv>=15 && (!player['304'].wptrig[5])) player['304'].fl15timeleft -= diff
         }
     },
     startData() {
@@ -76,6 +77,7 @@ addLayer("304", {
             started:false,
             Fl:1,
             lv:1,
+            hlv:1,
             losetrig304: false,
             fl1fuel:0,
             fl2progress:0,
@@ -105,6 +107,7 @@ addLayer("304", {
             fl14progress:0,
             fl15timeleft:24,
             fl15pos:15,
+            wptrig:[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
         }
     },
     type: "none",
@@ -169,7 +172,43 @@ addLayer("304", {
             ],
             unlocked(){return player['304'].lv>=6 && player['304'].started==false}
         },
+        Warp: {
+            content: [
+                ["display-text", function () {
+                    return `你可以通过下面的按钮跳转到先前对应的关卡,并且可以调整一系列参数!`
+                }],
+                "blank",
+                ["row",[["clickable", [12]],
+                ["clickable", [13]],["clickable",[14]]]],
+                "blank",
+                ["row",[["clickable", [71]],
+                ["clickable", [72]]]],
+                "blank",
+                ["row",[["clickable", [73]],
+                ["clickable", [74]],["clickable", [75]],
+                ["clickable", [76]]]],
+                ["row",[["clickable", [77]],
+                ["clickable", [78]],["clickable", [79]],
+                ["clickable", [81]]]],
+                ["row",[["clickable", [82]],
+                ["clickable", [83]],["clickable", [84]],
+                ["clickable", [85]]]]
+            ],
+            unlocked(){return player['304'].hlv>=2 && player['304'].started==false}
+        },
     },
+    hotkeys: [
+        { key: ")", description: "[304] Shift+0: 代替数字键盘输入", onPress() { layers['304'].clickables[21].onClick() } },
+        { key: "!", description: "[304] Shift+1: 代替数字键盘输入", onPress() { layers['304'].clickables[22].onClick() } },
+        { key: "@", description: "[304] Shift+2: 代替数字键盘输入", onPress() { layers['304'].clickables[23].onClick() } },
+        { key: "#", description: "[304] Shift+3: 代替数字键盘输入", onPress() { layers['304'].clickables[24].onClick() } },
+        { key: "$", description: "[304] Shift+4: 代替数字键盘输入", onPress() { layers['304'].clickables[25].onClick() } },
+        { key: "%", description: "[304] Shift+5: 代替数字键盘输入", onPress() { layers['304'].clickables[26].onClick() } },
+        { key: "^", description: "[304] Shift+6: 代替数字键盘输入", onPress() { layers['304'].clickables[27].onClick() } },
+        { key: "&", description: "[304] Shift+7: 代替数字键盘输入", onPress() { layers['304'].clickables[28].onClick() } },
+        { key: "*", description: "[304] Shift+8: 代替数字键盘输入", onPress() { layers['304'].clickables[29].onClick() } },
+        { key: "(", description: "[304] Shift+9: 代替数字键盘输入", onPress() { layers['304'].clickables[31].onClick() } },
+    ],
     upgrades: {
         11: {
             title: "欢迎来到第六层",
@@ -426,10 +465,10 @@ addLayer("304", {
             s = `呃,嘿!我有一些工作要完成,你能在我回来之前盯着这些指示计吗?<br>只有20秒!这很简单的,不让这些数值降到0就行,感谢您的付出!<br>当下方指示灯变红,表示需要赶快添加燃料`
         }
         if(l==2){
-            s = `这是不是有点太简单了?没关系,我的工作不止这些<br>每一关你都可以到访新的一层,通过上下层的按钮(你已经看见了)<br>在非5的倍数层中(不包括1),你的任务都是需要达到某种目标而不是避免某种东西降为0.`
+            s = `这是不是有点太简单了?没关系,我的工作不止这些<br>每一关你都可以到访新的一层,通过上下层的按钮(你已经看见了)<br>在非5的倍数层中(不包括1),你的任务都是需要达到某种目标而不是避免某种东西降为0<br>除此之外,你还解锁了关卡选择,你可以回到之前的关卡练习操作,以便更好地完成世界!`
         }
         if(l==3){
-            s = `你发现燃料消耗变快了吗?没关系!第3层有点难,我给你加10s倒计时<br>本层不允许暂停哦!`
+            s = `你发现燃料消耗变快了吗?没关系!第3层有点难,我给你加10s倒计时<br>本世界不允许暂停哦!<br>顺带一提,你可以使用Shift+0~9进行快捷输入`
         }
         if(l==4){
             s = `或许我该再给你加点时间....记得在完成其他层任务的同时别忘了给1层加燃料`
@@ -488,7 +527,7 @@ addLayer("304", {
             s = `你有<h2 class = 'p5pt'>${format(player['304'].points)}点数</h2>,使得每次增加的燃料x${format(player['304'].points.add(1).log10().div(2).add(1))}`
         }
         if(l==7){
-            s = (player['304'].fl7trig? `恭喜,回答正确!`:(window.btoa(unescape(encodeURIComponent(player['304'].fl7answer1)))+`<br>答错将重置4层进度!`))+`<br>当前答案:${Math.floor(player['304'].fl7answer)}`
+            s = (player['304'].fl7trig? `恭喜,回答正确!`:(player['304'].wptrig[7]?formatWhole(player['304'].fl7answer1):window.btoa(unescape(encodeURIComponent(player['304'].fl7answer1)))+`<br>答错将重置4层进度!`))+`<br>当前答案:${Math.floor(player['304'].fl7answer)}`
         }
         if(l==9){
             s = `撬锁进度:<p class="p5pt">${format(player['304'].fl9progress)}%/100%</p><br>当前旋转度数:${formatWhole(player['304'].fl9degree)}°,转到${formatWhole(player['304'].fl9target)}°可使进度增加20%`+(player['304'].fl2progress>=100 ? `<br>大门已打开,恭喜!`:``)
@@ -497,7 +536,7 @@ addLayer("304", {
             s = `毁灭倒计时:<p class="p5pt">${format(player['304'].fl10timeleft)}s</p>`
         }
         if(l==12){
-            s = `请默写圆周率小数点后的${formatWhole(player['304'].fl12digit)}位,每默对1位倒计时增加1s<br>如果默错,增加的倒计时归零并需要重新开始默写<br>${player['304'].fl12text}`
+            s = (player['304'].fl12digit <= player['304'].fl12cur ? `默写完成,恭喜!`:(`请默写圆周率小数点后的${formatWhole(player['304'].fl12digit)}位,每默对1位倒计时增加1s<br>如果默错,增加的倒计时归零并需要重新开始默写<br>${player['304'].fl12text}<br>`+(player['304'].wptrig[9]?`pi的下一位是${formatWhole(player['304'].pi[player['304'].fl12cur+1])}`:``)))
         }
         if(l==13){
             s = `你有<h2 class = 'p5pt'>${format(player['304'].fl13points)}声望点数</h2>,使得倒计时增加${format(player['304'].fl13points.pow(0.8))}s`
@@ -537,7 +576,7 @@ addLayer("304", {
         player['304'].fl3answer1 = (a1*a3)-(a2*a4)
         if(hasUpgrade("304",42)) player['304'].fl3answer1 = (a1+a2+a3+a4)
         if(hasUpgrade("304",42)) player['304'].fl3problem = `${formatWhole(a1+a2)}+${formatWhole(a3+a4)}=?`
-        else player['304'].fl3problem = `${formatWhole(a1)}x${formatWhole(a3)}-${formatWhole(a2)}x${formatWhole(a4)}=?`
+        else player['304'].fl3problem = `${formatWhole(a1)}x${formatWhole(a3)}-${formatWhole(a2)}x${formatWhole(a4)}=${player['304'].wptrig[6]?formatWhole(player['304'].fl3answer1):`?`}`
     },
     getfl7problem(){
         let a = Math.floor(Math.random()*10000000)
@@ -551,6 +590,7 @@ addLayer("304", {
         if(hasUpgrade("304",13)) mt = mt.times(5)
         if(hasUpgrade("304",15)) mt = mt.times(5)
         if(hasUpgrade("304",17)) mt = mt.times(3)
+        if(player['304'].wptrig[8]) mt = mt.times(300)
         return mt
     },
     initfl11grid(){
@@ -573,6 +613,7 @@ addLayer("304", {
             title() { return `开始工作` },
             display: "",
             onClick() {
+                if(player['304'].lv==player['304'].hlv) player['304'].wptrig=[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
                 player['304'].Fl = 1
                 player['304'].timeleft304 = layers['304'].calc304left()
                 player['304'].started = true
@@ -597,7 +638,7 @@ addLayer("304", {
                 layers['304'].initfl11grid()
                 player['304'].fl11cnt = 0
                 player['304'].fl12cur = 0
-                player['304'].fl12digit = Math.max(Math.min((chooseOneInArray(player['304'].pi))*((chooseOneInArray(player['304'].pi)*2)),50),20)
+                player['304'].fl12digit = chooseOneInArray([20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35])
                 player['304'].fl12text = "pi=3."
                 player['304'].fl13points = _D0
                 player['304'].fl14mode = 1
@@ -615,7 +656,7 @@ addLayer("304", {
             onClick() {
                 player['304'].Fl ++
             },
-            unlocked() { return player['304'].started },
+            unlocked() { return true },
             canClick() { return player['304'].Fl<player['304'].lv },
             style:{"height":"30px","min-height":"30px","width":"60px"}
         },
@@ -625,7 +666,7 @@ addLayer("304", {
             onClick() {
                 return
             },
-            unlocked() { return player['304'].started },
+            unlocked() { return true },
             canClick() { return false },
             style:{"border":"2px solid","border-color":"white","background-color":"#000000","color":"white","font-family":"Times New Roman","height":"30px","min-height":"30px"}
         },
@@ -635,7 +676,7 @@ addLayer("304", {
             onClick() {
                 player['304'].Fl --
             },
-            unlocked() { return player['304'].started },
+            unlocked() { return true},
             canClick() { return player['304'].Fl>1 },
             style:{"height":"30px","min-height":"30px","width":"60px"}
         },
@@ -1041,8 +1082,10 @@ addLayer("304", {
                 player['304'].fl8cnt++;
             },
             unlocked() { return player['304'].Fl==8 && player['304'].started },
-            canClick() { return player['304'].fl8cnt<((player['304'].lv-8)*10+40) },
-            style(){}
+            canClick() { return player['304'].fl8cnt<(((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1)) },
+            style(){
+                 if(player['304'].fl8cnt>=((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1)) return {"background-color":"#32d600","border":"5px solid #007e0d"}
+            }
         },
         42: {
             title() { return `左拧撬棒` },
@@ -1188,6 +1231,217 @@ addLayer("304", {
             unlocked() { return player['304'].lv>=6 && (!player['304'].started) },
             canClick() { return true },
             style:{"height":"40px","min-height":"40px","width":"150px","margin":"0px","border":"2px solid #00ffc8","color":"#00ffc8","background-color":"#00ffc875"}
+        },
+        71: {
+            title() { return `时光流转` },
+            display() {return `跳转到第${formatWhole(player['304'].Fl)}关`},
+            onClick() {
+                player['304'].upgrades = []
+                player['304'].shoppoints = new Decimal(player['304'].lv-1)
+                player['304'].lv = player['304'].Fl
+            },
+            unlocked() { return player['304'].hlv>=2 && (!player['304'].started) },
+            canClick() { return player['304'].Fl!=player['304'].hlv },
+        },
+        72: {
+            title() { return `回到现在` },
+            display() {return `跳转到第${formatWhole(player['304'].hlv)}关`},
+            onClick() {
+                player['304'].upgrades = []
+                player['304'].shoppoints = new Decimal(player['304'].lv-1)
+                player['304'].lv = player['304'].hlv
+            },
+            unlocked() { return player['304'].hlv>=2 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+        },
+        73: {
+            title() { return `核动力熔炉` },
+            display() {return `Floor1燃料不再降低`},
+            onClick() {
+                player['304'].wptrig[1] = !player['304'].wptrig[1]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[1]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[1]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[1]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        74: {
+            title() { return `固守原地` },
+            display() {return `完成关卡后不进入下一关`},
+            onClick() {
+                player['304'].wptrig[2] = !player['304'].wptrig[2]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[2]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[2]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[2]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        75: {
+            title() { return `拆弹神人` },
+            display() {return `熄灭5层炸弹的引线`},
+            onClick() {
+                player['304'].wptrig[3] = !player['304'].wptrig[3]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=5 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[3]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[3]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[3]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        76: {
+            title() { return `拆弹更神人` },
+            display() {return `熄灭10层炸弹的引线`},
+            onClick() {
+                player['304'].wptrig[4] = !player['304'].wptrig[4]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=10 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[4]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[4]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[4]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        77: {
+            title() { return `拆弹最神人` },
+            display() {return `熄灭15层炸弹的引线`},
+            onClick() {
+                player['304'].wptrig[5] = !player['304'].wptrig[5]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=15 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[5]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[5]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[5]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        78: {
+            title() { return `速算天才` },
+            display() {return `显示Floor3计算的答案`},
+            onClick() {
+                player['304'].wptrig[6] = !player['304'].wptrig[6]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=3 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[6]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[6]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[6]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        79: {
+            title() { return `密码机` },
+            display() {return `显示Floor7破译的答案`},
+            onClick() {
+                player['304'].wptrig[7] = !player['304'].wptrig[7]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=7 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[7]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[7]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[7]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        81: {
+            title() { return `F12` },
+            display() {return `Floor6点数获取x300`},
+            onClick() {
+                player['304'].wptrig[8] = !player['304'].wptrig[8]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=8 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[8]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[8]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[8]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
+        },
+        82: {
+            title() { return `满腹经纶` },
+            display() {return `显示Floor12默写的答案`},
+            onClick() {
+                player['304'].wptrig[9] = !player['304'].wptrig[9]
+            },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=8 && (!player['304'].started) },
+            canClick() { return player['304'].lv!=player['304'].hlv },
+            style:{
+                "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
+                    if (player['304'].wptrig[9]) return "#00cf0e"
+                    return "#cf0000"
+                }, "background-color"() {
+                    if (player['304'].wptrig[9]) return "#00cf0e33"
+                    return "#cf000033"
+                }, "color"() {
+                    if (player['304'].wptrig[9]) return "#00cf0e"
+                    return "#cf0000"
+                }
+            }
         },
     },
     grid: {
