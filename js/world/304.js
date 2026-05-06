@@ -626,7 +626,7 @@ addLayer("304", {
                 player['304'].fl4progress = 0
                 player['304'].fl5timeleft = (hasUpgrade("304",31)?35:20)
                 player['304'].fl5timecap = (hasUpgrade("304",32)?25:20)
-                player['304'].upgrades = player['304'].upgrades.filter(n => (n>15||(hasUpgrade("304",52)&&(n<14))))
+                player['304'].upgrades = player['304'].upgrades.filter(n => (n>19||(hasUpgrade("304",52)&&(n<14))))
                 player['304'].points = _D0
                 player['304'].fl7trig = false
                 player['304'].fl7answer = 0

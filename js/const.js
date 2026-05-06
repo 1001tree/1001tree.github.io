@@ -1134,6 +1134,9 @@ function getHardProblemList() {
 			problem: '如果你是一名学习人教A版数学的高中生,你如何才能统治世界?',
 			options: ['必修二', '必修一', '选择性必修三', '选择性必修二'], answer: 23,
 		}, {
+			problem: 'AFK check的哪一层要求你撬门?',
+			options: ['2', '7', '11', '14'], answer: 21,
+		}, {
 			problem: '基本原理中,第一个原子的初始花费是多少?',
 			options: ['24', '16', '3', '32'], answer: 21,
 		}, {
