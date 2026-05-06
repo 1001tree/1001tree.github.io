@@ -1125,11 +1125,14 @@ function getHardProblemList() {
 			problem: 'Exponential Idle中理论9所需σ数量是?',
 			options: ['5', '10', '20', '40'], answer: 24,
 		}, {
-			problem: 'Unnamed space idle中区域24B的boss船体血量为',
-			options: ['3.11e20', '3.46e19', '1.54e19', '1.14e19'], answer: 22,
+			problem: 'The function tree的stage4终局点数是多少',
+			options: ['e1e6', 'e2e6', 'e1e7', 'e2e7'], answer: 24,
 		}, {
-			problem: 'Antimatter Dimensions中第2个佩勒裂缝使用什么资源填充',
-			options: ['IP', '复制器', 'EP', 'DT'], answer: 22,
+			problem: '暴涨子小游戏中,没有哪一个东西的加成也仍能通关游戏',
+			options: ['指数引擎', '随机引擎', '超越引擎', '你强大的意志力'], answer: 22,
+		}, {
+			problem: '如果你是一名学习人教A版数学的高中生,你如何才能统治世界?',
+			options: ['必修二', '必修一', '选择性必修三', '选择性必修二'], answer: 23,
 		}, {
 			problem: '基本原理中,第一个原子的初始花费是多少?',
 			options: ['24', '16', '3', '32'], answer: 21,
@@ -1161,7 +1164,7 @@ function getHardProblemList() {
 			problem: 'I wanna 同人 Not Another Needle Game 中, 最后一面是第几层?',
 			options: ['181', '16', '1', '15'], answer: 24,
 		}, {
-			problem: '在104小游戏中, 若开启了IG规则, 65536实际上对应的数字是?',
+			problem: '在二〇四八小游戏中, 若开启了IG规则, 65536实际上对应的数字是?',
 			options: ['32', '16', '64', '128'], answer: 21,
 		}, {
 			problem: '以下哪个重量(g)的水最忧郁?',
@@ -1375,53 +1378,6 @@ function getLegacy403ProblemAns() {
 					  (III)889（#……）
 					  本题需要一个大写字母单词作为答案`, answer: `LAPTOP`
 			}
-		]
-	]
-}
-
-function getZKOption() {
-	return [
-		[
-			'古诗词背诵[C]',
-			'学习阅读理解技巧[C]',
-			'学习字音字形[C]',
-			'上语文课[C]',
-			'学习文言文[C]',
-			'跳大神阅读理解通灵课[C]',
-			'熬夜改作文[C]',
-		],
-		[
-			'巩固基础题[M]',
-			'强化计算能力[M]',
-			'上数学课[M]',
-			'基础代数练习[M]',
-			'基础几何练习[M]',
-			'压轴题练习[M]',
-			'18题(2)骗1分速成班[M]'
-		],
-		[
-			'背单词[E]',
-			'阅读理解专练[E]',
-			'词组训练[E]',
-			'上英语课[E]',
-			'完形填空专练[E]',
-			'首字母精准命中诓大傻子钱小班课[E]',
-			'与外国人沟通[E]'
-		], [
-			'学习史论结合/时政新闻[HP]',
-			'复习教材[HP]',
-			'整理答题技巧[HP]',
-			'上历史/政治课[HP]',
-			'背诵选择题考点[HP]',
-			'了解出题人思路[HP]',
-			'两万八千五一节的家教[HP]'
-		],
-		[], [], [
-			'玩睡觉树[X]',
-			'玩1001树[X]',
-			'玩QHLG[X]',
-			'玩热门网游[X]',
-			'出门旅游![X]',
 		]
 	]
 }

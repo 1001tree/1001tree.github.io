@@ -530,7 +530,7 @@ addLayer("304", {
             s = (player['304'].fl7trig? `恭喜,回答正确!`:(player['304'].wptrig[7]?formatWhole(player['304'].fl7answer1):window.btoa(unescape(encodeURIComponent(player['304'].fl7answer1)))+`<br>答错将重置4层进度!`))+`<br>当前答案:${Math.floor(player['304'].fl7answer)}`
         }
         if(l==9){
-            s = `撬锁进度:<p class="p5pt">${format(player['304'].fl9progress)}%/100%</p><br>当前旋转度数:${formatWhole(player['304'].fl9degree)}°,转到${formatWhole(player['304'].fl9target)}°可使进度增加20%`+(player['304'].fl2progress>=100 ? `<br>大门已打开,恭喜!`:``)
+            s = `撬锁进度:<p class="p5pt">${format(player['304'].fl9progress)}%/100%</p><br>当前旋转度数:${formatWhole(player['304'].fl9degree)}°,转到${formatWhole(player['304'].fl9target)}°可使进度增加20%`+(player['304'].fl9progress>=100 ? `<br>大门已打开,恭喜!`:``)
         }
         if(l==10){
             s = `毁灭倒计时:<p class="p5pt">${format(player['304'].fl10timeleft)}s</p>`
@@ -644,7 +644,7 @@ addLayer("304", {
                 player['304'].fl14mode = 1
                 player['304'].fl14progress = 0
                 player['304'].fl15pos = 15
-                player['304'].fl15timeleft = 24
+                player['304'].fl15timeleft = 36
                 player['304'].losetrig304 = false
             },
             unlocked() { return !player['304'].started },
@@ -759,10 +759,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==0){
                         player['304'].fl12text += '0'
-                        player['304'].timeleft304 += 1
+                        player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -790,10 +789,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==1){
                         player['304'].fl12text += '1'
-                        player['304'].timeleft304 += 1
+                        player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -821,10 +819,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==2){
                         player['304'].fl12text += '2'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -852,10 +849,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==3){
                         player['304'].fl12text += '3'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -883,10 +879,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==4){
                         player['304'].fl12text += '4'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -914,10 +909,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==5){
                         player['304'].fl12text += '5'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -945,10 +939,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==6){
                         player['304'].fl12text += '6'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -976,10 +969,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==7){
                         player['304'].fl12text += '7'
-                        player['304'].timeleft304 += 1
+                         player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -1007,10 +999,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==8){
                         player['304'].fl12text += '8'
-                        player['304'].timeleft304 += 1
+                        player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
@@ -1038,10 +1029,9 @@ addLayer("304", {
                     player['304'].fl12cur++
                     if(player['304'].pi[player['304'].fl12cur]==9){
                         player['304'].fl12text += '9'
-                        player['304'].timeleft304 += 1
+                        player['304'].fl10timeleft += 1
                     }else{
                         player['304'].fl12text = "pi=3."
-                        player['304'].timeleft304 -= (player['304'].fl12cur)
                         player['304'].fl12cur = 0
                     }
                 }
