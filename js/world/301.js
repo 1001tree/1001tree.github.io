@@ -172,7 +172,7 @@ addLayer("301", {
             display() {
                 if(getBuyableAmount(this.layer, this.id).gt(24)) return `层级点数将加成下一层点数获取.<br><h3>[已满] 数量:${formatWhole(getBuyableAmount(this.layer, this.id))}</h3>`
                 return `上一级点数将加成${player['301'].nm[getBuyableAmount("301", 12).add(1)]}获取.
-                        数量:${formatWholle(getBuyableAmount(this.layer, this.id))}
+                        数量:${formatWhole(getBuyableAmount(this.layer, this.id))}
                         最高生效层级:`+ (getBuyableAmount("301", 12).gt(0) ? player['301'].nm[getBuyableAmount("301", 12)] : `无`) + `
                         下一个需要:${format(this.cost())}元点数`
             },
