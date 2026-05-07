@@ -29,7 +29,7 @@ addLayer("304", {
             }else if(player['304'].lv>=7&&(player['304'].fl7trig==false)){
                 player['304'].started = false
                 player['304'].losetrig304 = true
-            }else if(player['304'].lv>=8&&(player['304'].fl8cnt < (((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1)))){
+            }else if(player['304'].lv>=8&&(player['304'].fl8trig==false)){
                 player['304'].started = false
                 player['304'].losetrig304 = true
             }else if(player['304'].lv>=9&&(player['304'].fl9progress < 100)){
@@ -49,7 +49,7 @@ addLayer("304", {
                 player['304'].losetrig304 = true
             }else{
                 if(!player['304'].wptrig[2])player['304'].lv++
-                player['304'].shoppoints = player['304'].shoppoints.add(1)
+                if(player['304'].lv>=5)player['304'].shoppoints = player['304'].shoppoints.add(1)
                 player['304'].hlv = Math.max(player['304'].lv,player['304'].hlv)
                 player['304'].lv = Math.min(player['304'].lv,16)
                 player['304'].started = false
@@ -86,12 +86,17 @@ addLayer("304", {
             fl3answer:0,
             fl3answer1:0,
             fl4progress:0,
-            fl5timeleft:20,
-            fl5timecap:20,
+            fl5timeleft:15,
+            fl5timecap:15,
             fl7answer:0,
+            fl7problem:"",
             fl7answer1:0,
+            fl7code:["Err",'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
             fl7trig:false,
             fl8cnt:0,
+            fl8answer:0,
+            fl8trig:false,
+            fl8mode:0,
             fl9progress:0,
             fl9degree:90,
             fl9target:0,
@@ -164,11 +169,11 @@ addLayer("304", {
         Shop: {
             content: [
                 ["display-text", function () {
-                    return `你有 <h2 class = 'p5pt'>${formatWhole(player['304'].shoppoints)}/${formatWhole(player['304'].lv-1)}</h2> 商店点数`
+                    return `你有 <h2 class = 'p5pt'>${formatWhole(player['304'].shoppoints)}/${formatWhole(player['304'].lv-5)}</h2> 商店点数`
                 }],
                 ["clickable",[61]],
                 "blank",
-                ["upgrades",[2,3,4,5]]
+                ["upgrades",[2,3,4,5,6]]
             ],
             unlocked(){return player['304'].lv>=6 && player['304'].started==false}
         },
@@ -208,6 +213,7 @@ addLayer("304", {
         { key: "&", description: "[304] Shift+7: 代替数字键盘输入", onPress() { layers['304'].clickables[28].onClick() } },
         { key: "*", description: "[304] Shift+8: 代替数字键盘输入", onPress() { layers['304'].clickables[29].onClick() } },
         { key: "(", description: "[304] Shift+9: 代替数字键盘输入", onPress() { layers['304'].clickables[31].onClick() } },
+        { key: "c", description: "[304] Q: 确认答案", onPress() { layers['304'].clickables[17].onClick() } },
     ],
     upgrades: {
         11: {
@@ -231,7 +237,7 @@ addLayer("304", {
         14: {
             title: "?",
             description: "完成本层任务",
-            cost: _D(300),
+            cost: _D(200),
             unlocked(){return player['304'].Fl==6 && player['304'].started}
         },
         15: {
@@ -255,7 +261,7 @@ addLayer("304", {
             currencyLayer:"304",
             unlocked(){return player['304'].Fl==13 && player['304'].started},
             onPurchase(){
-                player['304'].fl5timecap = (hasUpgrade("304",32)?25:20)
+                player['304'].fl5timecap = (hasUpgrade("304",32)?20:15)
             }
         },
         17: {
@@ -455,6 +461,20 @@ addLayer("304", {
                 return player['304'].shoppoints.gte(this.cost)
             },
         },
+        61: {
+            title: "F-1",
+            description: "免费获得5商店点数",
+            cost: _D(0),
+            currencyInternalName:`shoppoints`,
+            currencyLayer:"304",
+            unlocked(){return player['304'].lv>=11},
+            canAfford(){
+                return player['304'].shoppoints.gte(this.cost)
+            },
+            onPurchase(){
+                player['304'].shoppoints = player['304'].shoppoints.add(5)
+            },
+        },
     },
     milestones: {
     },
@@ -468,22 +488,22 @@ addLayer("304", {
             s = `这是不是有点太简单了?没关系,我的工作不止这些<br>每一关你都可以到访新的一层,通过上下层的按钮(你已经看见了)<br>在非5的倍数层中(不包括1),你的任务都是需要达到某种目标而不是避免某种东西降为0<br>除此之外,你还解锁了关卡选择,你可以回到之前的关卡练习操作,以便更好地完成世界!`
         }
         if(l==3){
-            s = `你发现燃料消耗变快了吗?没关系!第3层有点难,我给你加10s倒计时<br>本世界不允许暂停哦!<br>顺带一提,你可以使用Shift+0~9进行快捷输入`
+            s = `本世界不允许暂停哦!<br>顺带一提,你可以使用Shift+0~9进行快捷输入,Q进行答案确定`
         }
         if(l==4){
             s = `或许我该再给你加点时间....记得在完成其他层任务的同时别忘了给1层加燃料`
         }
         if(l==5){
-            s = `倒计时的确增加了20s!<br>第5层有一个炸弹,它有20s的倒计时,你需要在它爆炸前点击它将它重置回到20s<br>新的指示灯同样可以提示你何时重置倒计时<br>值得一提的是,你可以通过点击指示灯直接到达对应的楼层,你需要合理运用这一点`
+            s = `倒计时的确增加了10s!<br>第5层有一个炸弹,它有15s的倒计时,你需要在它爆炸前点击它将它重置回到15s<br>新的指示灯同样可以提示你何时重置倒计时<br>值得一提的是,你可以通过点击指示灯直接到达对应的楼层,你需要合理运用这一点`
         }
         if(l==6){
             s = `在完成第5关之后,你解锁了商店<br>每完成1关,就可以获得1点数,你可以用点数购买降低游戏难度的升级<br>为了防止你在倒计时增加之后没事干,我给你做了一个增量游戏!好耶`
         }
         if(l==7){
-            s = `你已经完成一大半了,加油!<br>随着完成更多的关卡,商店的升级也会更多!`
+            s = `你已经完成一大半了,加油!<br>随着完成更多的关卡,商店的升级也会更多!<br>第7层需要你破解一个A1Z26密码`
         }
         if(l==8){
-            s = `以防你不知道,燃料最多可以加到120%,你最好使用连点器来应对第8层`
+            s = `以防你不知道,燃料最多可以加到120%<br>第8层要求你猜测一个1到100之间的整数,我会告诉你猜大了还是猜小了`
         }
         if(l==9){
             s = `咱们再来撬开一扇门吧,这次要比上次难一点....`
@@ -492,7 +512,7 @@ addLayer("304", {
             s = `挺过这关你就可以获得梦力了,倒计时再次增加了10s!<br>第10层的炸弹更具毁灭性,它的倒计时为20s,并且每次重置它的倒计时都会使得5层倒计时上限-1s并减半第8层点击数!`
         }
         if(l==11){
-            s = `恭喜你完成了世界!但如果你想寻求挑战获得额外梦力,我还有额外的一些工作!<br>接下来的东西可能很有难度,我首先给你加20s倒计时<br>来介绍一下11层,舒尔特方格是一种注意力训练游戏,由25个方格组成的方阵构成,训练时将数字1-25随机填入,被测者需按顺序指读并计时完成`
+            s = `恭喜你完成了世界!但如果你想寻求挑战获得额外梦力,我还有额外的一些工作!<br>接下来的东西可能很有难度,我首先给你加20s倒计时,你还解锁了一个新的商店升级<br>来介绍一下11层,舒尔特方格是一种注意力训练游戏,由25个方格组成的方阵构成,训练时将数字1-25随机填入,被测者需按顺序指读并计时完成`
         }
         if(l==12){
             s = `本关考验你默写功夫!<br>哦对了,倒计时是不是不够用了?再加20s!`
@@ -518,7 +538,7 @@ addLayer("304", {
             s = `撬锁进度:<p class="p5pt">${format(player['304'].fl2progress)}%/100%</p>`+(player['304'].fl2progress>=100 ? `<br>大门已打开,恭喜!`:``)
         }
         if(l==3){
-            s = (player['304'].fl3trig? `恭喜,回答正确!<br>`:`若问题回答错误,将重置2层进度!<br>注意数字为负数时0~9将不再正常工作<br>`)+player['304'].fl3problem+`<br>当前答案:${Math.floor(player['304'].fl3answer)}`
+            s = (player['304'].fl3trig? `恭喜,回答正确!<br>`:``)+player['304'].fl3problem+`<br>当前答案:${Math.floor(player['304'].fl3answer)}`
         }
         if(l==5){
             s = `倒计时:<p class="p5pt">${format(player['304'].fl5timeleft)}s</p>`
@@ -527,7 +547,10 @@ addLayer("304", {
             s = `你有<h2 class = 'p5pt'>${format(player['304'].points)}点数</h2>,使得每次增加的燃料x${format(player['304'].points.add(1).log10().div(2).add(1))}`
         }
         if(l==7){
-            s = (player['304'].fl7trig? `恭喜,回答正确!`:(player['304'].wptrig[7]?formatWhole(player['304'].fl7answer1):window.btoa(unescape(encodeURIComponent(player['304'].fl7answer1)))+`<br>答错将重置4层进度!`))+`<br>当前答案:${Math.floor(player['304'].fl7answer)}`
+            s = (player['304'].fl7trig? `恭喜,回答正确!`:(player['304'].wptrig[7]?Math.floor(player['304'].fl7answer1):player['304'].fl7problem))+`<br>当前答案:${Math.floor(player['304'].fl7answer)}`
+        }
+        if(l==8){
+            s = (player['304'].fl8trig?`恭喜你猜对了!`:(player['304'].fl8mode==1?`猜大了!`:player['304'].fl8mode==2? `猜小了!`:`请输入一个0到100之间的数字!`))+`<br>当前猜测:${formatWhole(player['304'].fl8answer)}`
         }
         if(l==9){
             s = `撬锁进度:<p class="p5pt">${format(player['304'].fl9progress)}%/100%</p><br>当前旋转度数:${formatWhole(player['304'].fl9degree)}°,转到${formatWhole(player['304'].fl9target)}°可使进度增加20%`+(player['304'].fl9progress>=100 ? `<br>大门已打开,恭喜!`:``)
@@ -552,12 +575,13 @@ addLayer("304", {
     calc304left(){
         let b = 20
         let l = player['304'].lv
-        if(l>=3) b=30
-        if(l>=5) b=50
-        if(l>=10) b=60
-        if(l>=11) b=80
-        if(l>=12) b=100
-        if(l>=15) b=120
+        if(l>=5) b=30
+        if(l>=6) b=40
+        if(l>=7) b=45
+        if(l>=10) b=55
+        if(l>=11) b=75
+        if(l>=12) b=95
+        if(l>=15) b=115
         if(hasUpgrade("304",21)) b+=10
         if(hasUpgrade("304",22)) b+=10
         if(hasUpgrade("304",23)) b+=10
@@ -569,18 +593,20 @@ addLayer("304", {
         let a2=0
         let a3=0
         let a4=0
-        a1=Math.floor(Math.random()*1000)
-        a2=Math.floor(Math.random()*1000)
-        a3=Math.floor(Math.random()*1000)
-        a4=Math.floor(Math.random()*1000)
-        player['304'].fl3answer1 = (a1*a3)-(a2*a4)
-        if(hasUpgrade("304",42)) player['304'].fl3answer1 = (a1+a2+a3+a4)
-        if(hasUpgrade("304",42)) player['304'].fl3problem = `${formatWhole(a1+a2)}+${formatWhole(a3+a4)}=?`
-        else player['304'].fl3problem = `${formatWhole(a1)}x${formatWhole(a3)}-${formatWhole(a2)}x${formatWhole(a4)}=${player['304'].wptrig[6]?formatWhole(player['304'].fl3answer1):`?`}`
+        a1=Math.floor(Math.random()*10000)
+        a2=Math.floor(Math.random()*10000)
+        a3=Math.floor(Math.random()*10000)
+        a4=Math.floor(Math.random()*10000)
+        player['304'].fl3answer1 = (a1+a2+a3+a4)
+        player['304'].fl3problem = `${formatWhole(a1+a2)}+${formatWhole(a3+a4)}=?`
     },
     getfl7problem(){
-        let a = Math.floor(Math.random()*10000000)
-        player['304'].fl7answer1 = a
+        for(i = 1;i<=6;i++){
+            let a = Math.floor(Math.random()*25)+1
+            player['304'].fl7problem += player['304'].fl7code[a]
+            player['304'].fl7answer1 *= (a>=10 ? 100:10)
+            player['304'].fl7answer1 += a
+        }
     },
     getfl6mult(){
         let mt = _D0
@@ -619,18 +645,23 @@ addLayer("304", {
                 player['304'].started = true
                 player['304'].fl1fuel = 50
                 player['304'].fl2progress = 0
+                player['304'].fl7problem = ""
+                player['304'].fl7answer1 = 0
                 layers['304'].getfl3problem()
                 layers['304'].getfl7problem()
                 player['304'].fl3answer = 0
                 player['304'].fl3trig = false
                 player['304'].fl4progress = 0
-                player['304'].fl5timeleft = (hasUpgrade("304",31)?35:20)
-                player['304'].fl5timecap = (hasUpgrade("304",32)?25:20)
+                player['304'].fl5timeleft = (hasUpgrade("304",31)?30:15)
+                player['304'].fl5timecap = (hasUpgrade("304",32)?10:15)
                 player['304'].upgrades = player['304'].upgrades.filter(n => (n>19||(hasUpgrade("304",52)&&(n<14))))
                 player['304'].points = _D0
                 player['304'].fl7trig = false
                 player['304'].fl7answer = 0
-                player['304'].fl8cnt = 0
+                player['304'].fl8cnt = Math.floor(Math.random()*99)+1
+                player['304'].fl8trig = false
+                player['304'].fl8answer = 0
+                player['304'].fl8mode = 0
                 player['304'].fl9degree = 0
                 player['304'].fl9target = 180
                 player['304'].fl9progress = 0
@@ -708,15 +739,21 @@ addLayer("304", {
             onClick() {
                 if(player['304'].Fl==3){
                     if(player['304'].fl3answer == player['304'].fl3answer1) player['304'].fl3trig = true
-                    else player['304'].fl2progress = 0
                 }
                 if(player['304'].Fl==7){
                     if(player['304'].fl7answer == player['304'].fl7answer1) player['304'].fl7trig = true
-                    else player['304'].fl4progress = 0
+                }
+                if(player['304'].Fl==8){
+                    if(player['304'].fl8answer == player['304'].fl8cnt) player['304'].fl8trig = true
+                    else{
+                        if(player['304'].fl8answer > player['304'].fl8cnt) player['304'].fl8mode = 1
+                        else player['304'].fl8mode = 2
+                        player['304'].fl8answer = 0
+                    }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7},
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8},
             style:{}
         },
         18: {
@@ -752,7 +789,11 @@ addLayer("304", {
                 }
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -766,8 +807,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         22: {
@@ -782,7 +823,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=1
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=1
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -796,8 +842,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12)&& player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12)&& player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         23: {
@@ -812,7 +858,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=2
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=2
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -826,8 +877,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12)&& player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12)&& player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         24: {
@@ -842,7 +893,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=3
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=3
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -856,8 +912,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         25: {
@@ -872,7 +928,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=4
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=4
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -886,8 +947,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12)&& player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12)&& player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         26: {
@@ -902,7 +963,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=5
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=5
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -916,8 +982,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12)&& player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12)&& player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         27: {
@@ -932,7 +998,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=6
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=6
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -946,8 +1017,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12)&& player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12)&& player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         28: {
@@ -962,7 +1033,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=7
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=7
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -976,8 +1052,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         29: {
@@ -992,7 +1068,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=8
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=8
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -1006,8 +1087,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         31: {
@@ -1022,7 +1103,12 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer*=10
                     player['304'].fl7answer+=9
-                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e7)
+                    player['304'].fl7answer = Math.min(Math.abs(player['304'].fl7answer),1e17)
+                }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer*=10
+                    player['304'].fl8answer+=9
+                    player['304'].fl8answer = Math.min(Math.abs(player['304'].fl8answer),100)
                 }
                 if(player['304'].Fl==12){
                     if(player['304'].fl12cur >= player['304'].fl12digit) return
@@ -1036,18 +1122,8 @@ addLayer("304", {
                     }
                 }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12 },
-            style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
-        },
-        32: {
-            title() { return `N` },
-            display: "",
-            onClick() {
-                player['304'].fl3answer = -(player['304'].fl3answer)
-            },
-            unlocked() { return player['304'].Fl==3 && player['304'].started },
-            canClick() { return player['304'].Fl==3 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8||player['304'].Fl==12) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==12||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
         },
         33: {
@@ -1060,22 +1136,13 @@ addLayer("304", {
                 if(player['304'].Fl==7){
                     player['304'].fl7answer=0
                 }
+                if(player['304'].Fl==8){
+                    player['304'].fl8answer=0
+                }
             },
-            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7) && player['304'].started },
-            canClick() { return player['304'].Fl==3||player['304'].Fl==7 },
+            unlocked() { return (player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8) && player['304'].started },
+            canClick() { return player['304'].Fl==3||player['304'].Fl==7||player['304'].Fl==8 },
             style:{"height":"30px","min-height":"30px","width":"30px","margin":"0px"}
-        },
-        41: {
-            title() { return `请点击我!` },
-            display() {return `还需点击${formatWhole((((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1))-player['304'].fl8cnt)}次!`},
-            onClick() {
-                player['304'].fl8cnt++;
-            },
-            unlocked() { return player['304'].Fl==8 && player['304'].started },
-            canClick() { return player['304'].fl8cnt<(((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1)) },
-            style(){
-                 if(player['304'].fl8cnt>=((player['304'].lv-8)*10+40)/(hasUpgrade("304",54)?1.25:1)) return {"background-color":"#32d600","border":"5px solid #007e0d"}
-            }
         },
         42: {
             title() { return `左拧撬棒` },
@@ -1130,13 +1197,13 @@ addLayer("304", {
             display() {return `进度:${format(player['304'].fl14progress)}%/100%`},
             onClick(){
                 if(player['304'].fl14mode==1) return
-                player['304'].fl14progress = player['304'].fl14progress+1.2
+                player['304'].fl14progress = player['304'].fl14progress+3
                 player['304'].fl14progress = Math.min(player['304'].fl14progress,100)
                 if(chooseWeightInArray([[0,80],[1,20]])) player['304'].fl14mode = 1
             },
             onHold() {
                 if(player['304'].fl14mode==2) return
-                player['304'].fl14progress = player['304'].fl14progress+0.3
+                player['304'].fl14progress = player['304'].fl14progress+0.8
                 player['304'].fl14progress = Math.min(player['304'].fl14progress,100)
                 if(chooseWeightInArray([[0,90],[1,10]])) player['304'].fl14mode = 2
             },
@@ -1216,7 +1283,7 @@ addLayer("304", {
             display() {return ``},
             onClick() {
                 player['304'].upgrades = []
-                player['304'].shoppoints = new Decimal(player['304'].lv-1)
+                player['304'].shoppoints = new Decimal(player['304'].lv-5)
             },
             unlocked() { return player['304'].lv>=6 && (!player['304'].started) },
             canClick() { return true },
@@ -1227,8 +1294,9 @@ addLayer("304", {
             display() {return `跳转到第${formatWhole(player['304'].Fl)}关`},
             onClick() {
                 player['304'].upgrades = []
-                player['304'].shoppoints = new Decimal(player['304'].lv-1)
+                player['304'].shoppoints = new Decimal(player['304'].lv-5)
                 player['304'].lv = player['304'].Fl
+                player['304'].shoppoints = new Decimal(player['304'].lv-5)
             },
             unlocked() { return player['304'].hlv>=2 && (!player['304'].started) },
             canClick() { return player['304'].Fl!=player['304'].hlv },
@@ -1238,8 +1306,9 @@ addLayer("304", {
             display() {return `跳转到第${formatWhole(player['304'].hlv)}关`},
             onClick() {
                 player['304'].upgrades = []
-                player['304'].shoppoints = new Decimal(player['304'].lv-1)
+                player['304'].shoppoints = new Decimal(player['304'].lv-5)
                 player['304'].lv = player['304'].hlv
+                player['304'].shoppoints = new Decimal(player['304'].lv-5)
             },
             unlocked() { return player['304'].hlv>=2 && (!player['304'].started) },
             canClick() { return player['304'].lv!=player['304'].hlv },
@@ -1418,7 +1487,7 @@ addLayer("304", {
             onClick() {
                 player['304'].wptrig[9] = !player['304'].wptrig[9]
             },
-            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=8 && (!player['304'].started) },
+            unlocked() { return player['304'].hlv>player['304'].lv && player['304'].lv>=12 && (!player['304'].started) },
             canClick() { return player['304'].lv!=player['304'].hlv },
             style:{
                 "margin":"0px",height: "100px", width: "100px", minHeight: "100px", border: "4px solid", borderColor(){
