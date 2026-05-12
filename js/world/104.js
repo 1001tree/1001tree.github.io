@@ -393,7 +393,6 @@ addLayer("104", {
             if ((Math.floor(i / 100) > (4 + player['104'].t5 + player['104'].t6)) || ((i % 100) > (4 + player['104'].t5 + player['104'].t6))) continue
             if (player['104'].grid[i].gt(0)) minn = minn.min(player['104'].grid[i]).max(0)
         }
-        console.log(minn)
         for (i in player['104'].grid) {
             if (player['104'].grid[i].eq(minn) || (player['104'].grid[i].lt(0) && player['104'].grid[i].neq(-9))) {
                 player['104'].grid[i] = _D0

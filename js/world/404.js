@@ -390,21 +390,25 @@ addLayer("404", {
     hotkeys: [
         {
             key: "z",
+            description: "[404] Z: 轨道一",
             onPress() { clickTrack(0) },
             unlocked() { return getGridData('main', this.layer) }
         },
         {
             key: "x",
+            description: "[404] X: 轨道二",
             onPress() { clickTrack(1) },
             unlocked() { return getGridData('main', this.layer) }
         },
         {
             key: "n",
+            description: "[404] N: 轨道三",
             onPress() { clickTrack(2) },
             unlocked() { return getGridData('main', this.layer) }
         },
         {
             key: "m",
+            description: "[404] M: 轨道四",
             onPress() { clickTrack(3) },
             unlocked() { return getGridData('main', this.layer) }
         },

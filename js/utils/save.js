@@ -217,6 +217,8 @@ function load() {
 	window.musicPlayer.setVolume(options.songvolume)
 	window.musicPlayer.setMode(options.songmode)
 	window.musicPlayer.playSong(options.songid, !options.songautoplay)
+
+	player[303].load = true
 }
 
 function loadOptions() {

@@ -320,7 +320,7 @@ var systemComponents = {
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>暂停仍可交互<br>仅禁止刻更新</button></td>
 				<td><button class="opt" onclick="player.pause[101]=!player.pause[101]">{{ getGameName(101)[0] }}<br>暂停:{{ formatBoolean(player.pause[101]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[102]=!player.pause[102]">{{ getGameName(102)[0] }}<br>暂停:{{ formatBoolean(player.pause[102]) }}</button></td>
+				<td><button class="opt">不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[103]=!player.pause[103]">{{ getGameName(103)[0] }}<br>暂停:{{ formatBoolean(player.pause[103]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[104]=!player.pause[104]">{{ getGameName(104)[0] }}<br>暂停:{{ formatBoolean(player.pause[104]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[105]=!player.pause[105]">{{ getGameName(105)[0] }}<br>暂停:{{ formatBoolean(player.pause[105]) }}</button></td>
@@ -337,8 +337,8 @@ var systemComponents = {
 				<td><button class="info" disabled>为了让这对齐<br>我加这五按钮</button></td>
 				<td><button class="opt" onclick="player.pause[301]=!player.pause[301]">{{ getGameName(301)[0] }}<br>暂停:{{ formatBoolean(player.pause[301]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[302]=!player.pause[302]">{{ getGameName(302)[0] }}<br>暂停:{{ formatBoolean(player.pause[302]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[303]=!player.pause[303]">{{ getGameName(303)[0] }}<br>暂停:{{ formatBoolean(player.pause[303]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[304]=!player.pause[304]">{{ getGameName(304)[0] }}<br>暂停:{{ formatBoolean(player.pause[304]) }}</button></td>
+				<td><button class="opt">不允许暂停</button></td>
+				<td><button class="opt">不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[305]=!player.pause[305]">{{ getGameName(305)[0] }}<br>暂停:{{ formatBoolean(player.pause[305]) }}</button></td>
             </tr>
             <tr v-if="options.pauseclass">
@@ -346,12 +346,12 @@ var systemComponents = {
 				<td><button class="opt" onclick="player.pause[401]=!player.pause[401]">{{ getGameName(401)[0] }}<br>暂停:{{ formatBoolean(player.pause[401]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[402]=!player.pause[402]">{{ getGameName(402)[0] }}<br>暂停:{{ formatBoolean(player.pause[402]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[403]=!player.pause[403]">{{ getGameName(403)[0] }}<br>暂停:{{ formatBoolean(player.pause[403]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[404]=!player.pause[404]">{{ getGameName(404)[0] }}<br>暂停:{{ formatBoolean(player.pause[404]) }}</button></td>
+				<td><button class="opt">不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[405]=!player.pause[405]">{{ getGameName(405)[0] }}<br>暂停:{{ formatBoolean(player.pause[405]) }}</button></td>
             </tr>
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>正如你所见到<br>我已江郎才尽</button></td>
-				<td><button class="opt" onclick="player.pause[501]=!player.pause[501]">{{ getGameName(501)[0] }}<br>暂停:{{ formatBoolean(player.pause[501]) }}</button></td>
+				<td><button class="opt">不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[502]=!player.pause[502]">{{ getGameName(502)[0] }}<br>暂停:{{ formatBoolean(player.pause[502]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[503]=!player.pause[503]">{{ getGameName(503)[0] }}<br>暂停:{{ formatBoolean(player.pause[503]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[504]=!player.pause[504]">{{ getGameName(504)[0] }}<br>暂停:{{ formatBoolean(player.pause[504]) }}</button></td>
@@ -411,7 +411,7 @@ var systemComponents = {
         bottom: songshown ? '20px' : '-202px',
         'z-index': '100000'
     	}">
-			<p v-if="songshown">你可以在 设置-主题设置-组件-BGM显示 隐藏此栏，或按 M 键切换</p>
+			<p v-if="songshown">你可以在 设置-主题设置-组件-BGM显示 隐藏此栏，或按 O 键切换</p>
 			<br>
 
         <div class="pc" :style="{width: tab ? 'calc(100vw - 70px)' : 'calc(50vw - 70px)'}">
@@ -698,6 +698,8 @@ var systemComponents = {
         	    <div class="tips" @click="dismissWarning">
         	        <h1>>:(</h1><br>
 					<h3>请不要使用变速齿轮作弊!!!</h3><br><br>
+					如果你在刚打开游戏的时候看到了这个<br>
+					那么请无视它
 
 					<br>
         	        <button class="pb" @click="dismissWarning">
@@ -714,8 +716,6 @@ var systemComponents = {
 			
 			checkTPS() {
 				const currentTPS = Cal_TPS()[0];
-
-				console.log(1)
 				
 				if (currentTPS > 21) {
 					this.tpsCounter++;
@@ -781,6 +781,8 @@ var systemComponents = {
 					302: { src: '/resources/song/track302.ogg' },
 
 					401: { src: '/resources/song/track401.ogg' },
+
+					"303bg": { src: '/resources/song/303background.mp3' }
 				}
 			};
 		},

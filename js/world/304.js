@@ -123,7 +123,7 @@ addLayer("304", {
                     return layers[this.layer].getlvtext()
                 }],
                 ["display-text", function () {
-                    return (player['304'].losetrig304 ? `你搞杂了,好吧也许下次...<p style = "color: #00000000">可人生还有几次重来的机会呢</p>` : ``)
+                    return (player['304'].losetrig304 ? `你搞砸了,好吧也许下次...<p style = "color: #00000000">可人生还有几次重来的机会呢</p>` : ``)
                 }],
                 ["display-text", function () {
                     return (player['304'].started ? `倒计时:<h2 class='p5pt'> ${formatTime(player['304'].timeleft304)} </h2>` : `当前倒计时为<h2 class='p5pt'> ${formatTime(layers['304'].calc304left())} </h2><br>准备好了就点下面的按钮开始`)

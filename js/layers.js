@@ -292,7 +292,7 @@ addLayer("ach", {
             name: "被愚弄的后果",
             done() { return player[302].fool },
             onComplete() { achievementComplete() },
-            tooltip: "进行无收益飝卆",
+            tooltip: "在第100夜进行无收益飝卆",
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/24.jpg)",
             },
@@ -302,9 +302,19 @@ addLayer("ach", {
             name: "真假无限",
             done() { return player[402].level == 12 && player[402].value.gte(_DInf) },
             onComplete() { achievementComplete() },
-            tooltip: "在402中的第12关达到1.79e308数值.",
+            tooltip: "在第110夜的第12关达到1.79e308数值.",
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/25.jpg)",
+            },
+            unlocked() { return hasAchievement(this.layer, this.id) }
+        },
+        26: {
+            name: "@古4D_攵+彰A!",
+            done() { return player[303].sl },
+            onComplete() { achievementComplete() },
+            tooltip: "在第1001夜中尝试SL",
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/26.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },

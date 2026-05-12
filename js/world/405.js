@@ -178,7 +178,7 @@ addLayer("405", {
                         [1,]3,6,10,15,21,28,36,45,55<br>
                         公式：<br>
                         dB(x<sub>n</sub>)/dt × log2(1+Seed)<br>
-                        dSeed/dt × B(x1)
+                        dSeed/dt × B(x<sub>1</sub>)
                         `
                     ],
                     "blank",

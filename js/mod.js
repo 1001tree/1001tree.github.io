@@ -18,14 +18,16 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.76,
-	name: "发布版v1"
+	num: 0.79,
+	name: "发布版v2"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v2 | 0.79? | 2025/5/13</h3><br>
+	最后一个游戏,也是最重要的游戏,开始制作!<br><br>
 	<h3>v1 | 0.76 | 2025/5/1</h3><br>
-	发布版<br><br>
+	发布版v1<br><br>
 	<h3>v0.76? | 2025/3/15</h3><br>
 	更新了19个游戏<br><br>
 	<h3>v0.68 | 2025/1/16</h3><br>
@@ -57,7 +59,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"aC1", "aC2", "aC3", "aC4", "aC5", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10",
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
-	"getfl13gain", "execute", "executeLoop", "executeCommand"
+	"getfl13gain", "execute", "executeLoop", "executeCommand","startChallenge","endChallenge",
+	"check11","check12"
 ]
 
 function getStartPoints() {
@@ -183,7 +186,7 @@ function backgroundStyle() {
 
 // 如果有内容可能被长时间tick破坏,可以修改这个值
 function maxTickLength() {
-	return 1
+	return 0.1
 }
 
 // 如果需要修复旧版本存档的数值膨胀问题,使用此函数.如果版本早于修复该问题的版本,

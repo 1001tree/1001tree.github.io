@@ -50,9 +50,10 @@ addLayer("book", {
                 ["display-text","<br>"]
             ]
         },
-        愚蠢的页面: {
+        世界之书: {
             content: [
-                ["display-text","这里什么也没有"]
+                ["microtabs", "world"],
+                ["display-text","<br>"]
             ]
         },
     },
@@ -146,9 +147,41 @@ addLayer("book", {
             banana3864: {
                 content: [
                     ["display-text","我是Banana3864, 1001树的开发者之一. 在某处的输入框中输入新闻中的6位密码来解锁讯息1"]
-                ]
+                ],
+                style: {
+                    width: "720px"
+                }
             }
         },
+        world: {
+            主页: {
+                content: [
+                    ["display-text",`
+                    <h1>恭喜你走到了世界的尽头</h1><br>
+                    <h2>这里是为了勇者而创造的一片树叶</h2><br>
+                    <h3>上面写着一些秘密,看看它们吧,你值得</h3><br>
+                    如果你不知道怎么完成某些世界,就来找我吧
+                    `]
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+            世界202: {
+                content: [
+                    ["display-text",`
+                    在工作4中,找到一个能快速完成挑战的最小升级组合<br>
+                    把它们的价格加起来,会变成一个由1和0组成的数字<br>
+                    已知Hex Dec Oct都是进制缩写<br>
+                    那么你就可以填入密码...等等,它看起来不对劲?<br>
+                    哦不,这其实是刻意的游戏设计,想想怎么输入密码吧!
+                    `]
+                ],
+                style: {
+                    width: "720px"
+                }
+            }
+        }
     },
     tooltip: "",
     layerShown() { return true },

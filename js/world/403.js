@@ -42,7 +42,6 @@ addLayer("403", {
         return ret
     },
     executeCommand(c,str) { //执行单条命令
-        console.log(str)
         let [x,y]=c.split("→")
         return str.replaceAll(x,y)
     },
