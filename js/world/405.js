@@ -220,7 +220,7 @@ addLayer("405", {
                     fadeInTime: 0.5,
                     gravity: 1,
                     image: "",
-                    text: `<spam style="color:#ff0">麦粒</spam>`,
+                    text: `<span style="color:#ff0">麦粒</span>`,
                     speed() {
                         return (Math.random() + 1) * 8
                     },
@@ -259,7 +259,7 @@ addLayer("405", {
                     fadeInTime: 0.5,
                     gravity: 1,
                     image: "",
-                    text: `<spam style="color:#ff0">麦粒</spam>`,
+                    text: `<span style="color:#ff0">麦粒</span>`,
                     speed() {
                         return (Math.random() + 1) * 8
                     },
@@ -349,7 +349,7 @@ addLayer("405", {
                     fadeInTime: 0.5,
                     gravity: 1,
                     image: "",
-                    text: `<spam style="color:#ff0">麦粒</spam>`,
+                    text: `<span style="color:#ff0">麦粒</span>`,
                     speed() {
                         return (Math.random() + 1) * 8
                     },

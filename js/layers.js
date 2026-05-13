@@ -191,7 +191,7 @@ addLayer("ach", {
     },
     achievements: {
         11: {
-            name: "小世界",
+            name: "<span class='ach'>小世界</span>",
             done() { return player.points.gte(1) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p1pt">完成1世界</span>' : `完成${formatWhole(player.points)}/1世界` },
@@ -200,7 +200,7 @@ addLayer("ach", {
             },
         },
         12: {
-            name: "世界计划",
+            name: "<span class='ach'>世界计划</span>",
             done() { return player.points.gte(5) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p2pt">完成5世界</span>' : `完成${formatWhole(player.points)}/5世界` },
@@ -209,7 +209,7 @@ addLayer("ach", {
             },
         },
         13: {
-            name: "世界收割机",
+            name: "<span class='ach'>世界收割机</span>",
             done() { return player.points.gte(10) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p4pt">完成10世界</span>' : `完成${formatWhole(player.points)}/10世界` },
@@ -218,7 +218,7 @@ addLayer("ach", {
             },
         },
         14: {
-            name: "世界大富翁",
+            name: "<span class='ach'>世界大富翁</span>",
             done() { return player.points.gte(15) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p6pt">完成15世界</span>' : `完成${formatWhole(player.points)}/15世界` },
@@ -227,7 +227,7 @@ addLayer("ach", {
             },
         },
         15: {
-            name: "世界征服者",
+            name: "<span class='ach'>世界征服者</span>",
             done() { return player.points.gte(20) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p8pt">完成20世界</span>' : `完成${formatWhole(player.points)}/20世界` },
@@ -236,7 +236,7 @@ addLayer("ach", {
             },
         },
         16: {
-            name: "所有世界的王<br>宇宙的新统领",
+            name: "<span class='ach'>所有世界的王<br>宇宙的新统领</span>",
             done() { return player.points.gte(25) },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '<span class="p9pt">完成25世界</span>' : `完成${formatWhole(player.points)}/25世界` },
@@ -245,7 +245,7 @@ addLayer("ach", {
             },
         },
         17: {
-            name: "但我继续前进",
+            name: "<span class='ach'>但我继续前进</span>",
             done() { return player.keepGoing },
             onComplete() { achievementComplete() },
             tooltip() { return this.done() ? '在结束(?)后选择继续游戏' : `现在谈这个为时尚早` },
@@ -254,27 +254,27 @@ addLayer("ach", {
             },
         },
         21: {
-            name: "E4444",
+            name: "<span class='p1tx'>E4444</span>",
             done() { return player[202].points.gte("1e4444") },
             onComplete() { achievementComplete() },
-            tooltip: "在第1夜获得震撼人心的1e4444点数",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第1夜获得震撼人心的1e4444点数" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/21.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         22: {
-            name: "我...已经麻木?",
+            name: "<span class='p2tx'>我...已经麻木?</span>",
             done() { return player[203].click.gte(1000) },
             onComplete() { achievementComplete() },
-            tooltip: "在第10夜为了击破一堵墙而点击1000次",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第10夜为了击破一堵墙而点击1000次" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/22.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         23: {
-            name: "复读机",
+            name: "<span class='p3tx'>复读机</span>",
             done() {
                 return player[204].answer[21] == 40 ||
                     player[204].answer[22] == 40 ||
@@ -282,44 +282,44 @@ addLayer("ach", {
                     player[204].answer[24] == 40
             },
             onComplete() { achievementComplete() },
-            tooltip: "敷衍的回答所有问题,通过按下Enter键,当然你还不能点太快否则就会误判",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第11夜敷衍的回答所有问题,通过按下Enter键,当然你还不能点太快否则就会误判" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/23.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         24: {
-            name: "被愚弄的后果",
+            name: "<span class='p4tx'>被愚弄的后果</span>",
             done() { return player[302].fool },
             onComplete() { achievementComplete() },
-            tooltip: "在第100夜进行无收益飝卆",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第100夜进行无收益飝卆" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/24.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         25: {
-            name: "真假无限",
+            name: "<span class='p6tx'>真假无限</span>",
             done() { return player[402].level == 12 && player[402].value.gte(_DInf) },
             onComplete() { achievementComplete() },
-            tooltip: "在第110夜的第12关达到1.79e308数值.",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第110夜的第12关达到1.79e308数值." } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/25.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         26: {
-            name: "@古4D_攵+彰A!",
+            name: "<span class='p9tx'>@古4D_攵+彰A!</span>",
             done() { return player[303].sl },
             onComplete() { achievementComplete() },
-            tooltip: "在第1001夜中尝试SL",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第1001夜中尝试SL" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/26.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         101: {
-            name: "愚人节玩笑",
+            name: "<span class='c1'>愚人节玩笑</span>",
             done() { return !player._501.lose && player._501.complete },
             onComplete() { achievementComplete() },
             tooltip: "理论上最难完成的成就<br>但也最容易完成<br>一命通关愚人节小游戏",
@@ -329,7 +329,7 @@ addLayer("ach", {
             unlocked() { return true }
         },
         102: {
-            name: "幸运玩家...还是倒霉玩家?",
+            name: "<span class='c1'><sup>幸运</sup>玩家...还是<sub>倒霉</sub>玩家?</span>",
             done() { return player[502].final },
             onComplete() { achievementComplete() },
             tooltip: "到最后一刻才点到25",
@@ -339,7 +339,7 @@ addLayer("ach", {
             unlocked() { return true }
         },
         103: {
-            name: "绝对的幸运玩家",
+            name: "<span class='c1'>绝对的<sup>幸运</sup>玩家</span>",
             done() { return player[201].rg < 0 },
             onComplete() { achievementComplete() },
             tooltip: "在暴涨子小游戏中随机超频效果达到0％以下",
@@ -349,7 +349,7 @@ addLayer("ach", {
             unlocked() { return true }
         },
         104: {
-            name: "真正的游戏大师",
+            name: "<span class='c1'>真正的游戏大师</span>",
             done() { return (player[104].maxx.gte(2048)) && (player[104].ob3 && player[104].db && player[104].ob1 && player[104].bl) && (!(player[104].ud || player[104].t5 || player[104].t6)) },
             onComplete() { achievementComplete() },
             tooltip: "在2048小游戏中, 开启DB, OB1, OB3, BL同时禁用UD和T+合成2048",
@@ -359,77 +359,77 @@ addLayer("ach", {
             unlocked() { return true }
         },
         105: {
-            name: "错漏百出",
+            name: "<span class='ach'>错漏百出</span>",
             done() { return player[301].achtrig },
             onComplete() { achievementComplete() },
-            tooltip: "在25 layers中进行无收益的层级重置.",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在25 layers中进行无收益的层级重置." } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/105.jpg)",
             },
             unlocked() { return true }
         },
         106: {
-            name: "填满沙盒",
+            name: "<span class='ach'>填满沙盒</span>",
             done() { return player[504].ach },
             onComplete() { achievementComplete() },
-            tooltip: "你真的用拼图块填满了通关之后的沙盒板...",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "你真的用拼图块填满了通关之后的沙盒板..." } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/106.jpg)",
             },
             unlocked() { return true }
         },
         201: {
-            name: "更高的质量",
+            name: "<span class='ach'>更高的质量</span>",
             done() { return options.hqTree },
             onComplete() { achievementComplete() },
-            tooltip: "打开高质量的树.质量越高,引力越大,就能吸走更多成就!",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "打开高质量的树.质量越高,引力越大,就能吸走更多成就!" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/201.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         202: {
-            name: "不起作用?!",
+            name: "<span class='ach'>不起作用?!</span>",
             done() { return player.devSpeed },
             onComplete() { achievementComplete() },
-            tooltip: "尝试修改游戏速率,但失败了",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "尝试修改游戏速率,但失败了" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/202.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         203: {
-            name: "也许<br>你真的开挂了",
+            name: "<span class='ach'>也许<br>你真的开挂了</span>",
             done() { return player._501.trig[5] },
             onComplete() { achievementComplete() },
-            tooltip: "访问未使用的愚人节失败方法",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "访问未使用的愚人节失败方法" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/203.jpg)",
             },
             unlocked() { return true }
         },
         204: {
-            name: "欢迎回来",
+            name: "<span class='ach'>欢迎回来</span>",
             done() { return player.global.import },
             onComplete() { achievementComplete() },
-            tooltip: "导入存档",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "导入存档" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/204.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         205: {
-            name: "再次...欢迎回来",
+            name: "<span class='ach'>再次...欢迎回来</span>",
             done() { return player.hardreset },
             onComplete() { achievementComplete() },
-            tooltip: "点击硬重置按钮但不硬重置",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "点击硬重置按钮但不硬重置" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/205.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         206: {
-            name: "冒名顶替者",
+            name: "<span class='ach'>冒名顶替者</span>",
             done() {
                 return player.global.name == "乾狐离光"
                     || player.global.name == "userincre"
@@ -439,34 +439,54 @@ addLayer("ach", {
                     || player.global.name == "Dr丶晨曦公主"
             },
             onComplete() { achievementComplete() },
-            tooltip: "将名字设置为开发者之一",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "将名字设置为开发者之一" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/206.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         301: {
-            name: "所有",
+            name: "<span class='ach'>所有</span>",
             done() { return player.completeallachivement },
             onComplete() { achievementComplete() },
-            tooltip: "完成这个成就,你就完成了所有成就!",
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "完成这个成就,你就完成了所有成就!" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/301.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
         },
         302: {
-            name: "一招!全城制霸!",
+            name: "<span class='ach'>一招!全城制霸!</span>",
             done() { return player.global.click === Infinity },
-            onComplete() { achievementComplete()  },
-            tooltip: "设置里的游戏标签里的小游戏也是游戏",
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "设置里的游戏标签里的小游戏也是游戏" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/302.jpg)",
             },
-            unlocked() { return hasAchievement(this.layer, this.id) }
+            unlocked() { return true }
+        },
+        303: {
+            name: "<span class='p9tx'>Z290IHlh</span>",
+            done() { return player[303].find },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "吓吓你" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/303.jpg)",
+            },
+            unlocked() { return true }
+        },
+        304: {
+            name: "<span class='p9tx'>亲爱的<br>我不会伤害你</span>",
+            done() { return player[303].fake },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "亦真亦假？！！" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/304.jpg)",
+            },
+            unlocked() { return true }
         },
         401: {
-            name: "所有,除了这一个",
+            name: "<span class='c1'>所有,除了这一个</span>",
             done() {
                 return player[this.layer].points.gte(999)
             },

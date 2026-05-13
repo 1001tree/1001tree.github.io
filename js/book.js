@@ -180,7 +180,21 @@ addLayer("book", {
                 style: {
                     width: "720px"
                 }
-            }
+            },
+            世界303: {
+                content: [
+                    ["display-text",`
+                    <h1 class="p9tx">做，尝试迷惑你，虚加的枷锁</h1><br>
+                    <h1 class="p9tx">逃离、忽略、进行，你所熟知</h1><br>
+                    <h1 class="p9tx">意义在故弄，玄虚之中没有解</h1><br>
+                    <h1 class="p9tx">不要细思如同此处，抽丝剥茧</h1><br>
+                    <h1 class="p9tx">你看到的最简单的，自己，你</h1><br>
+                    `]
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
         }
     },
     tooltip: "",

@@ -18,13 +18,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.79,
-	name: "发布版v2"
+	num: 0.795,
+	name: "发布版v3"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v2 | 0.79? | 2025/5/13</h3><br>
+	<h3>v3 | 0.795? | 2025/5/14</h3><br>
+	翻新了成就样式,修改了成就隐藏逻辑<br><br>
 	最后一个游戏,也是最重要的游戏,开始制作!<br><br>
 	<h3>v1 | 0.76 | 2025/5/1</h3><br>
 	发布版v1<br><br>
@@ -60,7 +61,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand","startChallenge","endChallenge",
-	"check11","check12"
+	"check11","check12","check13","clearIntervene"
 ]
 
 function getStartPoints() {

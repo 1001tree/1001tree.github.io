@@ -47,6 +47,6 @@
 	background-color: transparent;
 	display: block;
 	position:absolute;
-	z-index: 99999;
+	z-index: 200000;
 	background-size:contain;
 }

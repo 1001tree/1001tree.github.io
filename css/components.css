@@ -208,6 +208,10 @@ div.tbox {
 	-webkit-background-clip: text;
 }
 
+.ach {
+	color: white
+}
+
 @keyframes rainbow {
 	0% {
 		background-position: 0% center;
@@ -592,6 +596,7 @@ div.tbox {
 }
 
 .tips {
+	z-index: 114515;
 	background: rgb(58, 120, 221);
 	padding: 20px;
 	border-radius: 10px;
