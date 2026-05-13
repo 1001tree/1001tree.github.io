@@ -1408,8 +1408,8 @@ const theory2 = [3, 6, 10, 15, 21, 28, 36, 45, 55]
 const clgConst = {
 	0: {
 		roundQuestion: [
-			1,1,1
-			//10, 16, 25
+			//1,1,1
+			10, 16, 25
 		],
 		diffQuestion: [0,1,5],
 		base: [
