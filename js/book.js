@@ -6,7 +6,34 @@ addLayer("book", {
     startData() {
         return {
             unlocked: true,
-            points: _D0
+            points: _D0,
+            power: 0,
+            level: _D0,
+            exp: _D0,
+            fox: {
+                pause: false,
+                power: [
+                    _D0, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
+                ],
+                gener: [
+                    null, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
+                ]
+            }
+        }
+    },
+    update(diff) {
+        if (Math.random() < 0.1) {
+            player[this.layer].power = Math.min(1000, player[this.layer].power + 1)
+        }
+
+        if (!player[this.layer].fox.pause) {
+            for (let i = 1; i < 11; i++) {
+                player[this.layer].fox.power[i - 1] = player[this.layer].fox.power[i - 1].add(layers[this.layer].getgen(i).mul(diff))
+                while (player[this.layer].fox.power[0].gte(layers[this.layer].getprice(i))) {
+                    player[this.layer].fox.gener[i] = player[this.layer].fox.gener[i].add(1)
+                    player[this.layer].fox.power[i] = player[this.layer].fox.power[i].add(1)
+                }
+            }
         }
     },
     type: "none",
@@ -47,13 +74,13 @@ addLayer("book", {
         作者: {
             content: [
                 ["microtabs", "author"],
-                ["display-text","<br>"]
+                ["display-text", "<br>"]
             ]
         },
         世界之书: {
             content: [
                 ["microtabs", "world"],
-                ["display-text","<br>"]
+                ["display-text", "<br>"]
             ]
         },
     },
@@ -146,7 +173,7 @@ addLayer("book", {
             },
             banana3864: {
                 content: [
-                    ["display-text","我是Banana3864, 1001树的开发者之一. 在某处的输入框中输入新闻中的6位密码来解锁讯息1"]
+                    ["display-text", "我是Banana3864, 1001树的开发者之一. 在某处的输入框中输入新闻中的6位密码来解锁讯息1"]
                 ],
                 style: {
                     width: "720px"
@@ -156,7 +183,7 @@ addLayer("book", {
         world: {
             主页: {
                 content: [
-                    ["display-text",`
+                    ["display-text", `
                     <h1>恭喜你走到了世界的尽头</h1><br>
                     <h2>这里是为了勇者而创造的一片树叶</h2><br>
                     <h3>上面写着一些秘密,看看它们吧,你值得</h3><br>
@@ -167,9 +194,101 @@ addLayer("book", {
                     width: "720px"
                 }
             },
+            梦力发生器: {
+                content: [
+                    ["display-text", `
+                    在此地,你获取,你发现,你找到
+                    `],
+                    "blank",
+                    ["bar", "powerbar"],
+                    "blank",
+                    ["clickables", [1]],
+                    "blank",
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+            "狐VIP": {
+                content: [
+                    ["display-text", function () {
+                        return `
+                        充值梦力可以提升狐VIP等级<br>
+                        你当前充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br>
+                        等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        这为你带来了狐力量和狐维度的  ×<h3 class="p9pt">${format(layers[this.layer].getgain())}</h3> 加成<br>
+                        `
+                    }],
+                    "blank",
+                    ["clickables", [2]],
+                    "blank",
+                    ["display-text", function () {
+                        return `
+                        你有 <h1 class="nmpt">${format(player[this.layer].fox.power[0])}</h1> 狐力量
+                        `
+                    }],
+                    ["row", [
+                        ["display-text", function () {
+                            return `
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[1])}</h2> 狐一维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[1])}</h2> 狐一维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(1))}</h3> 狐力量在每秒<br>
+                            获得下一个狐一维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(1))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[2])}</h2> 狐二维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[2])}</h2> 狐二维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(2))}</h3> 狐一维在每秒<br>
+                            获得下一个狐二维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(2))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[3])}</h2> 狐三维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[3])}</h2> 狐三维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(3))}</h3> 狐二维在每秒<br>
+                            获得下一个狐三维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(3))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[4])}</h2> 狐四维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[4])}</h2> 狐四维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(4))}</h3> 狐三维在每秒<br>
+                            获得下一个狐四维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(4))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[5])}</h2> 狐五维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[5])}</h2> 狐五维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(5))}</h3> 狐四维在每秒<br>
+                            获得下一个狐五维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(5))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[6])}</h2> 狐六维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[6])}</h2> 狐六维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(6))}</h3> 狐五维在每秒<br>
+                            获得下一个狐六维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(6))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[7])}</h2> 狐七维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[7])}</h2> 狐七维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(7))}</h3> 狐六维在每秒<br>
+                            获得下一个狐七维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(7))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[8])}</h2> 狐八维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[8])}</h2> 狐八维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(8))}</h3> 狐七维在每秒<br>
+                            获得下一个狐八维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(8))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[9])}</h2> 狐九维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[9])}</h2> 狐九维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(9))}</h3> 狐八维在每秒<br>
+                            获得下一个狐九维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(9))}</h3> 狐力量<br><br>
+
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[10])}</h2> 狐十维生成器<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(10))}</h3> 狐九维在每秒<br>
+                            获得下一个狐十维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(10))}</h3> 狐力量
+                        `
+                        }],
+                    ]]
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
             世界202: {
                 content: [
-                    ["display-text",`
+                    ["display-text", `
                     在工作4中,找到一个能快速完成挑战的最小升级组合<br>
                     把它们的价格加起来,会变成一个由1和0组成的数字<br>
                     已知Hex Dec Oct都是进制缩写<br>
@@ -183,12 +302,12 @@ addLayer("book", {
             },
             世界303: {
                 content: [
-                    ["display-text",`
-                    <h1 class="p9tx">做，尝试迷惑你，虚加的枷锁</h1><br>
-                    <h1 class="p9tx">逃离、忽略、进行，你所熟知</h1><br>
-                    <h1 class="p9tx">意义在故弄，玄虚之中没有解</h1><br>
-                    <h1 class="p9tx">不要细思如同此处，抽丝剥茧</h1><br>
-                    <h1 class="p9tx">你看到的最简单的，自己，你</h1><br>
+                    ["display-text", `
+                    <h1 class="p9pt">做，尝试迷惑你，虚加的枷锁</h1><br>
+                    <h1 class="p9pt">逃离、忽略、进行，你所熟知</h1><br>
+                    <h1 class="p9pt">意义在故弄，玄虚之中没有解</h1><br>
+                    <h1 class="p9pt">不要细思如同此处，抽丝剥茧</h1><br>
+                    <h1 class="p9pt">你看到的最简单的，自己，你</h1><br>
                     `]
                 ],
                 style: {
@@ -196,6 +315,86 @@ addLayer("book", {
                 }
             },
         }
+    },
+    bars: {
+        powerbar: {
+            direction: UP,
+            width: 80,
+            height: 220,
+            progress() {
+                return player[this.layer].power / 1000
+            },
+            display() {
+                return `<span class="nmpt">${player[this.layer].power}<br>——<br>1000</span>`
+            }
+        }
+    },
+    clickables: {
+        11: {
+            title: "汲取",
+            display() {
+                return `消耗500能量获取1梦力`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return player[this.layer].power >= 500
+            },
+            onClick() {
+                player[this.layer].power -= 500
+                player.main.points = player.main.points.add(1)
+                player.gainpower = true
+            }
+        },
+        21: {
+            title: "注入",
+            display() {
+                return `消耗1梦力获取1狐经验`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return player.main.points.gt(0)
+            },
+            onClick() {
+                player.main.points = player.main.points.sub(1)
+                player[this.layer].exp = player[this.layer].exp.add(1)
+                while (player[this.layer].exp.gte(player[this.layer].level.pow(2).add(1))) {
+                    player[this.layer].level = player[this.layer].level.add(1)
+                }
+            }
+        },
+        22: {
+            title: "暂停",
+            display() {
+                return `狐力量生成状态 ${player[this.layer].fox.pause ? "运行中" : "暂停"}`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return true
+            },
+            onClick() {
+                player[this.layer].fox.pause = !player[this.layer].fox.pause
+            }
+        }
+    },
+    getgain() {
+        let x = player[this.layer].level
+        let y = player[this.layer].exp
+        return (x.pow(2).add(1)).pow(x.mul(y)).sub(1)
+    },
+    getgen(layer) {
+        let data = player[this.layer].fox
+        let gain = this.getgain()
+        let base = (_D2.pow(data.gener[layer].sub(1))).mul(data.power[layer])
+        return base.mul(gain)
+    },
+    getprice(layer) {
+        return (_D10.add(player[this.layer].fox.gener[layer].div(100))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
     },
     tooltip: "",
     layerShown() { return true },

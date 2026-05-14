@@ -18,14 +18,17 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.795,
-	name: "发布版v3"
+	num: 0.796,
+	name: "发布版v4"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v3 | 0.795? | 2025/5/14</h3><br>
+	<h3>v4 | 0.796 | 2025/5/15</h3><br>
+	不再提供初始梦力,达成成就时获得梦力
+	<h3>v3 | 0.795 | 2025/5/14</h3><br>
 	翻新了成就样式,修改了成就隐藏逻辑<br><br>
+	<h3>v2 | 0.79 | 2025/5/13</h3><br>
 	最后一个游戏,也是最重要的游戏,开始制作!<br><br>
 	<h3>v1 | 0.76 | 2025/5/1</h3><br>
 	发布版v1<br><br>
@@ -61,7 +64,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand","startChallenge","endChallenge",
-	"check11","check12","check13","clearIntervene"
+	"check11","check12","check13","clearIntervene","getgain","getgen","getprice"
 ]
 
 function getStartPoints() {
@@ -117,7 +120,8 @@ function addedPlayerData() {
 			tickTime: [],
 			click: 0
 		},
-		completeallachivement: false
+		completeallachivement: false,
+		gainpower: false,
 	}
 }
 
@@ -193,4 +197,9 @@ function maxTickLength() {
 // 如果需要修复旧版本存档的数值膨胀问题,使用此函数.如果版本早于修复该问题的版本,
 // 你可以用此函数限制他们当前的资源.
 function fixOldSave(oldVersion) {
+	if (oldVersion <= 0.795) {
+		let ach = player.ach.points
+		player.main.points = player.main.points.add(ach)
+		alert(`基于曾经完成的成就,你获得了${formatWhole(ach)}梦力!(为什么我会收到这个?看看更新日志!)`)
+	}
 }

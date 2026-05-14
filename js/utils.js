@@ -584,6 +584,7 @@ function randomString(length) {
 
 function achievementComplete() {
 	player.ach.points = player.ach.points.add(1)
+	player.main.points = player.main.points.add(1)
 	player.ach.points = decimalMin(_D(Object.keys(layers.ach.achievements).length - 2), player.ach.points)
 	player.global.achseed = Date.now()
 }

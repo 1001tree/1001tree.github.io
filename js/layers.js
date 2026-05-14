@@ -9,7 +9,7 @@ addLayer("main", {
     startData() {
         return {
             unlocked: true,
-            points: _D2
+            points: _D0
         }
     },
     type: "none",
@@ -165,7 +165,9 @@ addLayer("ach", {
                 ["display-text", function () {
                     let tac = _D(Object.keys(layers[this.layer].achievements).length - 2)
                     let ach = player[this.layer].points
-                    return `你有 ${formatWhole(ach)}/${formatWhole(tac)} 成就,加成成就获取+1<br>${layers[this.layer].getSomeText(ach.div(tac))}`
+                    return `你有 ${formatWhole(ach)}/${formatWhole(tac)} 成就,加成成就获取+1<br>
+                    ${layers[this.layer].getSomeText(ach.div(tac))}<br>
+                    你每完成一个成就,将获得1梦力!`
                 }],
                 "blank",
                 "achievements",
@@ -482,6 +484,16 @@ addLayer("ach", {
             tooltip() { if (hasAchievement(this.layer, this.id)) { return "亦真亦假？！！" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/304.jpg)",
+            },
+            unlocked() { return true }
+        },
+        305: {
+            name: "<span class='ach'>精粹!!!</span>",
+            done() { return player.gainpower },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "通过梦力发生器获得一个梦力" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/305.jpg)",
             },
             unlocked() { return true }
         },
