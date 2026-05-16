@@ -1,5 +1,6 @@
 // ************ Themes ************
-var themes = ["default", "aqua", "fox","blind"]
+var themes = ["default", "aqua", "fox", "blind",
+	"bloody"]
 
 var colors = {
 	default: {
@@ -54,6 +55,22 @@ var colors = {
 		highlight: "#F8F8F8",
 		background_tooltip: "rgba(128, 128, 128, 0.75)",
 	},
+
+	//特殊的主题
+	bloody: {
+		1: "#8B0000",
+		2: "#8B0000",
+		3: "#8B0000",
+		color: "#EE0000",
+		points: "#8B0000",
+		superPoints: "#FF0000",
+		bought: "#A20000",
+		locked: "#660000",
+		background: "#660000",
+		background2: "#A20000",
+		highlight: "#220000",
+		background_tooltip: "rgba(128, 128, 128, 0.75)",
+	},
 }
 function changeTheme() {
 	try {
@@ -77,13 +94,14 @@ function getThemeName() {
 		'default': '默认',
 		'aqua': '水色',
 		'fox': '狐狸',
-		'blind': '瞎子'
+		'blind': '瞎子',
+		'bloody': '血色'
 	}[options.theme ?? '默认']
 }
 
 function switchTheme() {
 	let index = themes.indexOf(options.theme)
-	if (options.theme === null || index >= themes.length - 1 || index < 0) {
+	if (options.theme === null || index >= themes.length - 2 || index < 0) {
 		options.theme = themes[0];
 	}
 	else {
