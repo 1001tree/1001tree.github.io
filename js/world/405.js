@@ -19,8 +19,14 @@ addLayer("405", {
                     ti = i - 1
                     tj = 7
                 }
+
+                let si = ti, sj = tj - 1
+                if (tj == 0) {
+                    si = ti - 1
+                    sj = 7
+                }
+
                 let n = j + i * 8 + 1
-                let m = tj + ti * 8 + 2
 
                 let mul = _D1
 
@@ -36,13 +42,30 @@ addLayer("405", {
                     mul = mul.mul(player[this.layer].seed.add(1).log(2))
                 }
 
-                player[this.layer].wheel[i][j] = player[this.layer].wheel[i][j].add(
-                    player[this.layer].wheel[ti][tj].add(1)
-                        .pow(_D1.div(_D(m).pow(2)))
+                let div
+                if (player[this.layer].theory[3] && theory3.includes(n)) {
+                    div = player[this.layer].wheel[ti][tj].add(1)
+                    .mul(player[this.layer].wheel[si][sj].add(1))
+                        .add(1)
+                        .pow(_D1.div(_D(n).pow(2)))
                         .sub(1)
                         .mul(mul)
-                        .mul(diff)
-                )
+
+                    player[this.layer].wheel[i][j] = player[this.layer].wheel[i][j].add(
+                        div.mul(diff)
+                    )
+                } else {
+                    div = player[this.layer].wheel[ti][tj].add(1)
+                        .pow(_D1.div(_D(n).pow(2)))
+                        .sub(1)
+                        .mul(mul)
+
+                    player[this.layer].wheel[i][j] = player[this.layer].wheel[i][j].add(
+                        div.mul(diff)
+                    )
+                }
+                player[this.layer].wheeldiv[i][j] = div
+
             }
         }
 
@@ -51,7 +74,10 @@ addLayer("405", {
 
         if (player[this.layer].theory[1]) {
             player[this.layer].p = player[this.layer].p.add(dp.sub(1).mul(diff))
-            player[this.layer].wheel[0][0] = player[this.layer].wheel[0][0].add(player[this.layer].p.add(1).log2().pow(1.5).mul(diff))
+
+            let div = player[this.layer].p.add(1).log2().pow(1.5)
+            player[this.layer].wheel[0][0] = player[this.layer].wheel[0][0].add(div.mul(diff))
+            player[this.layer].wheeldiv[0][0] = div
         }
 
     },
@@ -69,8 +95,18 @@ addLayer("405", {
                 [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
                 [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
             ],
+            wheeldiv: [
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+                [_D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0],
+            ],
             block: 8,
-            theory: [false, false, false, false, false, false, false, false],
+            theory: [false, false, false, false, false, false, false, false, false, false, false, false],
             p: _D0,
             seed: _D1,
         }
@@ -122,7 +158,7 @@ addLayer("405", {
                 content: [
                     ["display-text",
                         `
-                        生效范围: 全体正整数(但最初你只解锁了8个格子)<br>
+                        生效范围: 正整数(但最初你只解锁了8个格子)<br>
                         公式：<br>
                         dB(x<sub>n</sub>)/dt=(1+B(x<sub>n-1</sub>))^(1/x<sub>n</sub><sup>2</sup>)-1 (n>1)
                         `
@@ -150,7 +186,7 @@ addLayer("405", {
                     ["display-text",
                         `
                         帕多瓦数列是一个递推数列，从第四项起每项等于前两项与前三项之和，类似斐波那契数列<br>
-                        生效范围: 帕多瓦数列<br>
+                        生效范围: 帕多瓦数<br>
                         [1,1,1,2],2,3,4,5,7,9,12,16,21,28,37,49<br>
                         []是在此中的项不计，未在[]中的第一项计为首项<br>
                         公式：<br>
@@ -190,6 +226,23 @@ addLayer("405", {
                 ],
                 unlocked() {
                     return player[405].theory[2]
+                }
+            },
+            "数列:卢卡斯数列": {
+                content: [
+                    ["display-text",
+                        `
+                        卢卡斯数列是一个与斐波那契数列类似的数列。它的定义和斐波那契数列相似，从第三项开始，每一项也都等于前两项之和，但前两项为2和1。<br>
+                        生效范围: 卢卡斯数<br>
+                        [2,1,]3,4,7,11,18,29,47<br>
+                        公式：<br>
+                        在正整数数列中，这些数额外受前第二项影响<br>
+                        dB(x<sub>n</sub>)/dt=(1+((1+B(x<sub>n-1</sub>))×(1+B(x<sub>n-2</sub>))))^(1/x<sub>n</sub><sup>2</sup>)-1 (n>1)
+                        `
+                    ]
+                ],
+                unlocked() {
+                    return player[405].theory[3]
                 }
             },
         }
@@ -335,6 +388,26 @@ addLayer("405", {
             onClick() {
                 player[this.layer].theory[2] = true
             }
+        },
+        24: {
+            title() {
+                return "卢卡斯数列"
+            },
+            display() {
+                return `在 ${format(this.price())} 麦粒`
+            },
+            canClick() {
+                return player[this.layer].points.gt(this.price())
+            },
+            unlocked() {
+                return !player[this.layer].theory[3]
+            },
+            price() {
+                return _D(10000)
+            },
+            onClick() {
+                player[this.layer].theory[3] = true
+            }
         }
     },
     grid: {
@@ -363,7 +436,7 @@ addLayer("405", {
                     rotation() {
                         return (Math.random() - 0.5) * 45
                     },
-                }, Math.floor((x + y * 8 +1)**0.5))
+                }, Math.floor((x + y * 8 + 1) ** 0.5))
             }
         },
         getStartData(id) {
@@ -382,7 +455,7 @@ addLayer("405", {
                 return "locked"
             }
 
-            return `${String.fromCharCode(65 + x)}${8 - y} | ${x + y * 8 + 1}<br><br>${format(data)}`
+            return `${String.fromCharCode(65 + x)}${8 - y} | ${x + y * 8 + 1}<br>${format(data)}<br>+${format(player[this.layer].wheeldiv[y][x])}`
         },
         getStyle(data, id) {
             let { x, y } = idtoxy(id)

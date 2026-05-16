@@ -247,7 +247,7 @@ var systemComponents = {
             </tr>
             <tr v-if="options.themeclass">
 				<td><button class="info" disabled>组件</button></td>
-				<td><button class="opt" onclick="toggleOpt('tipshown')">主页面提示<br>{{ formatOption('tipshown') }}</button></td>
+				<td><button class="opt" onclick="adjustHud()">HUD<br>{{ HUD_DISPLAYS[HUD_SETTINGS.indexOf(options.hud)] }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('songshown')">BGM显示<br>{{ formatOption('songshown') }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('songautoplay')">BGM自动播放<br>{{ formatOption('songautoplay') }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('sloganshown')">标语显示<br>{{ formatOption('sloganshown') }}</button></td>
@@ -776,9 +776,11 @@ var systemComponents = {
 
 					201: { src: '/resources/song/track201.ogg' },
 					202: { src: '/resources/song/track202.ogg' },
+					203: { src: '/resources/song/track203.ogg' },
 
 					301: { src: '/resources/song/track301.ogg' },
 					302: { src: '/resources/song/track302.ogg' },
+					303: { src: '/resources/song/track303.ogg' },
 
 					401: { src: '/resources/song/track401.ogg' },
 

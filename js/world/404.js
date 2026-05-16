@@ -324,6 +324,26 @@ addLayer("404", {
                 }
             }
         },
+        203: {
+            title: "PLT+ jack<br>Dragon Rider",
+            display: "Two Steps From Hell",
+            onClick() {
+                player[this.layer].songid = this.id
+            },
+            canClick() { return !d404.s },
+            style() {
+
+                return {
+                    width: "640px",
+                    minHeight: "80px",
+                    height: "80px",
+                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
+                    display: "inline-block",
+                    fontSize: "14px",
+                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
+                }
+            }
+        },
         //str
         301: {
             title: "STR JACK<br>やっぱりみゃー姉なんばーわん",
@@ -360,6 +380,25 @@ addLayer("404", {
                     backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
                     display: "inline-block",
                     fontSize: "10px",
+                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
+                }
+            }
+        },
+        303: {
+            title: "STR Challenge<br>Agni7EEE",
+            display: "SKYLINE/RUNAWAYPLAN",
+            onClick() {
+                player[this.layer].songid = this.id
+            },
+            canClick() { return !d404.s },
+            style() {
+                return {
+                    width: "640px",
+                    minHeight: "80px",
+                    height: "80px",
+                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
+                    display: "inline-block",
+                    fontSize: "14px",
                     clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
                 }
             }
@@ -481,29 +520,29 @@ const w404 = [
 const jt404 = [
     [
         70,
-        135,
-        200,
-        250,
-        300,
-        -250,
+        140,
+        210,
+        280,
+        350,
+        -280,
         1
     ],
     [
         -1,
+        135,
         200,
         300,
-        400,
-        600,
-        -400,
+        500,
+        -500,
         0.75
     ],
     [
         50,
         -1,
-        100,
-        150,
-        200,
-        -150,
+        120,
+        160,
+        240,
+        -160,
         1.25
     ],
     [

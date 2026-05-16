@@ -1405,6 +1405,7 @@ function getLegacy403ProblemAns() {
 const theory0 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61]
 const theory1 = [2, 3, 4, 5, 7, 9, 12, 16, 21, 28, 37, 49]
 const theory2 = [3, 6, 10, 15, 21, 28, 36, 45, 55]
+const theory3 = [3,4,7,11,18,29,47]
 
 const clgConst = {
 	0: {

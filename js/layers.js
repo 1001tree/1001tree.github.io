@@ -140,6 +140,7 @@ addLayer("main", {
     layerShown() { return true },
 
     hotkeys: [
+        { key: "i", description: "-Setting- I: 页面布局", onPress() { toggleOpt("forceOneTab") } },
         { key: "o", description: "-Setting- O: BGM显示", onPress() { toggleOpt("songshown") } },
         { key: "p", description: "-Setting- P: 新闻显示", onPress() { toggleOpt('newsshown') } },
     ],
@@ -320,6 +321,16 @@ addLayer("ach", {
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
+        31: {
+            name: "<span class='p8tx'>FULL FOX FOUND</span>",
+            done() { return player[404].points.gte(1375000) },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第1000夜中的任意曲目达成严判ALL FOX" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/31.jpg)",
+            },
+            unlocked() { return hasAchievement(this.layer, this.id) }
+        },
         101: {
             name: "<span class='c1'>愚人节玩笑</span>",
             done() { return !player._501.lose && player._501.complete },
@@ -494,6 +505,16 @@ addLayer("ach", {
             tooltip() { if (hasAchievement(this.layer, this.id)) { return "通过梦力发生器获得一个梦力" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/305.jpg)",
+            },
+            unlocked() { return true }
+        },
+        306: {
+            name: "<span class='ach'>深度体验</span>",
+            done() { return player.timePlayed>1800 },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "游玩时长达到30分钟" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/306.jpg)",
             },
             unlocked() { return true }
         },

@@ -17,12 +17,12 @@ function getStartOptions() {
 		bgi: null,
 		notrans: false,
 
-		tipshown: true,
 		songshown: true,
 		sloganshown: true,
 		newsshown: true,
 
 		count: 0,
+		
 		forceOneTab: false,
 		hcmode: 0,
 		hqTree: false,
@@ -30,6 +30,7 @@ function getStartOptions() {
 		hideChallenges: false,
 		hideMilestonePopups: false,
 		forceTooltips: false,
+		hud: 0,
 
 		hideWorld: false,
 		autopause: false,
@@ -50,6 +51,7 @@ function getStartOptions() {
 		//弃用
 		offlineProd: false,
 		oldStyle: false,
+		tipshown: true,
 	}
 }
 
@@ -137,9 +139,9 @@ function adjustFont() {
 	document.body.style.setProperty("--Font", options.font);
 }
 
-const COUNT_DISPLAYS = ["默认", "2的幂", "10的幂",  "狐狸", "丨目计数法", "wtf"];
+const COUNT_DISPLAYS = ["默认", "2的幂", "10的幂", "狐狸", "丨目计数法", "wtf"];
 
-const COUNT_SETTINGS = [0, 1, 2,  4, 5, 6];
+const COUNT_SETTINGS = [0, 1, 2, 4, 5, 6];
 
 function adjustCount() {
 	options.count = COUNT_SETTINGS[(COUNT_SETTINGS.indexOf(options.count) + 1) % COUNT_SETTINGS.length];
@@ -155,10 +157,18 @@ function adjustSpeed() {
 
 const MODE_DISPLAYS = ["常规模式", "列表模式", "易读模式"];
 
-const MODE_SETTINGS = [0,1,2];
+const MODE_SETTINGS = [0, 1, 2];
 
 function adjustMode() {
 	options.hcmode = MODE_SETTINGS[(MODE_SETTINGS.indexOf(options.hcmode) + 1) % MODE_SETTINGS.length];
+}
+
+const HUD_DISPLAYS = ["刻速度", "梦力生成器", "游玩时长", "不显示"];
+
+const HUD_SETTINGS = [0, 1, 2, 99];
+
+function adjustHud() {
+	options.hud = HUD_SETTINGS[(HUD_SETTINGS.indexOf(options.hud) + 1) % HUD_SETTINGS.length];
 }
 
 function milestoneShown(layer, id) {

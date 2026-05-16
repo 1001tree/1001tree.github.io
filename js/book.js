@@ -7,7 +7,7 @@ addLayer("book", {
         return {
             unlocked: true,
             points: _D0,
-            power: 0,
+            power: _D0,
             level: _D0,
             exp: _D0,
             fox: {
@@ -22,8 +22,8 @@ addLayer("book", {
         }
     },
     update(diff) {
-        if (Math.random() < 0.1) {
-            player[this.layer].power = Math.min(1000, player[this.layer].power + 1)
+        if (_DR().lte(layers[this.layer].getrate())) {
+            player[this.layer].power = player[this.layer].power.add(1).clamp(0, layers[this.layer].getcap())
         }
 
         if (!player[this.layer].fox.pause) {
@@ -194,21 +194,6 @@ addLayer("book", {
                     width: "720px"
                 }
             },
-            梦力发生器: {
-                content: [
-                    ["display-text", `
-                    在此地,你获取,你发现,你找到
-                    `],
-                    "blank",
-                    ["bar", "powerbar"],
-                    "blank",
-                    ["clickables", [1]],
-                    "blank",
-                ],
-                style: {
-                    width: "720px"
-                }
-            },
             "狐VIP": {
                 content: [
                     ["display-text", function () {
@@ -216,15 +201,17 @@ addLayer("book", {
                         充值梦力可以提升狐VIP等级<br>
                         你当前充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br>
                         等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
-                        这为你带来了狐力量和狐维度的  ×<h3 class="p9pt">${format(layers[this.layer].getgain())}</h3> 加成<br>
+                        这为你带来了<br>
+                        狐力量和狐维度的 <h3 class="p9pt">×${format(layers[this.layer].getgain())}</h3> 加成<br>
                         `
                     }],
                     "blank",
-                    ["clickables", [2]],
+                    ["clickables", [1,3]],
                     "blank",
                     ["display-text", function () {
                         return `
-                        你有 <h1 class="nmpt">${format(player[this.layer].fox.power[0])}</h1> 狐力量
+                        你有 <h1 class="nmpt">${format(player[this.layer].fox.power[0])}</h1> 狐力量<br>
+                        狐力量*暂时*不会对您的游戏有任何加成,它只是消耗多余梦力的途径<br><br>
                         `
                     }],
                     ["row", [
@@ -286,6 +273,30 @@ addLayer("book", {
                     width: "720px"
                 }
             },
+            梦力发生器: {
+                content: [
+                    ["display-text", `
+                    `],
+                    ["display-text", function () {
+                        return `
+                        在此地,你获取,你发现,你找到<br>
+                        你当前充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br>
+                        等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        这为你带来了梦力发生器<br>
+                        每刻获取能量的概率设置为 <h3 class="p9pt">${formatPersent(layers[this.layer].getrate())}</h3><br>
+                        上限设置为 <h3 class="p9pt">${format(layers[this.layer].getcap())}</h3><br>
+                        `
+                    }],
+                    "blank",
+                    ["bar", "powerbar"],
+                    "blank",
+                    ["clickables", [1,2]],
+                    "blank",
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
             世界202: {
                 content: [
                     ["display-text", `
@@ -322,32 +333,15 @@ addLayer("book", {
             width: 80,
             height: 220,
             progress() {
-                return player[this.layer].power / 1000
+                return player[this.layer].power.div(layers[this.layer].getcap())
             },
             display() {
-                return `<span class="nmpt">${player[this.layer].power}<br>——<br>1000</span>`
+                return `<span class="nmpt">${formatWhole(player[this.layer].power)}<br>——<br>${formatWhole(layers[this.layer].getcap())}</span>`
             }
         }
     },
     clickables: {
         11: {
-            title: "汲取",
-            display() {
-                return `消耗500能量获取1梦力`
-            },
-            style: {
-                minHeight: "60px"
-            },
-            canClick() {
-                return player[this.layer].power >= 500
-            },
-            onClick() {
-                player[this.layer].power -= 500
-                player.main.points = player.main.points.add(1)
-                player.gainpower = true
-            }
-        },
-        21: {
             title: "注入",
             display() {
                 return `消耗1梦力获取1狐经验`
@@ -366,8 +360,25 @@ addLayer("book", {
                 }
             }
         },
-        22: {
-            title: "暂停",
+        21: {
+            title: "汲取",
+            display() {
+                return `消耗500能量获取1梦力`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return player[this.layer].power.gte(500)
+            },
+            onClick() {
+                player[this.layer].power = player[this.layer].power.sub(500)
+                player.main.points = player.main.points.add(1)
+                player.gainpower = true
+            }
+        },
+        31: {
+             title: "暂停",
             display() {
                 return `狐力量生成状态 ${player[this.layer].fox.pause ? "运行中" : "暂停"}`
             },
@@ -385,7 +396,9 @@ addLayer("book", {
     getgain() {
         let x = player[this.layer].level
         let y = player[this.layer].exp
-        return (x.pow(2).add(1)).pow(x.mul(y)).sub(1)
+        return (x.pow(2).add(1))
+            .pow(x.mul(y))
+            .sub(1)
     },
     getgen(layer) {
         let data = player[this.layer].fox
@@ -395,6 +408,18 @@ addLayer("book", {
     },
     getprice(layer) {
         return (_D10.add(player[this.layer].fox.gener[layer].div(100))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
+    },
+    getrate() {
+        let x = player[this.layer].level
+        return _D(0.2).sub(
+            _D(4).pow(
+                x.div(8).add(1 / 8).neg()
+            ).div(5)
+        )
+    },
+    getcap() {
+        let y = player[this.layer].exp
+        return y.mul(100 / 3).add(1000)
     },
     tooltip: "",
     layerShown() { return true },
