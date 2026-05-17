@@ -12,7 +12,7 @@ function getStartOptions() {
 
 		autosave: true,
 
-		theme: "default",
+		theme: "fox",
 		font: "",
 		bgi: null,
 		notrans: false,

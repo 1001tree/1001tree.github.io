@@ -1437,7 +1437,25 @@ const clgConst = {
 		]
 	},
 	2: {
-		range: [40, 30, 25, 20, 15, 10]
+		range: [50, 50, 45, 40, 35, 30, 25, 20, 15, 10],
+		text: [
+			[
+				`<span class="p4tx">你心如止水</span>`, //0-19
+				`<span class="p5tx">你稍稍有些紧张的感觉</span>`, //20-39
+				`<span class="p2tx">焦虑让你不安</span>`, //40-59
+				`<span class="p1tx">你在颤抖，恐惧浸没了你</span>`, //60-79
+				`<span class="p8tx">你快要失控了？！！</span>`, //80-99
+				`<span class="p9tx">你倒下了</span>`, //100
+			],
+			[
+				`<span class="p4tx">她还未察觉到你</span>`, //0-19
+				`<span class="p5tx">你隐隐察觉到了风声</span>`, //20-39
+				`<span class="p2tx">你能感觉到注视</span>`, //40-59
+				`<span class="p1tx">你知道，她在不远处</span>`, //60-79
+				`<span class="p8tx">她已经看到你了？！！</span>`, //80-99
+				`<span class="p9tx">你被抓住了</span>`, //100
+			]
+		]
 	},
 }
 
@@ -1465,7 +1483,7 @@ const newClgVal = {
 	2: {
 		round: 0,
 		power: 0,
-		target: [null, null, null, null, null, null],
+		target: [null, null, null, null, null, null, null, null, null, null],
 		watch: 0,
 		nervous: 0
 	}

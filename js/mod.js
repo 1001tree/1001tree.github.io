@@ -18,8 +18,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.7971,
-	name: "发布版v6"
+	num: 0.7972,
+	name: "发布版v7"
 }
 
 let changelog = `
@@ -161,7 +161,7 @@ var displayThings = [
 		if (options.tipshown) {
 			switch (options.hud) {
 				case 0:
-					return `当前游戏运行速度 ${Cal_TPS()[0]}tps | ${Cal_TPS()[1]}ms`
+					return `当前游戏运行速度 ${format(Cal_TPS()[0],1)}tps | ${formatWhole(Cal_TPS()[1])}ms`
 				case 1:
 					return `梦力生成器能量 ${formatWhole(player.book.power)} / ${formatWhole(layers.book.getcap())}`
 				case 2:

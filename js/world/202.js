@@ -674,7 +674,7 @@ addLayer("202", {
             fullDisplay() {
                 return `
 				<span><h3>${hasUpgrade(this.layer, 2221) ? "似说如说" : "求知若渴"}</h3></span><br>
-				<span>${hasUpgrade(this.layer, 2221) ? "其实你可以通过退出挑战来把你扣除的所有点数清零,也许你知道" : "你求知若渴,所以你决定向我支付100,000点数以获得一个秘密"}</span><br>
+				<span>${hasUpgrade(this.layer, 2221) ? "其实你可以通过退出挑战来把你扣除的所有点数清零,也许你知道,还有,1368" : "你求知若渴,所以你决定向我支付100,000点数以获得一个秘密"}</span><br>
                 <span>
                 效果: ${hasUpgrade(this.layer, 2221) ? this.effect() : "?"}
 			    </span><br>
@@ -692,7 +692,7 @@ addLayer("202", {
             fullDisplay() {
                 return `
 				<span><h3>${hasUpgrade(this.layer, 2222) ? "秘钥之名" : "大智若愚"}</h3></span><br>
-				<span>${hasUpgrade(this.layer, 2222) ? "这样,我在上一个升级开了一个讲座,你去听听就知道了" : "暂时失去10点数,你将很快拿回它们,请相信我"}</span><br>
+				<span>${hasUpgrade(this.layer, 2222) ? "这样,我在上一个升级开了一个讲座,你去听听就知道了,此外,看看世界之书" : "暂时失去10点数,你将很快拿回它们,请相信我"}</span><br>
                 <span>
                 效果: ${hasUpgrade(this.layer, 2222) ? `${this.effect()}` : "?"}
 			    </span><br>
@@ -1471,7 +1471,7 @@ addLayer("202", {
         },
         122: {
             name: "万事需密码,百事可乐冰",
-            challengeDescription: `你在工作中获得了一个密码<br>输入"HEXDECOCT"对应的值来完成这个挑战<br>本挑战中每刻为3秒`,
+            challengeDescription: `你在工作中获得了一个密码<br>输入"HexDecOct"对应的值来完成这个挑战<br>本挑战中每刻为3秒`,
             goalDescription() { return `HEXDECOCT 点数` },
             canComplete() {
                 return player[this.layer].points.eq(this.target)
