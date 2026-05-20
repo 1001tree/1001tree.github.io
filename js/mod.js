@@ -9,6 +9,7 @@ let modInfo = {
 		"world/401.js", "world/402.js", "world/403.js", "world/404.js", "world/405.js",
 		"world/501.js", "world/502.js", "world/503.js", "world/504.js", "world/505.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
+		"world/fox.js",
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -18,12 +19,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.798,
-	name: "发布版v8"
+	num: 0.7981,
+	name: "发布版v9"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v9 | 0.7981 | 2026/5/21</h3><br>
+	梦力被平衡：梦力生成器更弱，夜世界需要2梦力解锁<br>
 	<h3>v8 | 0.798 | 2026/5/20</h3><br>
 	更新了一个世界<br>
 	更新了一个挑战成就和一系列基于此的流程<br><br>

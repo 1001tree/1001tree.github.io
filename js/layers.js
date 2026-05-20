@@ -17,17 +17,10 @@ addLayer("main", {
         "main-display",
         "blank",
         ["display-text", "此条为宽度检测条,如果你无法看到这个条的两端<br>请在设置中将页面布局改为单页面(或减小浏览器缩放比例)以获得最佳显示"],
+        "blank",
         ["bar", 1],
         "blank",
-        ["display-text", `<div style="
-                        width: 450px;
-                        padding: 10px;
-	                    border-radius: 5px;
-	                    border: 2px solid white;
-                        background: #111;
-                    ">
-                    游戏类型 | <span class='c1'>???</span> <span class='c2'>增量</span> <span class='c3'>非增量</span> | 悬浮以查看玩法标签
-                    </div>`],
+        ["display-text", "游戏类型 | <span class='c1'>???</span> <span class='c2'>增量</span> <span class='c3'>非增量</span> | 悬浮以查看玩法标签<br>你可以消耗梦力解锁一个世界<br>中间的九个夜世界需要2梦力<br>其他世界需要1梦力"],
         "blank",
         "clickables",
         "grid",
@@ -56,11 +49,13 @@ addLayer("main", {
         },
         getCanClick(data, id) {
             if (data) return true
+            if(/[2-4]0[2-4]/.test(id)) return player[this.layer].points.gte(2) && !getGameName(id)[0].includes("未完成游戏")
             else return player[this.layer].points.gte(1) && !getGameName(id)[0].includes("未完成游戏")
         },
         onClick(data, id) {
             if (data) return
-            player[this.layer].points = player[this.layer].points.sub(1)
+            if(/[2-4]0[2-4]/.test(id)) player[this.layer].points = player[this.layer].points.sub(2)
+            else player[this.layer].points = player[this.layer].points.sub(1)
             setGridData(this.layer, id, true)
         },
         getDisplay(data, id) {

@@ -127,6 +127,11 @@ addLayer("book", {
                     是的,最终祂离开了我,我也离开了祂<br>
                     他不是神,只是一个普通人,甚至不是人...<br>
                     从此,我再也没梦见他<br>
+                    <br>
+                    <br>
+                    1001树首席谜语人代表<br>
+                    <h2 class="p9pt">🦊很想说🦊、🦊非常想说🦊、🦊不说不行🦊、🦊所以说了🦊、<br>🦊说了吗🦊、🦊说了吧🦊、🦊说了喔🦊、🦊说了🦊。🦊。</h2><br>
+
                     `}
                     ]
                 ],
@@ -443,16 +448,16 @@ addLayer("book", {
         21: {
             title: "汲取",
             display() {
-                return `消耗500能量获取1梦力`
+                return `消耗1250能量获取1梦力`
             },
             style: {
                 minHeight: "60px"
             },
             canClick() {
-                return player[this.layer].power.gte(500)
+                return player[this.layer].power.gte(1250)
             },
             onClick() {
-                player[this.layer].power = player[this.layer].power.sub(500)
+                player[this.layer].power = player[this.layer].power.sub(1250)
                 player.main.points = player.main.points.add(1)
                 player.gainpower = true
             }
@@ -493,7 +498,7 @@ addLayer("book", {
         let x = player[this.layer].level
         return _D(0.2).sub(
             _D(4).pow(
-                x.div(8).add(1 / 8).neg()
+                x.div(12).add(1 / 8).neg()
             ).div(5)
         )
     },
