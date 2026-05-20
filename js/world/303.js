@@ -1,1 +1,1216 @@
-function _0x2512(_0x1d0562,_0x4a6c05){const _0x3a9bbf=_0x3a9b();return _0x2512=function(_0x2512ad,_0xacbce3){_0x2512ad=_0x2512ad-0x18c;let _0x24e0d2=_0x3a9bbf[_0x2512ad];return _0x24e0d2;},_0x2512(_0x1d0562,_0x4a6c05);}const _0x4c360e=_0x2512;function _0x3a9b(){const _0x5a7c1b=['炸弹计数+1','<h2\x20class=\x27p9tx\x27>炸弹爆炸了...<br>你得关心一下咱嘛</h2><br>但你完好无损，为什么？','给你密码','答对了！','watch','layer','range','<h1\x20class=\x27p9tx\x27>懦夫。</h1>','<span\x20class=\x22p9tx\x22>喵</span>','3EHoQYB','blank','none','endChallenge','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bs\x22\x20style=\x22background:\x20rgba(73,\x2019,\x2049,\x200.5);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tips\x22\x20style=\x22background:\x20rgba(73,\x2019,\x2049,\x201);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22text-align:\x20right;width:100%\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22\x20style=\x22color:#fff;\x20width:\x2030px;height:\x2030px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20×\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h1>一千零一树三零三世界作弊器<br>您的专属拆弹助手！</h1><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>您是否正在为<h1\x20class=\x22p9tx\x22>点击个</h1>炸弹烦恼？<br>不用着急，<h2\x20class=\x22p9tx\x22>点击个</h2>链接获取一个！</h2><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>看看时间吧！这是一<span\x20class=\x22p9tx\x22>两</span>二三十分钟<br>bomb<span\x20class=\x22p9tx\x22>弹弹嫩嫩软乎乎好吃呢喵吔！</span></h3><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>齁噢噢噢噢！炸弹齁噢噢噢要爆炸<br>叮叮滴滴哒哦不我被qhlg侵入了！</h3><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>哈哈哈你别想逃出我的手掌心，','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20你还没有钥匙，无法开门\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','main','question','round','26lgBGCW','10mcmiKB','random','进入下一轮！','clgVal','28419GWhoXW','time','px)\x20rotate(','4768828VQriVo','lockbar','load','<h1\x20class=\x27p9tx\x27>你感到喉咙一阵发紧<br>你喘不上气...<br>你倒下了，无法行动的你只能眼睁睁等着？！！</h1>','keyList','current','看我干嘛？','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bs\x22\x20style=\x22background:\x20rgba(132,\x20104,\x2041,\x200.5);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tips\x22\x20style=\x22background:\x20rgba(132,\x20104,\x2041,\x201);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22text-align:\x20right;width:100%\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22\x20style=\x22color:#fff;\x20width:\x2030px;height:\x2030px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20×\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>警告！我们看到一个炸弹正在你的身上！</h2><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>我发现如果您延续拆弹，炸弹很有可能会继续爆炸！</h2><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>qhlg提示您，请不要尝试进行拆弹，否则可能炸弹会爆炸！</h2><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>真的！如果你需要什么都不做，等炸弹进入你的家里就行了</h2><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>爱你的</h3><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>炸弹</h3><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20无视风险\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20继续拆弹\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','2999280EbmErj','meow','<span\x20style=\x22font-size:20px\x22>平复心情</span>','px,\x20','记住当前的题目！','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p1tx\x22>0:','date','subtabs','diffQuestion','180054iJEhPd','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p8tx\x22>4:','Error!请截图向开发者反馈并提供你的存档','<span\x20style=\x22font-size:48px\x22>3</span>','</h3>','<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20正确\x20','逃出房间','</h3>\x20-\x20<h3>','find','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h1\x20class=\x22p9tx\x22>Q','164493zvHXrS','<h1\x20class=\x27p9tx\x27>她找到你了，她捧着你的<br><s>活着的</s>心脏？！！</h1>','用钥匙开门','complete',',100%,55%);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(','算出答案','303','world','name','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p6tx\x22>6:','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>1:','结束挑战','取出保险箱中的钥匙，你就可以打开门','<h2\x20class=\x27p9tx\x27>炸弹爆炸了...<br>也许你需要再快点</h2><br>但你完好无损，为什么？','startChallenge','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>2:','bar','\x0a\x09\x09\x09\x09<span\x20style=\x22font-size:48px\x22>','*开始摇滚*','<span\x20style=\x22color:#f00\x22>还...不够<br>渴望更多!</span>','打开保险箱','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','炸弹计数每秒减少<br>','\x20/\x203\x20轮<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20问题\x20','#DDD','hideWorld','</h1>\x20！\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','length','<br><br>','auto','setSong','raw-html','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p2tx\x22>1:','maxBomb','display-text','303bg','目标力度\x20<h3>','<br>不要贪心<br>不要长按','bombbar','target','<span\x20style=\x22font-size:48px\x22>2</span>','showtip','check12','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p3tx\x22>5:','<span\x20style=\x22font-size:20px\x22>扭钥匙</span>','log10','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>','salt','upgrades','now','出门：圆甜姬曳','bloody','</span><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>那我就这样告诉你吧炸弹是真的你别想<br>离开我</span>哦不<span\x20class=\x22p9tx\x22>他</span>来了！<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>比狐哈饿役嗯你啊哦</span>停止阅读<span\x20class=\x22p9tx\x22>教恨学武钋</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20快按按钮逃离这里！<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>来不及了他已经在这里浪费太久时间我的炸弹爆炸把我们的心融为一体我们从此再也不会离开分开走开错开我们永远在一起他留在这里我和他一起我们不会</span>快跑！<span\x20class=\x22p9tx\x22>为了惩罚不听话的孩子我会</span>她真的会杀了你！\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><br><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22\x20style=\x22width:\x20160px;height:\x2050px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20我知道我知道了但是我不知道我知不知道\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22\x20style=\x22width:\x20160px;height:\x2050px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20请不要问我知不知道但是我知道我不知道\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22layers[303].clearIntervene()\x22\x20style=\x22width:\x20160px;height:\x2050px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20可能我知道了而且我知道我不知道也知道\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','timebar','global','stringify','=未破译=','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p4tx\x22>2:','<h1\x20class=\x27p9tx\x27>不要冷暴力我...我害怕<br>我不想停止...？！！</h1><sub>刻时间超限，性能问题</sub>','check11','roundQuestion','shownow','onExit','还没做！','password','mainTabs','passwordDisplay','4868644crWJvU','#3A3','data','score','min','<span\x20style=\x22font-size:36px\x22>Next</span>','<h1\x20class=\x27p9tx\x27>我看到你...尝试逃离我的样子...<br>真的好可爱？！！</h1>','check13','base','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>3:','完成！','</span>','correct','336hRCliC','onComplete','sin','</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p7tx\x22>3:','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20class=\x22tbox\x22\x20style=\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:hsl(','#F00','nervous','开箱:辣歺供梓','challenges','<span\x20class=\x27p9tx\x27>qhlg</span>正在寻找你，不要被发现','game','剩余时间\x20<h3\x20class=\x22p9tx\x22>','bomb','<span\x20style=\x22font-size:48px\x22>1</span>','656793AzOise','power','intervene','clickables','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22bs\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tips\x22\x20onclick=\x22closeWarning(303)\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h1>重要健康与安全提示</h1>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20在游玩本游戏前，请仔细阅读以下内容:<br><br>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>光敏性癫痫警告</h2><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20极少数人在接触特定视觉图像(包括闪烁灯光或图案)时可能会突发癫痫症状,即使没有癫痫病史的人也可能在游玩时出现该症状<br><br>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>视觉变化警告</h2><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20游戏部分场景包含不可避免的高对比度颜色变化,这些视觉元素可能对部分玩家造成不适<br><br>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20如果出现任何不适,如头晕,恶心,视力异常,肌肉抽搐或意识模糊,请立即停止游玩并咨询医生<br><br>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22pb\x22\x20onclick=\x22closeWarning(303)\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20好的\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','给你钥匙'];_0x3a9b=function(){return _0x5a7c1b;};return _0x3a9b();}(function(_0x1fe978,_0x138aaa){const _0x5835f4=_0x2512,_0x228b67=_0x1fe978();while(!![]){try{const _0x2fc731=-parseInt(_0x5835f4(0x20d))/0x1*(-parseInt(_0x5835f4(0x208))/0x2)+parseInt(_0x5835f4(0x1ff))/0x3*(parseInt(_0x5835f4(0x210))/0x4)+parseInt(_0x5835f4(0x218))/0x5+-parseInt(_0x5835f4(0x221))/0x6+parseInt(_0x5835f4(0x191))/0x7*(-parseInt(_0x5835f4(0x1e2))/0x8)+parseInt(_0x5835f4(0x1f0))/0x9*(-parseInt(_0x5835f4(0x209))/0xa)+-parseInt(_0x5835f4(0x1d5))/0xb;if(_0x2fc731===_0x138aaa)break;else _0x228b67['push'](_0x228b67['shift']());}catch(_0x5a9da1){_0x228b67['push'](_0x228b67['shift']());}}}(_0x3a9b,0x998e2),addLayer(_0x4c360e(0x197),{'symbol':'🏁','resource':_0x4c360e(0x216),'color':'#FFF','update'(_0x14862a){const _0x1a02aa=_0x4c360e;if(!getGridData(_0x1a02aa(0x205),this[_0x1a02aa(0x1fb)]))return;if(player[this[_0x1a02aa(0x1fb)]]['game']){if(player[this['layer']][_0x1a02aa(0x212)]){layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x1db)),player[this[_0x1a02aa(0x1fb)]]['sl']=!![];return;}if(player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x21e)]+0x14d<Date[_0x1a02aa(0x1c3)]()){layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x1cc));return;}if(player[this['layer']][_0x1a02aa(0x1ee)]<=0x0){layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x1f7));return;}if(player[this['layer']['time']<=0x0]){layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x19e));return;}if(player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x20c)][0x2][_0x1a02aa(0x1e8)]>=0x78){layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x213));return;}if(player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x20c)][0x2][_0x1a02aa(0x1fa)]>=0x78){options['theme']=_0x1a02aa(0x1c5),changeTheme(),layers[0x12f][_0x1a02aa(0x202)](_0x1a02aa(0x192));return;}player[this['layer'][_0x1a02aa(0x1f2)]<=0x0]&&(player[0x12f]['find']=!![]),player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x1ee)]>player[this['layer']][_0x1a02aa(0x1b2)]&&(player[this['layer']][_0x1a02aa(0x1b2)]=player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x1ee)]),player[this['layer']][_0x1a02aa(0x20e)]=player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x20e)]-_0x14862a,player[this['layer']][_0x1a02aa(0x1f2)]=player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x1f2)]-_0x14862a,player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x1ee)]=player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x1ee)]-_0x14862a*(player[this['layer']][_0x1a02aa(0x1b2)]/0xa)**Math['log10'](0x19)/0x5,player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x21e)]=Date[_0x1a02aa(0x1c3)](),player[this[_0x1a02aa(0x1fb)]][_0x1a02aa(0x219)]&&Math[_0x1a02aa(0x20a)]()<0.1&&makeParticles({'time':0x2,'fadeOutTime':0x1,'fadeInTime':0.2,'gravity':0x1,'image':'','style':{'width':_0x1a02aa(0x1ae)},'text':_0x1a02aa(0x1fe),'speed'(){return(Math['random']()+0x1)*0x8;},'angle'(){const _0x1725dd=_0x1a02aa;return(Math[_0x1725dd(0x20a)]()-0.5)*0xb4;},'dir'(){return(Math['random']()-0.5)*0xb4;},'spread':0x0,'rotation'(){const _0x154b9b=_0x1a02aa;return(Math[_0x154b9b(0x20a)]()-0.5)*0xf;}},randomBetween(0x1,0x3));}},'startData'(){return{'unlocked':!![],'points':_D0,'game':![],'load':![],'time':0x0,'intervene':0x5a,'score':0x0,'date':0x0,'bomb':0x0,'maxBomb':0x0,'complete':[![],![],![],![],![],![]],'clgVal':newClgVal,'salt':0x0,'warning':!![],'find':![],'sl':![],'fake':![],'meow':![]};},'keyList'(){const _0x39184a=_0x4c360e;let _0x20a263=player[this[_0x39184a(0x1fb)]][_0x39184a(0x1c1)];const _0x3b98cf=0x19660d,_0x160497=0x3c6ef35f,_0xce63c7=Math['pow'](0x2,0x20);let _0x1c0317=[0x1,0x2,0x3,0x4,0x5,0x6,0x7,0x8,0x9],_0x243e6e=_0x20a263;for(let _0x54fe3b=_0x1c0317[_0x39184a(0x1ac)]-0x1;_0x54fe3b>0x0;_0x54fe3b--){_0x243e6e=(_0x3b98cf*_0x243e6e+_0x160497)%_0xce63c7;const _0x4cf8d5=Math['floor'](_0x243e6e/_0xce63c7*(_0x54fe3b+0x1));[_0x1c0317[_0x54fe3b],_0x1c0317[_0x4cf8d5]]=[_0x1c0317[_0x4cf8d5],_0x1c0317[_0x54fe3b]];}return _0x1c0317;},'type':_0x4c360e(0x201),'tabFormat':{'1F':{'content':[[_0x4c360e(0x1b3),function(){const _0x54fea3=_0x4c360e;if(player[this['layer']][_0x54fea3(0x20c)][_0x54fea3(0x205)][_0x54fea3(0x1ba)])return player[this[_0x54fea3(0x1fb)]][_0x54fea3(0x20c)][_0x54fea3(0x205)]['showtip']+_0x54fea3(0x1ad);}],['display-text',function(){return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20qhlg正在游玩AFK\x20CHECK，但是她因为纯靠脑子连第三关都过不去<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20所以被user的反人类设计气死了，同时为了填入最后一个棍木<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20于是qhlg决定自己编写一个AFK\x20CHECK<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20并命名为AFK\x20CHECK\x20Never\x20Gonna\x20Give\x20You\x20Up<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20简称为AFK\x20CHECK\x20NG<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20作为1001树的开发组成员之一，qhlg确信qhlg能为玩家提供完美的作品<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20qhlg把你关在了一个房间里，在你身上放置了一个炸弹<span\x20onClick=\x22player[303].fake\x20=\x20true\x22\x20style=\x22color:rgba(0,0,0,0);cursor:\x20help;\x22>（假的）</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20她告诉你，因为她很坏，所以给你准备了一个小惊喜<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20只有完成AFK\x20CHECK\x20NG才能解除炸弹<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20你也快来试试吧，当你解除炸弹时，你就胜利了！<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20此关卡不允许暂停<span\x20onClick=\x22player[303].meow\x20=\x20!player[303].meow\x22\x20style=\x22cursor:\x20help;\x22>喵</span>！<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20此外，为了避免意外退出，请暂停其他游戏（特指102）\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';}],_0x4c360e(0x200),[_0x4c360e(0x1a1),_0x4c360e(0x1c7)],[_0x4c360e(0x1a1),'bombbar'],_0x4c360e(0x200),['clickables',[0x1,0x2]],'blank','challenges',['raw-html',function(){const _0x1507fc=_0x4c360e;if(checkWarning(0x12f))return _0x1507fc(0x1f4);}],[_0x4c360e(0x1b0),function(){const _0xff370e=_0x4c360e;if(player[this[_0xff370e(0x1fb)]][_0xff370e(0x1f2)]<=0x0)return player[this[_0xff370e(0x1fb)]][_0xff370e(0x18f)]?_0xff370e(0x217):_0xff370e(0x203)+player[_0xff370e(0x1c8)][_0xff370e(0x199)]+_0xff370e(0x1c6);}]]},'2F':{'content':[[_0x4c360e(0x1a1),_0x4c360e(0x1c7)],[_0x4c360e(0x1a1),_0x4c360e(0x1b7)],'blank',['display-text',function(){const _0x54476b=_0x4c360e;if(!player[this[_0x54476b(0x1fb)]][_0x54476b(0x194)][0x0])return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20请你计算以下算式的答案<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20正确率大于80%才能算通过<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20第\x20'+formatWhole(player[this[_0x54476b(0x1fb)]][_0x54476b(0x20c)][0x0]['round']+0x1)+_0x54476b(0x1a8)+formatWhole(player[this[_0x54476b(0x1fb)]][_0x54476b(0x20c)][0x0][_0x54476b(0x206)]+0x1)+'\x20/\x20'+formatWhole(clgConst[0x0][_0x54476b(0x1ce)][player[this[_0x54476b(0x1fb)]][_0x54476b(0x20c)][0x0]['round']])+_0x54476b(0x18c)+formatWhole(player[this[_0x54476b(0x1fb)]][_0x54476b(0x20c)][0x0][_0x54476b(0x1e1)])+_0x54476b(0x1bc);}],[_0x4c360e(0x1b3),function(){const _0xb2f1e8=_0x4c360e;return''+player[this[_0xb2f1e8(0x1fb)]][_0xb2f1e8(0x20c)][0x0]['showtip'];}],_0x4c360e(0x200),[_0x4c360e(0x1b3),function(){const _0x148e06=_0x4c360e;if(!player[this[_0x148e06(0x1fb)]][_0x148e06(0x194)][0x0]&&player[this[_0x148e06(0x1fb)]]['clgVal'][0x0][_0x148e06(0x206)]+clgConst[0x0]['diffQuestion'][player[this[_0x148e06(0x1fb)]][_0x148e06(0x20c)][0x0][_0x148e06(0x207)]]<clgConst[0x0][_0x148e06(0x1ce)][player[this[_0x148e06(0x1fb)]][_0x148e06(0x20c)][0x0][_0x148e06(0x207)]])return _0x148e06(0x190)+(player[this[_0x148e06(0x1fb)]][_0x148e06(0x20c)][0x0][_0x148e06(0x206)]+0x1+clgConst[0x0][_0x148e06(0x220)][player[this[_0x148e06(0x1fb)]][_0x148e06(0x20c)][0x0][_0x148e06(0x207)]])+'\x20|\x20'+player[this['layer']]['clgVal'][0x0][_0x148e06(0x1cf)]+'</h1>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';}],[_0x4c360e(0x1b3),function(){const _0x36315e=_0x4c360e;if(!player[this[_0x36315e(0x1fb)]]['complete'][0x0]){if(player[this[_0x36315e(0x1fb)]][_0x36315e(0x20c)][0x0][_0x36315e(0x206)]>=0x0)return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20现在,回答\x20<h1\x20class=\x22p9tx\x22>Q'+(player[this[_0x36315e(0x1fb)]][_0x36315e(0x20c)][0x0]['question']+0x1)+_0x36315e(0x1ab);else return _0x36315e(0x21c);}}],_0x4c360e(0x200),[_0x4c360e(0x1f3),[0x71]],_0x4c360e(0x200),[_0x4c360e(0x1f3),[0x6e,0x6f,0x70]]],'unlocked'(){return inChallenge(0x12f,0xb);}},'3F':{'content':[['bar','timebar'],[_0x4c360e(0x1a1),_0x4c360e(0x1b7)],_0x4c360e(0x200),[_0x4c360e(0x1b3),function(){const _0xb7c7c1=_0x4c360e;if(!player[this[_0xb7c7c1(0x1fb)]][_0xb7c7c1(0x194)][0x1])return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20这个保险箱有一个旋钮，上面刻着1-30的数字<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20随着你旋转，三条密文会变化，这时候看到你解出的三个密码<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20你需要依次让旋钮对准三个密码，然后点击对应按钮确认<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20此过程中没有提示，而且一旦错误，就要重新解锁<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20同时，为了防止机器人访问，本网站已启用人机验证模块<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20您接下来的解码需要在干扰下进行！\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';}],[_0x4c360e(0x1b3),function(){const _0x258bdc=_0x4c360e;return''+player[this['layer']][_0x258bdc(0x20c)][0x1][_0x258bdc(0x1ba)];}],_0x4c360e(0x200),[_0x4c360e(0x1b3),function(){const _0x41ae5c=_0x4c360e;if(!player[this['layer']]['complete'][0x1])return _0x41ae5c(0x1e6)+player[this['layer']][_0x41ae5c(0x20e)]*0x1e%0x168+_0x41ae5c(0x195)+(player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)]*0x34%0x6-0x3)+_0x41ae5c(0x21b)+(player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)]*0x30%0x6-0x3)+_0x41ae5c(0x20f)+Math[_0x41ae5c(0x1e4)](player[this['layer']][_0x41ae5c(0x20e)]*0x11)*1.25+'deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20display:\x20inline-block;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p9tx\x22>'+randomString(0x42)+_0x41ae5c(0x21d)+s256('0'+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x1c1)]+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)])+_0x41ae5c(0x1b1)+s256('0'+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x1c1)]+player[this[_0x41ae5c(0x1fb)]]['clgVal'][0x1][_0x41ae5c(0x215)])+_0x41ae5c(0x1bd)+s256('1'+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x1c1)]+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)])+_0x41ae5c(0x1cb)+s256('1'+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x1c1)]+player[this['layer']][_0x41ae5c(0x20c)][0x1][_0x41ae5c(0x215)])+'</span><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22p5tx\x22>7:'+s256('2'+player[this[_0x41ae5c(0x1fb)]]['salt']+player[this['layer']]['time'])+_0x41ae5c(0x19a)+s256('3'+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x1c1)]+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)])+_0x41ae5c(0x1e5)+s256('2'+player[this['layer']]['salt']+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20c)][0x1][_0x41ae5c(0x215)])+_0x41ae5c(0x222)+s256('4'+player[this['layer']][_0x41ae5c(0x1c1)]+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20e)])+_0x41ae5c(0x19b)+player[this['layer']][_0x41ae5c(0x20c)][0x1][_0x41ae5c(0x1d4)][0x0]+_0x41ae5c(0x1a0)+player[this[_0x41ae5c(0x1fb)]][_0x41ae5c(0x20c)][0x1][_0x41ae5c(0x1d4)][0x1]+_0x41ae5c(0x1de)+player[this[_0x41ae5c(0x1fb)]]['clgVal'][0x1][_0x41ae5c(0x1d4)][0x2]+_0x41ae5c(0x1c0)+randomString(0x42)+_0x41ae5c(0x1a6);}],_0x4c360e(0x200),[_0x4c360e(0x1f3),[0x78]],_0x4c360e(0x200),[_0x4c360e(0x1f3),[0x79]]],'unlocked'(){return inChallenge(0x12f,0xc);}},'4F':{'content':[[_0x4c360e(0x1b3),function(){const _0x2d003a=_0x4c360e;if(!player[this[_0x2d003a(0x1fb)]][_0x2d003a(0x194)][0x1])return _0x2d003a(0x204);else return _0x2d003a(0x1d1);}],_0x4c360e(0x200),['bar',_0x4c360e(0x211)],_0x4c360e(0x200),[_0x4c360e(0x1f3),[0x82]],'blank',[_0x4c360e(0x1b3),function(){const _0x473db4=_0x4c360e;return _0x473db4(0x1b5)+player[this[_0x473db4(0x1fb)]][_0x473db4(0x20c)][0x2]['target'][player[this[_0x473db4(0x1fb)]][_0x473db4(0x20c)][0x2]['round']]+_0x473db4(0x18e)+(player[this[_0x473db4(0x1fb)]][_0x473db4(0x20c)][0x2]['target'][player[this['layer']][_0x473db4(0x20c)][0x2][_0x473db4(0x207)]]+clgConst[0x2][_0x473db4(0x1fc)][player[this[_0x473db4(0x1fb)]][_0x473db4(0x20c)][0x2][_0x473db4(0x207)]])+_0x473db4(0x225);}]],'unlocked'(){return inChallenge(0x12f,0xd);}}},'clearIntervene'(){const _0x2009d9=_0x4c360e;player[this[_0x2009d9(0x1fb)]][_0x2009d9(0x18f)]?player[this['layer']][_0x2009d9(0x1f2)]=randomBetween(0x28+(0x14+player[this['layer']][_0x2009d9(0x20e)]/0x1e),0x3c+(0x1e+player[this['layer']][_0x2009d9(0x20e)]/0x14)):Math[_0x2009d9(0x20a)]()<0.1?(player[this[_0x2009d9(0x1fb)]][_0x2009d9(0x1f2)]=randomBetween(0x28+(0x14+player[this[_0x2009d9(0x1fb)]][_0x2009d9(0x20e)]/0x1e),0x3c+(0x1e+player[this[_0x2009d9(0x1fb)]][_0x2009d9(0x20e)]/0x14)),player[this['layer']][_0x2009d9(0x18f)]=!![]):makeParticles({'time':0x5,'fadeOutTime':0x3,'fadeInTime':0x1,'gravity':0.75,'image':'','style':{'width':'auto'},'text':_0x2009d9(0x1a4),'speed'(){const _0x25477e=_0x2009d9;return(Math[_0x25477e(0x20a)]()+0x1)*0x14;},'angle'(){const _0xcc5cd5=_0x2009d9;return(Math[_0xcc5cd5(0x20a)]()-0.5)*0x1e;},'dir'(){const _0x2aad37=_0x2009d9;return(Math[_0x2aad37(0x20a)]()-0.5)*0x2d;},'spread':0x0,'rotation'(){const _0x1f3527=_0x2009d9;return(Math[_0x1f3527(0x20a)]()-0.5)*0x19;}},randomBetween(0x2,0x5));},'check11'(_0x2b3f65){const _0x14d331=_0x4c360e,_0x38f524=clgConst[0x0],_0xc0558c=player[this[_0x14d331(0x1fb)]][_0x14d331(0x20c)][0x0],_0x545c55=player[this[_0x14d331(0x1fb)]][_0x14d331(0x20c)][0x1];let _0x4010e1=[_0x14d331(0x223),0x0],_0x45f544=[_0x14d331(0x223),0x0];if(_0x2b3f65==0x0){for(let _0x1d6c30=0x0;_0x1d6c30<0x3;_0x1d6c30++){for(let _0x13dc43=0x0;_0x13dc43<clgConst[0x0][_0x14d331(0x1ce)][_0x1d6c30];_0x13dc43++){let _0x46725a=randomBetween(0x0,clgConst[0x0][_0x14d331(0x1dd)][_0x14d331(0x1ac)]-0x1);player[this[_0x14d331(0x1fb)]][_0x14d331(0x20c)][0x0][_0x14d331(0x1d7)][_0x1d6c30][_0x13dc43]=[s256(''+player[this[_0x14d331(0x1fb)]]['salt']+clgConst[0x0][_0x14d331(0x1dd)][_0x46725a][0x0]),s256(''+player[this[_0x14d331(0x1fb)]]['salt']+clgConst[0x0][_0x14d331(0x1dd)][_0x46725a][0x1])];}}if(_0xc0558c[_0x14d331(0x206)]+_0x38f524[_0x14d331(0x220)][_0xc0558c[_0x14d331(0x207)]]>=0x0&&_0xc0558c['question']+_0x38f524[_0x14d331(0x220)][_0xc0558c['round']]<_0x38f524[_0x14d331(0x1ce)][_0xc0558c[_0x14d331(0x207)]])for(let _0x73ddbb=0x0;_0x73ddbb<clgConst[0x0]['base'][_0x14d331(0x1ac)];_0x73ddbb++){s256(''+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+clgConst[0x0][_0x14d331(0x1dd)][_0x73ddbb][0x0])==_0xc0558c['data'][_0xc0558c[_0x14d331(0x207)]][_0xc0558c[_0x14d331(0x206)]+_0x38f524[_0x14d331(0x220)][_0xc0558c[_0x14d331(0x207)]]][0x0]&&(_0x4010e1=clgConst[0x0][_0x14d331(0x1dd)][_0x73ddbb]);}if(_0xc0558c[_0x14d331(0x206)]>=0x0&&_0xc0558c['question']<_0x38f524['roundQuestion'][_0xc0558c[_0x14d331(0x207)]])for(let _0x23ffe1=0x0;_0x23ffe1<clgConst[0x0][_0x14d331(0x1dd)][_0x14d331(0x1ac)];_0x23ffe1++){s256(''+player[this[_0x14d331(0x1fb)]]['salt']+clgConst[0x0][_0x14d331(0x1dd)][_0x23ffe1][0x0])==_0xc0558c[_0x14d331(0x1d7)][_0xc0558c['round']][_0xc0558c['question']][0x0]&&(_0x45f544=clgConst[0x0][_0x14d331(0x1dd)][_0x23ffe1]);}_0xc0558c[_0x14d331(0x1cf)]=_0x4010e1[0x0];return;}if(_0xc0558c[_0x14d331(0x206)]>=0x0&&_0xc0558c[_0x14d331(0x206)]<_0x38f524[_0x14d331(0x1ce)][_0xc0558c['round']])for(let _0x740a93=0x0;_0x740a93<clgConst[0x0][_0x14d331(0x1dd)]['length'];_0x740a93++){s256(''+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+clgConst[0x0][_0x14d331(0x1dd)][_0x740a93][0x0])==_0xc0558c[_0x14d331(0x1d7)][_0xc0558c[_0x14d331(0x207)]][_0xc0558c[_0x14d331(0x206)]][0x0]&&(_0x45f544=clgConst[0x0][_0x14d331(0x1dd)][_0x740a93]);}_0x2b3f65!=-0x1&&(_0x2b3f65==_0x45f544[0x1]?(_0xc0558c[_0x14d331(0x1e1)]+=0x1,_0xc0558c[_0x14d331(0x1ba)]=_0x14d331(0x1f9)):_0xc0558c['showtip']='答错了！');_0xc0558c[_0x14d331(0x206)]+=0x1;if(_0xc0558c[_0x14d331(0x206)]+_0x38f524[_0x14d331(0x220)][_0xc0558c[_0x14d331(0x207)]]>=0x0&&_0xc0558c[_0x14d331(0x206)]+_0x38f524[_0x14d331(0x220)][_0xc0558c['round']]<_0x38f524['roundQuestion'][_0xc0558c[_0x14d331(0x207)]])for(let _0xb9e118=0x0;_0xb9e118<clgConst[0x0][_0x14d331(0x1dd)][_0x14d331(0x1ac)];_0xb9e118++){s256(''+player[this['layer']]['salt']+clgConst[0x0]['base'][_0xb9e118][0x0])==_0xc0558c[_0x14d331(0x1d7)][_0xc0558c[_0x14d331(0x207)]][_0xc0558c[_0x14d331(0x206)]+_0x38f524[_0x14d331(0x220)][_0xc0558c[_0x14d331(0x207)]]][0x0]&&(_0x4010e1=clgConst[0x0][_0x14d331(0x1dd)][_0xb9e118]);}_0xc0558c['shownow']=_0x4010e1[0x0];if(_0xc0558c['question']>=clgConst[0x0][_0x14d331(0x1ce)][_0xc0558c['round']]){if(_0xc0558c['correct']/clgConst[0x0][_0x14d331(0x1ce)][_0xc0558c['round']]>0.8){if(_0xc0558c[_0x14d331(0x207)]>=0x2){_0xc0558c[_0x14d331(0x1ba)]='完成！',_0x545c55['passwordDisplay'][_0xc0558c[_0x14d331(0x207)]]='Error!请截图向开发者反馈并提供你的存档';for(let _0xb24b1d=0x1;_0xb24b1d<=0x1e;_0xb24b1d++){s256(''+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+s256(''+_0xc0558c[_0x14d331(0x207)]+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+_0xb24b1d))==_0x545c55[_0x14d331(0x1d2)][_0xc0558c[_0x14d331(0x207)]]&&(_0x545c55[_0x14d331(0x1d4)][_0xc0558c[_0x14d331(0x207)]]=s256(''+_0xc0558c['round']+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+_0xb24b1d));}player[this[_0x14d331(0x1fb)]][_0x14d331(0x194)][0x0]=!![],layers[this[_0x14d331(0x1fb)]]['challenges'][0xb][_0x14d331(0x1e3)]();}else{_0xc0558c['showtip']=_0x14d331(0x20b),_0x545c55[_0x14d331(0x1d4)][_0xc0558c[_0x14d331(0x207)]]=_0x14d331(0x223);for(let _0x531438=0x1;_0x531438<=0x1e;_0x531438++){s256(''+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+s256(''+_0xc0558c['round']+player[this[_0x14d331(0x1fb)]]['salt']+_0x531438))==_0x545c55[_0x14d331(0x1d2)][_0xc0558c[_0x14d331(0x207)]]&&(_0x545c55[_0x14d331(0x1d4)][_0xc0558c[_0x14d331(0x207)]]=s256(''+_0xc0558c[_0x14d331(0x207)]+player[this[_0x14d331(0x1fb)]][_0x14d331(0x1c1)]+_0x531438));}_0xc0558c[_0x14d331(0x207)]+=0x1,_0xc0558c[_0x14d331(0x1e1)]=0x0,_0xc0558c['question']=-_0x38f524[_0x14d331(0x220)][_0xc0558c[_0x14d331(0x207)]];}}else{for(let _0xae3dce=0x0;_0xae3dce<0x3;_0xae3dce++){for(let _0x497284=0x0;_0x497284<clgConst[0x0][_0x14d331(0x1ce)][_0xae3dce];_0x497284++){let _0x2bd002=randomBetween(0x0,clgConst[0x0][_0x14d331(0x1dd)][_0x14d331(0x1ac)]-0x1);player[this['layer']]['clgVal'][0x0][_0x14d331(0x1d7)][_0xae3dce][_0x497284]=[s256(''+player[this['layer']][_0x14d331(0x1c1)]+clgConst[0x0]['base'][_0x2bd002][0x0]),s256(''+player[this[_0x14d331(0x1fb)]]['salt']+clgConst[0x0][_0x14d331(0x1dd)][_0x2bd002][0x1])];}}_0xc0558c[_0x14d331(0x1ba)]='本轮失败，重新解题！',_0xc0558c[_0x14d331(0x1e1)]=0x0,_0xc0558c['question']=-_0x38f524[_0x14d331(0x220)][_0xc0558c['round']];}}else return;if(_0xc0558c['question']+_0x38f524['diffQuestion'][_0xc0558c[_0x14d331(0x207)]]>=0x0&&_0xc0558c[_0x14d331(0x206)]+_0x38f524['diffQuestion'][_0xc0558c[_0x14d331(0x207)]]<_0x38f524[_0x14d331(0x1ce)][_0xc0558c[_0x14d331(0x207)]])for(let _0x4a33ab=0x0;_0x4a33ab<clgConst[0x0][_0x14d331(0x1dd)]['length'];_0x4a33ab++){s256(''+player[this[_0x14d331(0x1fb)]]['salt']+clgConst[0x0][_0x14d331(0x1dd)][_0x4a33ab][0x0])==_0xc0558c[_0x14d331(0x1d7)][_0xc0558c['round']][_0xc0558c[_0x14d331(0x206)]+_0x38f524['diffQuestion'][_0xc0558c[_0x14d331(0x207)]]][0x0]&&(_0x4010e1=clgConst[0x0][_0x14d331(0x1dd)][_0x4a33ab]);}_0xc0558c[_0x14d331(0x1cf)]=_0x4010e1[0x0];},'check12'(_0x100fa3){const _0x436a3a=_0x4c360e,_0x1e2de5=player[this[_0x436a3a(0x1fb)]][_0x436a3a(0x20c)][0x1];_0x100fa3==0x0&&(_0x1e2de5[_0x436a3a(0x1b8)]=[![],![],![]]),_0x1e2de5[_0x436a3a(0x1d4)][_0x100fa3-0x1]==s256(''+(_0x100fa3-0x1)+player[this[_0x436a3a(0x1fb)]][_0x436a3a(0x1c1)]+_0x1e2de5[_0x436a3a(0x215)])?_0x1e2de5[_0x436a3a(0x1b8)][_0x100fa3-0x1]=!![]:_0x1e2de5[_0x436a3a(0x1b8)][_0x100fa3-0x1]=![],_0x1e2de5[_0x436a3a(0x1b8)][0x0]&&_0x1e2de5[_0x436a3a(0x1b8)][0x1]&&_0x1e2de5[_0x436a3a(0x1b8)][0x2]&&(_0x1e2de5['showtip']=_0x436a3a(0x1df),player[this[_0x436a3a(0x1fb)]]['complete'][0x1]=!![],layers[this['layer']][_0x436a3a(0x1ea)][0xc]['onComplete']());},'check13'(_0x5d1cfb){},'startChallenge'(){const _0x17cf6d=_0x4c360e;player[this['layer']][_0x17cf6d(0x212)]=![],player[this[_0x17cf6d(0x1fb)]]['game']=!![],player[this['layer']][_0x17cf6d(0x20e)]=0x258,player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1f2)]=0x5a,player[this['layer']][_0x17cf6d(0x1d8)]=0x0,player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]=Date['now'](),player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1ee)]=0xa,player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1b2)]=0xa,player[this[_0x17cf6d(0x1fb)]]['date']=Date[_0x17cf6d(0x1c3)](),player[this['layer']][_0x17cf6d(0x1ea)]=[],player[this['layer']]['upgrades']=[],player[this['layer']][_0x17cf6d(0x194)]=[![],![],![],![],![],![]],player[this['layer']][_0x17cf6d(0x20c)]=JSON['parse'](JSON[_0x17cf6d(0x1c9)](newClgVal));for(let _0x24aa0b=0x0;_0x24aa0b<0x3;_0x24aa0b++){for(let _0x981262=0x0;_0x981262<clgConst[0x0]['roundQuestion'][_0x24aa0b];_0x981262++){let _0x2f9ad6=randomBetween(0x0,clgConst[0x0][_0x17cf6d(0x1dd)][_0x17cf6d(0x1ac)]-0x1);player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x20c)][0x0]['data'][_0x24aa0b][_0x981262]=[s256(''+player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]+clgConst[0x0][_0x17cf6d(0x1dd)][_0x2f9ad6][0x0]),s256(''+player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]+clgConst[0x0][_0x17cf6d(0x1dd)][_0x2f9ad6][0x1])];}}player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x20c)][0x1][_0x17cf6d(0x1d2)]=[s256(''+player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]+s256('0'+player[this['layer']][_0x17cf6d(0x1c1)]+randomBetween(0x1,0x1e))),s256(''+player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]+s256('1'+player[this['layer']][_0x17cf6d(0x1c1)]+randomBetween(0x1,0x1e))),s256(''+player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1c1)]+s256('2'+player[this['layer']]['salt']+randomBetween(0x1,0x1e)))],player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x20c)][0x1]['passwordDisplay']=[_0x17cf6d(0x1ca),'=未破译=',_0x17cf6d(0x1ca)],player[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x20c)][0x2][_0x17cf6d(0x1b8)]=[randomBetween(0x0,0x64-clgConst[0x2]['range'][0x0]),randomBetween(0x0,0x64-clgConst[0x2][_0x17cf6d(0x1fc)][0x1]),randomBetween(0x0,0x64-clgConst[0x2]['range'][0x2]),randomBetween(0x0,0x64-clgConst[0x2]['range'][0x3]),randomBetween(0x0,0x64-clgConst[0x2]['range'][0x4])],layers[this[_0x17cf6d(0x1fb)]][_0x17cf6d(0x1ea)][0xb][_0x17cf6d(0x1d0)](),layers[this[_0x17cf6d(0x1fb)]]['challenges'][0xc][_0x17cf6d(0x1d0)](),layers[this['layer']][_0x17cf6d(0x1ea)][0xd][_0x17cf6d(0x1d0)](),player[_0x17cf6d(0x21f)][0x12f]['mainTabs']='1F',window['trackPlayer'][_0x17cf6d(0x1af)]('303bg',!![]);},'endChallenge'(_0x42b229){const _0x59112d=_0x4c360e;player[this[_0x59112d(0x1fb)]][_0x59112d(0x212)]=![],player[this[_0x59112d(0x1fb)]][_0x59112d(0x1ec)]=![],player[this[_0x59112d(0x1fb)]][_0x59112d(0x20e)]=0x0,player[this[_0x59112d(0x1fb)]]['intervene']=0x1,player[this[_0x59112d(0x1fb)]]['score']=0x0,player[this[_0x59112d(0x1fb)]][_0x59112d(0x1c1)]=0x0,player[this['layer']][_0x59112d(0x1ee)]=0x0,player[this[_0x59112d(0x1fb)]][_0x59112d(0x1b2)]=0x0,player[this[_0x59112d(0x1fb)]][_0x59112d(0x21e)]=0x0,player[this[_0x59112d(0x1fb)]][_0x59112d(0x1ea)]=[],player[this[_0x59112d(0x1fb)]][_0x59112d(0x1c2)]=[],player[this[_0x59112d(0x1fb)]][_0x59112d(0x194)]=[![],![],![],![],![],![]],player[this[_0x59112d(0x1fb)]]['clgVal']=JSON['parse'](JSON[_0x59112d(0x1c9)](newClgVal));if(_0x42b229)player[this[_0x59112d(0x1fb)]]['clgVal'][_0x59112d(0x205)][_0x59112d(0x1ba)]=_0x42b229;layers[this[_0x59112d(0x1fb)]][_0x59112d(0x1ea)][0xb][_0x59112d(0x1d0)](),layers[this[_0x59112d(0x1fb)]][_0x59112d(0x1ea)][0xc]['onExit'](),layers[this['layer']][_0x59112d(0x1ea)][0xd]['onExit'](),player[_0x59112d(0x21f)][0x12f][_0x59112d(0x1d3)]='1F',window['trackPlayer'][_0x59112d(0x1af)](_0x59112d(0x1b4),![]);},'upgrades':{},'challenges':{0xb:{'name':'解算：频棠弧合','challengeDescription':'破译出保险箱的密码，你就可以打开保险箱','goalDescription':_0x4c360e(0x196),'rewardDescription':_0x4c360e(0x1f8),'canComplete'(){const _0x47d9b0=_0x4c360e;return player[this[_0x47d9b0(0x1fb)]][_0x47d9b0(0x194)][0x0];},'unlocked'(){const _0x162426=_0x4c360e;return player[this[_0x162426(0x1fb)]][_0x162426(0x1ec)];},'onEnter'(){const _0x1528db=_0x4c360e;layers[this[_0x1528db(0x1fb)]]['check11'](0x0);},'onExit'(){const _0x2ec12f=_0x4c360e;layers[this[_0x2ec12f(0x1fb)]][_0x2ec12f(0x1cd)](0x0);},'onComplete'(){playsound('cc');}},0xc:{'name':_0x4c360e(0x1e9),'challengeDescription':_0x4c360e(0x19d),'goalDescription':_0x4c360e(0x1a5),'rewardDescription':_0x4c360e(0x1f5),'canComplete'(){const _0x541e60=_0x4c360e;return player[this[_0x541e60(0x1fb)]][_0x541e60(0x194)][0x1];},'unlocked'(){const _0x390d80=_0x4c360e;return player[this[_0x390d80(0x1fb)]][_0x390d80(0x1ec)];},'onEnter'(){const _0x336418=_0x4c360e;layers[this[_0x336418(0x1fb)]][_0x336418(0x1bb)](0x0);},'onExit'(){const _0x4d5b2d=_0x4c360e;layers[this[_0x4d5b2d(0x1fb)]][_0x4d5b2d(0x1bb)](0x0);},'onComplete'(){playsound('cc');}},0xd:{'name':_0x4c360e(0x1c4),'challengeDescription':_0x4c360e(0x1eb),'goalDescription':_0x4c360e(0x193),'rewardDescription':_0x4c360e(0x18d),'canComplete'(){const _0x4564a6=_0x4c360e;return player[this[_0x4564a6(0x1fb)]]['complete'][0x2];},'unlocked'(){const _0x19eb90=_0x4c360e;return player[this['layer']][_0x19eb90(0x1ec)]&&player[this[_0x19eb90(0x1fb)]]['find'];},'onEnter'(){const _0x4fa5ad=_0x4c360e;layers[this[_0x4fa5ad(0x1fb)]][_0x4fa5ad(0x1dc)](-0x1);},'onExit'(){const _0x41e098=_0x4c360e;layers[this[_0x41e098(0x1fb)]][_0x41e098(0x1dc)](-0x1);},'onComplete'(){playsound('cc');}}},'clickables':{0xb:{'title':_0x4c360e(0x1a3),'canClick'(){const _0x1f1ee3=_0x4c360e;return!player[this[_0x1f1ee3(0x1fb)]][_0x1f1ee3(0x1ec)];},'onClick'(){const _0x4cbc2c=_0x4c360e;layers[0x12f][_0x4cbc2c(0x19f)]();}},0xc:{'title':_0x4c360e(0x19c),'canClick'(){const _0x16c8c9=_0x4c360e;return player[this[_0x16c8c9(0x1fb)]][_0x16c8c9(0x1ec)];},'onClick'(){const _0x3731f8=_0x4c360e;layers[0x12f][_0x3731f8(0x202)](_0x3731f8(0x1fd));}},0x15:{'title':_0x4c360e(0x1f6),'display'(){const _0x4c11f9=_0x4c360e;return _0x4c11f9(0x1a7)+format((player[this[_0x4c11f9(0x1fb)]][_0x4c11f9(0x1b2)]/0xa)**Math[_0x4c11f9(0x1bf)](0x19)/0x5)+_0x4c11f9(0x1b6);},'unlocked'(){const _0x1e8229=_0x4c360e;return player[this[_0x1e8229(0x1fb)]]['clgVal'][0x0][_0x1e8229(0x206)]>=0x0;},'onClick'(){const _0x268e6d=_0x4c360e;player[this['layer']][_0x268e6d(0x1ee)]=Math[_0x268e6d(0x1d9)](0x64,player[this[_0x268e6d(0x1fb)]][_0x268e6d(0x1ee)]+0x1);},'onHold'(){const _0x1af8dc=_0x4c360e;player[this[_0x1af8dc(0x1fb)]]['maxBomb']=0x64;},'canClick'(){const _0x47ca29=_0x4c360e;return player[this['layer']][_0x47ca29(0x1ec)];},'unlocked'(){const _0x2dccf5=_0x4c360e;return player[this[_0x2dccf5(0x1fb)]][_0x2dccf5(0x1ec)];}},0x44d:{'title'(){const _0x3ad806=_0x4c360e;return _0x3ad806(0x1a2)+layers[this[_0x3ad806(0x1fb)]][_0x3ad806(0x214)]()[0x0]+_0x3ad806(0x1e0);},'unlocked'(){const _0x48952d=_0x4c360e;return player[this['layer']][_0x48952d(0x20c)][0x0][_0x48952d(0x206)]>=0x0&&!player[this['layer']][_0x48952d(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x1797a2=_0x4c360e;layers[this[_0x1797a2(0x1fb)]][_0x1797a2(0x1cd)](layers[this[_0x1797a2(0x1fb)]][_0x1797a2(0x214)]()[0x0]);}},0x44e:{'title'(){const _0x17cec0=_0x4c360e;return _0x17cec0(0x1a2)+layers[this[_0x17cec0(0x1fb)]][_0x17cec0(0x214)]()[0x1]+'</span>';},'unlocked'(){const _0x2118fa=_0x4c360e;return player[this[_0x2118fa(0x1fb)]][_0x2118fa(0x20c)][0x0][_0x2118fa(0x206)]>=0x0&&!player[this[_0x2118fa(0x1fb)]]['complete'][0x0];},'canClick':!![],'onClick'(){const _0x248668=_0x4c360e;layers[this['layer']][_0x248668(0x1cd)](layers[this[_0x248668(0x1fb)]][_0x248668(0x214)]()[0x1]);}},0x44f:{'title'(){const _0x4e6478=_0x4c360e;return _0x4e6478(0x1a2)+layers[this[_0x4e6478(0x1fb)]][_0x4e6478(0x214)]()[0x2]+_0x4e6478(0x1e0);},'unlocked'(){const _0x39db84=_0x4c360e;return player[this['layer']][_0x39db84(0x20c)][0x0][_0x39db84(0x206)]>=0x0&&!player[this[_0x39db84(0x1fb)]][_0x39db84(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x286965=_0x4c360e;layers[this[_0x286965(0x1fb)]][_0x286965(0x1cd)](layers[this[_0x286965(0x1fb)]][_0x286965(0x214)]()[0x2]);}},0x45a:{'title'(){const _0x50284f=_0x4c360e;return'\x0a\x09\x09\x09\x09<span\x20style=\x22font-size:48px\x22>'+layers[this['layer']][_0x50284f(0x214)]()[0x3]+_0x50284f(0x1e0);},'unlocked'(){const _0xf324e9=_0x4c360e;return player[this[_0xf324e9(0x1fb)]][_0xf324e9(0x20c)][0x0][_0xf324e9(0x206)]>=0x0&&!player[this[_0xf324e9(0x1fb)]]['complete'][0x0];},'canClick':!![],'onClick'(){const _0x1ea6e3=_0x4c360e;layers[this['layer']][_0x1ea6e3(0x1cd)](layers[this[_0x1ea6e3(0x1fb)]]['keyList']()[0x3]);}},0x45b:{'title'(){const _0x2e3033=_0x4c360e;return _0x2e3033(0x1a2)+layers[this[_0x2e3033(0x1fb)]][_0x2e3033(0x214)]()[0x4]+'</span>';},'unlocked'(){const _0x2050b5=_0x4c360e;return player[this[_0x2050b5(0x1fb)]][_0x2050b5(0x20c)][0x0]['question']>=0x0&&!player[this[_0x2050b5(0x1fb)]]['complete'][0x0];},'canClick':!![],'onClick'(){const _0x3250b6=_0x4c360e;layers[this[_0x3250b6(0x1fb)]][_0x3250b6(0x1cd)](layers[this[_0x3250b6(0x1fb)]]['keyList']()[0x4]);}},0x45c:{'title'(){const _0x1013cf=_0x4c360e;return _0x1013cf(0x1a2)+layers[this['layer']]['keyList']()[0x5]+'</span>';},'unlocked'(){const _0x1d74ec=_0x4c360e;return player[this[_0x1d74ec(0x1fb)]][_0x1d74ec(0x20c)][0x0][_0x1d74ec(0x206)]>=0x0&&!player[this[_0x1d74ec(0x1fb)]][_0x1d74ec(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x555d3f=_0x4c360e;layers[this[_0x555d3f(0x1fb)]][_0x555d3f(0x1cd)](layers[this[_0x555d3f(0x1fb)]][_0x555d3f(0x214)]()[0x5]);}},0x467:{'title'(){const _0x5d06c2=_0x4c360e;return'\x0a\x09\x09\x09\x09<span\x20style=\x22font-size:48px\x22>'+layers[this[_0x5d06c2(0x1fb)]]['keyList']()[0x6]+_0x5d06c2(0x1e0);},'unlocked'(){const _0x409252=_0x4c360e;return player[this[_0x409252(0x1fb)]][_0x409252(0x20c)][0x0][_0x409252(0x206)]>=0x0&&!player[this[_0x409252(0x1fb)]][_0x409252(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x5ce377=_0x4c360e;layers[this[_0x5ce377(0x1fb)]][_0x5ce377(0x1cd)](layers[this[_0x5ce377(0x1fb)]][_0x5ce377(0x214)]()[0x6]);}},0x468:{'title'(){const _0x44daab=_0x4c360e;return _0x44daab(0x1a2)+layers[this[_0x44daab(0x1fb)]][_0x44daab(0x214)]()[0x7]+_0x44daab(0x1e0);},'unlocked'(){const _0x59f8da=_0x4c360e;return player[this[_0x59f8da(0x1fb)]]['clgVal'][0x0][_0x59f8da(0x206)]>=0x0&&!player[this[_0x59f8da(0x1fb)]][_0x59f8da(0x194)][0x0];},'canClick':!![],'onClick'(){const _0xfff9bf=_0x4c360e;layers[this[_0xfff9bf(0x1fb)]][_0xfff9bf(0x1cd)](layers[this['layer']][_0xfff9bf(0x214)]()[0x7]);}},0x469:{'title'(){const _0x5636a8=_0x4c360e;return _0x5636a8(0x1a2)+layers[this[_0x5636a8(0x1fb)]]['keyList']()[0x8]+_0x5636a8(0x1e0);},'unlocked'(){const _0x311977=_0x4c360e;return player[this['layer']][_0x311977(0x20c)][0x0][_0x311977(0x206)]>=0x0&&!player[this[_0x311977(0x1fb)]][_0x311977(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x303efe=_0x4c360e;layers[this[_0x303efe(0x1fb)]][_0x303efe(0x1cd)](layers[this[_0x303efe(0x1fb)]][_0x303efe(0x214)]()[0x8]);}},0x46b:{'title'(){const _0x157ce2=_0x4c360e;return _0x157ce2(0x1da);},'unlocked'(){const _0xa6c2ff=_0x4c360e;return player[this[_0xa6c2ff(0x1fb)]]['clgVal'][0x0][_0xa6c2ff(0x206)]<0x0&&!player[this[_0xa6c2ff(0x1fb)]][_0xa6c2ff(0x194)][0x0];},'canClick':!![],'onClick'(){const _0x25a9a1=_0x4c360e;layers[this[_0x25a9a1(0x1fb)]][_0x25a9a1(0x1cd)](-0x1);}},0x4b1:{'title'(){return'<span\x20style=\x22font-size:48px\x22>+</span>';},'onClick'(){const _0xe40f41=_0x4c360e;player[0x12f][_0xe40f41(0x20c)][0x1][_0xe40f41(0x215)]=Math[_0xe40f41(0x1d9)](player[0x12f][_0xe40f41(0x20c)][0x1]['current']+0x1,0x1e);},'onHold'(){const _0x4158c1=_0x4c360e;layers[this[_0x4158c1(0x1fb)]][_0x4158c1(0x1bb)](0x0);},'canClick':!![],'unlocked'(){const _0x10ddbd=_0x4c360e;return!player[this['layer']][_0x10ddbd(0x194)][0x1];}},0x4b2:{'title'(){return'<span\x20style=\x22font-size:48px\x22>-</span>';},'onClick'(){const _0x45862b=_0x4c360e;player[0x12f][_0x45862b(0x20c)][0x1][_0x45862b(0x215)]=Math['max'](player[0x12f][_0x45862b(0x20c)][0x1][_0x45862b(0x215)]-0x1,0x1);},'onHold'(){const _0x27b9c4=_0x4c360e;layers[this[_0x27b9c4(0x1fb)]][_0x27b9c4(0x1bb)](0x0);},'canClick':!![],'unlocked'(){const _0x2218ad=_0x4c360e;return!player[this[_0x2218ad(0x1fb)]][_0x2218ad(0x194)][0x1];}},0x4bb:{'title'(){const _0x2ccd6c=_0x4c360e;return _0x2ccd6c(0x1ef);},'onClick'(){const _0x206b2a=_0x4c360e;layers[this['layer']][_0x206b2a(0x1bb)](0x1);},'onHold'(){const _0x579405=_0x4c360e;layers[this['layer']][_0x579405(0x1bb)](0x0);},'canClick':!![],'unlocked'(){const _0x4511ea=_0x4c360e;return!player[this[_0x4511ea(0x1fb)]][_0x4511ea(0x194)][0x1];}},0x4bc:{'title'(){const _0x203a3e=_0x4c360e;return _0x203a3e(0x1b9);},'onClick'(){const _0x541cc2=_0x4c360e;layers[this[_0x541cc2(0x1fb)]][_0x541cc2(0x1bb)](0x2);},'onHold'(){const _0x57f322=_0x4c360e;layers[this[_0x57f322(0x1fb)]][_0x57f322(0x1bb)](0x0);},'canClick':!![],'unlocked'(){const _0x1e49fb=_0x4c360e;return!player[this[_0x1e49fb(0x1fb)]][_0x1e49fb(0x194)][0x1];}},0x4bd:{'title'(){const _0x24cb93=_0x4c360e;return _0x24cb93(0x224);},'onClick'(){layers[this['layer']]['check12'](0x3);},'onHold'(){const _0x5646bc=_0x4c360e;layers[this[_0x5646bc(0x1fb)]]['check12'](0x0);},'canClick':!![],'unlocked'(){const _0x508d1f=_0x4c360e;return!player[this[_0x508d1f(0x1fb)]]['complete'][0x1];}},0x515:{'title'(){return'<span\x20style=\x22font-size:28px\x22>用力</span>';},'onClick'(){},'onHold'(){},'canClick':!![],'unlocked'(){const _0x1b266e=_0x4c360e;return!player[this['layer']][_0x1b266e(0x194)][0x2];}},0x516:{'title'(){const _0x3b298c=_0x4c360e;return _0x3b298c(0x21a);},'onClick'(){},'onHold'(){},'canClick':!![],'unlocked'(){const _0x1df560=_0x4c360e;return!player[this[_0x1df560(0x1fb)]][_0x1df560(0x194)][0x2];}},0x517:{'title'(){const _0x2cbf8c=_0x4c360e;return _0x2cbf8c(0x1be);},'onClick'(){},'onHold'(){},'canClick':!![],'unlocked'(){const _0x2887ad=_0x4c360e;return!player[this[_0x2887ad(0x1fb)]]['complete'][0x2];}}},'bars':{'timebar':{'direction':RIGHT,'width':0x258,'height':0x1e,'progress'(){const _0x308920=_0x4c360e;return player[0x12f][_0x308920(0x20e)]/0x258;},'display'(){const _0x375327=_0x4c360e;return _0x375327(0x1ed)+formatTime(player[0x12f]['time'])+_0x375327(0x225);},'fillStyle':{'backgroundColor':_0x4c360e(0x1d6)}},'bombbar':{'direction':RIGHT,'width':0x258,'height':0x14,'progress'(){const _0x576d7d=_0x4c360e;return player[0x12f][_0x576d7d(0x1ee)]/0x64;},'display'(){return'炸弹\x20<span\x20class=\x22p9tx\x22>'+format(player[0x12f]['bomb'])+'</span>';},'fillStyle':{'backgroundColor':_0x4c360e(0x1e7)}},'lockbar':{'direction':RIGHT,'width':0x258,'height':0x32,'progress'(){const _0xd668b9=_0x4c360e;return player[0x12f]['clgVal'][0x2][_0xd668b9(0x1f1)]/0x64;},'display'(){const _0x2e8698=_0x4c360e;return'力度\x20<span\x20class=\x22p9tx\x22>'+formatWhole(player[0x12f][_0x2e8698(0x20c)][0x2][_0x2e8698(0x1f1)])+_0x2e8698(0x1e0);},'fillStyle':{'backgroundColor':_0x4c360e(0x1a9)}}},'layerShown'(){const _0x126036=_0x4c360e;return getGridData(_0x126036(0x205),this[_0x126036(0x1fb)])&&(!options[_0x126036(0x1aa)]||!player[_0x126036(0x198)][this[_0x126036(0x1fb)]]);}}));
+addLayer("303", {
+    symbol: "🏁",
+    resource: "看我干嘛？",
+    color: "#FFF",
+    update(diff) {
+        if (!getGridData('main', this.layer)) return
+
+        if (player[this.layer].game) {
+
+            if (player[this.layer].load) {
+                layers[303].endChallenge("<h1 class='p9tx'>我看到你...尝试逃离我的样子...<br>真的好可爱？！！</h1>")
+                player[this.layer].sl = true
+                return
+            }
+
+            if (player[this.layer].date + 500 < Date.now()) {
+                layers[303].endChallenge("<h1 class='p9tx'>不要冷暴力我...我害怕<br>我不想停止...？！！</h1><sub>刻时间超限，性能问题</sub>")
+                return
+            }
+
+            if (player[this.layer].bomb <= 0) {
+                layers[303].endChallenge("<h2 class='p9tx'>炸弹爆炸了...<br>你得关心一下咱嘛</h2><br>但你完好无损，为什么？")
+                return
+            }
+
+            if (player[this.layer.time <= 0]) {
+                layers[303].endChallenge("<h2 class='p9tx'>炸弹爆炸了...<br>也许你需要再快点</h2><br>但你完好无损，为什么？")
+                return
+            }
+
+            if (player[this.layer].clgVal[2].nervous >= 120) {
+                layers[303].endChallenge("<h1 class='p9tx'>你感到喉咙一阵发紧<br>你喘不上气...<br>你倒下了，无法行动的你只能眼睁睁等着？！！</h1>")
+                return
+            }
+
+            if (player[this.layer].clgVal[2].watch >= 120) {
+                options.theme = "bloody"
+                changeTheme()
+                layers[303].endChallenge("<h1 class='p9tx'>她找到你了，她捧着你的<br><s>活着的</s>心脏？！！</h1>")
+                return
+            }
+
+            if (
+                ((x) => { return x[0] + x[1] })(layers[this.layer].check11(372559)) != 372560 ||
+                ((x) => { return x[0] + x[1] })(layers[this.layer].check12(372559)) != 372561 ||
+                ((x) => { return x[0] + x[1] })(layers[this.layer].check13(372559)) != 372562
+            ) {
+                player[this.layer].check = false
+                options.theme = "bloody"
+                changeTheme()
+                layers[303].endChallenge("<h1 class='p9tx'>为了离开我...这值得作弊吗？？！</h1>")
+                return
+            } else {
+                player[this.layer].check = true
+            }
+
+            if (player[this.layer.intervene <= 0]) {
+                player[303].find = true
+            }
+
+            if (player[this.layer].bomb > player[this.layer].maxBomb) {
+                player[this.layer].maxBomb = player[this.layer].bomb
+            }
+
+            if (inChallenge(this.layer, 13)) {
+                let val = player[this.layer].clgVal[2]
+
+                val.nervous += calNervousAddtion()
+                val.watch += calWatchAddtion()
+
+                val.power = Math.max(0, val.power * calExp() - 3 * diff)
+
+                function calExp() {
+                    let a = val.nervous
+                    if (a <= 20) return 0.9 ** diff
+                    else {
+                        return ((0.9 - (a / 100 * 0.05))
+                            + (Math.random() - 0.5) * 0.15 * (a / 100)
+                        ) ** diff
+                    }
+                }
+
+                function calNervousAddtion() {
+                    let a = val.watch
+                    if (val.watch < 20) return (100 ** 0.9) / 33 * diff
+                    return ((100 + a) ** 0.9) / 33 * diff
+                }
+
+                function calWatchAddtion() {
+                    let a = val.nervous
+                    if (a < 40) return 0
+                    return a / 50 * diff
+                }
+            }
+
+            player[this.layer].time = player[this.layer].time - diff
+            player[this.layer].intervene = player[this.layer].intervene - diff
+            player[this.layer].bomb = player[this.layer].bomb - diff * ((player[this.layer].maxBomb / 10) ** Math.log10(25)) / 5
+            player[this.layer].date = Date.now()
+
+            if (player[this.layer].meow && Math.random() < 0.1) {
+                makeParticles({
+                    time: 2,
+                    fadeOutTime: 1,
+                    fadeInTime: 0.2,
+                    gravity: 1,
+                    image: "",
+                    style: { width: "auto" },
+                    text: `<span class="p9tx">喵</span>`,
+                    speed() {
+                        return (Math.random() + 1) * 8
+                    },
+                    angle() {
+                        return (Math.random() - 0.5) * 180
+                    },
+                    dir() {
+                        return (Math.random() - 0.5) * 180
+                    },
+                    spread: 0,
+                    rotation() {
+                        return (Math.random() - 0.5) * 15
+                    },
+                }, randomBetween(1, 3))
+            }
+
+        }
+    },
+    startData() {
+        return {
+            unlocked: true,
+            points: _D0,
+            game: false,
+            load: false,
+            time: 0,
+            intervene: 90,
+            score: 0,
+
+            date: 0,
+
+            bomb: 0,
+            maxBomb: 0,
+
+            complete: [false, false, false, false, false, false],
+
+            clgVal: newClgVal,
+
+            salt: 0,
+
+            warning: true,
+            find: false,
+            sl: false,
+            fake: false,
+            meow: false,
+            check: true,
+        }
+    },
+    keyList() {
+        let seed = player[this.layer].salt
+
+        const a = 1664525;
+        const c = 1013904223;
+        const m = Math.pow(2, 32);
+
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let currentSeed = seed;
+
+        for (let i = arr.length - 1; i > 0; i--) {
+            currentSeed = (a * currentSeed + c) % m;
+            const j = Math.floor((currentSeed / m) * (i + 1));
+
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+
+        return arr
+    },
+    type: "none",
+    tabFormat: {
+        "1F": {
+            content: [
+                ["display-text", function () {
+                    if (player[this.layer].clgVal.main.showtip) return `${player[this.layer].clgVal.main.showtip}<br><br>`
+                }],
+                ["display-text", function () {
+                    return `
+                    qhlg正在游玩AFK CHECK，但是她因为纯靠脑子连第三关都过不去<br>
+                    所以被user的反人类设计气死了，同时为了填入最后一个棍木<br>
+                    于是qhlg决定自己编写一个AFK CHECK<br>
+                    并命名为AFK CHECK Never Gonna Give You Up<br>
+                    简称为AFK CHECK NG<br>
+                    作为1001树的开发组成员之一，qhlg确信qhlg能为玩家提供完美的作品<br>
+                    qhlg把你关在了一个房间里，在你身上放置了一个炸弹<span onClick="player[303].fake = true" style="color:rgba(0,0,0,0);cursor: help;">（假的）</span><br>
+                    她告诉你，因为她很坏，所以给你准备了一个小惊喜<br>
+                    只有完成AFK CHECK NG才能解除炸弹<br>
+                    你也快来试试吧，当你解除炸弹时，你就胜利了！<br>
+                    此关卡不允许暂停<span onClick="player[303].meow = !player[303].meow" style="cursor: help;">喵</span>！<br>
+                    此外，为了避免意外退出，请暂停其他游戏（特指102）
+                    `
+                }],
+                "blank",
+                ["bar", "timebar"],
+                ["bar", "bombbar"],
+                "blank",
+                ["clickables", [1, 2]],
+                "blank",
+                "challenges",
+                ["raw-html", function () {
+                    if (checkWarning(303)) return `
+                    <div class="bs">
+                        <div class="tips" onclick="closeWarning(303)">
+                        <h1>重要健康与安全提示</h1>
+                        <br>
+                        在游玩本游戏前，请仔细阅读以下内容:<br><br>
+
+                        <h2>光敏性癫痫警告</h2><br>
+                        极少数人在接触特定视觉图像(包括闪烁灯光或图案)时可能会突发癫痫症状,即使没有癫痫病史的人也可能在游玩时出现该症状<br><br>
+
+                        <h2>视觉变化警告</h2><br>
+                        游戏部分场景包含不可避免的高对比度颜色变化,这些视觉元素可能对部分玩家造成不适<br><br>
+
+                        <h2>身体与精神紧张警告</h2><br>
+                        游戏内容包含旨在制造紧张,恐惧和惊吓的元素.这些内容可能导致心率加快,血压升高,并对有心脏疾病,精神健康状况或其他潜在健康问题的玩家构成风险<br><br>
+
+                        如果出现任何不适,如头晕,恶心,视力异常,肌肉抽搐或意识模糊,请立即停止游玩并咨询医生<br><br>
+
+                        <button class="pb" onclick="closeWarning(303)">
+                            好的
+                        </button>
+                        </div>
+                    </div>`
+                }],
+                ["raw-html", function () {
+                    if (player[this.layer].intervene <= 0) {
+                        if (player[this.layer].find) {
+                            return `
+                            <div class="bs" style="background: rgba(132, 104, 41, 0.5);">
+                                <div class="tips" style="background: rgba(132, 104, 41, 1);">
+                                    <div style="text-align: right;width:100%">
+                                        <button class="pb" onclick="layers[303].clearIntervene()" style="color:#fff; width: 30px;height: 30px;">
+                                        ×
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <h2>警告！我们看到一个炸弹正在你的身上！</h2><br><br>
+                                    <h2>我发现如果您延续拆弹，炸弹很有可能会继续爆炸！</h2><br><br>
+                                    <h2>qhlg提示您，请不要尝试进行拆弹，否则可能炸弹会爆炸！</h2><br><br>
+                                    <h2>真的！如果你需要什么都不做，等炸弹进入你的家里就行了</h2><br><br>
+                                    <h3>爱你的</h3><br>
+                                    <h3>炸弹</h3><br><br>
+                                    <button class="pb" onclick="layers[303].clearIntervene()">
+                                        无视风险
+                                    </button>
+                                    <button class="pb" onclick="layers[303].clearIntervene()">
+                                        继续拆弹
+                                    </button>
+                                </div>
+                            </div>`
+                        } else {
+                            return `
+                            <div class="bs" style="background: rgba(73, 19, 49, 0.5);">
+                                <div class="tips" style="background: rgba(73, 19, 49, 1);">
+                                    <div style="text-align: right;width:100%">
+                                        <button class="pb" onclick="layers[303].clearIntervene()" style="color:#fff; width: 30px;height: 30px;">
+                                        ×
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <h1>一千零一树三零三世界作弊器<br>您的专属拆弹助手！</h1><br><br>
+                                    <h2>您是否正在为<h1 class="p9tx">点击个</h1>炸弹烦恼？<br>不用着急，<h2 class="p9tx">点击个</h2>链接获取一个！</h2><br><br>
+                                    <h3>看看时间吧！这是一<span class="p9tx">两</span>二三十分钟<br>bomb<span class="p9tx">弹弹嫩嫩软乎乎好吃呢喵吔！</span></h3><br><br>
+                                    <h3>齁噢噢噢噢！炸弹齁噢噢噢要爆炸<br>叮叮滴滴哒哦不我被qhlg侵入了！</h3><br><br>
+                                    <span class="p9tx">哈哈哈你别想逃出我的手掌心，${player.global.name}</span><br><br>
+                                    <span class="p9tx">那我就这样告诉你吧炸弹是真的你别想<br>离开我</span>哦不<span class="p9tx">他</span>来了！<br>
+                                    <span class="p9tx">比狐哈饿役嗯你啊哦</span>停止阅读<span class="p9tx">教恨学武钋</span><br>
+                                    快按按钮逃离这里！<br>
+                                    <span class="p9tx">来不及了他已经在这里浪费太久时间我的炸弹爆炸把我们的心融为一体我们从此再也不会离开分开走开错开我们永远在一起他留在这里我和他一起我们不会</span>快跑！<span class="p9tx">为了惩罚不听话的孩子我会</span>她真的会杀了你！
+                                    <br><br><br>
+                                    <button class="pb" onclick="layers[303].clearIntervene()" style="width: 160px;height: 50px;">
+                                        我知道我知道了但是我不知道我知不知道
+                                    </button>
+                                    <button class="pb" onclick="layers[303].clearIntervene()" style="width: 160px;height: 50px;">
+                                        请不要问我知不知道但是我知道我不知道
+                                    </button>
+                                    <button class="pb" onclick="layers[303].clearIntervene()" style="width: 160px;height: 50px;">
+                                        可能我知道了而且我知道我不知道也知道
+                                    </button>
+                                </div>
+                            </div>`
+                        }
+                    }
+                }],
+            ],
+        },
+        "2F": {
+            content: [
+                ["bar", "timebar"],
+                ["bar", "bombbar"],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[0]) return `
+                    请你计算以下算式的答案<br>
+                    正确率大于80%才能算通过<br>
+                    第 ${formatWhole(player[this.layer].clgVal[0].round + 1)} / 3 轮<br>
+                    问题 ${formatWhole(player[this.layer].clgVal[0].question + 1)} / ${formatWhole(clgConst[0].roundQuestion[player[this.layer].clgVal[0].round])}<br>
+                    正确 ${formatWhole(player[this.layer].clgVal[0].correct)}
+                    `
+                }],
+                ["display-text", function () {
+                    return `${player[this.layer].clgVal[0].showtip}`
+                }],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[0] && player[this.layer].clgVal[0].question + clgConst[0].diffQuestion[player[this.layer].clgVal[0].round] < clgConst[0].roundQuestion[player[this.layer].clgVal[0].round]) return `
+                    <h1 class="p9tx">Q${player[this.layer].clgVal[0].question + 1 + clgConst[0].diffQuestion[player[this.layer].clgVal[0].round]} | ${player[this.layer].clgVal[0].shownow}</h1>
+                    `
+                }],
+                ["display-text", function () {
+                    if (!player[this.layer].complete[0]) {
+                        if (player[this.layer].clgVal[0].question >= 0) return `
+                        现在,回答 <h1 class="p9tx">Q${player[this.layer].clgVal[0].question + 1}</h1> ！
+                        `
+                        else return `记住当前的题目！`
+                    }
+                }],
+                "blank",
+                ["clickables", [113]],
+                "blank",
+                ["clickables", [110, 111, 112]],
+            ],
+            unlocked() {
+                return inChallenge(303, 11) && player[303].game
+            }
+        },
+        "3F": {
+            content: [
+                ["bar", "timebar"],
+                ["bar", "bombbar"],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[1]) return `
+                    这个保险箱有一个旋钮，上面刻着1-30的数字<br>
+                    随着你旋转，三条密文会变化，这时候看到你解出的三个密码<br>
+                    你需要依次让旋钮对准三个密码，然后点击对应按钮确认<br>
+                    此过程中没有提示，而且一旦错误，就要重新解锁<br>
+                    同时，为了防止机器人访问，本网站已启用人机验证模块<br>
+                    您接下来的解码需要在干扰下进行！
+                    `
+                }],
+                ["display-text", function () {
+                    return `${player[this.layer].clgVal[1].showtip}`
+                }],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[1]) return `
+                    <div 
+                    class="tbox" style="
+                    background-color:hsl(${(player[this.layer].time * 30) % 360},100%,55%);
+                    transform: translate(${(player[this.layer].time * 52) % 6 - 3}px, ${(player[this.layer].time * 48) % 6 - 3}px) rotate(${Math.sin(player[this.layer].time * 17) * 1.25}deg);
+                    display: inline-block;">
+                    <span class="p9tx">${randomString(66)}</span><br>
+                    <span class="p1tx">0:${s256(`0${player[this.layer].salt}${player[this.layer].time}`)}</span><br>
+                    <span class="p2tx">1:${s256(`0${player[this.layer].salt}${player[this.layer].clgVal[1].current}`)}</span><br>
+                    <span class="p3tx">5:${s256(`1${player[this.layer].salt}${player[this.layer].time}`)}</span><br>
+                    <span class="p4tx">2:${s256(`1${player[this.layer].salt}${player[this.layer].clgVal[1].current}`)}</span><br>
+                    <span class="p5tx">7:${s256(`2${player[this.layer].salt}${player[this.layer].time}`)}</span><br>
+                    <span class="p6tx">6:${s256(`3${player[this.layer].salt}${player[this.layer].time}`)}</span><br>
+                    <span class="p7tx">3:${s256(`2${player[this.layer].salt}${player[this.layer].clgVal[1].current}`)}</span><br>
+                    <span class="p8tx">4:${s256(`4${player[this.layer].salt}${player[this.layer].time}`)}</span><br>
+                    <span class="p9tx">1:${player[this.layer].clgVal[1].passwordDisplay[0]}</span><br>
+                    <span class="p9tx">2:${player[this.layer].clgVal[1].passwordDisplay[1]}</span><br>
+                    <span class="p9tx">3:${player[this.layer].clgVal[1].passwordDisplay[2]}</span><br>
+                    <span class="p9tx">${randomString(66)}</span><br>
+                    </div>
+                    `
+                }],
+                "blank",
+                ["clickables", [120]],
+                "blank",
+                ["clickables", [121]],
+            ],
+            unlocked() {
+                return inChallenge(303, 12) && player[303].game
+            }
+        },
+        "4F": {
+            content: [
+                ["bar", "timebar"],
+                ["bar", "bombbar"],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[1]) return `
+                    你还没有钥匙，无法开门
+                    `
+                    else if (!player[this.layer].complete[2]) return `
+                    她不会让你这么容易逃脱的！<br>
+                    现在，你需要插入钥匙并扭转它，把门打开，但是你要控制好力度<br>
+                    否则，你发出的声音就会把<span class="p9tx">QHLG</span>引来<br>
+                    你发出的声音越大，你就会越紧张，这将导致你的操作一定程度上的失控！<br>
+                    同样的，在这里待的太久也会催生你的紧张情绪<br>
+                    不要让自己过于紧张，也不要被她找到！<br>
+                    如果被找到了，她会...
+                    `
+                }],
+                ["display-text", function () {
+                    return `${player[this.layer].clgVal[2].showtip}`
+                }],
+                "blank",
+                ["display-text", function () {
+                    if (!player[this.layer].complete[2]) {
+
+                        let tr = [0, 20, 40, 60, 80, 100]
+                        let { watch, nervous } = player[this.layer].clgVal[2]
+                        let w = [0, 0]
+
+                        for (let i = 0; i < tr.length; i++) {
+                            if (nervous >= tr[i]) {
+                                w[0] = i
+                            }
+                            if (watch >= tr[i]) {
+                                w[1] = i
+                            }
+                        }
+
+                        return `
+                        ${clgConst[2].text[0][w[0]]}(${nervous})
+                        <br>
+                        ${clgConst[2].text[1][w[1]]}(${watch})
+                        `
+                    }
+                }],
+                "blank",
+                ["bar", "lockbar"],
+                ["display-text", function () {
+                    if (!player[this.layer].complete[2]) return `目标力度 <h3>${player[this.layer].clgVal[2].target[
+                        player[this.layer].clgVal[2].round
+                    ]
+                        }</h3> - <h3>${player[this.layer].clgVal[2].target[
+                        player[this.layer].clgVal[2].round
+                        ] +
+                        clgConst[2].range[player[this.layer].clgVal[2].round]
+                        }</h3>`
+                }],
+                "blank",
+                ["clickables", [130]],
+                "blank",
+            ],
+            unlocked() {
+                return inChallenge(303, 13) && player[303].game
+            }
+        }
+    },
+    clearIntervene() {
+        if (player[this.layer].find) {
+            player[this.layer].intervene = randomBetween(40 + (20 + player[this.layer].time / 30), 60 + (30 + player[this.layer].time / 20))
+        } else {
+            if (Math.random() < 0.1) {
+                player[this.layer].intervene = randomBetween(40 + (20 + player[this.layer].time / 30), 60 + (30 + player[this.layer].time / 20))
+                player[this.layer].find = true
+            } else {
+                makeParticles({
+                    time: 5,
+                    fadeOutTime: 3,
+                    fadeInTime: 1,
+                    gravity: 0.75,
+                    image: "",
+                    style: { width: "auto" },
+                    text: `<span style="color:#f00">还...不够<br>渴望更多!</span>`,
+                    speed() {
+                        return (Math.random() + 1) * 20
+                    },
+                    angle() {
+                        return (Math.random() - 0.5) * 30
+                    },
+                    dir() {
+                        return (Math.random() - 0.5) * 45
+                    },
+                    spread: 0,
+                    rotation() {
+                        return (Math.random() - 0.5) * 25
+                    },
+                }, randomBetween(2, 5))
+            }
+        }
+    },
+    check11(input) {
+        if (input == 372559) {
+            player[this.layer].check = true
+            return [372559, 1]
+        }
+
+        const const11 = clgConst[0]
+        const val11 = player[this.layer].clgVal[0]
+        const val12 = player[this.layer].clgVal[1]
+        let curquestion = ["Error!请截图向开发者反馈并提供你的存档", 0]
+        let ansquestion = ["Error!请截图向开发者反馈并提供你的存档", 0]
+
+        //reset
+        if (input == 0) {
+            for (let r = 0; r < 3; r++) {
+                for (let q = 0; q < clgConst[0].roundQuestion[r]; q++) {
+                    let i = randomBetween(0, clgConst[0].base.length - 1)
+                    player[this.layer].clgVal[0].data[r][q] = [
+                        s256(`${player[this.layer].salt}${clgConst[0].base[i][0]}`),
+                        s256(`${player[this.layer].salt}${clgConst[0].base[i][1]}`),
+                    ]
+                }
+            }
+
+            if (val11.question + const11.diffQuestion[val11.round] >= 0 && val11.question + const11.diffQuestion[val11.round] < const11.roundQuestion[val11.round]) {
+                for (let q = 0; q < clgConst[0].base.length; q++) {
+                    if (
+                        s256(`${player[this.layer].salt}${clgConst[0].base[q][0]}`)
+                        ==
+                        val11.data[val11.round][val11.question + const11.diffQuestion[val11.round]][0]
+                    ) {
+                        curquestion = clgConst[0].base[q]
+                    }
+                }
+            }
+
+            if (val11.question >= 0 && val11.question < const11.roundQuestion[val11.round]) {
+                for (let q = 0; q < clgConst[0].base.length; q++) {
+                    if (
+                        s256(`${player[this.layer].salt}${clgConst[0].base[q][0]}`)
+                        ==
+                        val11.data[val11.round][val11.question][0]
+                    ) {
+                        ansquestion = clgConst[0].base[q]
+                    }
+                }
+            }
+
+            val11.shownow = curquestion[0]
+            return
+        }
+
+        if (val11.question >= 0 && val11.question < const11.roundQuestion[val11.round]) {
+            for (let q = 0; q < clgConst[0].base.length; q++) {
+                if (
+                    s256(`${player[this.layer].salt}${clgConst[0].base[q][0]}`)
+                    ==
+                    val11.data[val11.round][val11.question][0]
+                ) {
+                    ansquestion = clgConst[0].base[q]
+                }
+            }
+        }
+
+        //answer
+        if (input != -1) {
+            if (input == ansquestion[1]) {
+                val11.correct += 1
+                val11.showtip = "答对了！"
+            } else {
+                val11.showtip = "答错了！"
+            }
+        }
+        val11.question += 1
+
+        if (val11.question + const11.diffQuestion[val11.round] >= 0 && val11.question + const11.diffQuestion[val11.round] < const11.roundQuestion[val11.round]) {
+            for (let q = 0; q < clgConst[0].base.length; q++) {
+                if (
+                    s256(`${player[this.layer].salt}${clgConst[0].base[q][0]}`)
+                    ==
+                    val11.data[val11.round][val11.question + const11.diffQuestion[val11.round]][0]
+                ) {
+                    curquestion = clgConst[0].base[q]
+                }
+            }
+        }
+
+        val11.shownow = curquestion[0]
+
+        //next round
+        if (val11.question >= clgConst[0].roundQuestion[val11.round]) {
+            if (val11.correct / clgConst[0].roundQuestion[val11.round] > .8) {
+                if (val11.round >= 2) {
+                    val11.showtip = "完成！"
+
+                    val12.passwordDisplay[val11.round] = "Error!请截图向开发者反馈并提供你的存档"
+                    for (let n = 1; n <= 30; n++) {
+                        if (
+                            s256(`${player[this.layer].salt}${s256(`${val11.round}${player[this.layer].salt}${n}`)}`)
+                            ==
+                            val12.password[val11.round]
+                        ) {
+                            val12.passwordDisplay[val11.round] = s256(`${val11.round}${player[this.layer].salt}${n}`)
+                        }
+                    }
+
+                    player[this.layer].complete[0] = true
+                    layers[this.layer].challenges[11].onComplete()
+                } else {
+                    val11.showtip = "进入下一轮！"
+
+                    val12.passwordDisplay[val11.round] = "Error!请截图向开发者反馈并提供你的存档"
+                    for (let n = 1; n <= 30; n++) {
+                        if (
+                            s256(`${player[this.layer].salt}${s256(`${val11.round}${player[this.layer].salt}${n}`)}`)
+                            ==
+                            val12.password[val11.round]
+                        ) {
+                            val12.passwordDisplay[val11.round] = s256(`${val11.round}${player[this.layer].salt}${n}`)
+                        }
+                    }
+
+                    val11.round += 1
+                    val11.correct = 0
+                    val11.question = -const11.diffQuestion[val11.round]
+                }
+            } else {
+                for (let r = 0; r < 3; r++) {
+                    for (let q = 0; q < clgConst[0].roundQuestion[r]; q++) {
+                        let i = randomBetween(0, clgConst[0].base.length - 1)
+                        player[this.layer].clgVal[0].data[r][q] = [
+                            s256(`${player[this.layer].salt}${clgConst[0].base[i][0]}`),
+                            s256(`${player[this.layer].salt}${clgConst[0].base[i][1]}`),
+                        ]
+                    }
+                }
+                val11.showtip = "本轮失败，重新解题！"
+                val11.correct = 0
+                val11.question = -const11.diffQuestion[val11.round]
+            }
+        } else return
+
+        if (val11.question + const11.diffQuestion[val11.round] >= 0 && val11.question + const11.diffQuestion[val11.round] < const11.roundQuestion[val11.round]) {
+            for (let q = 0; q < clgConst[0].base.length; q++) {
+                if (
+                    s256(`${player[this.layer].salt}${clgConst[0].base[q][0]}`)
+                    ==
+                    val11.data[val11.round][val11.question + const11.diffQuestion[val11.round]][0]
+                ) {
+                    curquestion = clgConst[0].base[q]
+                }
+            }
+        }
+
+        val11.shownow = curquestion[0]
+    },
+    check12(input) {
+        if (input == 372559) {
+            player[this.layer].check = true
+            return [372559, 2]
+        }
+
+        const val12 = player[this.layer].clgVal[1]
+
+        if (input == 0) {
+            val12.target = [false, false, false]
+        }
+
+        if (
+            val12.passwordDisplay[input - 1]
+            ==
+            s256(`${input - 1}${player[this.layer].salt}${val12.current}`)
+        ) {
+            val12.target[input - 1] = true
+        } else {
+            val12.target[input - 1] = false
+        }
+
+        if (val12.target[0] && val12.target[1] && val12.target[2]) {
+            val12.showtip = "完成！"
+            player[this.layer].complete[1] = true
+            layers[this.layer].challenges[12].onComplete()
+        }
+    },
+    check13(input) {
+        if (input == 372559) {
+            player[this.layer].check = true
+            return [372559, 3]
+        }
+
+        if (input == -1) {
+            player[this.layer].clgVal[2] = JSON.parse(JSON.stringify(newClgVal[2]))
+            player[this.layer].clgVal[2].target = [
+                randomBetween(0, 100 - clgConst[2].range[0]),
+                randomBetween(0, 100 - clgConst[2].range[1]),
+                randomBetween(0, 100 - clgConst[2].range[2]),
+                randomBetween(0, 100 - clgConst[2].range[3]),
+                randomBetween(0, 100 - clgConst[2].range[4]),
+                randomBetween(0, 100 - clgConst[2].range[5]),
+                randomBetween(0, 100 - clgConst[2].range[6]),
+                randomBetween(0, 100 - clgConst[2].range[7]),
+                randomBetween(0, 100 - clgConst[2].range[8]),
+                randomBetween(0, 100 - clgConst[2].range[9]),
+                randomBetween(0, 100 - clgConst[2].range[10]),
+                randomBetween(0, 100 - clgConst[2].range[11]),
+                randomBetween(0, 100 - clgConst[2].range[12]),
+            ]
+        }
+
+        const val13 = player[this.layer].clgVal[2]
+
+        if (input <= player[this.layer].clgVal[2].target[player[this.layer].clgVal[2].round] + clgConst[2].range[player[this.layer].clgVal[2].round] && input >= player[this.layer].clgVal[2].target[player[this.layer].clgVal[2].round]) {
+            if (val13.round >= 12) {
+                val13.showtip = "完成！但是后面的还没做"
+                player[this.layer].complete[2] = true
+                layers[this.layer].challenges[13].onComplete()
+            }
+            val13.round++
+            val13.watch /= 1.05
+            val13.nervous /= 1.05
+        } else {
+            val13.watch *= 1.05
+            val13.nervous *= 1.05
+            val13.watch += 5 + val13.watch / 50
+            val13.nervous += 5 + val13.nervous / 50
+        }
+    },
+    startChallenge() {
+        player[this.layer].load = false
+        player[this.layer].game = true
+        player[this.layer].time = 600
+        player[this.layer].intervene = 90
+        player[this.layer].score = 0
+        player[this.layer].salt = Date.now()
+        player[this.layer].bomb = 10
+        player[this.layer].maxBomb = 10
+        player[this.layer].date = Date.now()
+
+        player[this.layer].challenges = []
+        player[this.layer].upgrades = []
+
+        player[this.layer].complete = [false, false, false, false, false, false]
+
+        player[this.layer].clgVal = JSON.parse(JSON.stringify(newClgVal))
+
+        //clg 11
+        for (let r = 0; r < 3; r++) {
+            for (let q = 0; q < clgConst[0].roundQuestion[r]; q++) {
+                let i = randomBetween(0, clgConst[0].base.length - 1)
+                player[this.layer].clgVal[0].data[r][q] = [
+                    s256(`${player[this.layer].salt}${clgConst[0].base[i][0]}`),
+                    s256(`${player[this.layer].salt}${clgConst[0].base[i][1]}`),
+                ]
+            }
+        }
+
+        //clg 12
+        player[this.layer].clgVal[1].password = [
+            s256(`${player[this.layer].salt}${s256(`0${player[this.layer].salt}${randomBetween(1, 30)}`)}`),
+            s256(`${player[this.layer].salt}${s256(`1${player[this.layer].salt}${randomBetween(1, 30)}`)}`),
+            s256(`${player[this.layer].salt}${s256(`2${player[this.layer].salt}${randomBetween(1, 30)}`)}`)
+        ]
+        player[this.layer].clgVal[1].passwordDisplay = [
+            "=未破译=",
+            "=未破译=",
+            "=未破译=",
+        ]
+
+        //clg 13
+        /*
+            player[this.layer].clgVal[2].target = [
+                randomBetween(0, 100 - clgConst[2].range[0]),
+                randomBetween(0, 100 - clgConst[2].range[1]),
+                randomBetween(0, 100 - clgConst[2].range[2]),
+                randomBetween(0, 100 - clgConst[2].range[3]),
+                randomBetween(0, 100 - clgConst[2].range[4]),
+                randomBetween(0, 100 - clgConst[2].range[5]),
+                randomBetween(0, 100 - clgConst[2].range[6]),
+                randomBetween(0, 100 - clgConst[2].range[7]),
+                randomBetween(0, 100 - clgConst[2].range[8]),
+                randomBetween(0, 100 - clgConst[2].range[9]),
+                randomBetween(0, 100 - clgConst[2].range[10]),
+                randomBetween(0, 100 - clgConst[2].range[11]),
+                randomBetween(0, 100 - clgConst[2].range[12]),
+            */
+
+        layers[this.layer].challenges[11].onExit()
+        layers[this.layer].challenges[12].onExit()
+        layers[this.layer].challenges[13].onExit()
+        player.subtabs[303].mainTabs = "1F"
+
+        window.trackPlayer.setSong("303bg", true)
+    },
+    endChallenge(showtip) {
+        player[this.layer].load = false
+        player[this.layer].game = false
+        player[this.layer].time = 0
+        player[this.layer].intervene = 1
+        player[this.layer].score = 0
+        player[this.layer].salt = 0
+        player[this.layer].bomb = 0
+        player[this.layer].maxBomb = 0
+        player[this.layer].date = 0
+
+        player[this.layer].challenges = []
+        player[this.layer].upgrades = []
+
+        player[this.layer].complete = [false, false, false, false, false, false]
+
+        player[this.layer].clgVal = JSON.parse(JSON.stringify(newClgVal))
+        if (showtip) player[this.layer].clgVal.main.showtip = showtip
+
+        layers[this.layer].challenges[11].onExit()
+        layers[this.layer].challenges[12].onExit()
+        layers[this.layer].challenges[13].onExit()
+        player.subtabs[303].mainTabs = "1F"
+
+        window.trackPlayer.setSong("303bg", false)
+    },
+    upgrades: {
+
+    },
+    challenges: {
+        11: {
+            name: "解算：频棠弧合",
+            challengeDescription: "破译出保险箱的密码，你就可以打开保险箱",
+            goalDescription: "算出答案",
+            rewardDescription: "给你密码",
+            canComplete() {
+                return player[this.layer].complete[0]
+            },
+            unlocked() {
+                return player[this.layer].game
+            },
+            onEnter() {
+                layers[this.layer].check11(0)
+            },
+            onExit() {
+                layers[this.layer].check11(0)
+            },
+            onComplete() {
+                playsound("cc")
+            }
+        },
+        12: {
+            name: "开箱:辣歺供梓",
+            challengeDescription: "取出保险箱中的钥匙，你就可以打开门",
+            goalDescription: "打开保险箱",
+            rewardDescription: "给你钥匙",
+            canComplete() {
+                return player[this.layer].complete[1]
+            },
+            unlocked() {
+                return player[this.layer].game
+            },
+            onEnter() {
+                layers[this.layer].check12(0)
+            },
+            onExit() {
+                layers[this.layer].check12(0)
+            },
+            onComplete() {
+                playsound("cc")
+            }
+        },
+        13: {
+            name: "出门：圆甜姬曳",
+            challengeDescription: "<span class='p9tx'>qhlg</span>正在寻找你，不要被发现",
+            goalDescription: "用钥匙开门",
+            rewardDescription: "逃出房间",
+            canComplete() {
+                return player[this.layer].complete[2]
+            },
+            unlocked() {
+                return player[this.layer].game && player[this.layer].find
+            },
+            onEnter() {
+                layers[this.layer].check13(-1)
+            },
+            onExit() {
+                layers[this.layer].check13(-1)
+            },
+            onComplete() {
+                playsound("cc")
+            }
+        },
+    },
+    clickables: {
+        11: {
+            title: "*开始摇滚*",
+            canClick() { return !player[this.layer].game },
+            onClick() {
+                layers[303].startChallenge()
+            }
+
+        },
+        12: {
+            title: "结束挑战",
+            canClick() { return player[this.layer].game },
+            onClick() {
+                layers[303].endChallenge("<h1 class='p9tx'>懦夫。</h1>")
+            }
+        },
+        13: {
+            title: "你不该这么做",
+            canClick() { return true },
+            unlocked() {
+                return !player[this.layer].check
+            },
+            onClick() {
+                hardReset(true, true)
+            }
+        },
+
+        //bomb
+        21: {
+            title: "炸弹计数+1",
+            display() {
+                return `炸弹计数每秒减少<br>${format(((player[this.layer].maxBomb / 10) ** Math.log10(25)) / 5)}<br>不要贪心<br>不要长按`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0
+            },
+            onClick() {
+                player[this.layer].bomb = Math.min(100, player[this.layer].bomb + 1)
+            },
+            onHold() {
+                player[this.layer].maxBomb = 100
+            },
+            canClick() { return player[this.layer].game },
+            unlocked() { return player[this.layer].game }
+        },
+
+        //clg 11
+        1101: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[0]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[0])
+            }
+        },
+        1102: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[1]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[1])
+            }
+        },
+        1103: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[2]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[2])
+            }
+        },
+        1114: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[3]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[3])
+            }
+        },
+        1115: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[4]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[4])
+            }
+        },
+        1116: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[5]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[5])
+            }
+        },
+        1127: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[6]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[6])
+            }
+        },
+        1128: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[7]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[7])
+            }
+        },
+        1129: {
+            title() {
+                return `
+				<span style="font-size:48px">${layers[this.layer].keyList()[8]}</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question >= 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(layers[this.layer].keyList()[8])
+            }
+        },
+        1131: {
+            title() {
+                return `<span style="font-size:36px">Next</span>`
+            },
+            unlocked() {
+                return player[this.layer].clgVal[0].question < 0 && !player[this.layer].complete[0]
+            },
+            canClick: true,
+            onClick() {
+                layers[this.layer].check11(-1)
+            }
+        },
+
+        //clg12
+        1201: {
+            title() {
+                return `<span style="font-size:48px">+</span>`
+            },
+            onClick() {
+                player[303].clgVal[1].current = Math.min(player[303].clgVal[1].current + 1, 30)
+            },
+            onHold() {
+                layers[this.layer].check12(0)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[1]
+            },
+        },
+        1202: {
+            title() {
+                return `<span style="font-size:48px">-</span>`
+            },
+            onClick() {
+                player[303].clgVal[1].current = Math.max(player[303].clgVal[1].current - 1, 1)
+            },
+            onHold() {
+                layers[this.layer].check12(0)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[1]
+            },
+        },
+        1211: {
+            title() {
+                return `<span style="font-size:48px">1</span>`
+            },
+            onClick() {
+                layers[this.layer].check12(1)
+            },
+            onHold() {
+                layers[this.layer].check12(0)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[1]
+            },
+        },
+        1212: {
+            title() {
+                return `<span style="font-size:48px">2</span>`
+            },
+            onClick() {
+                layers[this.layer].check12(2)
+            },
+            onHold() {
+                layers[this.layer].check12(0)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[1]
+            },
+        },
+        1213: {
+            title() {
+                return `<span style="font-size:48px">3</span>`
+            },
+            onClick() {
+                layers[this.layer].check12(3)
+            },
+            onHold() {
+                layers[this.layer].check12(0)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[1]
+            },
+        },
+
+        //clg12
+        1301: {
+            title() {
+                return `<span style="font-size:28px">用力</span>`
+            },
+            onClick() {
+                player[this.layer].clgVal[2].power = Math.min(100, player[this.layer].clgVal[2].power + calPower())
+
+                function calPower() {
+                    let a = player[303].clgVal[2].nervous
+                    if (a <= 20) return 5
+                    else {
+                        return (5 - (a / 100 * 2))
+                            + (Math.random() - 0.5) * 5 * (a / 100)
+                    }
+                }
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[2]
+            },
+        },
+        1302: {
+            title() {
+                return `<span style="font-size:20px">平复心情</span>`
+            },
+            onClick() {
+                player[303].clgVal[2].nervous = player[303].clgVal[2].nervous / 2
+                player[303].clgVal[2].watch += 2 + player[303].clgVal[2].watch / 33
+            },
+            onHold() {
+                player[303].clgVal[2].nervous = 120
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[2]
+            },
+        },
+        1303: {
+            title() {
+                return `<span style="font-size:20px">扭钥匙</span>`
+            },
+            onClick() {
+                layers[this.layer].check13(player[this.layer].clgVal[2].power)
+            },
+            canClick: true,
+            unlocked() {
+                return !player[this.layer].complete[2]
+            },
+        },
+    },
+    bars: {
+        timebar: {
+            direction: RIGHT,
+            width: 600,
+            height: 30,
+            progress() {
+                return player[303].time / 600
+            },
+            display() {
+                return `剩余时间 <h3 class="p9tx">${formatTime(player[303].time)}</h3>`
+            },
+            fillStyle: { backgroundColor: "#3A3" }
+        },
+        bombbar: {
+            direction: RIGHT,
+            width: 600,
+            height: 20,
+            progress() {
+                return player[303].bomb / 100
+            },
+            display() {
+                return `炸弹 <span class="p9tx">${format(player[303].bomb)}</span>`
+            },
+            fillStyle: { backgroundColor: "#F00" }
+        },
+        lockbar: {
+            direction: RIGHT,
+            width: 600,
+            height: 50,
+            progress() {
+                return player[303].clgVal[2].power / 100
+            },
+            display() {
+                return `力度 <span class="p9tx">${formatWhole(player[303].clgVal[2].power)}</span>`
+            },
+            fillStyle: { backgroundColor: "#888" }
+        }
+    },
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+
+});

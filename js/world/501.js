@@ -1,3 +1,7 @@
+/*
+正在看源代码的小朋友你好呀，user写的太难读了，推荐不读
+*/
+
 addLayer("501", {
     symbol: "😂",
     resource: "点数",
@@ -81,7 +85,7 @@ addLayer("501", {
         }
         if (s.eq(9)) {
             if (player._501.cnt == 0) return `已完成!请等待下个回合开始`
-            return `请不要点击<b style="color:#00DD00">蓝色</b>但是刚才的话取反2↑↑4次之后,不要这么做`
+            return `不要按<b style="color:#00DD00">蓝色</b>按钮,但是这句话取反2↑↑4次之后,不要这么做<br>最后不要不按下所有没有被说不需要按的按钮`
         }
         if (s.eq(10)) {
             if (player._501.trig[7] == false) return `已完成!请等待下个回合开始`
@@ -160,7 +164,7 @@ addLayer("501", {
         }
         if (s.eq(16)) {
             if (player._501.cnt == 0) return `已完成!请等待下个回合开始`
-            return `请点击所有<b style="color:cyan">青色</b>的按钮,一旦点击了假按钮(50%概率),你就输了!`
+            return `请点击真正的<b style="color:cyan">青色</b>的按钮,一旦点击了假按钮(50%概率),你就输了!`
         }
         if (s.eq(17)) {
             if (player._501.trig[12] == false && player._501.trig[13] == true) return `已完成!请等待下个回合开始`
@@ -287,11 +291,13 @@ addLayer("501", {
                         player._501.started = false
                         if (!player._501.complete) {
                             player._501.complete = true
+                            if (!player._501.lose && options.challenger && options.truechallenger == 0) options.truechallenger = 1
                             completeWorld(this.layer)
                         }
                     } else {
                         player._501.trig[14] = true
                         player._501.lose = true
+                        if (options.challenger) hardReset(false, true)
                     }
                 }
                 if (player._501.cnt > 0 && player._501.stage.neq(19)) {
@@ -301,6 +307,7 @@ addLayer("501", {
                     else if (player._501.stage.eq(20)) player._501.trig[13] = true
                     else player._501.trig[2] = true
                     player._501.lose = true
+                    if (options.challenger) hardReset(false, true)
                 }
                 if (player._501.stage.eq(15)) {
                     player._501.rp = layers[this.layer].getWrongPage()

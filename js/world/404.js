@@ -346,7 +346,7 @@ addLayer("404", {
         },
         //str
         301: {
-            title: "STR JACK<br>やっぱりみゃー姉なんばーわん",
+            title: "STR+ JACK<br>やっぱりみゃー姉なんばーわん",
             display: "長江里加",
             onClick() {
                 player[this.layer].songid = this.id

@@ -41,7 +41,7 @@ addLayer("main", {
                 return '<span style="color:#88888888">游戏完成进度</span>'
             },
             progress() {
-                return player.points.div(25)
+                return player.points.div(26)
             }
         }
     },
@@ -153,6 +153,15 @@ addLayer("ach", {
     symbol: "🏆",
     resource: "成就",
     color: "#f2d87b",
+    update(diff) {
+        if (player[501].lose) {
+            options.truechallenger = -1
+        }
+
+        if (!options.challenger && player._501.started) {
+            options.truechallenger = -1
+        }
+    },
     startData() {
         return {
             unlocked: true,
@@ -168,11 +177,22 @@ addLayer("ach", {
                     let ach = player[this.layer].points
                     return `你有 ${formatWhole(ach)}/${formatWhole(tac)} 成就,加成成就获取+1<br>
                     ${layers[this.layer].getSomeText(ach.div(tac))}<br>
-                    你每完成一个成就,将获得1梦力!`
+                    `
                 }],
                 "blank",
-                "achievements",
+                ["display-text", function () {
+                    return `有一些成就在游戏进程中可能变得永远无法完成,它们是:`
+                }],
+                ["display-text", function () {
+                    return `愚人节玩笑 目前 ${!player._501.lose ? "可完成" : "不可完成"}`
+                }],
+                ["display-text", function () {
+                    return `愚人节挑战者 目前 ${options.truechallenger >= 0 ? "可完成" : "不可完成"}`
+                }],
+                "blank",
                 "clickables",
+                "blank",
+                "achievements",
             ]
         },
         世界: {
@@ -182,6 +202,7 @@ addLayer("ach", {
                 ["row", [["milestone", 301], ["milestone", 302], ["milestone", 303], ["milestone", 304], ["milestone", 305],]],
                 ["row", [["milestone", 401], ["milestone", 402], ["milestone", 403], ["milestone", 404], ["milestone", 405],]],
                 ["row", [["milestone", 501], ["milestone", 502], ["milestone", 503], ["milestone", 504], ["milestone", 505],]],
+                ["row", [["milestone", 520], ]],
             ]
         }
     },
@@ -240,9 +261,9 @@ addLayer("ach", {
         },
         16: {
             name: "<span class='ach'>所有世界的王<br>宇宙的新统领</span>",
-            done() { return player.points.gte(25) },
+            done() { return player.points.gte(26) },
             onComplete() { achievementComplete() },
-            tooltip() { return this.done() ? '<span class="p9pt">完成25世界</span>' : `完成${formatWhole(player.points)}/25世界` },
+            tooltip() { return this.done() ? '<span class="p9pt">完成26世界</span>' : `完成${formatWhole(player.points)}/26世界` },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/16.jpg)",
             },
@@ -323,13 +344,26 @@ addLayer("ach", {
         },
         31: {
             name: "<span class='p8tx'>FULL FOX FOUND</span>",
-            done() { return player[404].points.gte(1375000) },
+            done() { return player[404].points >= 1375000 },
             onComplete() { achievementComplete() },
             tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第1000夜中的任意曲目达成严判ALL FOX" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/31.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
+        },
+        99: {
+            name: "<span class='c1'>愚人节</span><span class='p9tx'>挑战者</span>",
+            done() { return options.truechallenger == 1 && player._501.complete },
+            onComplete() {
+                achievementComplete()
+                player.main.points = player.main.points.add(14)
+            },
+            tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是15梦力",
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/99.jpg)",
+            },
+            unlocked() { return true }
         },
         101: {
             name: "<span class='c1'>愚人节玩笑</span>",
@@ -510,7 +544,7 @@ addLayer("ach", {
         },
         306: {
             name: "<span class='ach'>深度体验</span>",
-            done() { return player.timePlayed>1800 },
+            done() { return player.timePlayed > 1800 },
             onComplete() { achievementComplete() },
             tooltip() { if (hasAchievement(this.layer, this.id)) { return "游玩时长达到30分钟" } else { return "完成成就以查看" } },
             style: {
@@ -647,6 +681,10 @@ addLayer("ach", {
             done() { return player.world[this.id] }
         },
         505: {
+            requirementDescription() { return `世界${this.id}完成!` },
+            done() { return player.world[this.id] }
+        },
+        520: {
             requirementDescription() { return `世界${this.id}完成!` },
             done() { return player.world[this.id] }
         },

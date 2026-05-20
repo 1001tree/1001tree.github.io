@@ -18,12 +18,15 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.7972,
-	name: "发布版v7"
+	num: 0.798,
+	name: "发布版v8"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v8 | 0.798 | 2026/5/20</h3><br>
+	更新了一个世界<br>
+	更新了一个挑战成就和一系列基于此的流程<br><br>
 	<h3>v5 | 0.797 | 2026/5/16</h3><br>
 	修改了梦力生成器机制<br><br>
 	<h3>v4 | 0.796 | 2026/5/15</h3><br>
@@ -209,12 +212,28 @@ function maxTickLength() {
 // 如果需要修复旧版本存档的数值膨胀问题,使用此函数.如果版本早于修复该问题的版本,
 // 你可以用此函数限制他们当前的资源.
 function fixOldSave(oldVersion) {
-	if (oldVersion <= 0.796) {
-		if (player[this.layer].power) player[this.layer].power = _D(player[this.layer].power)
-	}
 	if (oldVersion <= 0.795) {
 		let ach = player.ach.points
 		player.main.points = player.main.points.add(ach)
-		alert(`基于曾经完成的成就,你获得了${formatWhole(ach)}梦力!(为什么我会收到这个?看看更新日志!)`)
+		alert(`在0.796版本的更新后,基于曾经完成的成就,你获得了${formatWhole(ach)}梦力!`)
+	}
+	if (oldVersion <= 0.796) {
+		if (player[this.layer].power) player[this.layer].power = _D(player[this.layer].power)
+	}
+	if (oldVersion <= 0.7972) {
+        if (getGridData('main', 501)) {
+			if (!player._501.lose && !player._501.complete) {
+				alert(`为什么你买了501但是没玩😱!不过,0.798版本新增了一个更强的挑战成就,想试试的话,去设置打开挑战者模式吧!`)
+			}
+			if (player._501.lose && player._501.complete) {
+				player._501.lose = false
+				player._501.complete = false
+				alert(`501限定成就愚人节玩笑进行了一次更新,尽管你已经无法完成它,但0.798版本重置了它,查看设置和成就里的新东西吧!`)
+			}
+			if (!player._501.lose && player._501.complete) {
+				options.truechallenger = true
+				alert(`看起来你已经完成愚人节玩笑成就了,不过,0.798版本新增了一个更强的挑战成就(你应该已经自动获得了它),想试试的话,就创建一个新存档,去设置打开挑战者模式吧!`)
+			}
+		}
 	}
 }

@@ -12,8 +12,11 @@ function getStartOptions() {
 
 		autosave: true,
 
+		challenger: false,
+		nosuicide: true,
+
 		theme: "fox",
-		font: "",
+		font: "DJGSHT",
 		bgi: null,
 		notrans: false,
 
@@ -47,6 +50,9 @@ function getStartOptions() {
 		songautoplay: false,
 		songvolume: 0.5,
 		songmode: 0,
+
+		//成就
+		truechallenger: 0,
 
 		//弃用
 		offlineProd: false,

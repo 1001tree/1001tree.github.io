@@ -218,7 +218,7 @@ function doReset(layer, force = false) {
 		if (row >= layers[layerResetting].row && (!force || layerResetting != layer)) completeChallenge(layerResetting)
 	}
 
-	if (tmp[layer].type != "null" && !["3022","3023","3024","302"].includes(layer)) player.points = (row == 0 ? decimalZero : getStartPoints())
+	if (tmp[layer].type != "null" && !["3022", "3023", "3024", "302"].includes(layer)) player.points = (row == 0 ? decimalZero : getStartPoints())
 
 	for (let x = row; x >= 0; x--) rowReset(x, layer)
 	for (r in OTHER_LAYERS) {
@@ -390,9 +390,9 @@ function gameLoop(diff) {
 
 }
 
-function hardReset(resetOptions) {
+function hardReset(resetOptions, noConfirm) {
 	player.hardreset = true
-	if (!confirm("你真的要重置吗?这会清除你的所有进度!")) return
+	if (!noConfirm) if (!confirm("你真的要重置吗?这会清除你的所有进度!")) return
 	player = null
 	if (resetOptions) options = null
 	save(true);

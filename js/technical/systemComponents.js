@@ -178,8 +178,11 @@ var systemComponents = {
 		<br><br>
         游玩时间: {{ formatTime(player.timePlayed) }}<br><br>
         <h3>热键</h3><br>
-		<ct>25个游戏刚好对应25个键,但还有一个键我们不知道选谁,感觉去掉谁都不好,所以没选热键,你信吗<br>反正我不信,你信的话看一下下面,不信也看一下下面</ct>
-        <span v-for="key in hotkeys" v-if="player[key.layer].unlocked && tmp[key.layer].hotkeys[key.id].unlocked"><br>{{key.description}}</span></div>
+		<ct>25个游戏刚好对应25个键,但还有一个键我们不知道选谁,感觉去掉谁都不好,所以没选热键,你信吗<br>反正我不信,你信的话看一下下面,不信也看一下下面</ct><br>
+		我们加入了一个新世界,现在我们有26个快捷键了!<br>
+        <span v-for="key in hotkeys" v-if="player[key.layer].unlocked && tmp[key.layer].hotkeys[key.id].unlocked"><br>{{key.description}}</span>
+		<br><br>
+		</div>
 		
 		`
 	},
@@ -199,21 +202,26 @@ var systemComponents = {
 			<br>
 			</tr>
             <tr v-if="options.saveclass">
-				<td><button class="info" disabled>存档操作</button></td>
+				<td><button class="info" disabled>保存</button></td>
                 <td><button class="opt" onclick="save()">保存</button></td>
+                <td><button class="opt" onclick="window.location.reload();">刷新页面</button></td>
+                <td><button class="opt" onclick="save();window.location.reload();">保存并<br>刷新页面</button></td>
                 <td><button class="opt" onclick="toggleOpt('autosave')">自动保存<br>{{ formatOption('autosave') }}</button></td>
+			</tr>
+            <tr v-if="options.saveclass">
+				<td><button class="info" disabled>存档操作</button></td>
                 <td><button class="opt" onclick="exportSave()">导出存档<br/>到剪贴板</button></td>
                 <td><button class="opt" onclick="exportSave(true)">导出存档<br/>到文件</button></td>
-                <td><button class="opt" onclick="importSave()">导入存档</button></td>
+                <td><button class="opt" onclick="importSave()">从剪贴板<br/>导入存档</button></td>
+				<td><button class="opt" onClick="importSaveFromFile()">从文件<br/>导入存档</button></td>
 			</tr>
             <tr v-if="options.saveclass">
-				<td></td>
-				<td><button class="opt" onClick="importSaveFromFile()">从文件导入存档</button></td>
-			</tr>
+				<td><button class="info" disabled>世界</button></td>
+                <td><button class="opt" onclick="toggleOpt('challenger')">挑战者<br>{{ formatOption('challenger') }}<br>501世界失败自动硬重置</button></td>
+                <td><button class="opt" onclick="layers[303].check11 = ()=>{return true}">破坏303世界<br>可能在你需要<br>*真正的*<br>硬重置时有用</button></td>
+                <td><button class="opt" onclick="completeWorld(520)">完成520世界</button></td>
+            </tr>
             <tr v-if="options.saveclass">
-				<td><button class="info" disabled>除错</button></td>
-                <td><button class="opt" onclick="save();window.location.reload();">保存并<br>刷新页面</button></td>
-				<td></td>
 				<td><button class="info" disabled>危险区</button></td>
                 <td><button class="opt" onclick="hardReset()">硬重置</button></td>
 				<td><button class="opt" onclick="player.你是不是觉得这个会炸档但是其实它不会而且你还不会获得一个成就因为这个伎俩我早就在睡觉树用过了众所周知一个聪明人不会两次用同样的伎俩哈哈哈 = NaN">一键崩溃</button></td>
@@ -486,6 +494,9 @@ var systemComponents = {
 			<audio id="s2">
         		<source src="./resources/song/sound2.wav" type="audio/wav">
     		</audio>
+			<audio id="s3">
+        		<source src="./resources/song/sound3.wav" type="audio/wav">
+    		</audio>
 			<audio id="g1">
         		<source src="./resources/song/song1.mp3" type="audio/mpeg">
     		</audio>
@@ -501,7 +512,7 @@ var systemComponents = {
 				showPlayWarning: false,
 				warning: true,
 				songs: [
-					{ name: 'Porter Robinson - dullscythe', src: './resources/song/background1.mp3' },
+					{ name: 'PYKAMIA - Fantasia Sonata Arcadia', src: './resources/song/background1.mp3' },
 					{ name: 'Adrian Talens - 10#30 P.M. (chill lo-fi mix)', src: './resources/song/background2.mp3' },
 					{ name: 'ZenithLights、Zane Lucian - Forget', src: './resources/song/background3.mp3' },
 					{ name: 'Asurah - Still Falling', src: './resources/song/background4.mp3' },
@@ -528,6 +539,13 @@ var systemComponents = {
 					{ name: '失落花园_、Nommi - 破窗效应', src: './resources/song/background25.mp3' },
 					{ name: 'Aika - CALAMITY RHAPSODY', src: './resources/song/background26.mp3' },
 					{ name: "Zekk、Minhyuk Choi - The King's Return", src: './resources/song/background27.mp3' },
+					{ name: "かめりあ - farewell to today", src: './resources/song/background28.mp3' },
+					{ name: 'Porter Robinson - dullscythe', src: './resources/song/background29.mp3' },
+					{ name: 'Kobaryo - はげしこの夜 -Psylent Crazy Night-', src: './resources/song/background30.mp3' },
+					{ name: 'かめりあ - CICADA3302', src: './resources/song/background31.mp3' },
+					{ name: 'Kobaryo - Vicious [ANTi] Heroism', src: './resources/song/background32.mp3' },
+					{ name: 'かめりあ、ななひら - Glitch Out (feat. ななひら)', src: './resources/song/background33.mp3' },
+					{ name: 'Retroshade、WIND - DevIAtiOn', src: './resources/song/background34.mp3' },
 
 				]
 			};
