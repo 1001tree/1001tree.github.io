@@ -358,19 +358,6 @@ addLayer("ach", {
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         98: {
-            name: "<span class='c1'>愚人节</span><span class='p9tx'>挑战者</span>",
-            done() { return options.truechallenger == 1 && player._501.complete },
-            onComplete() {
-                achievementComplete()
-                player.main.points = player.main.points.add(14)
-            },
-            tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是15梦力",
-            style: {
-                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/98.jpg)",
-            },
-            unlocked() { return true }
-        },
-        99: {
             name: "<span class='p5tx'>完美雇员</span>",
             done() { return player['304'].achtrig2 },
             onComplete() {
@@ -380,6 +367,19 @@ addLayer("ach", {
             tooltip: "通过第101夜的第...22关???<br>奖励是10梦力",
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/99.jpg)",
+            },
+            unlocked() { return true }
+        },
+        99: {
+            name: "<span class='c1'>愚人节</span><span class='p9tx'>挑战者</span>",
+            done() { return options.truechallenger == 1 && player._501.complete },
+            onComplete() {
+                achievementComplete()
+                player.main.points = player.main.points.add(14)
+            },
+            tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是15梦力",
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/98.jpg)",
             },
             unlocked() { return true }
         },
