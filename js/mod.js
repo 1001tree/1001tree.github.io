@@ -19,12 +19,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.7981,
-	name: "发布版v9"
+	num: 0.8,
+	name: "发布版v10"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v10 | 0.8| 2026/5/22</h3><br>
+	更新了20个游戏和关于第20个游戏的成就<br><br>
 	<h3>v9 | 0.7981 | 2026/5/21</h3><br>
 	梦力被平衡：梦力生成器更弱，夜世界需要2梦力解锁<br>
 	<h3>v8 | 0.798 | 2026/5/20</h3><br>
@@ -72,7 +74,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "startChallenge", "endChallenge",
-	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap"
+	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap","getshopcap",
+	"getFl22req","getFl22trig"
 ]
 
 function getStartPoints() {
