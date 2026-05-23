@@ -316,12 +316,12 @@ addLayer("ach", {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/24.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
-        },
+        },        
         25: {
-            name: "<span class='p5tx'>准时准点</span>",
-            done() { return player['304'].lv>=20 },
+            name: "<span class='p6tx'>真假无限</span>",
+            done() { return player[402].level == 12 && player[402].value.gte(_DInf) },
             onComplete() { achievementComplete() },
-            tooltip() { if (hasAchievement(this.layer, this.id)) { return "通过第101夜的第20关" } else { return "完成成就以查看" } },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第110夜的第12关达到1.79e308数值." } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/25.jpg)",
             },
@@ -338,10 +338,10 @@ addLayer("ach", {
             unlocked() { return hasAchievement(this.layer, this.id) }
         },
         27: {
-            name: "<span class='p6tx'>真假无限</span>",
-            done() { return player[402].level == 12 && player[402].value.gte(_DInf) },
+            name: "<span class='p5tx'>准时准点</span>",
+            done() { return player['304'].lv>=20 },
             onComplete() { achievementComplete() },
-            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在第110夜的第12关达到1.79e308数值." } else { return "完成成就以查看" } },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "通过第101夜的第20关" } else { return "完成成就以查看" } },
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/27.jpg)",
             },
@@ -366,7 +366,7 @@ addLayer("ach", {
             },
             tooltip: "通过第101夜的第...22关???<br>奖励是10梦力",
             style: {
-                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/99.jpg)",
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/98.jpg)",
             },
             unlocked() { return true }
         },
@@ -379,7 +379,7 @@ addLayer("ach", {
             },
             tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是15梦力",
             style: {
-                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/98.jpg)",
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/99.jpg)",
             },
             unlocked() { return true }
         },
