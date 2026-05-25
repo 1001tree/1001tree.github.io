@@ -791,6 +791,7 @@ var systemComponents = {
 					101: { src: '/resources/song/track101.ogg' },
 					102: { src: '/resources/song/track102.ogg' },
 					103: { src: '/resources/song/track103.ogg' },
+					104: { src: '/resources/song/track104.ogg' },
 
 					201: { src: '/resources/song/track201.ogg' },
 					202: { src: '/resources/song/track202.ogg' },

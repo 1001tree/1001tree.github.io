@@ -5,12 +5,14 @@ addLayer("404", {
     startData() {
         return {
             unlocked: true,
-            points: _D0,
+            points: 0,
             speed: 10,
             offset: 0,
             judge: 0,
             songid: 101,
             life: 1000,
+            song: {
+            }
         }
     },
     type: "none",
@@ -26,7 +28,7 @@ addLayer("404", {
                             ${d404.e ? "游戏结束喵<br>" : ""}<br>
                             请使用单页面游玩<br>
                             得到70万分完成世界<br><br>
-                            最高分数<br><h1 class="p8pt">${formatWhole(player[this.layer].points)}</h1><br><br>
+                            最高分数<br><h1 class="p8pt">${typeof player[404].song[player[404].songid] == "undefined" ? "未游玩" : `${formatWhole(player[404].song[player[404].songid].points)}`}</h1><br><br>
                             本曲分数<br><h1 class="p8pt">${formatWhole(d404.p)}</h1><br>
                             准度 ${formatWhole(calApc())}<br>
                             绝赞 ${formatWhole(calMax())}<br>
@@ -94,7 +96,13 @@ addLayer("404", {
         ],
         ["blank", "50px"],
         ["display-text", function () {
-            return `<h1>选曲</h1>`
+            return `<h1>选曲</h1><br>
+            颜色:
+            <span style="color:#fd0">严判AllFox </span>
+            <span style="color:#f80">AllFox </span>
+            <span style="color:#2d0">严判超分 </span>
+            <span style="color:#99f">FullCombo </span>
+            `
         }],
         "blank",
         ["display-text", function () {
@@ -226,202 +234,126 @@ addLayer("404", {
         //dst
         101: {
             title: "DST- Introduction<br>ᐇ",
-            display: "W/",
+            display() { return "W/" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         102: {
             title: "DST+ wh~aooltz<br>Waltz in 21edo",
-            display: "Deister Orchestra",
+            display() { return "Deister Orchestra" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         103: {
             title: "DST? 0.704545<br>dropdead[光敏性癫痫预警]",
-            display: "Frums",
+            display() { return "Frums" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
+            }
+        },
+        104: {
+            title: "DST? 请输入文本<br>Here we go",
+            display() { return "The Quick Brown Fox" + getDisplay404(this.id) },
+            onClick() {
+                player[this.layer].songid = this.id
+            },
+            canClick() { return !d404.s },
+            style() {
+                return getStyle404(this.id, 14)
             }
         },
         //plt
         201: {
             title: "PLT GOOD SLEEPER<br>groove 33edo",
-            display: "Deister Orchestra",
+            display() { return "Deister Orchestra" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         202: {
             title: "PLT+ BBLLET<br>Crush Everyone",
-            display: "The Quick Brown Fox",
+            display() { return "The Quick Brown Fox" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         203: {
             title: "PLT+ jack<br>Dragon Rider",
-            display: "Two Steps From Hell",
+            display() { return "Two Steps From Hell" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         //str
         301: {
             title: "STR+ JACK<br>やっぱりみゃー姉なんばーわん",
-            display: "長江里加",
+            display() { return "長江里加" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         302: {
             title: "STR J~A~C~K<br>unforeseen dream scenarios that glorify the beauty of a vacuum cleaner",
-            display: "Rory in early 20s、Shizuma Lietova",
+            display() { return "Rory in early 20s、Shizuma Lietova" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "10px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 10)
             }
         },
         303: {
             title: "STR Challenge<br>Agni7EEE",
-            display: "SKYLINE/RUNAWAYPLAN",
+            display() { return "SKYLINE/RUNAWAYPLAN" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
         //glx
         401: {
             title: "GLX SUPERJJJJACK<br>None Shall Live",
-            display: "Thomas Bergersen",
+            display() { return "Thomas Bergersen" + getDisplay404(this.id) },
             onClick() {
                 player[this.layer].songid = this.id
             },
             canClick() { return !d404.s },
             style() {
-
-                return {
-                    width: "640px",
-                    minHeight: "80px",
-                    height: "80px",
-                    backgroundColor: player[this.layer].songid == this.id ? "#EEE" : "#888",
-                    display: "inline-block",
-                    fontSize: "14px",
-                    clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
-                }
+                return getStyle404(this.id, 14)
             }
         },
     },
@@ -454,6 +386,48 @@ addLayer("404", {
     ],
 });
 
+function getStyle404(id, size = 14) {
+    let backgroundColor
+    if (player[404].songid == id) {
+        if (typeof player[404].song[id] == "undefined" || player[404].song[id].state == 0) {
+            backgroundColor = "#eee"
+        } else if (player[404].song[id].state == 1) {
+            backgroundColor = "#99f"
+        } else if (player[404].song[id].state == 2) {
+            backgroundColor = "#2d0"
+        } else if (player[404].song[id].state == 3) {
+            backgroundColor = "#f80"
+        } else if (player[404].song[id].state == 4) {
+            backgroundColor = "#fd0"
+        }
+    } else {
+        if (typeof player[404].song[id] == "undefined" || player[404].song[id].state == 0) {
+            backgroundColor = "#888"
+        } else if (player[404].song[id].state == 1) {
+            backgroundColor = "#448"
+        } else if (player[404].song[id].state == 2) {
+            backgroundColor = "#160"
+        } else if (player[404].song[id].state == 3) {
+            backgroundColor = "#840"
+        } else if (player[404].song[id].state == 4) {
+            backgroundColor = "#860"
+        }
+    }
+    return {
+        width: "640px",
+        minHeight: "100px",
+        height: "100px",
+        backgroundColor,
+        display: "inline-block",
+        fontSize: `${size}px`,
+        clipPath: "polygon(0% 50%,6% 100%,94% 100%,100% 50%,94% 0%,6% 0%)"
+    }
+}
+
+function getDisplay404(id) {
+    return `<br><span style="font-size:18px">${typeof player[404].song[id] == "undefined" ? "未游玩" : `最高分 ${formatWhole(player[404].song[id].points)}`}</span>`
+}
+
 let to404
 let i404 = null
 
@@ -477,7 +451,6 @@ const d404 = {
         3: 0
     },
     p: 0,
-    mp: 0,
     j: [
         0,
         0,
@@ -560,9 +533,39 @@ function endGame() {
     d404.e = true
     d404.s = false
     if (!d404.u) {
-        d404.mp = Math.max(d404.p, d404.mp)
-        player[404].points = Math.max(d404.mp, player[404].points)
-        if (d404.mp > 700000 && !player.world[404]) completeWorld(404)
+        player[404].points = Math.max(d404.p, player[404].points)
+        if (typeof player[404].song[player[404].songid] == "undefined") {
+            let state = 0
+            if (d404.ap && player[404].judge == 2) {
+                state = 4 //app
+            } else if (d404.ap) {
+                state = 3 //ap
+            } else if (d404.p > 1100000) {
+                state = 2 //超分
+            } else if (d404.fc) {
+                state = 1 //fc
+            }
+
+            player[404].song[player[404].songid] = {
+                points: d404.p,
+                state
+            }
+        } else {
+            let state = 0
+            if (d404.ap && player[404].judge == 2) {
+                state = 4 //app
+            } else if (d404.ap) {
+                state = 3 //ap
+            } else if (d404.p > 1100000) {
+                state = 2 //超分
+            } else if (d404.fc) {
+                state = 1 //fc
+            }
+
+            player[404].song[player[404].songid].points = Math.max(d404.p, player[404].song[player[404].songid].points)
+            player[404].song[player[404].songid].state = Math.max(state, player[404].song[player[404].songid].state)
+        }
+        if (d404.p > 700000 && !player.world[404]) completeWorld(404)
     }
     d404.u = false
 }
@@ -892,7 +895,7 @@ function g404() {
 
         const speed = effect.s * player[404].speed / 10
         const gap = Math.max(500, (h - 30) / speed + 50)
-        
+
         while (crt.length == 0 ? false : crt[0].t < time + gap) {
             note[crt[0].c].push(crt[0])
             crt.shift()
