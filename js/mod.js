@@ -9,7 +9,6 @@ let modInfo = {
 		"world/401.js", "world/402.js", "world/403.js", "world/404.js", "world/405.js",
 		"world/501.js", "world/502.js", "world/503.js", "world/504.js", "world/505.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
-		"world/fox.js",
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -19,14 +18,15 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.801,
-	name: "发布版v11"
+	num: 0.802,
+	name: "发布版v12"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v11 | 0.801 | 2026/5/22</h3><br>
-	更新了404，以及405被砍掉了<br><br>
+	<h3>v12 | 0.802 | 2026/5/28</h3><br>
+	更新了404: 新增fps设置，单曲状态分离存储<br><br>
+	以及405被砍掉了<br><br>
 	<h3>v10 | 0.8 | 2026/5/22</h3><br>
 	更新了20个游戏和关于第20个游戏的成就<br><br>
 	<h3>v9 | 0.7981 | 2026/5/21</h3><br>

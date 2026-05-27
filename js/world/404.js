@@ -11,6 +11,7 @@ addLayer("404", {
             judge: 0,
             songid: 101,
             life: 1000,
+            mspt: 8,
             song: {
             }
         }
@@ -48,6 +49,10 @@ addLayer("404", {
                             return `延迟 ${player[this.layer].offset}`
                         }],
                         ["slider", ["offset", -300, 300]],
+                        ["display-text", function () {
+                            return `FPS ${formatWhole(1000 / player[this.layer].mspt)}`
+                        }],
+                        ["slider", ["mspt", 3, 100]],
                         "blank",
                         ["clickable", 11],
                         ["clickable", 12],
@@ -101,7 +106,7 @@ addLayer("404", {
             <span style="color:#fd0">严判AllFox </span>
             <span style="color:#f80">AllFox </span>
             <span style="color:#2d0">严判超分 </span>
-            <span style="color:#99f">FullCombo </span>
+            <span style="color:#99f">FoxCombo </span>
             `
         }],
         "blank",
@@ -170,6 +175,7 @@ addLayer("404", {
             onClick() {
                 player[404].speed = 10
                 player[404].offset = 0
+                player[404].mspt = 8
             },
             canClick() { return true },
             style() {
@@ -219,6 +225,8 @@ addLayer("404", {
             title: "AUTO",
             display: "不计分,不可关闭<br>除非结束游戏",
             onClick() {
+                d404.ap = false
+                d404.fc = false
                 d404.u = true
             },
             canClick() { return !d404.u },
@@ -471,7 +479,9 @@ const d404 = {
         t: 0
     },
     ap: true,
-    fc: true
+    fc: true,
+    ft: [],
+    sft: 0
 }
 
 const note = {
@@ -545,6 +555,7 @@ function endGame() {
             } else if (d404.fc) {
                 state = 1 //fc
             }
+            if (player[404].judge == 4 || d404.hp < 0) state = 0
 
             player[404].song[player[404].songid] = {
                 points: d404.p,
@@ -561,6 +572,7 @@ function endGame() {
             } else if (d404.fc) {
                 state = 1 //fc
             }
+            if (player[404].judge == 4 || d404.hp < 0) state = 0
 
             player[404].song[player[404].songid].points = Math.max(d404.p, player[404].song[player[404].songid].points)
             player[404].song[player[404].songid].state = Math.max(state, player[404].song[player[404].songid].state)
@@ -665,6 +677,8 @@ function getText(i) {
 }
 
 function resetChart(sop) {
+    c404 = document.getElementById('c404')
+    t404 = c404.getContext('2d')
     crt = []
     meta = { name: "曲名", singer: "曲师", charter: "谱师", count: 1, delay: 0 }
     window.trackPlayer.setSong(player[404].songid, false)
@@ -684,8 +698,10 @@ function resetChart(sop) {
     d404.c = 0
     d404.mc = 0
     d404.jt = player[404].judge
-    d404.ap = true
-    d404.fc = true
+    d404.ap = d404.u ? false : true
+    d404.fc = d404.u ? false : true
+    d404.ft = []
+    d404.sft = 0
     player[404].life = 1000
     if (sop) {
         fetch(`./resources/chart/track${player[404].songid}.json`)
@@ -749,14 +765,23 @@ function clickTrack(t) {
     }
 }
 
+var tps = 0
+var c404
+var t404
 function g404() {
-    try {
-        var c404 = document.getElementById('c404')
-        var t404 = c404.getContext('2d')
-    } catch { return }
-
     let t = Date.now() - d404.t
+    if (t + 1 < player[404].mspt) return
     d404.t = Date.now()
+
+    d404.ft.unshift(t);
+    d404.ft = d404.ft.slice(0, 50);
+
+    if (!c404 || !t404) {
+        try {
+            c404 = document.getElementById('c404')
+            t404 = c404.getContext('2d')
+        } catch { return }
+    }
 
     if (t > 500 && d404.s) { d404.s = false; clickClickable(404, 12); alert("异常:刻间隔过长,已自动结束游戏"); }
     if (player[404].life < 0) {
@@ -948,4 +973,14 @@ function g404() {
     t404.fillText(getText(d404.m.i), 360, 430)
     d404.m.t = Math.max(0, d404.m.t - t / 750)
 
+    t404.font = "28px Angus"
+    t404.fillStyle = '#888888'
+    t404.textAlign = "left";
+    if (d404.sft++ > 1000 / player[404].mspt) {
+        tps = 1000 / d404.ft.reduce((sum, time) => sum + time, 0) * d404.ft.length;
+        t404.fillText(formatWhole(tps), 10, 770)
+        d404.sft = 0
+    } else {
+        t404.fillText(formatWhole(tps), 10, 770)
+    }
 }

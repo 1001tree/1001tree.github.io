@@ -477,7 +477,6 @@ function idtoxy(id) {
 }
 
 function updateTickTime(diff) {
-	if (diff > 5) return
 	player.global.tickTime.unshift(diff);
 	player.global.tickTime = player.global.tickTime.slice(0, 40);
 }

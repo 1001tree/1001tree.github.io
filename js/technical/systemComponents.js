@@ -735,7 +735,7 @@ var systemComponents = {
 			checkTPS() {
 				const currentTPS = Cal_TPS()[0];
 				
-				if (currentTPS > 21) {
+				if (currentTPS > 22) {
 					this.tpsCounter++;
 					if (this.tpsCounter >= 5 && !this.showWarning) {
 						this.showWarning = true;
