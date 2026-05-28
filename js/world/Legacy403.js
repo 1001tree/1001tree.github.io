@@ -1,3 +1,4 @@
+/*
 addLayer("403", {
     symbol: "🔓",
     resource: "题目",
@@ -160,3 +161,4 @@ addLayer("403", {
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
 
 });
+*/

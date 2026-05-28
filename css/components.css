@@ -810,3 +810,13 @@ div.tbox {
 .card1 {
 	color: #888;
 }
+
+.giscusdiv {
+	background-color: white;
+	border-radius: 20px;
+	width: 700px;
+	padding: 10px;
+	height: 720px;
+	max-height: 720px;
+	overflow-y: scroll;
+  }

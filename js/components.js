@@ -433,7 +433,7 @@ function loadVue() {
 		},
 		methods: {
 			hover() {//装个样子，其实除了504都用不了
-				if(this.layer==504)player[504].hoverID=this.data
+				if (this.layer == 504) player[504].hoverID = this.data
 			},
 			start() {
 				if (!this.interval && layers[this.layer].grid.onHold) {
@@ -446,7 +446,7 @@ function loadVue() {
 				}
 			},
 			stop() {
-				if(this.layer==504)player[504].hoverID=-10000
+				if (this.layer == 504) player[504].hoverID = -10000
 				clearInterval(this.interval)
 				this.interval = false
 				this.time = 0

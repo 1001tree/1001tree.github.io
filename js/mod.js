@@ -8,6 +8,7 @@ let modInfo = {
 		"world/301.js", "world/302.js", "world/303.js", "world/304.js", "world/305.js",
 		"world/401.js", "world/402.js", "world/403.js", "world/404.js", "world/405.js",
 		"world/501.js", "world/502.js", "world/503.js", "world/504.js", "world/505.js",
+		"world/202/2021.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
 	],
 	discordName: "1001树游戏群",
@@ -18,14 +19,16 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.802,
-	name: "发布版v12"
+	num: 0.803,
+	name: "发布版v13"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v12 | 0.802 | 2026/5/28</h3><br>
-	更新了404: 新增fps设置，单曲状态分离存储<br><br>
+	<h3>v13 | 0.803 | 2026/5/28</h3><br>
+	更新了评论区<br>
+	更新了202：一个新工作<br>
+	更新了404: 新增fps设置，单曲状态分离存储<br>
 	以及405被砍掉了<br><br>
 	<h3>v10 | 0.8 | 2026/5/22</h3><br>
 	更新了20个游戏和关于第20个游戏的成就<br><br>
@@ -243,5 +246,10 @@ function fixOldSave(oldVersion) {
 				alert(`看起来你已经完成愚人节玩笑成就了,不过,0.798版本新增了一个更强的挑战成就(你应该已经自动获得了它),想试试的话,就创建一个新存档,去设置打开挑战者模式吧!`)
 			}
 		}
+	}
+	if (oldVersion <= 0.802) {
+		//迁移麦麦数据
+		player[10101] = player[405]
+		player[405] = {}
 	}
 }

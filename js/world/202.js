@@ -3,7 +3,7 @@ addLayer("202", {
     resource: "点数",
     color: "hsl(0,50%,50%)",
     update(diff) {
-        if (!getGridData('main', this.layer)) return
+        if (!getGridData('main', this.layer) || player.pause[this.layer]) return
         let ltl = layers[this.layer];
 
         let ic = this.getChallenge()
@@ -28,10 +28,7 @@ addLayer("202", {
                 p = p.sub(c)
             }
 
-            if (ic == 121 && _DR().lte(
-                challengeEffect(this.layer, 121)
-            )
-            ) {
+            if (ic == 121 && _DR().lte(challengeEffect(this.layer, 121))) {
                 player[this.layer].points = player[this.layer].points.sub(c.mul(d))
                 if (_DR().lte(p)) {
                     player[this.layer].points = player[this.layer].points.sub(_D1.mul(d))
@@ -65,6 +62,38 @@ addLayer("202", {
                                 if (!hasUpgrade(this.layer, 3114)) player[this.layer].points = player[this.layer].points.sub(layers[this.layer].grid.getPrice(d, id))
                                 setGridData(this.layer, id, d.add(1))
                                 d = d.add(1)
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (ic == 32) {
+                let btl = 0
+                for (let i = 1; i < 11; i++) {
+                    for (let j = 1; j < 11; j++) {
+                        let data = getGridData(2021, i * 100 + j)
+                        if (data != 0) { btl++ }
+                        setGridData(2021, i * 100 + j, Math.max(data - 1, 0))
+                        player[this.layer].button = Math.max(btl, player[this.layer].button)
+                    }
+                }
+
+                if (hasUpgrade(this.layer, 3211)) {
+                    let click = buyableEffect(this.layer, 321)
+
+                    for (let i = 1; i < 11; i++) {
+                        for (let j = 1; j < 11; j++) {
+                            let data = getGridData(2021, i * 100 + j)
+                            if (data == 0) {
+                                while (click.gt(0)) {
+                                    if (layers[2021].grid.onClick(null, i * 100 + j)) {
+                                        click = click.sub(1)
+                                        break
+                                    } else {
+                                        if (_DR().gte(buyableEffect(this.layer, 322))) click = click.sub(1)
+                                    }
+                                }
                             }
                         }
                     }
@@ -119,11 +148,12 @@ addLayer("202", {
         return {
             unlocked: true,
             points: _D0,
-			t: _D0,
-			tickt: _D0,
-			keyseed: Date.now(),
-			dB: _D1,
-			mul: [_D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1]
+            t: _D0,
+            tickt: _D0,
+            keyseed: Date.now(),
+            dB: _D1,
+            mul: [_D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1],
+            button: 0
         }
     },
     type: "none",
@@ -149,7 +179,7 @@ addLayer("202", {
                 "blank",
                 ["clickable", 11],
                 "blank",
-                ["upgrades", [1]]
+                ["upgrades", [1,2,3]]
             ]
         },
         工作: {
@@ -244,7 +274,7 @@ addLayer("202", {
                     return `你有<h2 class="p1pt"> ${format(player[this.layer].points)} </h2>点数`
                 }],
                 ["display-text", function () {
-                    return `+${formatSmall(layers[this.layer].getPoint())}/刻`
+                    return `+${format(layers[this.layer].getPoint())}/刻`
                 }],
                 ["display-text", function () {
                     return `挑战已经持续了 ${format(player[this.layer].t)} 秒`
@@ -296,6 +326,46 @@ addLayer("202", {
                 return inChallenge(202, 31) && hasUpgrade(202, 12)
             }
         },
+        工作7: {
+            content: [
+                ["display-text", function () {
+                    return `你有<h2 class="p1pt"> ${format(player[this.layer].points)} </h2>点数`
+                }],
+                ["display-text", function () {
+                    return `你最多同时按下<h2 class="p1pt"> ${formatWhole(player[this.layer].button)} </h2>按钮`
+                }],
+                ["display-text", function () {
+                    return `挑战已经持续了 ${format(player[this.layer].t)} 秒`
+                }],
+                ["display-text", function () {
+                    if (layers[this.layer].getTickTime().gte(1)) return `距离下一刻 ${formatTime(layers[this.layer].getTickTime().sub(player[this.layer].tickt))}`
+                }],
+                "blank",
+                ["row", [
+                    ["upgrades", [321]],
+                    ["buyables", [32]],
+                ]],
+                ["layer-proxy", [2021, ["grid"]]],
+                "blank",
+                ["display-text", function () {
+                    return `你有<h2 class="p1pt"> ${format(player[this.layer].points)} </h2>点数`
+                }],
+                ["display-text", function () {
+                    return `你最多同时按下<h2 class="p1pt"> ${formatWhole(player[this.layer].button)} </h2>按钮`
+                }],
+                ["display-text", function () {
+                    return `挑战已经持续了 ${format(player[this.layer].t)} 秒`
+                }],
+                ["display-text", function () {
+                    if (layers[this.layer].getTickTime().gte(1)) return `距离下一刻 ${formatTime(layers[this.layer].getTickTime().sub(player[this.layer].tickt))}`
+                }],
+                "blank",
+                ["challenge", 32],
+            ],
+            unlocked() {
+                return inChallenge(202, 32) && hasUpgrade(202, 12)
+            }
+        },
         挑战3: {
             content: [
                 ["display-text", function () {
@@ -328,7 +398,7 @@ addLayer("202", {
                     return `密码是 <h1 class="p1pt">${player[this.layer].points.toString()}</h1> 吗?`
                 }],
                 ["display-text", function () {
-                    return `+${layers[this.layer].getPoint().toString()}/刻`
+                    return `+${format(layers[this.layer].getPoint().toString())}/刻`
                 }],
                 ["display-text", function () {
                     return `挑战已经持续了 ${format(player[this.layer].t)} 秒`
@@ -594,9 +664,20 @@ addLayer("202", {
 			    </span>`
             },
             effect() {
-                return decimalMax(player[this.layer].points,0).add(1).log10().add(1)
+                return decimalMax(player[this.layer].points, 0).add(1).log10().add(1)
             },
             unlocked() { return hasChallenge(this.layer, 22) }
+        },
+        21: {
+            fullDisplay() {
+                return `
+				<span><h3>${"这个升级是未制作的还是故意没有效果的呢"}</h3></span><br>
+				<span>${"通过未制作能量增幅你的幸运"}</span><br>
+                <span>
+                效果: 你的幸运更强0倍
+			    </span>`
+            },
+            unlocked() { return hasChallenge(this.layer, 32) }
         },
         2111: {
             fullDisplay() {
@@ -969,8 +1050,8 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3142: {
-            title: "一个团队的进步",
-            description: "乘数获取被团队提升",
+            title: "一个时代的进步",
+            description: "乘数获取被时代提升",
             effect() {
                 return _D(1.3)
             },
@@ -995,8 +1076,8 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3144: {
-            title: "一个联盟的进步",
-            description: "乘数获取被联盟提升",
+            title: "一个地球的进步",
+            description: "乘数获取被地球提升",
             effect() {
                 return _D(1.7)
             },
@@ -1008,8 +1089,8 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3145: {
-            title: "一个时代的进步",
-            description: "乘数获取被时代提升",
+            title: "一个太阳系的进步",
+            description: "乘数获取被太阳系提升",
             effect() {
                 return _D(1.9)
             },
@@ -1080,7 +1161,7 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3154: {
-            title: "电池组",
+            title: "发电机",
             description: "点数获取提升再多",
             effect() {
                 return _D(500)
@@ -1093,7 +1174,7 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3155: {
-            title: "发电机",
+            title: "核反应堆",
             description: "点数获取提升真多",
             effect() {
                 return _D(40000)
@@ -1106,7 +1187,7 @@ addLayer("202", {
             style: { minHeight: "90px" }
         },
         3156: {
-            title: "核反应堆",
+            title: "戴森球",
             description: "点数获取基于点数提升",
             effect() {
                 let p = decimalMax(
@@ -1132,6 +1213,13 @@ addLayer("202", {
             cost: pow10(168),
             unlocked() { return inChallenge(this.layer, 31) && hasUpgrade(this.layer, 12) },
             style: { minHeight: "90px" }
+        },
+        3211: {
+            title: "点击器",
+            description: "每刻从前往后自动点击按钮",
+            cost: _D(1),
+            unlocked() { return inChallenge(this.layer, 32) },
+            style: { minHeight: "120px" }
         },
         12111: {
             fullDisplay() {
@@ -1306,7 +1394,7 @@ addLayer("202", {
             }
         },
         12: {
-            name: "参加2^(3^2)比赛",
+            name: "参加2^(（2+2/2)^2)比赛",
             challengeDescription: "每秒有1/512概率获得1点数",
             goalDescription: "2 点数",
             canComplete() {
@@ -1389,6 +1477,27 @@ addLayer("202", {
             },
             onComplete() {
                 completeWorld(this.layer)
+                playsound("cc")
+            },
+        },
+        32: {
+            name: "幸运按钮！",
+            challengeDescription: "按下n按钮有1/n概率获得n/100点数",
+            goalDescription() { return `同时让100个按钮处于按下状态` },
+            canComplete() {
+                return player[this.layer].button == 100
+            },
+            rewardDescription: "一行升级",
+            onEnter() {
+                layers[this.layer].resetGame()
+            },
+            onExit() {
+                layers[this.layer].resetGame()
+            },
+            unlocked() {
+                return hasChallenge(this.layer, 31)
+            },
+            onComplete() {
                 playsound("cc")
             },
         },
@@ -1498,8 +1607,15 @@ addLayer("202", {
             title() { return "重置升级" },
             display() { return "只有不在任何任务或挑战中时才能重置<br>请注意,你将失去所有升级,包括挑战内升级" },
             canClick() { return !layers[this.layer].getChallenge() },
-            onClick() { player[this.layer].upgrades = [] },
-            unlocked() { return hasChallenge(this.layer, 21) }
+            onClick() {
+                player[this.layer].upgrades = []
+                setBuyableAmount(this.layer, 321, _D0)
+                setBuyableAmount(this.layer, 322, _D0)
+                setBuyableAmount(this.layer, 323, _D0)
+                setBuyableAmount(this.layer, 324, _D0)
+            },
+            unlocked() { return hasChallenge(this.layer, 21) },
+            style: { minHeight: "90px" }
         },
         12: {
             title() { return "異議あり!" },
@@ -1540,18 +1656,113 @@ addLayer("202", {
             }
         },
     },
+    buyables: {
+        321: {
+            title: "点击器升级",
+            display() { return `每刻点击${formatWhole(this.effect())}次按钮！<br>价格: ${format(this.cost())} 点数` },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            cost(x) { return _D(1.1).pow(x) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                addBuyables(this.layer, this.id, 1)
+            },
+            effect(x) {
+                return x.add(1)
+            },
+            unlocked() {
+                return hasUpgrade(this.layer, 3211) && inChallenge(this.layer, 32)
+            },
+            style: {
+                width: "120px",
+                height: "100px",
+                minHeight: "100px",
+            }
+        },
+        322: {
+            title: "概率升级",
+            display() { return `点击器失败点击时有${formatPersent(this.effect())}概率不消耗点击次数！<br>价格: ${format(this.cost())} 点数` },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            cost(x) { return _D(10).mul(_D(1.11).pow(x)) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                addBuyables(this.layer, this.id, 1)
+            },
+            effect(x) {
+                return x.div(80)
+            },
+            unlocked() {
+                return hasUpgrade(this.layer, 3211) && inChallenge(this.layer, 32)
+            },
+            style: {
+                width: "120px",
+                height: "100px",
+                minHeight: "100px",
+            },
+            purchaseLimit() { return _D(40) }
+        },
+        323: {
+            title: "按钮升级",
+            display() { return `按钮成功率被开方${format(this.effect())}次！<br>价格: ${format(this.cost())} 点数` },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            cost(x) { return _D(100).mul(_D(1.12).pow(x)) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                addBuyables(this.layer, this.id, 1)
+            },
+            effect(x) {
+                return parseFloat(_D1.add(x.div(100)))
+            },
+            unlocked() {
+                return hasUpgrade(this.layer, 3211) && inChallenge(this.layer, 32)
+            },
+            style: {
+                width: "120px",
+                height: "100px",
+                minHeight: "100px",
+            },
+            purchaseLimit() { return _D(30) }
+        },
+        324: {
+            title: "弹簧升级",
+            display() { return `按钮弹起被延迟${formatWhole(this.effect())}刻！<br>购买此升级可能降低您的收益！<br>价格: ${format(this.cost())} 点数` },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            cost(x) { return _D(1000).mul(_D(2).pow(x)) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                addBuyables(this.layer, this.id, 1)
+            },
+            effect(x) {
+                return parseInt(x)
+            },
+            unlocked() {
+                return hasUpgrade(this.layer, 3211) && inChallenge(this.layer, 32)
+            },
+            style: {
+                width: "120px",
+                height: "100px",
+                minHeight: "100px",
+            }
+        },
+    },
     resetGame() {
         player[this.layer].points = _D0
         player[this.layer].t = _D0
         player[this.layer].tickt = _D0
         player[this.layer].keyseed = Date.now()
         player[this.layer].mul = [_D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1, _D1]
+        player[this.layer].button = 0
         for (let i = 1; i < 4; i++) {
             for (let j = 1; j < 4; j++) {
                 setGridData(this.layer, i * 100 + j, _D0)
+            }
+        }
+        for (let i = 1; i < 11; i++) {
+            for (let j = 1; j < 11; j++) {
+                setGridData(2021, i * 100 + j, 0)
             }
         }
     },
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
 
 });
+
