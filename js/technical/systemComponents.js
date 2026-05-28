@@ -191,7 +191,7 @@ var systemComponents = {
 		template: `
         <table>
 			<tr>
-				<td><button class="info" disabled>展开设置</button></td>
+				<td><button class="opt shiny" disabled>展开设置<br><br>在此<br>开关设置类别</button></td>
                 <td><button class="opt" onclick="toggleOpt('saveclass');">存档相关<br>{{ formatOption('saveclass') }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('themeclass');">主题设置<br>{{ formatOption('themeclass') }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('tmtclass');">功能样式<br>{{ formatOption('tmtclass') }}</button></td>

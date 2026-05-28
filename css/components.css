@@ -820,3 +820,17 @@ div.tbox {
 	max-height: 720px;
 	overflow-y: scroll;
   }
+
+.shiny {
+	animation: shiny 3s linear infinite;
+}
+
+@keyframes shiny {
+	0%,
+	100% {
+		color: #ddd
+	}
+	50% {
+		color: #fff
+	}
+}

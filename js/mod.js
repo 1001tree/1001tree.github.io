@@ -19,13 +19,13 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.803,
+	num: 0.804,
 	name: "发布版v13"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v13 | 0.803 | 2026/5/28</h3><br>
+	<h3>v13 | 0.804 | 2026/5/28</h3><br>
 	更新了评论区<br>
 	更新了202：一个新工作<br>
 	更新了404: 新增fps设置，单曲状态分离存储<br>
@@ -79,8 +79,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "startChallenge", "endChallenge",
-	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap","getshopcap",
-	"getFl22req","getFl22trig"
+	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap", "getshopcap",
+	"getFl22req", "getFl22trig"
 ]
 
 function getStartPoints() {
@@ -175,7 +175,7 @@ var displayThings = [
 		if (options.tipshown) {
 			switch (options.hud) {
 				case 0:
-					return `当前游戏运行速度 ${format(Cal_TPS()[0],1)}tps | ${formatWhole(Cal_TPS()[1])}ms`
+					return `当前游戏运行速度 ${format(Cal_TPS()[0], 1)}tps | ${formatWhole(Cal_TPS()[1])}ms`
 				case 1:
 					return `梦力生成器能量 ${formatWhole(player.book.power)} / ${formatWhole(layers.book.getcap())}`
 				case 2:
@@ -232,7 +232,7 @@ function fixOldSave(oldVersion) {
 		if (player[this.layer].power) player[this.layer].power = _D(player[this.layer].power)
 	}
 	if (oldVersion <= 0.7972) {
-        if (getGridData('main', 501)) {
+		if (getGridData('main', 501)) {
 			if (!player._501.lose && !player._501.complete) {
 				alert(`为什么你买了501但是没玩😱!不过,0.798版本新增了一个更强的挑战成就,想试试的话,去设置打开挑战者模式吧!`)
 			}
@@ -247,9 +247,33 @@ function fixOldSave(oldVersion) {
 			}
 		}
 	}
-	if (oldVersion <= 0.802) {
+	if (oldVersion <= 0.803) {
+		if (oldVersion <= 0.802) {
+			//迁移麦麦数据
+			player[10101] = player[405]
+		}
 		//迁移麦麦数据
-		player[10101] = player[405]
-		player[405] = {}
+		player[405] = {
+			"resetTime": 0,
+			"unlocked": true,
+			"points": _D0,
+			"total": _D0,
+			"best": _D0,
+			"forceTooltip": false,
+			"buyables": {},
+			"noRespecConfirm": false,
+			"clickables": {},
+			"spentOnBuyables": _D0,
+			"upgrades": [],
+			"milestones": [],
+			"lastMilestone": null,
+			"achievements": [],
+			"challenges": {},
+			"grid": {},
+			"prevTab": ""
+		}
+		alert(`0.802版本尝试迁移了麦麦(原405,目前计划作为废稿~:重返梦树~内容)数据,但出现了一些问题.
+目前已知:ResetTime会报错,刷新无法解决
+以下是临时解决方法:导出存档,硬重置,导入存档;此方法应能解决上述报错问题`)
 	}
 }

@@ -287,8 +287,6 @@ addLayer("book", {
             },
             梦力发生器: {
                 content: [
-                    ["display-text", `
-                    `],
                     ["display-text", function () {
                         return `
                         你有 <h1 class="p9pt">${formatWhole(player.main.points)}</h1> 梦力<br><br>
@@ -514,6 +512,10 @@ addLayer("book", {
                 player[this.layer].power = player[this.layer].power.sub(1250)
                 player.main.points = player.main.points.add(1)
                 player.gainpower = true
+
+                if (inChallenge(202, 131)) {
+                    player[202].points = player[202].points.add(1)
+                }
             }
         },
         31: {

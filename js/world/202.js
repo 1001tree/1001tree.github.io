@@ -179,7 +179,7 @@ addLayer("202", {
                 "blank",
                 ["clickable", 11],
                 "blank",
-                ["upgrades", [1,2,3]]
+                ["upgrades", [1, 2, 3]]
             ]
         },
         工作: {
@@ -414,7 +414,45 @@ addLayer("202", {
             unlocked() {
                 return inChallenge(202, 122) && hasUpgrade(202, 12)
             }
-        }
+        },
+        挑战5: {
+            content: [
+                ["display-text", function () {
+                    return `你汲取了<h2 class="p1pt"> ${formatWhole(player[this.layer].points)} </h2>梦力`
+                }],
+                ["display-text", function () {
+                    return `挑战已经持续了 ${format(player[this.layer].t)} 秒`
+                }],
+                ["display-text", function () {
+                    if (layers[this.layer].getTickTime().gte(1)) return `距离下一刻 ${formatTime(layers[this.layer].getTickTime().sub(player[this.layer].tickt))}`
+                }],
+                "blank",
+                ["layer-proxy", ["book",
+                    [
+                        ["display-text", function () {
+                            return `
+                        你有 <h1 class="p9pt">${formatWhole(player.main.points)}</h1> 梦力<br><br>
+                        在此地,你获取,你发现,你找到<br>
+                        你当前充值了 <h2 class="p9pt">${formatWhole(player["book"].exp)}</h2> 梦力<br>
+                        等级为 <h1 class="p9pt">${formatWhole(player["book"].level)}</h1> 级<br>
+                        这为你带来了梦力发生器<br>
+                        每刻获取能量的概率设置为 <h3 class="p9pt">${formatPersent(layers["book"].getrate())}</h3><br>
+                        上限设置为 <h3 class="p9pt">${format(layers["book"].getcap())}</h3><br>
+                        `
+                        }],
+                        "blank",
+                        ["bar", "powerbar"],
+                        "blank",
+                        ["clickables", [1, 2]],
+                        "blank",
+                    ]]],
+                "blank",
+                ["challenge", 131],
+            ],
+            unlocked() {
+                return inChallenge(202, 131) && hasUpgrade(202, 12)
+            }
+        },
     },
     getPoint() {
         let p = _D0
@@ -650,7 +688,7 @@ addLayer("202", {
             fullDisplay() {
                 return `
 				<span><h3>${"有偿购物"}</h3></span><br>
-				<span>${"从工作3开始,将会出现工作内升级"}</span>`
+				<span>${"从工作3开始,将会出现工作内界面"}</span>`
             },
             unlocked() { return hasChallenge(this.layer, 12) }
         },
@@ -1600,6 +1638,28 @@ addLayer("202", {
                 return hasChallenge(this.layer, 121)
             },
             target: 115277425,
+        },
+        131: {
+            name: "万万没想到,这也是概率",
+            challengeDescription: `你需要至少8狐经验才能完成这个挑战`,
+            goalDescription() { return `从梦力发生器中汲取 1 梦力` },
+            canComplete() {
+                return player[this.layer].points.gte(1)
+            },
+            rewardDescription: "逐渐丧失的成就感,和1梦力",
+            onEnter() {
+                layers[this.layer].resetGame()
+            },
+            onExit() {
+                layers[this.layer].resetGame()
+            },
+            onComplete() {
+                player.main.points = player.main.points.add(1)
+                playsound("cc")
+            },
+            unlocked() {
+                return hasChallenge(this.layer, 122)
+            },
         },
     },
     clickables: {
