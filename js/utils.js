@@ -448,6 +448,14 @@ function pow10(pow) {
 	return _D10.pow(_D(pow))
 }
 
+function ArrayMax(...array) {
+    return array.reduce((max, val) => Decimal.max(max, val), array[0])
+}
+
+function ArrayMin(...array) {
+    return array.reduce((min, val) => Decimal.min(min, val), array[0])
+}
+
 function randomBetween(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }

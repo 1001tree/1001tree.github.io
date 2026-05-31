@@ -8,6 +8,7 @@ let modInfo = {
 		"world/301.js", "world/302.js", "world/303.js", "world/304.js", "world/305.js",
 		"world/401.js", "world/402.js", "world/403.js", "world/404.js", "world/405.js",
 		"world/501.js", "world/502.js", "world/503.js", "world/504.js", "world/505.js",
+		"world/101/1011.js",
 		"world/202/2021.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
 	],
@@ -19,12 +20,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.804,
-	name: "发布版v13"
+	num: 0.805,
+	name: "发布版v14"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v14 | 0.805 | 2026/5/31</h3><br>
+	101新增一个dlc<br><br>
 	<h3>v13 | 0.804 | 2026/5/28</h3><br>
 	更新了评论区<br>
 	更新了202：一个新工作<br>

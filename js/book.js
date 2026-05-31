@@ -521,7 +521,7 @@ addLayer("book", {
         31: {
             title: "暂停",
             display() {
-                return `狐力量生成状态 ${player[this.layer].fox.pause ? "运行中" : "暂停"}`
+                return `狐力量生成状态 ${player[this.layer].fox.pause ? "暂停" : "生成"}`
             },
             style: {
                 minHeight: "60px"

@@ -3,7 +3,7 @@ addLayer("101", {
     resource: "点数",
     color: "#aaa",
     update(diff) {
-        if (!getGridData('main', this.layer)||player.pause[this.layer]) return
+        if (!getGridData('main', this.layer) || player.pause[this.layer]) return
 
         let gap = this.gap()
         for (let i = 0; i < gap.length; i++) {
@@ -32,11 +32,11 @@ addLayer("101", {
         return {
             unlocked: true,
             points: _D0,
-			asc1: _D0,
-			asc2: _D0,
-			asc3: _D0,
-			asc4: _D0,
-			asc5: _D0,
+            asc1: _D0,
+            asc2: _D0,
+            asc3: _D0,
+            asc4: _D0,
+            asc5: _D0,
         }
     },
     gap() {
@@ -230,79 +230,127 @@ addLayer("101", {
         else return _D1
     },
     type: "none",
-    tabFormat: [
-        ["main-display", 3],
-        ["display-text", function () {
-            return `(+${format(layers[this.layer].getPoint())} → ${format(layers[this.layer].getSortCap())})/s`
-        }],
-        "blank",
-        ["display-text", function () {
-            if (hasUpgrade(this.layer, 41)) return `你有 ${format(player[this.layer].asc1)} 反软上限,将软上限效果除以 ${format(layers[this.layer].aC1())}`
-        }],
-        ["display-text", function () {
-            if (hasUpgrade(this.layer, 42)) return `你有 ${format(player[this.layer].asc2)} 反反软上限,将反软上限加强为 ${format(layers[this.layer].aC2())} 倍`
-        }],
-        ["display-text", function () {
-            if (hasUpgrade(this.layer, 43)) return `你有 ${format(player[this.layer].asc3)} 反反反软上限,将反反软上限加强为 ${format(layers[this.layer].aC3())} 倍`
-        }],
-        ["display-text", function () {
-            if (hasUpgrade(this.layer, 44)) return `你有 ${format(player[this.layer].asc4)} 反反反反软上限,将反反反软上限加强为 ${format(layers[this.layer].aC4())} 倍`
-        }],
-        ["display-text", function () {
-            if (hasUpgrade(this.layer, 45)) return `你有 ${format(player[this.layer].asc5)} 反反反反反软上限,将反反反反软上限加强为 ${format(layers[this.layer].aC5())} 倍`
-        }],
-        "blank",
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[0])) return `由于点数大于1,你受到一重软上限限制:将你的点数获取开 ${format(layers[this.layer].C1())} 次方后减1`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[1])) return `由于点数大于10,你受到二重软上限限制:将一重软上限加强为 ${format(layers[this.layer].C2())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[2])) return `由于点数大于20,你受到三重软上限限制:将二重软上限加强为 ${format(layers[this.layer].C3())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[3])) return `由于点数大于30,你受到四重软上限限制:将三重软上限加强为 ${format(layers[this.layer].C4())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[4])) return `由于点数大于40,你受到五重软上限限制:将四重软上限加强为 ${format(layers[this.layer].C5())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[5])) return `由于点数大于50,你受到六重软上限限制:将五重软上限加强为 ${format(layers[this.layer].C6())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[6])) return `由于点数大于60,你受到七重软上限限制:将六重软上限加强为 ${format(layers[this.layer].C7())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[7])) return `由于点数大于70,你受到八重软上限限制:将七重软上限加强为 ${format(layers[this.layer].C8())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[8])) return `由于点数大于80,你受到九重软上限限制:将八重软上限加强为 ${format(layers[this.layer].C9())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[9])) return `由于点数大于90,你受到十重软上限限制:将九重软上限加强为 ${format(layers[this.layer].C10())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[10])) return `由于点数大于100,你受到特殊软上限限制:将前面所有软上限加强为 ${format(layers[this.layer].sC1())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[11])) return `由于点数大于120,你受到超级软上限限制:将特殊软上限加强为 ${format(layers[this.layer].sC2())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[12])) return `由于点数大于140,你受到传奇软上限限制:将超级软上限加强为 ${format(layers[this.layer].sC3())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[13])) return `由于点数大于160,你受到究极软上限限制:将传奇软上限加强为 ${format(layers[this.layer].sC4())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[14])) return `由于点数大于180,你受到最终软上限限制:将究极软上限加强为 ${format(layers[this.layer].sC5())} 倍`
-        }],
-        ["display-text", function () {
-            if (player[this.layer].points.gte(layers[this.layer].gap()[15])) return `由于点数大于等于200,你受到硬上限限制`
-        }],
-        "blank",
-        "upgrades"
-    ],
+    tabFormat: {
+        Main: {
+            content: [
+                ["main-display", 3],
+                ["display-text", function () {
+                    return `(+${format(layers[this.layer].getPoint())} → ${format(layers[this.layer].getSortCap())})/s`
+                }],
+                "blank",
+                ["display-text", function () {
+                    if (hasUpgrade(this.layer, 41)) return `你有 ${format(player[this.layer].asc1)} 反软上限,将软上限效果除以 ${format(layers[this.layer].aC1())}`
+                }],
+                ["display-text", function () {
+                    if (hasUpgrade(this.layer, 42)) return `你有 ${format(player[this.layer].asc2)} 反反软上限,将反软上限加强为 ${format(layers[this.layer].aC2())} 倍`
+                }],
+                ["display-text", function () {
+                    if (hasUpgrade(this.layer, 43)) return `你有 ${format(player[this.layer].asc3)} 反反反软上限,将反反软上限加强为 ${format(layers[this.layer].aC3())} 倍`
+                }],
+                ["display-text", function () {
+                    if (hasUpgrade(this.layer, 44)) return `你有 ${format(player[this.layer].asc4)} 反反反反软上限,将反反反软上限加强为 ${format(layers[this.layer].aC4())} 倍`
+                }],
+                ["display-text", function () {
+                    if (hasUpgrade(this.layer, 45)) return `你有 ${format(player[this.layer].asc5)} 反反反反反软上限,将反反反反软上限加强为 ${format(layers[this.layer].aC5())} 倍`
+                }],
+                "blank",
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[0])) return `由于点数大于1,你受到一重软上限限制:将你的点数获取开 ${format(layers[this.layer].C1())} 次方后减1`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[1])) return `由于点数大于10,你受到二重软上限限制:将一重软上限加强为 ${format(layers[this.layer].C2())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[2])) return `由于点数大于20,你受到三重软上限限制:将二重软上限加强为 ${format(layers[this.layer].C3())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[3])) return `由于点数大于30,你受到四重软上限限制:将三重软上限加强为 ${format(layers[this.layer].C4())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[4])) return `由于点数大于40,你受到五重软上限限制:将四重软上限加强为 ${format(layers[this.layer].C5())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[5])) return `由于点数大于50,你受到六重软上限限制:将五重软上限加强为 ${format(layers[this.layer].C6())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[6])) return `由于点数大于60,你受到七重软上限限制:将六重软上限加强为 ${format(layers[this.layer].C7())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[7])) return `由于点数大于70,你受到八重软上限限制:将七重软上限加强为 ${format(layers[this.layer].C8())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[8])) return `由于点数大于80,你受到九重软上限限制:将八重软上限加强为 ${format(layers[this.layer].C9())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[9])) return `由于点数大于90,你受到十重软上限限制:将九重软上限加强为 ${format(layers[this.layer].C10())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[10])) return `由于点数大于100,你受到特殊软上限限制:将前面所有软上限加强为 ${format(layers[this.layer].sC1())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[11])) return `由于点数大于120,你受到超级软上限限制:将特殊软上限加强为 ${format(layers[this.layer].sC2())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[12])) return `由于点数大于140,你受到传奇软上限限制:将超级软上限加强为 ${format(layers[this.layer].sC3())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[13])) return `由于点数大于160,你受到究极软上限限制:将传奇软上限加强为 ${format(layers[this.layer].sC4())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[14])) return `由于点数大于180,你受到最终软上限限制:将究极软上限加强为 ${format(layers[this.layer].sC5())} 倍`
+                }],
+                ["display-text", function () {
+                    if (player[this.layer].points.gte(layers[this.layer].gap()[15])) return `由于点数大于等于200,你受到硬上限限制`
+                }],
+                "blank",
+                "upgrades"
+            ]
+        },
+        "1g1sc": {
+            content: [
+                ["layer-proxy", [1011, [
+                    ["infobox","main"],
+                    ["main-display",3],
+                    ["display-text", function () {
+                        return `(+${format(layers[1011].getPoint())} → ${format(layers[1011].getSortCap()[1])})/s`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(layers[1011].getSortCap()[0][0])} 次软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(Math.floor(layers[1011].getSortCap()[0][1]))} 次软软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(Math.floor(layers[1011].getSortCap()[0][2]))} 次软软软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数大于 ${format(layers[1011].getSortCap()[2])} 时点数获取会被额外软上限`
+                    }],
+                    "blank",
+                    "upgrades",
+                    "blank",
+                    ["main-display",3],
+                    ["display-text", function () {
+                        return `(+${format(layers[1011].getPoint())} → ${format(layers[1011].getSortCap()[1])})/s`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(layers[1011].getSortCap()[0][0])} 次软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(Math.floor(layers[1011].getSortCap()[0][1]))} 次软软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数获取被 ${formatWhole(Math.floor(layers[1011].getSortCap()[0][2]))} 次软软软上限`
+                    }],
+                    ["display-text", function () {
+                        return `你的点数大于 ${format(layers[1011].getSortCap()[2])} 时点数获取会被额外软上限`
+                    }],
+                    "blank"
+                ]]]
+            ],
+            unlocked() { return hasUpgrade(101, 55) }
+        }
+    },
     upgrades: {
         11: {
             title: "无趣的开端",

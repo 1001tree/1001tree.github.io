@@ -921,7 +921,7 @@ addLayer("202", {
         },
         3115: {
             title: "FlY 1",
-            description: "[核反应堆]效果受指数影响",
+            description: "[戴森球]效果受指数影响",
             cost: pow10(1600),
             unlocked() { return inChallenge(this.layer, 31) && hasUpgrade(this.layer, 12) },
             style: { minHeight: "90px" }
