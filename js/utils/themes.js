@@ -13,6 +13,7 @@ var colors = {
 		locked: "#bf8f8f",
 		background: "#0f0f0f",
 		background2: "#505050",
+		background3: "#313131",
 		background_tooltip: "rgba(0, 0, 0, 0.75)",
 	},
 	aqua: {
@@ -25,6 +26,7 @@ var colors = {
 		locked: "#c4a7b3",
 		background: "#001f3f",
 		background2: "#154f8c",
+		background3: "#0c3160",
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
 	fox: {
@@ -38,6 +40,7 @@ var colors = {
 		locked: "#f7bbd0",
 		background: "#572a3a",
 		background2: "#972c52",
+		background3: "#861b37",
 		highlight: "#19858a",
 		background_tooltip: "rgba(22, 86, 104, 0.75)",
 	},
@@ -52,6 +55,7 @@ var colors = {
 		locked: "#CCCCCC",
 		background: "#D8D8D8",
 		background2: "#D4D4D4",
+		background3: "#D0D0D0",
 		highlight: "#F8F8F8",
 		background_tooltip: "rgba(128, 128, 128, 0.75)",
 	},
@@ -68,6 +72,7 @@ var colors = {
 		locked: "#660000",
 		background: "#660000",
 		background2: "#A20000",
+		background3: "#811000",
 		highlight: "#220000",
 		background_tooltip: "rgba(128, 128, 128, 0.75)",
 	},
@@ -77,6 +82,7 @@ function changeTheme() {
 		colors_theme = colors[options.theme || "default"];
 		document.body.style.setProperty('--background', colors_theme["background"]);
 		document.body.style.setProperty('--background2', colors_theme["background2"]);
+		document.body.style.setProperty('--background3', colors_theme["background3"]);
 		document.body.style.setProperty('--highlight', colors_theme["highlight"] ?? "#439ea3");
 		document.body.style.setProperty('--background_tooltip', colors_theme["background_tooltip"]);
 		document.body.style.setProperty('--color', colors_theme["color"]);

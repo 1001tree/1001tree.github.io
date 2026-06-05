@@ -328,7 +328,7 @@ var systemComponents = {
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>暂停仍可交互<br>仅禁止刻更新</button></td>
 				<td><button class="opt" onclick="player.pause[101]=!player.pause[101]">{{ getGameName(101)[0] }}<br>暂停:{{ formatBoolean(player.pause[101]) }}</button></td>
-				<td><button class="opt">不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(102)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[103]=!player.pause[103]">{{ getGameName(103)[0] }}<br>暂停:{{ formatBoolean(player.pause[103]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[104]=!player.pause[104]">{{ getGameName(104)[0] }}<br>暂停:{{ formatBoolean(player.pause[104]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[105]=!player.pause[105]">{{ getGameName(105)[0] }}<br>暂停:{{ formatBoolean(player.pause[105]) }}</button></td>
@@ -345,24 +345,24 @@ var systemComponents = {
 				<td><button class="info" disabled>为了让这对齐<br>我加这五按钮</button></td>
 				<td><button class="opt" onclick="player.pause[301]=!player.pause[301]">{{ getGameName(301)[0] }}<br>暂停:{{ formatBoolean(player.pause[301]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[302]=!player.pause[302]">{{ getGameName(302)[0] }}<br>暂停:{{ formatBoolean(player.pause[302]) }}</button></td>
-				<td><button class="opt">不允许暂停</button></td>
-				<td><button class="opt">不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(303)[0] }}<br>不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(304)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[305]=!player.pause[305]">{{ getGameName(305)[0] }}<br>暂停:{{ formatBoolean(player.pause[305]) }}</button></td>
             </tr>
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>但我以不知晓<br>后续该写何文</button></td>
 				<td><button class="opt" onclick="player.pause[401]=!player.pause[401]">{{ getGameName(401)[0] }}<br>暂停:{{ formatBoolean(player.pause[401]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[402]=!player.pause[402]">{{ getGameName(402)[0] }}<br>暂停:{{ formatBoolean(player.pause[402]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[403]=!player.pause[403]">{{ getGameName(403)[0] }}<br>暂停:{{ formatBoolean(player.pause[403]) }}</button></td>
-				<td><button class="opt">不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(402)[0] }}<br>不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(403)[0] }}<br>不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(404)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[405]=!player.pause[405]">{{ getGameName(405)[0] }}<br>暂停:{{ formatBoolean(player.pause[405]) }}</button></td>
             </tr>
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>正如你所见到<br>我已江郎才尽</button></td>
-				<td><button class="opt">不允许暂停</button></td>
+				<td><button class="optDark">{{ getGameName(501)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[502]=!player.pause[502]">{{ getGameName(502)[0] }}<br>暂停:{{ formatBoolean(player.pause[502]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[503]=!player.pause[503]">{{ getGameName(503)[0] }}<br>暂停:{{ formatBoolean(player.pause[503]) }}</button></td>
-				<td><button class="opt" onclick="player.pause[504]=!player.pause[504]">{{ getGameName(504)[0] }}<br>暂停:{{ formatBoolean(player.pause[504]) }}</button></td>
+				<td><button class="optDark">{{ getGameName(504)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[505]=!player.pause[505]">{{ getGameName(505)[0] }}<br>暂停:{{ formatBoolean(player.pause[505]) }}</button></td>
             </tr>
         </table>

@@ -3,7 +3,7 @@ addLayer("403", {
     resource: "",
     color: "#4A7FCF",
     update(diff) {
-        if (!getGridData('main', this.layer)||player.pause[this.layer]) return
+        if (player[403].select>=layers[403].breakDown(player[403].program).length)player[403].select=layers[403].breakDown(player[403].program).length
     },
     startData() {
         return {
@@ -31,7 +31,7 @@ addLayer("403", {
         }
         return ret
     },
-    executeLoop(c,str) { //循环执行一串命令直到不动点
+    executeLoop(c,str) { //循环执行一串命令直到执行前后没有变化
         if (c.length==0)return str
         let ret=str
         while (true) {
@@ -44,6 +44,17 @@ addLayer("403", {
     executeCommand(c,str) { //执行单条命令
         let [x,y]=c.split("→")
         return str.replaceAll(x,y)
+    },
+    breakDown(c) {
+        let r=[]
+            c.forEach(i=>{
+                if(i instanceof Array) {r.push("{");r=r.concat(layers[403].breakDown(i));r.push("}")}
+                else r.push(i)
+            })
+        return r
+    },
+    assemble(a) {
+        
     },
     type: "none",
     tabFormat: [
@@ -69,20 +80,20 @@ addLayer("403", {
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].level=0;player[403].program=[]},
-            style() {return {"min-height":"88px","height":"88px","width":"104px","border-radius":"0px","color":"#10140A","background-color":"#E6448F","border":"4px solid #255072"}}
+            style() {return {"min-height":"88px","height":"88px","width":"104px","border-radius":"0px","color":"#10140A","background-color":"#F0F475","border":"4px solid #255072"}}
         },
         12: {
             title() {return ` <h2>关卡 ${player[403].level%100+4*Math.floor(player[403].level/100)-4} </h2>`},
             display() {return ` <h3>Level ${player[403].level%100+4*Math.floor(player[403].level/100)-4} </h3>`},
             unlocked() {return player[403].level!=0},
             canClick: false,
-            style() {return {"min-height":"88px","height":"88px","width":"145px","border-radius":"0px","color":"#10140A","background-color":"#4A7FFF","border":"4px solid #255072"}}
+            style() {return {"min-height":"88px","height":"88px","width":"145px","border-radius":"0px","color":"#10140A","background-color":"#BFFF4F","border":"4px solid #255072"}}
         },
         24: {
             title() {return ` <h2>目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h2>`},
             unlocked() {return player[403].level!=0},
             canClick: false,
-            style() {return {"min-height":"60px","height":"60px","width":"540px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
+            style() {return {"min-height":"60px","height":"60px","width":"540px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"3px solid #295476"}}
         },
         31: {
             title() {return data403[player[403].level][1][1]},
@@ -103,14 +114,25 @@ addLayer("403", {
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         41: {
-            title: "Program 但是我其实没做上面几个按钮的功能所以你自己写吧",
+            title() {return ` > 程序 | 第${player[403].level%100+4*Math.floor(player[403].level/100)-4}关`},
             unlocked() {return player[403].level!=0},
             canClick: false,
             style() {return {"min-height":"32px","height":"32px","width":"500px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #71717F","text-align":"left"}}
         },
         51: {
-            display() {
-                return player[403].program
+            title() {
+                let text="<h2>"
+                let inx=0
+                let u=layers[403].breakDown(player[403].program)
+                for (let i in u){
+                    if (i==player[403].select&&player[403].resetTime%2<1)text+=">&nbsp;&nbsp;&nbsp;"
+                    else text+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                    if (u[i]=="}")inx-=6
+                    text+="&nbsp;".repeat(inx)
+                    if (u[i]=="{")inx+=6
+                    text+=u[i]+"<br>"
+                }
+                return text+"</h2>"
             },
             unlocked() {return player[403].level!=0},
             canClick: false,
@@ -121,12 +143,7 @@ addLayer("403", {
             unlocked() {return player[403].level!=0},
             style() {return {"min-height":"300px","height":"300px","width":"500px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #87889E"}}
         },
-        1001: {
-            title: "点我输入程序",
-            unlocked() {return player[403].level!=0},
-            canClick: true,
-            onClick() {player[403].program=prompt("请输入程序",'["x→z"]')},
-        }
+        
 
     },
     grid: {
