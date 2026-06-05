@@ -43,6 +43,13 @@
 	src: url('../resources/font/foxsize.ttf');
 }
 
+@font-face {
+	font-family: JNBBH;
+	src: url('../resources/font/荆南波波黑.woff2');
+}
+
+
+
 /* Global things */
 body {
 	color: var(--color);
