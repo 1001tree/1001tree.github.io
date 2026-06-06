@@ -7,7 +7,7 @@ addLayer("402", {
             player[402].level++
             player[402].maxLevel=Math.max(player[402].maxLevel,player[402].level)
             player[402].value=data402[player[402].level][1]
-            makeParticles(WINWINWIN,50)
+            makeParticles(WINWINWIN,100)
         }
     },
     startData() {
@@ -49,7 +49,7 @@ addLayer("402", {
             onComplete() {player.main.points=player.main.points.add(1)}
         },
         2: {
-            requirementDescription: "完成402中中的第25关",
+            requirementDescription: "完成402中的第25关",
             done() {return player[402].maxLevel>25},
             onComplete() {completeWorld(this.layer)}
         },
@@ -116,7 +116,7 @@ addLayer("402", {
                         player[402].level++
                         player[402].maxLevel=Math.max(player[402].maxLevel,player[402].level)
                         player[402].value=data402[player[402].level][1]
-                        makeParticles(WINWINWIN,50)
+                        makeParticles(WINWINWIN,100)
                     }
                     else {
                         alert("前面的区域，以后再来探索吧~(本次操作无效)")
@@ -141,7 +141,7 @@ addLayer("402", {
                         player[402].level++
                         player[402].maxLevel=Math.max(player[402].maxLevel,player[402].level)
                         player[402].value=data402[player[402].level][1]
-                        makeParticles(WINWINWIN,50)
+                        makeParticles(WINWINWIN,100)
                     }
                     else {
                         alert("前面的区域，以后再来探索吧~(本次操作无效)")

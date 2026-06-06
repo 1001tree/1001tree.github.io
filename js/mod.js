@@ -81,7 +81,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"aC1", "aC2", "aC3", "aC4", "aC5", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10",
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
-	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "startChallenge", "endChallenge",
+	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
 	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap", "getshopcap",
 	"getFl22req", "getFl22trig"
 ]

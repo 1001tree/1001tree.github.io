@@ -121,7 +121,7 @@ addLayer("504", {
                 c.forEach(([id,x])=>{t.forEach(v=>{if(v==id)x--});if(x!=0)v=false})
                 data504[player[504].level][5].forEach(id=>{if(!d.includes(id))v=false})
                 if(v){
-                    makeParticles(WINWINWIN,50)
+                    makeParticles(WINWINWIN,100)
                     if(player[504].level==26){player[504].ach=true;return}
                     player[504].maxLevel=Math.max(player[504].maxLevel,++player[504].level)
                     player[504].tileList=[]
