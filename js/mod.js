@@ -21,11 +21,14 @@ let modInfo = {
 // 在num和name中设置版本号
 let VERSION = {
 	num: 0.81,
-	name: "发布版v14"
+	name: "发布版v16"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v16 | 0.81 | 2026/6/7</h3><br>
+	完善了世界403的框架并完成前8个关卡;改善了部分UI;解决了一些已知问题<br>
+	重平衡狐维度,攻击层更新!<br><br>
 	<h3>v14 | 0.805 | 2026/5/31</h3><br>
 	101新增一个dlc<br><br>
 	<h3>v13 | 0.804 | 2026/5/28</h3><br>
@@ -82,8 +85,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
-	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getcap", "getshopcap",
-	"getFl22req", "getFl22trig"
+	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
+	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack"
 ]
 
 function getStartPoints() {
@@ -276,7 +279,16 @@ function fixOldSave(oldVersion) {
 			"prevTab": ""
 		}
 		alert(`0.802版本尝试迁移了麦麦(原405,目前计划作为废稿~:重返梦树~内容)数据,但出现了一些问题.
-目前已知:ResetTime会报错,刷新无法解决
+目前已知:ResetTime会报错,刷新无法解决(如果刷新解决了则无视它)
 以下是临时解决方法:导出存档,硬重置,导入存档;此方法应能解决上述报错问题`)
+	}
+	if (oldVersion <= 0.805) {
+		let fox = player.book.fox
+		fox.power = [
+			_D0, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
+		],
+			fox.gener = [
+				null, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
+			]
 	}
 }

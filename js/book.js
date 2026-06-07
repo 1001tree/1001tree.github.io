@@ -18,12 +18,19 @@ addLayer("book", {
                 gener: [
                     null, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
                 ]
+            },
+            att: {
+                level: _D0,
+                hp: _D1,
+                power: _D0
             }
         }
     },
     update(diff) {
-        if (_DR().lte(layers[this.layer].getrate())) {
+        let powercount = _D0
+        while (_DR().lte(layers[this.layer].getrate().div(_D2.pow(powercount)))) {
             player[this.layer].power = player[this.layer].power.add(1).clamp(0, layers[this.layer].getcap())
+            powercount = powercount.add(1)
         }
 
         if (!player[this.layer].fox.pause) {
@@ -35,6 +42,11 @@ addLayer("book", {
                 }
             }
         }
+
+        player[this.layer].att.power = player[this.layer].att.power.add(layers[this.layer].powergen().mul(diff))
+
+        player[this.layer].att.hp = player[this.layer].att.hp.add(layers[this.layer].bossgen().mul(diff)).clamp(0, layers[this.layer].bossmaxhp())
+
     },
     type: "none",
     tabFormat: {
@@ -80,6 +92,12 @@ addLayer("book", {
         世界之书: {
             content: [
                 ["microtabs", "world"],
+                ["display-text", "<br>"]
+            ]
+        },
+        狐等级: {
+            content: [
+                ["microtabs", "gener"],
                 ["display-text", "<br>"]
             ]
         },
@@ -200,109 +218,6 @@ addLayer("book", {
                     <h3>上面写着一些秘密,看看它们吧,你值得</h3><br>
                     如果你不知道怎么完成某些世界,就来找我吧
                     `]
-                ],
-                style: {
-                    width: "720px"
-                }
-            },
-            "狐VIP": {
-                content: [
-                    ["display-text", function () {
-                        return `
-                        你有 <h1 class="p9pt">${formatWhole(player.main.points)}</h1> 梦力<br><br>
-                        充值梦力可以提升狐VIP等级<br>
-                        你当前充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br>
-                        等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
-                        这为你带来了<br>
-                        狐力量和狐维度的 <h3 class="p9pt">×${format(layers[this.layer].getgain())}</h3> 加成<br>
-                        `
-                    }],
-                    "blank",
-                    ["clickables", [1, 3]],
-                    "blank",
-                    ["display-text", function () {
-                        return `
-                        你有 <h1 class="nmpt">${format(player[this.layer].fox.power[0])}</h1> 狐力量<br>
-                        狐力量*暂时*不会对您的游戏有任何加成,它只是消耗多余梦力的途径<br><br>
-                        `
-                    }],
-                    ["row", [
-                        ["display-text", function () {
-                            return `
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[1])}</h2> 狐一维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[1])}</h2> 狐一维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(1))}</h3> 狐力量在每秒<br>
-                            获得下一个狐一维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(1))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[2])}</h2> 狐二维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[2])}</h2> 狐二维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(2))}</h3> 狐一维在每秒<br>
-                            获得下一个狐二维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(2))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[3])}</h2> 狐三维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[3])}</h2> 狐三维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(3))}</h3> 狐二维在每秒<br>
-                            获得下一个狐三维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(3))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[4])}</h2> 狐四维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[4])}</h2> 狐四维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(4))}</h3> 狐三维在每秒<br>
-                            获得下一个狐四维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(4))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[5])}</h2> 狐五维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[5])}</h2> 狐五维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(5))}</h3> 狐四维在每秒<br>
-                            获得下一个狐五维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(5))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[6])}</h2> 狐六维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[6])}</h2> 狐六维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(6))}</h3> 狐五维在每秒<br>
-                            获得下一个狐六维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(6))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[7])}</h2> 狐七维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[7])}</h2> 狐七维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(7))}</h3> 狐六维在每秒<br>
-                            获得下一个狐七维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(7))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[8])}</h2> 狐八维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[8])}</h2> 狐八维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(8))}</h3> 狐七维在每秒<br>
-                            获得下一个狐八维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(8))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[9])}</h2> 狐九维生成器和
-                            <h2 class="nmpt">${format(player[this.layer].fox.power[9])}</h2> 狐九维<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(9))}</h3> 狐八维在每秒<br>
-                            获得下一个狐九维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(9))}</h3> 狐力量<br><br>
-
-                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[10])}</h2> 狐十维生成器<br>
-                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(10))}</h3> 狐九维在每秒<br>
-                            获得下一个狐十维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(10))}</h3> 狐力量
-                        `
-                        }],
-                    ]]
-                ],
-                style: {
-                    width: "720px"
-                }
-            },
-            梦力发生器: {
-                content: [
-                    ["display-text", function () {
-                        return `
-                        你有 <h1 class="p9pt">${formatWhole(player.main.points)}</h1> 梦力<br><br>
-                        在此地,你获取,你发现,你找到<br>
-                        你当前充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br>
-                        等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
-                        这为你带来了梦力发生器<br>
-                        每刻获取能量的概率设置为 <h3 class="p9pt">${formatPersent(layers[this.layer].getrate())}</h3><br>
-                        上限设置为 <h3 class="p9pt">${format(layers[this.layer].getcap())}</h3><br>
-                        `
-                    }],
-                    "blank",
-                    ["bar", "powerbar"],
-                    "blank",
-                    ["clickables", [1, 2]],
-                    "blank",
                 ],
                 style: {
                     width: "720px"
@@ -435,6 +350,191 @@ addLayer("book", {
                 }
             },
         },
+        gener: {
+            狐等级: {
+                content: [
+                    ["display-text", function () {
+                        return `
+                        你有 <h1 class="p9pt">${formatWhole(player.main.points)}</h1> 梦力<br>
+                        你当前等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br><br>
+                        
+                        充值梦力可以提升狐经验,狐经验累积得到狐等级<br>
+                        狐经验和狐等级可加成狐维度和梦力生成器<br>
+                        `
+                    }],
+                    "blank",
+                    ["clickables", [1, 2, 3, 4]],
+                    "blank",
+                    ["display-text", function () {
+                        return `
+                        你有 <h2 class="nmpt">×${format(layers[this.layer].getgain())}</h2> 维度层加成<br>
+                        你有 <h3 class="nmpt">${format(player[this.layer].fox.power[0])}</h3> 狐力量<br><br>
+                        
+                        你有 <h2 class="nmpt">${formatPersent(layers[this.layer].getrate())}</h2> 发生器效率(×${formatPersent(layers[this.layer].getratebuff())})<br>
+                        你有 <h3 class="nmpt">${formatWhole(player[this.layer].power)} / ${format(layers[this.layer].getcap())}</h3> 充能<br><br>
+
+                        你有 <h2 class="nmpt">${format(layers[this.layer].attpower())}</h2> 战斗力量<br>
+                        你有 <h3 class="nmpt">${format(player[this.layer].att.power)}</h3> 生命(+${format(layers[this.layer].powergen())}/s)<br>
+                        战斗等级 <h3 class="nmpt">${formatWhole(player[this.layer].att.level)}</h3><br>
+                        一击毙命需要  <h3 class="nmpt">${format(layers[this.layer].getattack(true)[0])}</h3> 生命<br><br>
+                        `
+                    }],
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+            狐维度: {
+                content: [
+                    ["display-text", function () {
+                        return `
+                        力量随着维度奔涌,你看到了水流击石<br>
+                        你当前等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br><br>
+
+                        这为你带来了<br>
+                        狐力量和狐维度的 <h3 class="nmpt">×${format(layers[this.layer].getgain())}</h3> 加成<br><br>
+
+                        狐维度产生狐力量,狐力量决定战斗力量<br><br>
+                        `
+                    }],
+                    ["clickables", [3]],
+                    "blank",
+                    ["display-text", function () {
+                        return `
+                        你有 <h1 class="nmpt">${format(player[this.layer].fox.power[0])}</h1> 狐力量<br>
+                        这为你带来了 <h2 class="nmpt">${format(layers[this.layer].attpower())}</h2> 战斗力量<br>
+                        `
+                    }],
+                    "blank",
+                    ["row", [
+                        ["display-text", function () {
+                            return `
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[1])}</h2> 狐一维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[1])}</h2> 狐一维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(1))}</h3> 狐力量在每秒<br>
+                            获得下一个狐一维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(1))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[2])}</h2> 狐二维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[2])}</h2> 狐二维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(2))}</h3> 狐一维在每秒<br>
+                            获得下一个狐二维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(2))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[3])}</h2> 狐三维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[3])}</h2> 狐三维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(3))}</h3> 狐二维在每秒<br>
+                            获得下一个狐三维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(3))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[4])}</h2> 狐四维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[4])}</h2> 狐四维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(4))}</h3> 狐三维在每秒<br>
+                            获得下一个狐四维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(4))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[5])}</h2> 狐五维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[5])}</h2> 狐五维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(5))}</h3> 狐四维在每秒<br>
+                            获得下一个狐五维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(5))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[6])}</h2> 狐六维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[6])}</h2> 狐六维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(6))}</h3> 狐五维在每秒<br>
+                            获得下一个狐六维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(6))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[7])}</h2> 狐七维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[7])}</h2> 狐七维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(7))}</h3> 狐六维在每秒<br>
+                            获得下一个狐七维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(7))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[8])}</h2> 狐八维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[8])}</h2> 狐八维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(8))}</h3> 狐七维在每秒<br>
+                            获得下一个狐八维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(8))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[9])}</h2> 狐九维生成器和
+                            <h2 class="nmpt">${format(player[this.layer].fox.power[9])}</h2> 狐九维<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(9))}</h3> 狐八维在每秒<br>
+                            获得下一个狐九维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(9))}</h3> 狐力量<br><br>
+        
+                            你有 <h2 class="nmpt">${formatWhole(player[this.layer].fox.gener[10])}</h2> 狐十维生成器<br>
+                            这产生着 <h3 class="nmpt">${format(layers[this.layer].getgen(10))}</h3> 狐九维在每秒<br>
+                            获得下一个狐十维生成器在 <h3 class="nmpt">${format(layers[this.layer].getprice(10))}</h3> 狐力量<br><br>
+                        `
+                        }],
+                    ]],
+                    "blank",
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+            梦力发生器: {
+                content: [
+                    ["display-text", function () {
+                        return `
+                        在此地,你获取,你发现,你找到<br>
+                        你当前等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br><br>
+
+                        这为你带来了梦力发生器<br>
+                        每刻获取能量的概率设置为 <h3 class="nmpt">${formatPersent(layers[this.layer].getrate())}</h3><br>
+                        上限设置为 <h3 class="nmpt">${format(layers[this.layer].getcap())}</h3><br><br>
+
+                        梦力发生器基于狐等级产生基础效率<br>
+                        基于梦力发生器内的能量,效率会从125%逐渐变低到75%<br>
+                        此外,战斗等级会加成效率<br>
+                        游戏每刻判定一次,随机数小于效率值时能量+1<br>
+                        随后概率/2并重复判定,直到判定失败<br><br>
+                        `
+                    }],
+                    ["clickables", [2]],
+                    "blank",
+                    ["bar", "powerbar"],
+                    "blank",
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+            攻击: {
+                content: [
+                    ["display-text", function () {
+                        return `
+                        战斗!直到战斗为了战斗而战斗!<br>
+                        你当前等级为 <h1 class="p9pt">${formatWhole(player[this.layer].level)}</h1> 级<br>
+                        充值了 <h2 class="p9pt">${formatWhole(player[this.layer].exp)}</h2> 梦力<br><br>
+
+                        战斗力量基于狐力量,你会基于战斗力量获得一定的生命值<br>
+                        当你的生命值超过每秒基础获取值的10/100/1000倍,获取会被软上限2/5/20倍<br>
+                        与boss战斗需要消耗生命值,你每次攻击会消耗boss⚔️值的生命值<br>
+                        随后造成(战斗力量/(1+🛡️))值的❤️伤害<br>
+                        boss每秒会回复🩹值的❤️<br>
+                        随着boss❤️比例的降低,🛡️会降低,而🩹会增加<br><br>
+                        `
+                    }],
+                    ["display-text", function () {
+                        return `
+                        你有 <h1 class="nmpt">${format(layers[this.layer].attpower())}</h1> 战斗力量<br>
+                        你有 <h2 class="nmpt">${format(player[this.layer].att.power)}</h2> 生命值(+${format(layers[this.layer].powergen())}/s)<br>
+                        `
+                    }],
+                    "blank",
+                    ["clickables", [4]],
+                    "blank",
+                    ["display-text", function () {
+                        return `
+                        战斗等级 <h2 class="nmpt">${formatWhole(player[this.layer].att.level)}</h2><br>
+                        这为你带来了梦力发生器的 <h3 class="nmpt">${formatPersent(player[this.layer].att.level.div(37))}</h3> 效率加成<br>
+                        `
+                    }],
+                    ["bar", "attackbar"],
+                    "blank",
+                ],
+                style: {
+                    width: "720px"
+                }
+            },
+        },
         realm: {
             评论区: {
                 content: [
@@ -467,14 +567,50 @@ addLayer("book", {
     bars: {
         powerbar: {
             direction: UP,
-            width: 80,
-            height: 220,
+            width: 120,
+            height: 280,
             progress() {
                 return player[this.layer].power.div(layers[this.layer].getcap())
             },
             display() {
-                return `<span class="nmpt">${formatWhole(player[this.layer].power)}<br>——<br>${formatWhole(layers[this.layer].getcap())}</span>`
-            }
+                return `
+                <span class="nmpt">
+                🔮 <h2 class="p9pt">${formatWhole(player[this.layer].power)}</h2><br>
+                ————<br>
+                🔋 <h2 class="p9pt">${formatWhole(layers[this.layer].getcap())}</h2>
+                </span>`
+            },
+            fillStyle: {
+                backgroundColor: "#0055AA"
+            },
+            instant: true
+        },
+        attackbar: {
+            direction: RIGHT,
+            width: 600,
+            height: 70,
+            progress() {
+                return player[this.layer].att.hp.div(layers[this.layer].bossmaxhp())
+            },
+            display() {
+                return `<span class="nmpt">
+                ❤️
+                <h2 class="p9pt">${format(player[this.layer].att.hp)}</h2> 
+                <h2 class="nmpt">/ </h2>
+                <h2 class="p9pt">${format(layers[this.layer].bossmaxhp())}</h2>
+                <br>
+                ⚔️
+                <h2 class="p9pt">${format(layers[this.layer].bossatt())}</h2>
+                🛡️
+                <h2 class="p9pt">${format(layers[this.layer].bossdef())}</h2>
+                🩹
+                <h2 class="p9pt">${format(layers[this.layer].bossgen())}</h2>
+                </span>`
+            },
+            fillStyle: {
+                backgroundColor: "#CC2222"
+            },
+            instant: true
         }
     },
     clickables: {
@@ -532,13 +668,59 @@ addLayer("book", {
             onClick() {
                 player[this.layer].fox.pause = !player[this.layer].fox.pause
             }
+        },
+        41: {
+            title: "一击毙命",
+            display() {
+                return `消耗 ${format(layers[this.layer].getattack(true)[0])} 生命
+                造成 ${format(layers[this.layer].getattack(true)[1])} 伤害`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return layers[this.layer].getattack(true)[0].lte(player[this.layer].att.power)
+            },
+            onClick() {
+                let result = layers[this.layer].getattack(true)
+                player[this.layer].att.power = player[this.layer].att.power.sub(result[0])
+                player[this.layer].att.hp = player[this.layer].att.hp.sub()
+
+                if (result[2]) {
+                    player[this.layer].att.level = player[this.layer].att.level.add(1)
+                    player[this.layer].att.hp = layers[this.layer].bossmaxhp()
+                }
+            }
+        },
+        42: {
+            title: "攻击",
+            display() {
+                return `消耗 ${format(layers[this.layer].getattack(false)[0])} 生命
+                造成 ${format(layers[this.layer].getattack(false)[1])} 伤害`
+            },
+            style: {
+                minHeight: "60px"
+            },
+            canClick() {
+                return true
+            },
+            onClick() {
+                let result = layers[this.layer].getattack(false)
+                player[this.layer].att.power = player[this.layer].att.power.sub(result[0])
+                player[this.layer].att.hp = player[this.layer].att.hp.sub(result[1])
+
+                if (result[2]) {
+                    player[this.layer].att.level = player[this.layer].att.level.add(1)
+                    player[this.layer].att.hp = layers[this.layer].bossmaxhp()
+                }
+            }
         }
     },
     getgain() {
         let x = player[this.layer].level
         let y = player[this.layer].exp
-        return (x.pow(2).add(1))
-            .pow(x.mul(y))
+        return (x.pow(1.25).add(1))
+            .pow(x.mul(y.pow(1 / 3)))
             .sub(1)
     },
     getgen(layer) {
@@ -548,19 +730,97 @@ addLayer("book", {
         return base.mul(gain)
     },
     getprice(layer) {
-        return (_D10.add(player[this.layer].fox.gener[layer].div(100))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
+        return (_D10.add(player[this.layer].fox.gener[layer].div(200/3))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
     },
     getrate() {
         let x = player[this.layer].level
-        return _D(0.2).sub(
-            _D(4).pow(
-                x.div(12).add(1 / 8).neg()
-            ).div(5)
+        let y = player[this.layer].exp
+        return _D(0.1).sub(
+            _D(2).pow(
+                x.div(20).add(1 / 8).neg()
+            ).div(10)
         )
+            .add(x.pow(0.8).div(100))
+            .add(y.pow(0.5).div(1000))
+            .mul(layers[this.layer].getratebuff())
+    },
+    getratebuff() {
+        let x = _D1
+        let z = player[this.layer].att.level
+        return _D1
+        .mul(z.div(37).add(1))
+        .mul(_D(1.25).sub(player[this.layer].power.div(layers[this.layer].getcap()).div(4)))
     },
     getcap() {
         let y = player[this.layer].exp
         return y.mul(100 / 3).add(1000)
+    },
+    attpower() {
+        return player[this.layer].fox.power[0].pow(1 / 3).add(1).log(10)
+    },
+    bossatt() {
+        let x = player[this.layer].att.level
+        return x.add(1)
+    },
+    bossmaxhp() {
+        let x = player[this.layer].att.level
+        return x.add(1).pow(2)
+    },
+    bossdef() {
+        let x = player[this.layer].att.level
+        let y = player[this.layer].att.hp
+        let z = layers[this.layer].bossmaxhp()
+
+        return x.add(1).pow(1.25).sub(1).mul(y.div(z).add(1)).div(6)
+    },
+    powergen() {
+        let x = layers[this.layer].attpower().add(1).pow(0.5).sub(1)
+
+        if (player[this.layer].att.power.lte(x.mul(10))) {
+            //do nothing
+        } else if (player[this.layer].att.power.lte(x.mul(100))) {
+            x = x.div(2)
+        } else if (player[this.layer].att.power.lte(x.mul(1000))) {
+            x = x.div(5)
+        } else {
+            x = x.div(20)
+        }
+
+        return x
+    },
+    bossgen() {
+        let x = player[this.layer].att.level
+        let y = player[this.layer].att.hp
+        let z = layers[this.layer].bossmaxhp()
+
+        return x.add(1).pow(0.85).sub(1).mul(x.div(20)).mul(_D(2).sub(y.div(z))).div(2)
+    },
+    getattack(killmode) {
+        let x = layers[this.layer].attpower()
+        let y = layers[this.layer].bossdef()
+
+        if (x.eq(0)) {
+            return [_D0, _D0, false]
+        }
+
+        let p = player[this.layer].att.hp
+
+        let a = layers[this.layer].bossatt()
+        let b = player[this.layer].att.power
+
+        let atk = x.div(y.add(1))   //攻击一次的伤害
+        let ned = p.div(atk)        //总需要的攻击次数
+        let tpw = ned.mul(a)        //总需要的生命值
+        let cot = b.div(a)          //能承受的攻击次数
+        let cpw = cot.mul(a)        //能承受的生命值
+        let dmg = atk.mul(cot)      //能造成的伤害
+
+        // 消耗生命,造成伤害,是否致死
+        if (ned.lt(cot) || killmode) {
+            return [tpw, p, true]
+        } else {
+            return [cpw, dmg, false]
+        }
     },
     tooltip: "",
     layerShown() { return true },

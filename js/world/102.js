@@ -117,7 +117,7 @@ addLayer("102", {
             [300, 8000],
             [400, 9000],
             [500, 10000],
-            [1.79e308, 10000],
+            [1.79e308, 20000],
         ], player[this.layer].level) * player[this.layer].rnd + 1)
     },
     checkHash(a, b) {
@@ -258,6 +258,12 @@ addLayer("102", {
                 player.main.points = player.main.points.add(1)
             },
             done() { return player[this.layer].level >= 114514 },
+            unlocked() { return hasMilestone(this.layer, this.id - 1) },
+        },
+        14: {
+            requirementDescription() { return `114515狐币` },
+            effectDescription() { return `温馨提示:现在立即暂停这个游戏,否则它会持续卡顿你的电脑,因为我说了这是在挖矿,你知道的` },
+            done() { return player[this.layer].level >= 114515 },
             unlocked() { return hasMilestone(this.layer, this.id - 1) },
         },
     },
