@@ -14,6 +14,7 @@ addLayer("403", {
             value: "",
             select: 0,
             program: [],
+            cycleCount: 0,
         }
     },
     execute(c,str) { //执行一串命令
@@ -23,6 +24,7 @@ addLayer("403", {
         for (let i in c) {
             if (c[i] instanceof Array) {ret=layers[403].executeLoop(c[i],ret)}
             else ret=layers[403].executeCommand(c[i],ret)
+            if (ret=="*")return "*"
         }
         return ret
     },
@@ -38,6 +40,7 @@ addLayer("403", {
     },
     executeCommand(c,str) { //执行单条命令
         let [x,y]=c.split("→")
+        if (player[403].cycleCount++>99999)return "*"
         return str.replaceAll(x,y)
     },
     breakDown(c) {
@@ -71,6 +74,16 @@ addLayer("403", {
             done() {return player[403].grid[204]==true},
             onComplete() {player.main.points=player.main.points.add(1)}
         },
+        2: {
+            requirementDescription: "完成403中的第12关",
+            done() {return player[403].grid[304]==true},
+            onComplete() {player.main.points=player.main.points.add(1)}
+        },
+        3: {
+            requirementDescription: "完成403中的第16关",
+            done() {return player[403].grid[404]==true},
+            onComplete() {completeWorld(this.layer)}
+        },
     },
     type: "none",
     tabFormat: [
@@ -97,7 +110,9 @@ addLayer("403", {
         ["row",[["clickables",[3]],["clickables",[10]]]],
         "grid",
         ["blank","16px"],
-        ["display-text",function(){return `- 运行日志 -<br>${player[403].log}`}]
+        ["display-text",function(){
+            if(player[403].level==0)return ""
+            else return `- 运行日志 -<br>${player[403].log}`}]
     ],
     clickables: {
         11: {
@@ -131,6 +146,7 @@ addLayer("403", {
             onClick() {
                 let h=0
                 let v=true
+                player[403].cycleCount=0
                 player[403].program.forEach(i=>{
                     if (i=="{")h++
                     if (i=="}")h--
@@ -142,7 +158,9 @@ addLayer("403", {
                     let p=layers[403].assemble(player[403].program)
                     let f=true
                     for (let i=1;i<=u[0];i++){
-                        if (layers[403].execute(p,u[i][0])!=u[i][1]){player[403].log=`${u[0]==1?"":`测试点${i}: `}结果与目标不匹配<br>结果: ${layers[403].execute(p,u[i][0])}<br> ≠ ${u[i][1]}`;f=false;break}
+                        let r=layers[403].execute(p,u[i][0])
+                        if (r=="*"){player[403].log=`${u[0]==1?"":`测试点${i}: `}程序运行超时, 自动中断`;f=false;break}
+                        if (r!=u[i][1]){player[403].log=`${u[0]==1?"":`测试点${i}: `}结果与目标不匹配<br>结果: ${layers[403].execute(p,u[i][0])}<br> ≠ ${u[i][1]}`;f=false;break}
                     }
                     if (f==true){
                         makeParticles(WINWINWIN,100)
@@ -158,31 +176,31 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1},
             canClick() {return player[403].scenario>1},
             onClick() {player[403].scenario--},
-            style() {return {"min-height":"35px","height":"35px","width":"40px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
+            style() {return {"min-height":"35px","height":"35px","width":"38px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         22: {
-            title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario}`}目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
+            title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario}`} | 目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
             unlocked() {return player[403].level!=0},
             canClick: false,
-            style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2]==1?"580px":"480px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
+            style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2][0]==1?"580px":"480px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         23: {
             title() {return `<h2>→</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1},
-            canClick() {return player[403].scenario<data403[player[403].level][2][0]},
+            canClick() {return player[403].scenario<10},
             onClick() {player[403].scenario++},
-            style() {return {"min-height":"35px","height":"35px","width":"40px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
+            style() {return {"min-height":"35px","height":"35px","width":"38px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         31: {
             title: "<h1>{</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"{")},
             style() {return {"min-height":"82px","height":"82px","width":"74px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
         },
         32: {
             title: "<h1>}</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"}")},
             style() {return {"min-height":"82px","height":"82px","width":"74px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
@@ -273,6 +291,20 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=5},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][5])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
+        },
+        106: {
+            title() {return data403[player[403].level][1][6]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=6},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][6])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
+        },
+        107: {
+            title() {return data403[player[403].level][1][7]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=7},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][7])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
     },
