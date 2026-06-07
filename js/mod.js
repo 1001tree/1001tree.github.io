@@ -20,7 +20,7 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.805,
+	num: 0.81,
 	name: "发布版v14"
 }
 
