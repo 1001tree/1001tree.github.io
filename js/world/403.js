@@ -56,9 +56,10 @@ addLayer("403", {
         for (let i in a){
             if (a[i]=="") continue
             if (a[i]=="}") h--
-            if (h==0&&f==true){f=false;r.push(layers[403].assemble(t));continue}
-            if (f==true) {t.push(a[i])}
-            if (a[i]=="{"&&f==false) {f=true;h++;t=[]}
+            if (h==0&&f==true) {f=false;r.push(layers[403].assemble(t));continue}
+            if (f==true) t.push(a[i])
+            if (a[i]=="{") h++
+            if (a[i]=="{"&&f==false) {f=true;t=[]}
             else if (f==false) r.push(a[i])
         }
         return r
