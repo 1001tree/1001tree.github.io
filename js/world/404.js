@@ -542,7 +542,7 @@ const jt404 = [
 function endGame() {
     d404.e = true
     d404.s = false
-    if (!d404.u) {
+    if (!d404.u && !(player[404].life <= 0)) {
         player[404].points = Math.max(d404.p, player[404].points)
         if (typeof player[404].song[player[404].songid] == "undefined") {
             let state = 0
@@ -784,7 +784,7 @@ function g404() {
     }
 
     if (t > 500 && d404.s) { d404.s = false; clickClickable(404, 12); alert("异常:刻间隔过长,已自动结束游戏"); }
-    if (player[404].life < 0) {
+    if (player[404].life <= 0) {
         window.trackPlayer.setSong(player[404].songid, false)
         endGame()
     }
