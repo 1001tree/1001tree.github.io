@@ -524,7 +524,9 @@ addLayer("book", {
                     ["display-text", function () {
                         return `
                         战斗等级 <h2 class="nmpt">${formatWhole(player[this.layer].att.level)}</h2><br>
-                        这为你带来了梦力发生器的 <h3 class="nmpt">${formatPersent(player[this.layer].att.level.div(37))}</h3> 效率加成<br>
+                        这为你带来了梦力发生器的<br>
+                        <h3 class="nmpt">${formatPersent(player[this.layer].att.level.div(37))}</h3> 效率加成<br>
+                        <h3 class="nmpt">${format(player[this.layer].att.level.mul(2.5))}</h3> 上限提升<br>
                         `
                     }],
                     ["bar", "attackbar"],
@@ -719,8 +721,9 @@ addLayer("book", {
     getgain() {
         let x = player[this.layer].level
         let y = player[this.layer].exp
+        let z = player[this.layer].att.level
         return (x.pow(1.25).add(1))
-            .pow(x.mul(y.pow(1 / 3)))
+            .pow(x.mul((y.add(z)).pow(1 / 4)))
             .sub(1)
     },
     getgen(layer) {
@@ -730,7 +733,7 @@ addLayer("book", {
         return base.mul(gain)
     },
     getprice(layer) {
-        return (_D10.add(player[this.layer].fox.gener[layer].div(200/3))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
+        return (_D10.add(player[this.layer].fox.gener[layer].div(75))).pow(player[this.layer].fox.gener[layer].add(1).mul(layer))
     },
     getrate() {
         let x = player[this.layer].level
@@ -745,15 +748,15 @@ addLayer("book", {
             .mul(layers[this.layer].getratebuff())
     },
     getratebuff() {
-        let x = _D1
-        let z = player[this.layer].att.level
+        let x = player[this.layer].att.level
         return _D1
-        .mul(z.div(37).add(1))
-        .mul(_D(1.25).sub(player[this.layer].power.div(layers[this.layer].getcap()).div(4)))
+        .mul(x.div(37).add(1))
+        .mul(_D(1.25).sub(player[this.layer].power.div(layers[this.layer].getcap()).div(2)))
     },
     getcap() {
-        let y = player[this.layer].exp
-        return y.mul(100 / 3).add(1000)
+        let x = player[this.layer].exp
+        let y = player[this.layer].att.level
+        return x.mul(100 / 3).add(y.mul(2.5)).add(1000)
     },
     attpower() {
         return player[this.layer].fox.power[0].pow(1 / 3).add(1).log(10)
@@ -774,7 +777,7 @@ addLayer("book", {
         return x.add(1).pow(1.25).sub(1).mul(y.div(z).add(1)).div(6)
     },
     powergen() {
-        let x = layers[this.layer].attpower().add(1).pow(0.5).sub(1)
+        let x = layers[this.layer].attpower().add(1).pow(0.66).sub(1)
 
         if (player[this.layer].att.power.lte(x.mul(10))) {
             //do nothing

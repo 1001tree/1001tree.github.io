@@ -245,6 +245,8 @@ addLayer("501", {
                     } else {
                         player._501.trig[14] = true
                         player._501.lose = true
+                        
+                        options.truechallenger = -1
                         if (options.challenger) hardReset(false, true)
                     }
                 }
@@ -255,6 +257,8 @@ addLayer("501", {
                     else if (player._501.stage.eq(20)) player._501.trig[13] = true
                     else player._501.trig[2] = true
                     player._501.lose = true
+
+                    options.truechallenger = -1
                     if (options.challenger) hardReset(false, true)
                 }
                 if (player._501.stage.eq(15)) {
@@ -371,22 +375,32 @@ addLayer("501", {
             if (data == 2 && (s.eq(1) || s.eq(9) || s.eq(11) || s.eq(15) || s.eq(16) || s.eq(5))) {
                 player._501.trig[1] = true
                 player._501.started = false
+                player._501.lose = true
+                options.truechallenger = -1
             }
             if (data == 1 && (s.eq(2) || s.eq(3) || s.eq(4) || s.eq(15) || s.eq(16) || s.eq(5))) {
                 player._501.trig[1] = true
                 player._501.started = false
+                player._501.lose = true
+                options.truechallenger = -1
             }
             if (data == 3 && (s.eq(5) || s.eq(12))) {
                 player._501.trig[3] = true
                 player._501.started = false
+                player._501.lose = true
+                options.truechallenger = -1
             }
             if (s.eq(6) || s.eq(8) || s.eq(10) || s.eq(13) || s.eq(17) || s.eq(19)) {
                 player._501.trig[4] = true
                 player._501.started = false
+                player._501.lose = true
+                options.truechallenger = -1
             }
             if (player._501.gnum[Math.floor(id / 100 - 1)][Math.floor(id % 10 - 1)] == 0 && s.eq(20)) {
                 player._501.trig[4] = true
                 player._501.started = false
+                player._501.lose = true
+                options.truechallenger = -1
             }
             player._501.cnt--
             player[this.layer].grid[id] = 0;

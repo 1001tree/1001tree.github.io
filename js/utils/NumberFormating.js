@@ -71,8 +71,8 @@ function nm_format(decimal, precision = 2, small, informat = false) {
         if (decimal.eq(0)) return (0).toFixed(precision)
 
         let power = decimal.log(root)
-        if (power.gte(1000)) return `${root}^${nm_format(power, 0, small, true)}`
-        else if (power.gte(0)) return `${root}^${nm_format(power, 3, small, true)}`
+        if (power.gte(1000)) return `${root}<sup>${nm_format(power, 0, small, true)}</sup>`
+        else if (power.gte(0)) return `${root}<sup>${nm_format(power, 3, small, true)}</sup>`
         else if (decimal.gte(0.0001) || !small) return regularFormat(decimal, precision)
     } else if (oc == 4) {
         return "🦊"

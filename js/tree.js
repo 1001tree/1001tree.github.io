@@ -4,7 +4,7 @@ var layoutInfo = {
     showTree: true,
 
     treeLayout: [
-        ["main", "ach", "book"],
+        ["main", "ach", "book", "extra"],
         ["101", "102", "103", "104", "105"],
         ["201", "202", "203", "204", "205"],
         ["301", "302", "303", "304", "305"],

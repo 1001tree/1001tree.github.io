@@ -3,6 +3,7 @@ let modInfo = {
 	id: "1001tree",
 	pointsName: "世界",
 	modFiles: ["layers.js", "tree.js", "book.js", "const.js", "const403.js",
+
 		"world/101.js", "world/102.js", "world/103.js", "world/104.js", "world/105.js",
 		"world/201.js", "world/202.js", "world/203.js", "world/204.js", "world/205.js",
 		"world/301.js", "world/302.js", "world/303.js", "world/304.js", "world/305.js",
@@ -11,6 +12,8 @@ let modInfo = {
 		"world/101/1011.js",
 		"world/202/2021.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
+
+		"world/10102.js"
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -20,12 +23,15 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.8101,
-	name: "发布版v16"
+	num: 0.811,
+	name: "发布版v17"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v17 | 0.811 | 2026/6/12</h3><br>
+	更新了10102:乾狐离光声望三角<br>
+	修复了一些已知问题<br><br>
 	<h3>v16 | 0.81 | 2026/6/7</h3><br>
 	完善了世界403的框架并完成前8个关卡;改善了部分UI;解决了一些已知问题<br>
 	重平衡狐维度,攻击层更新!<br><br>
@@ -85,7 +91,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"startSimulation", "endSimulation", "getColor_205", "start", "checkboard", "initializeGrid",
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
-	"check11", "check12", "check13", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
+	"check11", "check12", "check13", "check14", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
 	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack"
 ]
 
@@ -290,5 +296,17 @@ function fixOldSave(oldVersion) {
 			fox.gener = [
 				null, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
 			]
+	}
+	if (oldVersion <= 0.8101) {
+		let a = [
+			10101, 10102, 10103, 10104, 10105,
+			10201, 10202, 10203, 10204, 10205,
+			10301, 10302, 10303, 10304, 10305,
+			10401, 10402, 10403, 10404, 10405,
+			10501, 10502, 10503, 10504, 10505,
+		]
+		for (i in a) {
+			player.pause[i] = false
+		}
 	}
 }

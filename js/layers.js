@@ -721,6 +721,28 @@ addLayer("ach", {
     }
 });
 
+addLayer("extra", {
+    symbol: "💡",
+    resource: "",
+    color: "#c3226b",
+    update(diff) {},
+    startData() {
+        return {
+            unlocked: true,
+            points: _D0
+        }
+    },
+    type: "none",
+    tabFormat: [
+        ["tree", [
+            ['10102'],
+        ]],
+    ],
+    tooltip: "Extra Zone",
+    layerShown() { return true },
+    leftTab: true,
+});
+
 /*
 addLayer("", {
     symbol: "",
