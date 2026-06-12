@@ -158,7 +158,8 @@ addLayer("403", {
             style:{"width":"800px","box-shadow":"-5px 10px 10px #0000FF"},
         }
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });
 */

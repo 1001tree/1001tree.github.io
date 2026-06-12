@@ -1256,7 +1256,8 @@ addLayer("401", {
 
 
 	resetsNothing() { return true },
-	layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+	
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 	update(diff) {
 		if (!getGridData('main', this.layer)||player.pause[this.layer]) return
 		if (player[this.layer].points.gte(1)) player[this.layer].points1 = player[this.layer].points1.add(_D(diff).mul(tmp[this.layer].milestone1Effect));

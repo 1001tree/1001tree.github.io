@@ -899,7 +899,7 @@ addLayer("205", {
     idtoxy(id) {
         return { x: id % 100 - 1, y: ~~(id / 100) - 1 }
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) }
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 });
 
 function switchUpgrade_205() {

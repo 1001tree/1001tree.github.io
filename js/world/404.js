@@ -365,7 +365,8 @@ addLayer("404", {
             }
         },
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
     hotkeys: [
         {
             key: "z",

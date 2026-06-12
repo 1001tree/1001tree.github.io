@@ -2,7 +2,7 @@ let modInfo = {
 	name: "一千零一树",
 	id: "1001tree",
 	pointsName: "世界",
-	modFiles: ["layers.js", "tree.js", "book.js", "const.js", "const403.js",
+	modFiles: ["layers.js","nodes.js", "tree.js", "book.js", "const.js", "const403.js",
 
 		"world/101.js", "world/102.js", "world/103.js", "world/104.js", "world/105.js",
 		"world/201.js", "world/202.js", "world/203.js", "world/204.js", "world/205.js",
@@ -23,14 +23,19 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.811,
-	name: "发布版v17"
+	num: 0.812,
+	name: "发布版v18"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
-	<h3>v17 | 0.811 | 2026/6/12</h3><br>
+	<h3>v19 | 0.812 | 2026/6/12</h3><br>
+	更新了一些样式，添加了行隐藏按钮<br>
+	303因为还未做到下一个可玩版本，遂目前不可隐藏，后续版本更新后将可正常隐藏<br>
+	修改了返回键样式<br>
+	新增设置：世界之书/额外游戏隐藏，短时间表示
 	更新了10102:乾狐离光声望三角<br>
+	略微加强狐维度，战斗等级提升生成器上限<br>
 	修复了一些已知问题<br><br>
 	<h3>v16 | 0.81 | 2026/6/7</h3><br>
 	完善了世界403的框架并完成前8个关卡;改善了部分UI;解决了一些已知问题<br>
@@ -126,18 +131,23 @@ function addedPlayerData() {
 			lose: false,
 		},
 		world: {
-			"101": false, "102": false, "103": false, "104": false, "105": false,
-			"201": false, "202": false, "203": false, "204": false, "205": false,
-			"301": false, "302": false, "303": false, "304": false, "305": false,
-			"401": false, "402": false, "403": false, "404": false, "405": false,
-			"501": false, "502": false, "503": false, "504": false, "505": false,
+			101: false, 102: false, 103: false, 104: false, 105: false,
+			201: false, 202: false, 203: false, 204: false, 205: false,
+			301: false, 302: false, 303: false, 304: false, 305: false,
+			401: false, 402: false, 403: false, 404: false, 405: false,
+			501: false, 502: false, 503: false, 504: false, 505: false,
 		},
 		pause: {
-			"101": false, "102": false, "103": false, "104": false, "105": false,
-			"201": false, "202": false, "203": false, "204": false, "205": false,
-			"301": false, "302": false, "303": false, "304": false, "305": false,
-			"401": false, "402": false, "403": false, "404": false, "405": false,
-			"501": false, "502": false, "503": false, "504": false, "505": false,
+			101: false, 102: false, 103: false, 104: false, 105: false,
+			201: false, 202: false, 203: false, 204: false, 205: false,
+			301: false, 302: false, 303: false, 304: false, 305: false,
+			401: false, 402: false, 403: false, 404: false, 405: false,
+			501: false, 502: false, 503: false, 504: false, 505: false,
+			10101: false, 10102: false, 10103: false, 10104: false, 10105: false,
+			10201: false, 10202: false, 10203: false, 10204: false, 10205: false,
+			10301: false, 10302: false, 10303: false, 10304: false, 10305: false,
+			10401: false, 10402: false, 10403: false, 10404: false, 10405: false,
+			10501: false, 10502: false, 10503: false, 10504: false, 10505: false,
 		},
 		global: {
 			//此处存放全局变量
@@ -297,7 +307,7 @@ function fixOldSave(oldVersion) {
 				null, _D1, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0, _D0
 			]
 	}
-	if (oldVersion <= 0.8101) {
+	if (oldVersion <= 0.811) {
 		let a = [
 			10101, 10102, 10103, 10104, 10105,
 			10201, 10202, 10203, 10204, 10205,
@@ -305,7 +315,7 @@ function fixOldSave(oldVersion) {
 			10401, 10402, 10403, 10404, 10405,
 			10501, 10502, 10503, 10504, 10505,
 		]
-		for (i in a) {
+		for (i of a) {
 			player.pause[i] = false
 		}
 	}

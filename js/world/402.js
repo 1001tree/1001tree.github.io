@@ -204,6 +204,7 @@ addLayer("402", {
             return {"height":"50px","width":"50px","border":`${(p[0]*100+p[1]+303)==id?"5px solid #FF0000":"3px solid #283EB9"}`,"background-color":`${l.includes(id)?"#AACAFF":"#090F0F"}`,"border-radius":"1px","transition-duration":"0.2s","transform":"scale(1.01,1.01)"}
         }
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });

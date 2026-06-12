@@ -371,14 +371,8 @@ div.tbox {
 
 .nmpt {
 	color: #aaa;
-	text-shadow: 0 0 15px #aaa;
+	text-shadow: 0 0 15px #ccc;
 }
-
-.cpt {
-	color: var(--color);
-	text-shadow: 0 0 15px var(--color);
-}
-
 
 .p1pt {
 	background: linear-gradient(in hsl 0deg,

@@ -71,7 +71,8 @@ addLayer("503", {
     },
     milestones: {
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
     scrboost(){
         return player['503'].points.pow(0.25).div(10).add(1)
     },

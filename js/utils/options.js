@@ -23,8 +23,6 @@ function getStartOptions() {
 		songshown: true,
 		sloganshown: true,
 		newsshown: true,
-
-		count: 0,
 		
 		forceOneTab: false,
 		hcmode: 0,
@@ -37,8 +35,20 @@ function getStartOptions() {
 
 		hideWorld: false,
 		autopause: false,
-		achivement: false,
 
+		//隐藏指定页面
+		achivement: false,
+		book: false,
+		extra: false,
+
+		//隐藏行
+		line1: false,
+		line2: false,
+		line3: false,
+		line4: false,
+		line5: false,
+
+		//新闻
 		newsa: false,
 		newsv: false,
 		newsh: false,
@@ -46,6 +56,7 @@ function getStartOptions() {
 		newsn: true,
 		newsspeed: 150,
 
+		//bgm
 		songid: 0,
 		songautoplay: false,
 		songvolume: 0.5,

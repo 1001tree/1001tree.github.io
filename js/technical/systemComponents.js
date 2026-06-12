@@ -67,7 +67,7 @@ var systemComponents = {
 	'layer-tab': {
 		props: ['layer', 'back', 'spacing', 'embedded'],
 		template: `<div v-bind:style="[tmp[layer].style ? tmp[layer].style : {}, (tmp[layer].tabFormat && !Array.isArray(tmp[layer].tabFormat)) ? tmp[layer].tabFormat[player.subtabs[layer].mainTabs].style : {}]" class="noBackground">
-		<div v-if="back"><button v-bind:class="back == 'big' ? 'other-back' : 'back'" v-on:click="goBack(layer)">←</button></div>
+		<div v-if="back"><button v-bind:class="back == 'big' ? 'other-back' : 'back'" v-on:click="goBack(layer)">🔙</button></div>
 		<div v-if="!tmp[layer].tabFormat">
 			<div v-if="spacing" v-bind:style="{'height': spacing}" :key="this.$vnode.key + '-spacing'"></div>
 			<infobox v-if="tmp[layer].infoboxes" :layer="layer" :data="Object.keys(tmp[layer].infoboxes)[0]":key="this.$vnode.key + '-info'"></infobox>
@@ -270,20 +270,27 @@ var systemComponents = {
                 <td><button class="opt" onclick="adjustCount()">计数法<br>{{ COUNT_DISPLAYS[COUNT_SETTINGS.indexOf(options.count)] }}<br>文本描述不支<br>持特殊计数法</button></td>
                 <td><button class="opt" onclick="toggleOpt('forceOneTab'); needsCanvasUpdate = true">页面布局<br>{{ options.forceOneTab ? "强制单页面" : "优先双页面 窄屏单页面" }}</button></td>
                 <td><button class="opt" onclick="adjustMode()">世界选择器<br>{{ MODE_DISPLAYS[MODE_SETTINGS.indexOf(options.hcmode)] }}</button></td>
+                <td><button class="opt" onclick="toggleOpt('shorttime')">短时间表示<br>{{ formatOption('shorttime') }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('hqTree')">高质量的树<br>{{ formatOption('hqTree') }}</button></td>
-                <td><button class="opt" onclick="adjustMSDisp()">显示里程碑<br>{{ MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)] }}</button></td>
 			</tr>
             <tr v-if="options.tmtclass">
 				<td></td>
+                <td><button class="opt" onclick="adjustMSDisp()">显示里程碑<br>{{ MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)] }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('hideChallenges')">已完成挑战<br>{{ options.hideChallenges?"隐藏":"显示" }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('hideMilestonePopups')">里程碑<br>完成提示<br>{{ options.hideMilestonePopups?"隐藏":"显示" }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('forceTooltips')">Shift+左键<br>锁定提示栏<br>{{ formatOption('forceTooltips') }}</button></td>
 			</tr>
             <tr v-if="options.tmtclass">
+				<td></td>
+                <td><button class="opt" onclick="toggleOpt('achivement')">成就<br>{{ options.achivement?"隐藏":"显示" }}</button></td>
+                <td><button class="opt" onclick="toggleOpt('book')">世界之书<br>{{ options.book?"隐藏":"显示" }}</button></td>
+                <td><button class="opt" onclick="toggleOpt('extra')">额外游戏<br>{{ options.extra?"隐藏":"显示" }}</button></td>
+			</tr>
+            <tr v-if="options.tmtclass">
 				<td><button class="info" disabled>游戏</button></td>
                 <td><button class="opt" onclick="toggleOpt('hideWorld')">已完成世界<br>{{ options.hideWorld?"隐藏":"显示" }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('autopause')">完成世界<br>自动暂停<br>{{ formatOption('autopause') }}</button></td>
-                <td><button class="opt" onclick="toggleOpt('achivement')">成就<br>{{ options.achivement?"隐藏":"显示" }}</button></td>
+				<td></td>
 				<td></td>
                 <td><button class="opt" onclick="player.global.click+=1">点击我!<br>{{ formatWhole(player.global.click) }}</button></td>
 			</tr>
@@ -365,13 +372,18 @@ var systemComponents = {
 				<td><button class="optDark">{{ getGameName(504)[0] }}<br>不允许暂停</button></td>
 				<td><button class="opt" onclick="player.pause[505]=!player.pause[505]">{{ getGameName(505)[0] }}<br>暂停:{{ formatBoolean(player.pause[505]) }}</button></td>
             </tr>
+			<br>
+            <tr v-if="options.pauseclass">
+				<td><button class="info" disabled>Extra<br>Zone</button></td>
+				<td><button class="opt" onclick="player.pause[10102]=!player.pause[10102]">{{ getGameName(10102) }}<br>暂停:{{ formatBoolean(player.pause[10102]) }}</button></td>
+            </tr>
         </table>
 		`
 	},
 
 	'back-button': {
 		template: `
-        <button v-bind:class="back" onclick="goBack()">←</button>
+        <button v-bind:class="back" onclick="goBack()">🔙</button>
         `
 	},
 

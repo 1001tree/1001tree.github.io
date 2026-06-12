@@ -94,6 +94,7 @@ addLayer("302", {
         if (player.pause[302]) return _D0
         return getEffect("3023", 35, _D0)
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
     leftTab: true
 });

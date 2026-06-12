@@ -528,6 +528,7 @@ addLayer("201", {
             style: { "height": "140px", "width": "140px", "min-height": "100px", "border": "4px solid", "border-color": "#999" }
         },
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });

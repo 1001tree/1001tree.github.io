@@ -349,6 +349,18 @@ addLayer("book", {
                     width: "720px"
                 }
             },
+            Extra: {
+                content: [
+                    ["display-text",
+                        `Extra Zone内的世界为额外游戏内容，你不需要梦力解锁<br>
+                        同样的，其中进度推进也不会带来任何梦力/成就回报<br>
+                        它们可能是一些曾经的废案游戏，也可能是一些新的内容<br><br>
+                    `],
+                ],
+                style: {
+                    width: "720px"
+                }
+            }
         },
         gener: {
             狐等级: {
@@ -826,5 +838,5 @@ addLayer("book", {
         }
     },
     tooltip: "",
-    layerShown() { return true },
+    layerShown() { return !options.book },
 });

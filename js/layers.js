@@ -739,7 +739,7 @@ addLayer("extra", {
         ]],
     ],
     tooltip: "Extra Zone",
-    layerShown() { return true },
+    layerShown() { return !options.extra },
     leftTab: true,
 });
 
@@ -764,7 +764,8 @@ addLayer("", {
     },
     milestones: {
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });
 */

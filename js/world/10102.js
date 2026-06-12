@@ -127,21 +127,19 @@ addLayer("10102", {
     tabFormat: [
         ["display-text", function () {
             return `
-                你有 <h1 class="c1">${format(player[this.layer].points)}</h1> 乾狐离光<br>
-                你被动地获得乾狐离光为 <h2 class="c1">${format(layers[this.layer].getPoint())}</h2> 在每/秒<br>
+                你有 <h1 class="nmpt">${format(player[this.layer].points)}</h1> 乾狐离光<br>
+                你被动地获得乾狐离光为 <h2 class="nmpt">${format(layers[this.layer].getPoint())}</h2> 在每/秒<br>
                 `
         }],
         ["bar", "foxbar"],
         ["bar", "pointbar"],
-        "blank",
         ["microtabs", "fox"],
-        "blank",
         ["bar", "pointbar"],
         ["bar", "foxbar"],
         ["display-text", function () {
             return `
-                你被动地获得乾狐离光为 <h2 class="c1">${format(layers[this.layer].getPoint())}</h2> 在每/秒<br>
-                你有 <h1 class="c1">${format(player[this.layer].points)}</h1> 乾狐离光<br>
+                你被动地获得乾狐离光为 <h2 class="nmpt">${format(layers[this.layer].getPoint())}</h2> 在每/秒<br>
+                你有 <h1 class="nmpt">${format(player[this.layer].points)}</h1> 乾狐离光<br>
                 `
         }],
         "blank",
@@ -225,10 +223,10 @@ addLayer("10102", {
                 return player[this.layer].power / 325
             },
             display() {
-                return `<span class="nmpt">${formatPersent(player[this.layer].power / 325)} - ${formatWhole(player[this.layer].power)} / ${formatWhole(325)}</span>`
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].power / 325)} - ${formatWhole(player[this.layer].power)} / ${formatWhole(325)}</span>`
             },
             fillStyle: {
-                backgroundColor: "#36dccb"
+                backgroundColor: "#1fc922"
             },
             instant: true
         },
@@ -240,10 +238,10 @@ addLayer("10102", {
                 return player[this.layer].point / 33554431
             },
             display() {
-                return `<span class="nmpt">${formatPersent(player[this.layer].point / 33554431)} - ${formatWhole(player[this.layer].point)} / ${formatWhole(33554431)}, 完成在 ${formatTime(player[this.layer].point.eq(33554431) ? 0 : _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()))} 后</span>`
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].point / 33554431)} - ${formatWhole(player[this.layer].point)} / ${formatWhole(33554431)}, 完成在 ${formatTime(player[this.layer].point.eq(33554431) ? 0 : _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()))} 后</span>`
             },
             fillStyle: {
-                backgroundColor: "#ccb36d"
+                backgroundColor: "#d323b0",
             },
             instant: true
         }

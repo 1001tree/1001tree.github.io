@@ -2029,5 +2029,6 @@ addLayer("304", {
             return { "border": "3px solid", "border-color": "#00a2a5", "background-color": "#00ffff", "font-size": "17.5px","height":"80px","min-height":"80px","width":"80px"}
         }
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 });

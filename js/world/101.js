@@ -309,8 +309,8 @@ addLayer("101", {
         "1g1sc": {
             content: [
                 ["layer-proxy", [1011, [
-                    ["infobox","main"],
-                    ["main-display",3],
+                    ["infobox", "main"],
+                    ["main-display", 3],
                     ["display-text", function () {
                         return `(+${format(layers[1011].getPoint())} → ${format(layers[1011].getSortCap()[1])})/s`
                     }],
@@ -329,7 +329,7 @@ addLayer("101", {
                     "blank",
                     "upgrades",
                     "blank",
-                    ["main-display",3],
+                    ["main-display", 3],
                     ["display-text", function () {
                         return `(+${format(layers[1011].getPoint())} → ${format(layers[1011].getSortCap()[1])})/s`
                     }],
@@ -611,6 +611,6 @@ addLayer("101", {
             unlocked() { return hasUpgrade(this.layer, 54) }
         },
     },
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) },
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });

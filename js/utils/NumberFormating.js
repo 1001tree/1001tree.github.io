@@ -174,12 +174,21 @@ function formatWhole(decimal) {
 }
 
 function formatTime(s) {
-    if (s < 1) return formatWhole(s * 1000) + "毫秒"
-    else if (s < 60) return format(s) + "秒"
-    else if (s < 3600) return formatWhole(Math.floor(s / 60)) + "分 " + format(s % 60) + "秒"
-    else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + format(s % 60) + "秒"
-    else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + format(s % 60) + "秒"
-    else return formatWhole(Math.floor(s / 31536000)) + "年 " + formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + format(s % 60) + "秒"
+    if (options.shorttime) {
+        if (s < 1) return formatWhole(s * 1000) + "毫秒"
+        else if (s < 60) return format(s) + "秒"
+        else if (s < 3600) return formatWhole(Math.floor(s / 60)).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
+        else if (s < 86400) return formatWhole(Math.floor(s / 3600)).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
+        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60)
+        else return formatWhole(Math.floor(s / 31536000)) + "年" + formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60)
+    } else {
+        if (s < 1) return formatWhole(s * 1000) + "毫秒"
+        else if (s < 60) return format(s) + "秒"
+        else if (s < 3600) return formatWhole(Math.floor(s / 60)) + "分 " + format(s % 60) + "秒"
+        else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + format(s % 60) + "秒"
+        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + formatWhole(s % 60) + "秒"
+        else return formatWhole(Math.floor(s / 31536000)) + "年 " + formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + formatWhole(s % 60) + "秒"
+    }
 }
 
 function formatPersent(n, d) {
