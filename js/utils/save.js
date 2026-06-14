@@ -187,6 +187,7 @@ function fixData(defaultData, newData) {
 	}
 }
 function load() {
+	
 	let get = localStorage.getItem(getModID());
 
 	if (get === null || get === undefined) {

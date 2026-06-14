@@ -49,12 +49,12 @@ addLayer("main", {
         },
         getCanClick(data, id) {
             if (data) return true
-            if(/[2-4]0[2-4]/.test(id)) return player[this.layer].points.gte(2) && !getGameName(id)[0].includes("未完成游戏")
+            if (/[2-4]0[2-4]/.test(id)) return player[this.layer].points.gte(2) && !getGameName(id)[0].includes("未完成游戏")
             else return player[this.layer].points.gte(1) && !getGameName(id)[0].includes("未完成游戏")
         },
         onClick(data, id) {
             if (data) return
-            if(/[2-4]0[2-4]/.test(id)) player[this.layer].points = player[this.layer].points.sub(2)
+            if (/[2-4]0[2-4]/.test(id)) player[this.layer].points = player[this.layer].points.sub(2)
             else player[this.layer].points = player[this.layer].points.sub(1)
             setGridData(this.layer, id, true)
         },
@@ -197,7 +197,7 @@ addLayer("ach", {
                 ["row", [["milestone", 301], ["milestone", 302], ["milestone", 303], ["milestone", 304], ["milestone", 305],]],
                 ["row", [["milestone", 401], ["milestone", 402], ["milestone", 403], ["milestone", 404], ["milestone", 405],]],
                 ["row", [["milestone", 501], ["milestone", 502], ["milestone", 503], ["milestone", 504], ["milestone", 505],]],
-                ["row", [["milestone", 520], ]],
+                ["row", [["milestone", 520],]],
             ]
         }
     },
@@ -316,7 +316,7 @@ addLayer("ach", {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/24.jpg)",
             },
             unlocked() { return hasAchievement(this.layer, this.id) }
-        },        
+        },
         25: {
             name: "<span class='p6tx'>真假无限</span>",
             done() { return player[402].level == 12 && player[402].value.gte(_DInf) },
@@ -339,7 +339,7 @@ addLayer("ach", {
         },
         27: {
             name: "<span class='p5tx'>准时准点</span>",
-            done() { return player['304'].lv>=20 },
+            done() { return player['304'].lv >= 20 },
             onComplete() { achievementComplete() },
             tooltip() { if (hasAchievement(this.layer, this.id)) { return "通过第101夜的第20关" } else { return "完成成就以查看" } },
             style: {
@@ -724,7 +724,7 @@ addLayer("extra", {
     symbol: "💡",
     resource: "",
     color: "#c3226b",
-    update(diff) {},
+    update(diff) { },
     startData() {
         return {
             unlocked: true,
@@ -734,7 +734,8 @@ addLayer("extra", {
     type: "none",
     tabFormat: [
         ["tree", [
-            [['10102'],['10103']]
+            ['10102', '10103',],
+            ['10201',],
         ]],
     ],
     tooltip: "Extra Zone",

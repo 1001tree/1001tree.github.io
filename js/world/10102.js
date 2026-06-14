@@ -1,108 +1,114 @@
-const layer10102 = 25
-const upgrades10102 = {}
-const upgradesformat10102 = []
-const upgradescost10102 = getYanghuiTriangle(layer10102)
+let layer10102 = 25
+let upgrades10102 = {}
+let upgradesformat10102 = []
+let upgradescost10102 = []
+let milestones10102 = {}
+let defined10102 = false
 
-for (let i = 0; i < layer10102; i++) {
-    upgradesformat10102.push(["row", []])
-    for (let j = 0; j <= i; j++) {
-        let id = xytoid(j, i)
-        upgradesformat10102[i][1].push(["upgrade", id])
-        upgrades10102[id] = {
-            fullDisplay() {
-                return `<h3>${id}</h3><br><span>${formatWhole(upgradescost10102[i][j])}</span>`
-            },
-            title: id,
-            cost: _D(upgradescost10102[i][j]),
-            style: {
-                minHeight: "32px",
-                width: "56px"
-            },
-            canAfford() {
-                if (i + j == 0) return true
-                return j == 0 ?
-                    hasUpgrade(10102, xytoid(j, i - 1))
-                    :
-                    (
-                        j == i ?
-                            hasUpgrade(10102, xytoid(j - 1, i - 1))
-                            :
-                            hasUpgrade(10102, xytoid(j, i - 1)) &&
-                            hasUpgrade(10102, xytoid(j - 1, i - 1))
-                    )
-            },
-            onPurchase() {
-                player[10102].power = player[10102].power.add(1)
-                player[10102].point = player[10102].point.add(this.cost)
+if (!(defined10102)) define10102()
+
+function define10102() {
+    defined10102 = true
+    upgradescost10102 = getYanghuiTriangle(layer10102)
+
+    for (let i = 0; i < layer10102; i++) {
+        upgradesformat10102.push(["row", []])
+        for (let j = 0; j <= i; j++) {
+            let id = xytoid(j, i)
+            upgradesformat10102[i][1].push(["upgrade", id])
+            upgrades10102[id] = {
+                fullDisplay() {
+                    return `<h3>${id}</h3><br><span>${formatWhole(upgradescost10102[i][j])}</span>`
+                },
+                cost: _D(upgradescost10102[i][j]),
+                style: {
+                    minHeight: "32px",
+                    width: "56px"
+                },
+                canAfford() {
+                    if (i + j == 0) return true
+                    return j == 0 ?
+                        hasUpgrade(this.layer, xytoid(j, i - 1))
+                        :
+                        (
+                            j == i ?
+                                hasUpgrade(this.layer, xytoid(j - 1, i - 1))
+                                :
+                                hasUpgrade(this.layer, xytoid(j, i - 1)) &&
+                                hasUpgrade(this.layer, xytoid(j - 1, i - 1))
+                        )
+                },
+                onPurchase() {
+                    player[this.layer].power = player[this.layer].power.add(1)
+                    player[this.layer].point = player[this.layer].point.add(this.cost)
+                }
             }
         }
     }
-}
 
-let milestones10102 = {}
-
-for (let i = 0; i < 10; i++) {
-    milestones10102[i] = {
-        requirementDescription: `${formatPersent((i + 1) / 10, 0)}的升级`,
-        effectDescription() {
-            return `
-            购买一定数量的升级来解锁这个里程碑<br>
-            目标是 ${format(layers[10102].milestones[i].target)}<br>
-            完成了 ${formatPersent(player[10102].power.div(this.target).clamp(0, 1))}
-            ` },
-        done() { return player[10102].power.gte(this.target) },
-        target: _D(325 * (i + 1) / 10),
-        style: { height:"84px",width: "300px" }
-    }
-    milestones10102[i + 10] = {
-        requirementDescription: `${formatPersent((i + 1) / 10, 0)}的花费`,
-        effectDescription() {
-            return `
-            花费一定数量的狐狸来解锁这个里程碑<br>
-            目标是 ${format(this.target)}<br>
-            完成了 ${formatPersent(player[10102].point.div(this.target).clamp(0, 1))}
-            ` },
-        done() { return player[10102].point.gte(this.target) },
-        target: _D(33554431 * (i + 1) / 10),
-        style: { height:"84px",width: "300px" }
-    }
-    milestones10102[i + 20] = {
-        requirementDescription: `${formatPersent((i + 1) / 10, 0)}的速度`,
-        effectDescription() {
-            return `
-            达到一定数量的速度来解锁这个里程碑<br>
-            目标是 ${format(this.target)}<br>
-            完成了 ${formatPersent(layers[10102].getPoint().div(this.target).clamp(0, 1))}
-            ` },
-        done() { return layers[10102].getPoint().gte(this.target) },
-        target: _D(3355.4431 * (i + 1) / 10),
-        style: { height:"84px",width: "300px" }
-    }
-    milestones10102[i + 30] = {
-        requirementDescription: `^${formatPersent(1 - (i + 1) / 10, 0)}+1的时间`,
-        effectDescription() {
-            return `
-            距离一定时间的目标来解锁这个里程碑<br>
-            目标是 ${formatTime(this.target)}<br>
-            完成了 ${this.base().lte(this.target) ? formatPersent(1) : formatPersent(this.target.log(this.base()).clamp(0, 1))}
-            ` },
-        done() { return this.base().lte(this.target) },
-        base() { return _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()) },
-        target: _D(33554431 ** (1 - (i + 1) / 10)).add(1),
-        style: { height:"84px",width: "300px" }
-    }
-}
-
-function getYanghuiTriangle(columns) {
-    const triangle = [];
-    for (let i = 0; i < columns; i++) {
-        triangle[i] = [];
-        triangle[i][0] = triangle[i][i] = 1;
-        for (let j = 1; j < i; j++) {
-            triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+    for (let i = 0; i < 10; i++) {
+        milestones10102[i] = {
+            requirementDescription: `${formatPersent((i + 1) / 10, 0)}的升级`,
+            effectDescription() {
+                return `
+                购买一定数量的升级来解锁这个里程碑<br>
+                目标是 ${format(layers[this.layer].milestones[i].target)}<br>
+                完成了 ${formatPersent(player[this.layer].power.div(this.target).clamp(0, 1))}
+                ` },
+            done() { return player[this.layer].power.gte(this.target) },
+            target: _D(325 * (i + 1) / 10),
+            style: { height: "84px", width: "300px" }
+        }
+        milestones10102[i + 10] = {
+            requirementDescription: `${formatPersent((i + 1) / 10, 0)}的花费`,
+            effectDescription() {
+                return `
+                花费一定数量的狐狸来解锁这个里程碑<br>
+                目标是 ${format(this.target)}<br>
+                完成了 ${formatPersent(player[this.layer].point.div(this.target).clamp(0, 1))}
+                ` },
+            done() { return player[this.layer].point.gte(this.target) },
+            target: _D(33554431 * (i + 1) / 10),
+            style: { height: "84px", width: "300px" }
+        }
+        milestones10102[i + 20] = {
+            requirementDescription: `${formatPersent((i + 1) / 10, 0)}的速度`,
+            effectDescription() {
+                return `
+                达到一定数量的速度来解锁这个里程碑<br>
+                目标是 ${format(this.target)}<br>
+                完成了 ${formatPersent(layers[this.layer].getPoint().div(this.target).clamp(0, 1))}
+                ` },
+            done() { return layers[this.layer].getPoint().gte(this.target) },
+            target: _D(3355.4431 * (i + 1) / 10),
+            style: { height: "84px", width: "300px" }
+        }
+        milestones10102[i + 30] = {
+            requirementDescription: `^${formatPersent(1 - (i + 1) / 10, 0)}+1的时间`,
+            effectDescription() {
+                return `
+                距离一定时间的目标来解锁这个里程碑<br>
+                目标是 ${formatTime(this.target)}<br>
+                完成了 ${this.base().lte(this.target) ? formatPersent(1) : formatPersent(this.target.log(this.base()).clamp(0, 1))}
+                ` },
+            done() { return this.base().lte(this.target) },
+            base() { return _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()) },
+            target: _D(33554431 ** (1 - (i + 1) / 10)).add(1),
+            style: { height: "84px", width: "300px" }
         }
     }
-    return triangle;
+
+    function getYanghuiTriangle(columns) {
+        const triangle = [];
+        for (let i = 0; i < columns; i++) {
+            triangle[i] = [];
+            triangle[i][0] = triangle[i][i] = 1;
+            for (let j = 1; j < i; j++) {
+                triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+            }
+        }
+        return triangle;
+    }
 }
 
 addLayer("10102", {

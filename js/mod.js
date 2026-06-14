@@ -2,7 +2,7 @@ let modInfo = {
 	name: "一千零一树",
 	id: "1001tree",
 	pointsName: "世界",
-	modFiles: ["layers.js","nodes.js", "tree.js", "book.js", "const.js", "const403.js",
+	modFiles: ["layers.js", "nodes.js", "tree.js", "book.js", "const.js", "const403.js", 
 
 		"world/101.js", "world/102.js", "world/103.js", "world/104.js", "world/105.js",
 		"world/201.js", "world/202.js", "world/203.js", "world/204.js", "world/205.js",
@@ -13,7 +13,8 @@ let modInfo = {
 		"world/202/2021.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
 
-		"world/10102.js","world/10103.js",
+		"world/10102.js", "world/10103.js",
+		"world/10201.js",
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -23,15 +24,16 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.814,
-	name: "发布版v21"
+	num: 0.815,
+	name: "发布版v22"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v22 | 0.815 | 2026/6/15</h3><br>
+	更新了10201:真·点击墙<br><br>
 	<h3>v21 | 0.814 | 2026/6/14</h3><br>
-	更新了403的第9,10关以及部分优化<br><br>
-	<h3>v20 | 0.813 | 2026/6/14</h3><br>
+	更新了403的第9,10关以及部分优化<br>
 	更新了10103:UI声望正方<br><br>
 	<h3>v19 | 0.812 | 2026/6/12</h3><br>
 	更新了一些样式，添加了行隐藏按钮<br>

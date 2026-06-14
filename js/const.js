@@ -35,6 +35,7 @@ function getGameName(id) {
 
 		10102: "乾狐离光声望三角",
 		10103: "User incremental声望正方",
+		10201: "真·点击墙",
 	}[id]
 
 	if (typeof name == 'undefined') name = ['未完成游戏', "这个游戏目前是棍木", '', ""]
