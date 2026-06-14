@@ -15,6 +15,8 @@ addLayer("403", {
             select: 0,
             program: [],
             cycleCount: 0,
+            extra: ["","","","","","",""],
+            s: [true, "", ""] //左真右假
         }
     },
     execute(c,str) { //执行一串命令
@@ -108,12 +110,20 @@ addLayer("403", {
             ]],
         ]],
         ["blank","12px"],
-        ["row",[["clickables",[3]],["clickables",[10]]]],
         "grid",
+        ["row",[["clickables",[3]],["clickables",[10]]]],
+        ["blank","10px"],
+        ["clickables",[11]],
+        ["blank","8px"],
+        ["clickables",[12]],
+        ["blank","96px"],
+        ["clickables",[13]],
         ["blank","16px"],
+        ["clickables",[14]],
+        ["blank","64px"],
         ["display-text",function(){
             if(player[403].level==0)return ""
-            else return `- 运行日志 -<br>${player[403].log}`}]
+            else return `- 日志 -<br>${player[403].log}`}]
     ],
     clickables: {
         11: {
@@ -121,7 +131,7 @@ addLayer("403", {
             display: "- 返回选关界面 -",
             unlocked() {return player[403].level!=0},
             canClick: true,
-            onClick() {player[403].level=0;player[403].program=[];player[403].log=""},
+            onClick() {player[403].level=0;player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""]},
             style() {return {"min-height":"88px","height":"88px","width":"110px","border-radius":"0px","color":"#10142A","background-color":"#F0F475","border":"4px solid #255072"}}
         },
         12: {
@@ -180,7 +190,7 @@ addLayer("403", {
             style() {return {"min-height":"35px","height":"35px","width":"38px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         22: {
-            title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario}`} | 目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
+            title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario} | `}目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
             unlocked() {return player[403].level!=0},
             canClick: false,
             style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2][0]==1?"580px":"480px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
@@ -197,14 +207,14 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"{")},
-            style() {return {"min-height":"82px","height":"82px","width":"74px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
         },
         32: {
             title: "<h1>}</h1>",
             unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"}")},
-            style() {return {"min-height":"82px","height":"82px","width":"74px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
         },
         41: {
             title() {return ` > 程序 | 第${player[403].level%100+4*Math.floor(player[403].level/100)-4}关`},
@@ -214,7 +224,7 @@ addLayer("403", {
         },
         51: {
             title() {
-                let text="<h3>"
+                let text=""
                 let inx=0
                 let u=player[403].program
                 for (let i in u){
@@ -225,7 +235,7 @@ addLayer("403", {
                     if (u[i]=="{")inx+=4
                     text+=u[i]+"<br>"
                 }
-                return text+"</h3>"
+                return text
             },
             unlocked() {return player[403].level!=0},
             canClick: false,
@@ -294,19 +304,178 @@ addLayer("403", {
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][5])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
-        106: {
-            title() {return data403[player[403].level][1][6]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=6},
+        111: {
+            title() {return player[403].extra[0]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1},
             canClick: true,
-            onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][6])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[0])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
-        107: {
-            title() {return data403[player[403].level][1][7]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=7},
+        112: {
+            title() {return player[403].extra[1]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2},
             canClick: true,
-            onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][7])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[1])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        113: {
+            title() {return player[403].extra[2]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[2])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        114: {
+            title() {return player[403].extra[3]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[3])},
+            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        121: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1},
+            canClick() {return player[403].extra[0]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[0])?"":v}`)
+                player[403].extra[0]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        122: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2},
+            canClick() {return player[403].extra[1]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[1])?"":v}`)
+                player[403].extra[1]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        123: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3},
+            canClick() {return player[403].extra[2]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[2])?"":v}`)
+                player[403].extra[2]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        124: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4},
+            canClick() {return player[403].extra[3]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[3])?"":v}`)
+                player[403].extra[3]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        125: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5},
+            canClick() {return player[403].extra[4]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[4])?"":v}`)
+                player[403].extra[4]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        131: {
+            title() {return `<h2>${data403[player[403].level][5][1]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=1},
+            canClick: true,
+            onClick() {
+                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][1]
+                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][1]
+            },
+            style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
+        },
+        132: {
+            title() {return `<h2>${data403[player[403].level][5][2]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=2},
+            canClick: true,
+            onClick() {
+                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][2]
+                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][2]
+            },
+            style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
+        },
+        133: {
+            title() {return `<h2>${data403[player[403].level][5][3]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=3},
+            canClick: true,
+            onClick() {
+                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][3]
+                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][3]
+            },
+            style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
+        },
+        134: {
+            title() {return `<h2>${data403[player[403].level][5][4]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=4},
+            canClick: true,
+            onClick() {
+                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][4]
+                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][4]
+            },
+            style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
+        },
+        135: {
+            title() {return `<h2>${data403[player[403].level][5][5]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=5},
+            canClick: true,
+            onClick() {
+                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][5]
+                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][5]
+            },
+            style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
+        },
+        141: {
+            title: "<h1>X</h1>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            canClick: true,
+            onClick() {player[403].s[1]=""},
+            style() {return {"min-height":"72px","height":"72px","width":"48px","border-radius":"2px","color":"#10140A","background-color":"#9092E1","border":"3px solid #243A37"}}
+        },
+        142: {
+            title() {return `<h2>${player[403].s[1]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            canClick: true,
+            onClick() {player[403].s[0]=true},
+            style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#92B7F0":"#777470"}`,"border":"3px solid #243A37"}}
+        },
+        143: {
+            title: "<h1>→</h1>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            canClick: true,
+            onClick() {
+                if (s[1]==""){player[403].log="组装命令失败<br>原因: 被替换的部分不能为空"}
+                let existed=false
+                player[403].extra.forEach(v=>{if(v==`${player[403].s[1]}→${player[403].s[2]}`)existed=true})
+                if (existed==true) {player[403].log="组装命令失败<br>原因: 此命令已存在"; return}
+                let success=false
+                for(let i=0;i<data403[player[403].level][6];i++){
+                    if (player[403].extra[i]==""){success=true;player[403].extra[i]=`${player[403].s[1]}→${player[403].s[2]}`;player[403].s=[true,"",""];break}
+                }
+                if (success==false) player[403].log="组装命令失败<br>原因: 没有空位保存该命令"
+            },
+            style() {return {"min-height":"80px","height":"80px","width":"80px","border-radius":"40px","color":"#10140A","background-color":"#B1CAFF","border":"3px solid #C0B2FA"}}
+        },
+        144: {
+            title() {return `<h2>${player[403].s[2]}</h2>`},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            canClick: true,
+            onClick() {player[403].s[0]=false},
+            style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#777470":"#92B7F0"}`,"border":"3px solid #243A37"}}
+        },
+        145: {
+            title: "<h1>X</h1>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            canClick: true,
+            onClick() {player[403].s[2]=""},
+            style() {return {"min-height":"72px","height":"72px","width":"48px","border-radius":"2px","color":"#10140A","background-color":"#9092E1","border":"3px solid #243A37"}}
         },
     },
     grid: {
@@ -324,7 +493,7 @@ addLayer("403", {
             let bgColor="#777A7F"
             if (id==101||player[403].grid[`${id%100==1?id-97:(id-1)}`]==true) bgColor=RGBtoHEX([70,100,140].map(v=>Math.floor(v*(Math.min(1.2+0.55*Math.sin(player[403].resetTime*3),255)))))
             if (data==true) bgColor="#1E9E7E"
-            return {"height":"106px","width":"106px","border":"4px solid #45C0A2","border-radius":"3px","margin":"20px","background-color":`${bgColor}`}
+            return {"height":"106px","width":"106px","border":"4px solid #45C0A2","border-radius":"3px","margin":"19px","background-color":`${bgColor}`}
         }
     },
     
