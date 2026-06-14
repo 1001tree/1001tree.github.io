@@ -178,7 +178,7 @@ addLayer("10103", {
         player[this.layer].points = player[this.layer].points.add(layers[this.layer].getPoint().mul(diff))
     },
     getPoint() {
-        return _D(3725).pow(player[10103].power.div(400)).mul(_D(372559).pow(player[10103].milestone.div(75)))
+        return _D(3725).pow(player[10103].power.div(400)).mul(_D(372559).pow(player[10103].milestone.div(70 - 5)))
     },
     startData() {
         return {
