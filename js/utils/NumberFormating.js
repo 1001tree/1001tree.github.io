@@ -169,7 +169,7 @@ function transNum(input, tFunc, precision) {
 function formatWhole(decimal) {
     decimal = new Decimal(decimal)
     if (decimal.gte(1e9)) return format(decimal, 2)
-    if (decimal.lte(0.99) && decimal.gt(0)) return format(decimal, 2)
+    if (decimal.lt(1) && decimal.gt(0)) return "0"
     return format(decimal, 0)
 }
 
@@ -179,8 +179,8 @@ function formatTime(s) {
         else if (s < 60) return format(s) + "秒"
         else if (s < 3600) return formatWhole(Math.floor(s / 60)).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
         else if (s < 86400) return formatWhole(Math.floor(s / 3600)).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
-        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60)
-        else return formatWhole(Math.floor(s / 31536000)) + "年" + formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60)
+        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
+        else return formatWhole(Math.floor(s / 31536000)) + "年" + formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
     } else {
         if (s < 1) return formatWhole(s * 1000) + "毫秒"
         else if (s < 60) return format(s) + "秒"

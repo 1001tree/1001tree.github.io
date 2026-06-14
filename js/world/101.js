@@ -603,8 +603,7 @@ addLayer("101", {
             effect() {
                 return _D1
             },
-            pay() {
-                player[this.layer].points = player[this.layer].points.sub(182)
+            onPurchase() {
                 completeWorld(this.layer)
             },
             cost: new Decimal(182),

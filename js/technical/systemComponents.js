@@ -129,7 +129,6 @@ var systemComponents = {
 			乾狐离光<br>
 			userincre<br>
 			banana3864<br>
-			Chara404<br>
 			loader3229<br>
 			Dr丶晨曦公主<br>
         </span>
@@ -141,7 +140,7 @@ var systemComponents = {
         <span>
             <br>
             测试<br>
-			奇硅箱 寿司 ＾＿＾ 枫梦 风中一尘 NiGht_Zx2H<br>
+			奇硅箱 寿司 ＾＿＾ 枫梦 风中一尘 NiGht_Zx2H Chara404<br>
         </span>
 		<span>
 			<br>
@@ -376,6 +375,7 @@ var systemComponents = {
             <tr v-if="options.pauseclass">
 				<td><button class="info" disabled>Extra<br>Zone</button></td>
 				<td><button class="opt" onclick="player.pause[10102]=!player.pause[10102]">{{ getGameName(10102) }}<br>暂停:{{ formatBoolean(player.pause[10102]) }}</button></td>
+				<td><button class="opt" onclick="player.pause[10103]=!player.pause[10103]">{{ getGameName(10103) }}<br>暂停:{{ formatBoolean(player.pause[10103]) }}</button></td>
             </tr>
         </table>
 		`

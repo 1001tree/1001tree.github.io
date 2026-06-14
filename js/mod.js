@@ -13,7 +13,7 @@ let modInfo = {
 		"world/202/2021.js",
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
 
-		"world/10102.js"
+		"world/10102.js","world/10103.js",
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -23,12 +23,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.812,
+	num: 0.813,
 	name: "发布版v18"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v20 | 0.813 | 2026/6/14</h3><br>
+	更新了10103:UI声望正方
 	<h3>v19 | 0.812 | 2026/6/12</h3><br>
 	更新了一些样式，添加了行隐藏按钮<br>
 	303因为还未做到下一个可玩版本，遂目前不可隐藏，后续版本更新后将可正常隐藏<br>
@@ -97,7 +99,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
 	"check11", "check12", "check13", "check14", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
-	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack"
+	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack",
+
 ]
 
 function getStartPoints() {

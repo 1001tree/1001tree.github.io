@@ -10,10 +10,7 @@ for (let i = 0; i < layer10102; i++) {
         upgradesformat10102[i][1].push(["upgrade", id])
         upgrades10102[id] = {
             fullDisplay() {
-                return `
-                <span class="c2">${id}</span><br>
-                <span class="c3">${formatWhole(upgradescost10102[i][j])}</span>
-                `
+                return `<h3>${id}</h3><br><span>${formatWhole(upgradescost10102[i][j])}</span>`
             },
             title: id,
             cost: _D(upgradescost10102[i][j]),
@@ -54,7 +51,8 @@ for (let i = 0; i < 10; i++) {
             完成了 ${formatPersent(player[10102].power.div(this.target).clamp(0, 1))}
             ` },
         done() { return player[10102].power.gte(this.target) },
-        target: _D(325 * (i + 1) / 10)
+        target: _D(325 * (i + 1) / 10),
+        style: { height:"84px",width: "300px" }
     }
     milestones10102[i + 10] = {
         requirementDescription: `${formatPersent((i + 1) / 10, 0)}的花费`,
@@ -65,7 +63,8 @@ for (let i = 0; i < 10; i++) {
             完成了 ${formatPersent(player[10102].point.div(this.target).clamp(0, 1))}
             ` },
         done() { return player[10102].point.gte(this.target) },
-        target: _D(33554431 * (i + 1) / 10)
+        target: _D(33554431 * (i + 1) / 10),
+        style: { height:"84px",width: "300px" }
     }
     milestones10102[i + 20] = {
         requirementDescription: `${formatPersent((i + 1) / 10, 0)}的速度`,
@@ -76,7 +75,8 @@ for (let i = 0; i < 10; i++) {
             完成了 ${formatPersent(layers[10102].getPoint().div(this.target).clamp(0, 1))}
             ` },
         done() { return layers[10102].getPoint().gte(this.target) },
-        target: _D(3355.4431 * (i + 1) / 10)
+        target: _D(3355.4431 * (i + 1) / 10),
+        style: { height:"84px",width: "300px" }
     }
     milestones10102[i + 30] = {
         requirementDescription: `^${formatPersent(1 - (i + 1) / 10, 0)}+1的时间`,
@@ -88,7 +88,8 @@ for (let i = 0; i < 10; i++) {
             ` },
         done() { return this.base().lte(this.target) },
         base() { return _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()) },
-        target: _D(33554431 ** (1 - (i + 1) / 10)).add(1)
+        target: _D(33554431 ** (1 - (i + 1) / 10)).add(1),
+        style: { height:"84px",width: "300px" }
     }
 }
 
@@ -106,7 +107,7 @@ function getYanghuiTriangle(columns) {
 
 addLayer("10102", {
     symbol: "🔺",
-    resource: "狐",
+    resource: "乾狐离光",
     color: "#36dccb",
     update(diff) {
         if (player.pause[this.layer]) return
@@ -156,56 +157,14 @@ addLayer("10102", {
             },
             milestones: {
                 content: [
-                    ["row", [
-                        ["column", [
-                            ["milestone", 0],
-                            ["milestone", 1],
-                            ["milestone", 2],
-                            ["milestone", 3],
-                            ["milestone", 4],
-                            ["milestone", 5],
-                            ["milestone", 6],
-                            ["milestone", 7],
-                            ["milestone", 8],
-                            ["milestone", 9],
-                        ]],
-                        ["column", [
-                            ["milestone", 10],
-                            ["milestone", 11],
-                            ["milestone", 12],
-                            ["milestone", 13],
-                            ["milestone", 14],
-                            ["milestone", 15],
-                            ["milestone", 16],
-                            ["milestone", 17],
-                            ["milestone", 18],
-                            ["milestone", 19],
-                        ]],
-                        ["column", [
-                            ["milestone", 20],
-                            ["milestone", 21],
-                            ["milestone", 22],
-                            ["milestone", 23],
-                            ["milestone", 24],
-                            ["milestone", 25],
-                            ["milestone", 26],
-                            ["milestone", 27],
-                            ["milestone", 28],
-                            ["milestone", 29],
-                        ]],
-                        ["column", [
-                            ["milestone", 30],
-                            ["milestone", 31],
-                            ["milestone", 32],
-                            ["milestone", 33],
-                            ["milestone", 34],
-                            ["milestone", 35],
-                            ["milestone", 36],
-                            ["milestone", 37],
-                            ["milestone", 38],
-                            ["milestone", 39],
-                        ]]
-                    ]]
+                    ["row",
+                        [
+                            ...[0, 10, 20, 30].map(start => [
+                                "column",
+                                Array.from({ length: 10 }, (_, i) => ["milestone", start + i])
+                            ])
+                        ]
+                    ]
                 ],
                 style: {
                     width: "1440px",
@@ -223,7 +182,7 @@ addLayer("10102", {
                 return player[this.layer].power / 325
             },
             display() {
-                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].power / 325)} - ${formatWhole(player[this.layer].power)} / ${formatWhole(325)}</span>`
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].power / 325)} - ${formatWhole(player[this.layer].power)} / ${formatWhole(325)} 升级</span>`
             },
             fillStyle: {
                 backgroundColor: "#1fc922"
@@ -238,7 +197,7 @@ addLayer("10102", {
                 return player[this.layer].point / 33554431
             },
             display() {
-                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].point / 33554431)} - ${formatWhole(player[this.layer].point)} / ${formatWhole(33554431)}, 完成在 ${formatTime(player[this.layer].point.eq(33554431) ? 0 : _D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()))} 后</span>`
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].point / 33554431)} - ${formatWhole(player[this.layer].point)} / ${formatWhole(33554431)}, 完成在 ${formatTime(_D(33554431).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()).clamp(0, 33554431))} 后</span>`
             },
             fillStyle: {
                 backgroundColor: "#d323b0",

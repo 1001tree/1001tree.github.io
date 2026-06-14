@@ -13,7 +13,6 @@ function getStartOptions() {
 		autosave: true,
 
 		challenger: false,
-		nosuicide: true,
 
 		theme: "fox",
 		font: "DJGSHT",

@@ -375,9 +375,9 @@ addLayer("ach", {
             done() { return options.truechallenger == 1 && player._501.complete },
             onComplete() {
                 achievementComplete()
-                player.main.points = player.main.points.add(14)
+                player.main.points = player.main.points.add(4)
             },
-            tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是15梦力",
+            tooltip: "挑战者模式一命通关愚人节小游戏<br>奖励是5梦力",
             style: {
                 backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/99.jpg)",
             },
@@ -511,7 +511,6 @@ addLayer("ach", {
                 return player.global.name == "乾狐离光"
                     || player.global.name == "userincre"
                     || player.global.name == "banana3864"
-                    || player.global.name == "Chara404"
                     || player.global.name == "loader3229"
                     || player.global.name == "Dr丶晨曦公主"
             },
@@ -735,7 +734,7 @@ addLayer("extra", {
     type: "none",
     tabFormat: [
         ["tree", [
-            ['10102'],
+            [['10102'],['10103']]
         ]],
     ],
     tooltip: "Extra Zone",
