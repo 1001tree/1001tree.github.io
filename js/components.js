@@ -564,22 +564,22 @@ function loadVue() {
 		},
 		template: `<thing-tree :layer="layer" :data = "data" :type = "'clickable'"></thing-tree>`
 	})
-
+	
 	Vue.component('thing-tree', {
 		props: ['layer', 'data', 'type'],
 		computed: {
 			key() { return this.$vnode.key }
 		},
 		template: `<div>
-		<span class="upgRow" v-for="(row, r) in data"><table>
-			<span v-for="id in row" style = "{width: 0px; height: 0px;}" v-if="tmp[layer][type+'s'][id]!== undefined && tmp[layer][type+'s'][id].unlocked" class="upgAlign">
-				<div v-bind:is="type" :layer = "layer" :data = "id" v-bind:style="tmp[layer].componentStyles[type]" class = "treeThing"></div>
-			</span>
-			<tr><table><button class="treeNode hidden"></button></table></tr>
-		</span></div>
-	`
+			<div v-for="(row, r) in data" class="upgRow" :key="key + '-row-' + r" :style="r !== data.length - 1 ? 'margin-bottom: 20px;' : ''">
+				<div v-for="id in row" :key="key + '-' + r + '-' + id" style="display: inline-block; width: auto; height: auto;" 
+					v-if="tmp[layer][type+'s'] && tmp[layer][type+'s'][id] !== undefined && tmp[layer][type+'s'][id].unlocked" 
+					class="upgAlign">
+					<div v-bind:is="type" :layer="layer" :data="id" v-bind:style="tmp[layer].componentStyles[type]" class="treeThing"></div>
+				</div>
+			</div>
+		</div>`
 	})
-
 
 	// Updates the value in player[layer][data]
 	Vue.component('text-input', {

@@ -437,9 +437,7 @@ addLayer("1011", {
                 点数大于点数获取的10倍后,点数获取会额外被软上限` },
         },
     },
-    tabFormat: [
-    ],
     
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
+    layerShown() { return false },
 
 });

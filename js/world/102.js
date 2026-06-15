@@ -3,8 +3,7 @@ addLayer("102", {
     resource: "Hash点",
     color: "#aaa",
     update(diff) {
-        if (!getGridData('main', this.layer)) return
-        if (player[this.layer].pause) return
+        if (!getGridData('main', this.layer) || player[this.layer].pause) return
 
         player[this.layer].tickt = player[this.layer].tickt.add(diff)
         player[this.layer].cold = decimalMax(player[this.layer].cold.sub(diff), _D0)
@@ -342,7 +341,7 @@ addLayer("102", {
             }
         }
     },
-    
+
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
 
 });

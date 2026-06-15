@@ -1,214 +1,492 @@
+
+let layer505 = 16
+let upgrades505 = {}
+let tabformat505 = {}
+let defined505 = false
+
+if (!(defined505)) define505()
+
+function define505() {
+    defined505 = true
+
+    tabformat505 = {}
+    for (let i = 0; i < layer505; i++) {
+        let tab = []
+        for (let j = 0; j < layer505; j++) {
+            tab.push(["row", []])
+            for (let k = 0; k < layer505; k++) {
+                let id = i * 10000 + j * 100 + k
+                upgrades505[id] = {
+                    fullDisplay() {
+                        if (player[505].clca == this.id) return `<h2>Crack!</h2>`
+                        else return `<h1>${randomString(4)}</h1>`
+
+                    },
+                    cost: _D(0),
+                    style: {
+                        minHeight: "38px",
+                        width: "80px"
+                    },
+                    canAfford() {
+                        if (getBuyableAmount(this.layer, 21).gt(0)) {
+                            if (buyableEffect(this.layer, 21).gte(seededRandom(this.id + player[this.layer].seed).value)) return false
+                        }
+                        return true
+                    },
+                    onPurchase() {
+                        player[this.layer].points = player[this.layer].points.add(1)
+
+                        if (_DR().gt(buyableEffect(this.layer, 11))) player[this.layer].power = player[this.layer].power.add(1)
+
+                        if (getBuyableAmount(this.layer, 21).gt(0)) {
+                            player[this.layer].seed = Date.now()
+                        }
+
+                        if (buyableEffect(this.layer, 31)) player.subtabs[this.layer].fox = randomBetween(0, layer505)
+
+                        if (player[505].clca == this.id) {
+                            player[this.layer].clcpo = player[this.layer].clcpo.add(1)
+                            makeParticles({
+                                time: 2,
+                                fadeOutTime: 1,
+                                fadeInTime: 0.2,
+                                gravity: 1,
+                                image: "",
+                                style: { width: "auto" },
+                                text: `<h1>夸嚓爆炸！</h1>`,
+                                speed() {
+                                    return (Math.random() + 1) * 8
+                                },
+                                angle() {
+                                    return (Math.random() - 0.5) * 180
+                                },
+                                dir() {
+                                    return (Math.random() - 0.5) * 180
+                                },
+                                spread: 0,
+                                rotation() {
+                                    return (Math.random() - 0.5) * 15
+                                },
+                            }, randomBetween(5, 10))
+                        }
+
+                        player[this.layer].clca = 10000 * randomBetween(0, layer505 - 1) + 100 * randomBetween(0, layer505 - 1) + randomBetween(0, layer505 - 1)
+                    }
+                }
+                tab[j][1][k] = ["upgrade", id]
+            }
+        }
+
+        tabformat505[i + 1] = {
+            content: [
+                ["bar", "foxbar"],
+                ["bar", "prebar"],
+                ["bar", "clcbar"],
+                "blank",
+                ["display-text", `此游戏推荐打开取消渐变动画游玩`],
+                ...tab],
+            style: { width: "1340px", height: "760px" },
+            prestigeNotify() {
+                return Math.floor(player[505].clca / 10000) + 1 == i + 1
+            }
+        }
+    }
+}
+
 addLayer("505", {
-    symbol: "·",
-    resource: "",
-    tooltip: "谁才是怪物?",
-    style() {
-        let p = player[this.layer].page
-        let bC = "#000"
-        let C = "#888"
-
-        /*
-        if (p == -5) bC = "#FFF"
-        if (p == -4) bC = "#DDD"
-        if (p == -3) bC = "#AAA"
-        if (p == -2) bC = "#666"
-        if (p == -1) bC = "#222"
-        if (player[this.layer].choose[0]) {
-            if (p >= 23 && p <= 25) bC = "#FFF"
-        }
-        if (p == 28) bC = "#B72D0E"
-        if (player[this.layer].choose[1]) {
-            if (p == 32) bC = "#250903"
-            if (p == 33) bC = "#491206"
-            if (p == 34) bC = "#6e1b08"
-            if (p == 35) bC = "#92240b"
-            if (p == 36) bC = "#b72d0e"
-        }
-        if (p == 37) bC = "#871073"
-        if (p == 38) bC = "#0910e8"
-        if (p == 39) bC = "#88ff00"
-
-        if (p == 22) C = "#B72D0E"
-        if (p == 28) C = "#000"
-        if (p == 39) C = "#F00"
-        */
-
-        return {
-            backgroundColor: bC,
-            color: C
-        }
-    },
-    color() { return `rgba(128,128,128,${player[this.layer].page / 100})` },
-    update(diff) {
-        if (!getGridData('main', this.layer)||player.pause[this.layer]) return
-    },
+    symbol: "🆘",
+    resource: "升级",
+    color: "#d44",
     startData() {
         return {
             unlocked: true,
             points: _D0,
-            page: 0,
-            choose: [
-                false,
-                false
-            ],
-            warning: true
+            power: _D0,
+            prest: _D0,
+            clcpo: _D0,
+            diffh: _D0,
+            diffn: _D1,
+            clca: 0,
+            seed: 0,
         }
     },
     type: "none",
-    tabFormat: [
-        [
-            "display-text",
-            function () {
-                let text = memory[player[this.layer].page]
-                if (Array.isArray(text)) {
-                    return player[this.layer].choose[text[0]] ? text[1] : text[2]
-                } else {
-                    return text
-                }
-            }
-        ],
-        ["blank", "50px"],
-        ["clickables", [1]],
-        ["clickables", [10]],
-        ["raw-html", function () {
-            if (checkWarning(505)) return `
-        	<div class="bs">
-        	    <div class="tips" onclick="closeWarning(505)">
-        	        <h1>重要健康与安全提示</h1><br>
-                    在游玩本游戏前,请仔细阅读以下内容:<br><br>
-
-                    <h2>光敏性癫痫警告</h2><br>
-                    极少数人在接触特定视觉图像(包括闪烁灯光或图案)时可能会突发癫痫症状,即使没有癫痫病史的人也可能在游玩时出现该症状<br><br>
-
-                    <h2>身体与精神紧张警告</h2><br>
-                    游戏内容包含旨在制造紧张,恐惧和惊吓的元素.这些内容可能导致心率加快,血压升高,并对有心脏疾病,精神健康状况或其他潜在健康问题的玩家构成风险<br>
-                    <br>
-                    如果出现任何不适,如头晕,恶心,视力异常,肌肉抽搐或意识模糊,请立即停止游玩并咨询医生<br>
-					<br>
-        	        <button class="pb" onclick="closeWarning(505)">
-        	            好的
-        	        </button>
-        	    </div>
-        	</div>`
-        }],
-    ],
-    clickables: {
-        11: {
-            title: "前进",
-            canClick() {
-                return true
-            },
-            unlocked() {
-                return !(player[this.layer].page == 36 && player[this.layer].choose[1])
-            },
-            onClick() {
-                let p = player[this.layer].page
-                /*
-                if (p == 21) player[this.layer].choose[0] = false
-                if (p == 31) player[this.layer].choose[1] = false
-                */
-
-                player[this.layer].page++
-                if (player[this.layer].page > 100) {
-                    player[this.layer].page = 100
-                    completeWorld(this.layer)
-                }
-            },
-            style() {
-                return {
-                    color: player[this.layer].page == 0 ? "#00000000" : "#FFF",
-                    minHeight: "100px",
-                    width: "100px",
-                    border: "unset",
-                }
+    tabFormat: {
+        "真·点击墙": { content: [["microtabs", "fox"]], style: { width: "1340px" } },
+        "新世代晋级": { content: [["microtabs", "pre"]], style: { width: "1340px" },
+        prestigeNotify() {
+            return player[505].power.gte(buyableEffect(505, 1)) && player[505].diffn.gt(player[505].diffh)
+        } },
+        "夸嚓力量": { content: [["microtabs", "clc"]], style: { width: "1340px" } },
+    },
+    microtabs: {
+        fox: tabformat505,
+        pre: {
+            "超越生死!相似失去而重来": {
+                content: [
+                    ["display-text", function () {
+                        return `死去,再使用更神奇的力量以强度高更加的力量回归!通过增加困难以得到强非常的力量,让自己更加困难,最后达到超越自己的困难!`
+                    }],
+                    ["bar", "foxbar"],
+                    ["bar", "prebar"],
+                    ["display-text", function () {
+                        return `你达成的最高难度在 <h1 class="nmpt">${formatWhole(player[this.layer].diffh)}</h1> 等级<br>
+                        你当前游玩的难度在 <h2 class="nmpt">${formatWhole(player[this.layer].diffn)}</h2> 等级`
+                    }],
+                    "blank",
+                    "clickables",
+                    "blank",
+                    ["display-text", "你只能在未购买升级时修改难度"],
+                    "blank",
+                    ["buyable-tree", [
+                        [1], [11, 21, 31],
+                    ]],
+                    "blank",
+                ],
+                style: { width: "1340px" }
             }
         },
-        /*
+        clc: {
+            "夸嚓夸嚓!力量涌现在你!": {
+                content: [
+                    ["display-text", function () {
+                        return `点击升级每次,夸嚓升级(更小的夸嚓!字)出现其他位置(也许你拥有,这发生在你拥有很多地方更频繁),获得夸嚓能量点击夸嚓升级时间!`
+                    }],
+                    ["bar", "clcbar"],
+                    ["display-text", function () {
+                        return `你有 <h1 class="nmpt">${format(player[this.layer].clcpo)}</h1> 夸嚓狠狠攥在你的手内!夸嚓!`
+                    }],
+                    "blank",
+                    ["milestones", [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]],
+                ],
+                style: { width: "1340px" }
+            }
+        }
+    },
+    upgrades: upgrades505,
+    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
+    bars: {
+        foxbar: {
+            direction: RIGHT,
+            width: 1280,
+            height: 20,
+            progress() {
+                return player[this.layer].points.div(4096)
+            },
+            display() {
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].points.div(4096))} - ${formatWhole(player[this.layer].points)} / ${formatWhole(4096)} 升级</span>`
+            },
+            fillStyle: {
+                backgroundColor: "#1fc922"
+            },
+            instant: true
+        },
+        prebar: {
+            direction: RIGHT,
+            width: 1280,
+            height: 20,
+            progress() {
+                return buyableEffect(this.layer, 1).eq(0) ? 1 : player[this.layer].power.div(buyableEffect(this.layer, 1))
+            },
+            display() {
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(buyableEffect(this.layer, 1).eq(0) ? 1 : player[this.layer].power.div(buyableEffect(this.layer, 1)))} - ${formatWhole(player[this.layer].power)} / ${formatWhole(buyableEffect(this.layer, 1))} 升级 直到转生</span>`
+            },
+            fillStyle: {
+                backgroundColor: "#877edf"
+            },
+            instant: true
+        },
+        clcbar: {
+            direction: RIGHT,
+            width: 1280,
+            height: 20,
+            progress() {
+                return player[this.layer].clcpo.div(500)
+            },
+            display() {
+                return `<span class="nmpt" style="text-shadow:1px 1px 0 #000;">${formatPersent(player[this.layer].clcpo.div(500))} - ${formatWhole(player[this.layer].clcpo)} / ${formatWhole(500)} 夸嚓</span>`
+            },
+            fillStyle: {
+                backgroundColor: "#d323b0"
+            },
+            instant: true
+        },
+    },
+    milestones: {
+        10: {
+            requirementDescription: "叮!",
+            effectDescription: "需求你获取一个夸嚓！",
+            done() {
+                return player[this.layer].clcpo.gte(1)
+            }
+        },
+        11: {
+            requirementDescription: "当!",
+            effectDescription: "需求你获取比一个多一个夸嚓！",
+            done() {
+                return player[this.layer].clcpo.gte(2)
+            }
+        },
         12: {
-            title: "停止",
-            canClick() {
-                return true
-            },
-            onClick() {
-                player[this.layer].page = -6
-            },
-            unlocked() {
-                return player[this.layer].page == 11
-            },
-            style() {
-                return {
-                    color: "#FFF",
-                    minHeight: "100px",
-                    width: "100px",
-                    border: "unset",
-                }
+            requirementDescription: "乒乓!",
+            effectDescription: "需求你获取再多就一个夸嚓！",
+            done() {
+                return player[this.layer].clcpo.gte(3)
             }
         },
         13: {
-            title: "离开",
-            canClick() {
-                return true
-            },
-            onClick() {
-                player[this.layer].page++
-                player[this.layer].choose[0] = true
-            },
-            unlocked() {
-                return player[this.layer].page == 21
-            },
-            style() {
-                return {
-                    color: "#FFF",
-                    minHeight: "100px",
-                    width: "100px",
-                    border: "unset",
-                }
+            requirementDescription: "噼啪的!",
+            effectDescription: "噼啪需要更多，你五个需要现在夸嚓力气大！",
+            done() {
+                return player[this.layer].clcpo.gte(5)
             }
         },
         14: {
-            title: "拒绝",
-            canClick() {
-                return true
-            },
-            onClick() {
-                player[this.layer].page++
-                player[this.layer].choose[1] = true
-            },
-            unlocked() {
-                return player[this.layer].page == 31
-            },
-            style() {
-                return {
-                    color: "#FFF",
-                    minHeight: "100px",
-                    width: "100px",
-                    border: "unset",
-                }
+            requirementDescription: "叮咚,羌!",
+            effectDescription: "它知道你做的，夸嚓，八个给予成就！",
+            done() {
+                return player[this.layer].clcpo.gte(8)
             }
         },
-        101: {
+        15: {
+            requirementDescription: "哒呤叮咚!",
+            effectDescription: "八个还不够，找它再一次，一倍百分比的多更加！",
+            done() {
+                return player[this.layer].clcpo.gte(16)
+            }
+        },
+        16: {
+            requirementDescription: "铿锵!",
+            effectDescription: "我们知道三十二，也就是再一倍的个你收集，这是艰苦的吗？",
+            done() {
+                return player[this.layer].clcpo.gte(32)
+            }
+        },
+        17: {
+            requirementDescription: "轰啪!",
+            effectDescription: "眼睛你的太温良寒冷了，六十七小子和夸嚓产生矛盾了，收集打败他！",
+            done() {
+                return player[this.layer].clcpo.gte(67)
+            }
+        },
+        18: {
+            requirementDescription: "哦不,痛苦的这无疑!",
+            effectDescription: "一直如此，我寻找上好的如此多夸嚓，而这并没有什么用，现在你需要一百另外的三十七个解除痛苦！",
+            done() {
+                return player[this.layer].clcpo.gte(137)
+            }
+        },
+        19: {
+            requirementDescription: "次末端,十里挑一网格的夸嚓!",
+            effectDescription: "你的夸嚓挤满一整面墙，真棒！梦力+1",
+            onComplete() {
+                player.main.points = player.main.points.add(1)
+            },
+            done() {
+                return player[this.layer].clcpo.gte(256)
+            }
+        },
+        20: {
+            requirementDescription: "!?强强?!",
+            effectDescription: "五百个夸嚓！梦力+1",
+            onComplete() {
+                player.main.points = player.main.points.add(1)
+            },
+            done() {
+                return player[this.layer].clcpo.gte(500)
+            }
+        },
+    },
+    clickables: {
+        11: {
+            title() {
+                return `从死亡旋转到活着<br>
+                将你的最高通关难度变为 ${formatWhole(Decimal.max(player[this.layer].diffn, player[this.layer].diffh))}<br>
+                需求 ${formatWhole(buyableEffect(this.layer, 1))} 升级`
+            },
+            unlocked() { return true },
             canClick() {
-                return true
+                return player[this.layer].power.gte(buyableEffect(this.layer, 1))
             },
             onClick() {
-                player[this.layer].page = 0
+                layers[this.layer].prestige(true)
             },
-            unlocked() {
-                return player[this.layer].page == 36 && player[this.layer].choose[1]
+            style: { width: "220px", height: "128px" },
+        },
+        12: {
+            title: "痛苦,明晰,回到一切",
+            display() {
+                return `无进度地重置之前你所做的一切,这相当痛苦`
             },
-            style() {
-                return {
-                    color: "#FFF",
-                    minHeight: "100px",
-                    width: "100px",
-                    border: "unset",
-                }
+            unlocked() { return true },
+            canClick() { return true },
+            onClick() {
+                layers[this.layer].prestige(false)
             },
-            shake: true
+            style: { width: "140px", minHeight: "90px" },
         }
-            */
     },
-    
-    layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
+    prestige(gain) {
+        player[this.layer].upgrades = []
+        player[this.layer].points = _D0
+        player[this.layer].power = _D0
 
+        if (gain) {
+            player[this.layer].diffh = Decimal.max(player[this.layer].diffn, player[this.layer].diffh)
+        }
+    },
+    buyables: {
+        1: {
+            title() { return `困难的转生 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `转生需要的升级现在是 ${formatWhole(this.effect())}
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return true },
+            style: { width: "156px", height: "72px" },
+            effect(x) { return x.pow(3) },
+            purchaseLimit() {
+                return Decimal.min(player[this.layer].diffh, 15)
+            },
+            canAfford() {
+                if (player[this.layer].power.gte(1)) return false
+                return true
+            },
+            canSellOne() {
+                if (player[this.layer].power.gte(1)) return false
+                return getBuyableAmount(this.layer, this.id).gt(0)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                return Decimal.ceil(x.div(3)).add(1)
+            },
+            buy() {
+                addBuyables(this.layer, this.id, _D1)
+                layers[this.layer].getDiff()
+            },
+            sellOne() {
+                addBuyables(this.layer, this.id, _D(-1))
+                layers[this.layer].getDiff()
+            },
+            branches: [11, 21, 31],
+        },
+        11: {
+            title() { return `注定失败 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `购买升级 ${formatPersent(this.effect())} 概率不计购买数
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gte(2) },
+            style: { width: "156px", height: "72px" },
+            effect(x) { return x.div(x.add(9)) },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.div(2)), 10)
+            },
+            canAfford() {
+                if (player[this.layer].power.gte(1)) return false
+                return true
+            },
+            canSellOne() {
+                if (player[this.layer].power.gte(1)) return false
+                return getBuyableAmount(this.layer, this.id).gt(0)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                if (x.lte(2)) return x
+                return Decimal.floor(x.add(1).div(2))
+            },
+            buy() {
+                addBuyables(this.layer, this.id, _D1)
+                layers[this.layer].getDiff()
+            },
+            sellOne() {
+                addBuyables(this.layer, this.id, _D(-1))
+                layers[this.layer].getDiff()
+            },
+            branches: [],
+        },
+        21: {
+            title() { return `拒之门外 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `升级 ${formatPersent(this.effect())} 概率不可用
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gte(3) },
+            style: { width: "156px", height: "72px" },
+            effect(x) { return x.div(x.add(19)) },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.div(1).div(2)), 10)
+            },
+            canAfford() {
+                if (player[this.layer].power.gte(1)) return false
+                return true
+            },
+            canSellOne() {
+                if (player[this.layer].power.gte(1)) return false
+                return getBuyableAmount(this.layer, this.id).gt(0)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                if (x.lte(2)) return x
+                return Decimal.floor(x.add(1).div(2))
+            },
+            buy() {
+                addBuyables(this.layer, this.id, _D1)
+                layers[this.layer].getDiff()
+            },
+            sellOne() {
+                addBuyables(this.layer, this.id, _D(-1))
+                layers[this.layer].getDiff()
+            },
+            branches: [],
+        },
+        31: {
+            title() { return `悸动之心 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `每次购买升级都会切换页面
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            effect(x) { return x.gt(0) },
+            unlocked() { return player[this.layer].diffh.gte(4) },
+            style: { width: "156px", height: "72px" },
+            purchaseLimit() {
+                if (player[this.layer].diffh.gte(5)) return _D1
+                return _D0
+            },
+            canAfford() {
+                if (player[this.layer].power.gte(1)) return false
+                return true
+            },
+            canSellOne() {
+                if (player[this.layer].power.gte(1)) return false
+                return getBuyableAmount(this.layer, this.id).gt(0)
+            },
+            diff() {
+                return getBuyableAmount(this.layer, this.id).mul(2)
+            },
+            buy() {
+                addBuyables(this.layer, this.id, _D1)
+                layers[this.layer].getDiff()
+            },
+            sellOne() {
+                addBuyables(this.layer, this.id, _D(-1))
+                layers[this.layer].getDiff()
+            },
+            branches: [],
+        },
+    },
+    getDiff() {
+        let b = layers[this.layer].buyables
+        let d = _D0
+
+        Object.keys(b).forEach(key => {
+            let id = parseInt(key)
+            if (!isNaN(id) && b[key].diff) {
+                d = d.add(b[key].diff())
+            }
+        })
+
+        player[this.layer].diffn = d
+    },
 });
+

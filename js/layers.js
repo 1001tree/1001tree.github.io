@@ -735,7 +735,6 @@ addLayer("extra", {
     tabFormat: [
         ["tree", [
             ['10102', '10103',],
-            ['10201',],
         ]],
     ],
     tooltip: "Extra Zone",

@@ -687,3 +687,16 @@ function checkWarning(id) {
 function closeWarning(id) {
 	player[id].warning = false
 }
+
+function seededRandom(seed) {
+	let s = seed >>> 0;
+	const next = () => {
+		s = s + 0x6D2B79F5 | 0;
+		let t = s;
+		t = Math.imul(t ^ t >>> 15, t | 1);
+		t ^= t + Math.imul(t ^ t >>> 7, 61 | t) ^ t >>> 14;
+		return (t >>> 0) / 4294967296;
+	};
+	const value = next();
+	return { value, nextSeed: s >>> 0 };
+}

@@ -2,7 +2,7 @@ let modInfo = {
 	name: "一千零一树",
 	id: "1001tree",
 	pointsName: "世界",
-	modFiles: ["layers.js", "nodes.js", "tree.js", "book.js", "const.js", "const403.js", 
+	modFiles: ["layers.js", "nodes.js", "tree.js", "book.js", "const.js", "const403.js",
 
 		"world/101.js", "world/102.js", "world/103.js", "world/104.js", "world/105.js",
 		"world/201.js", "world/202.js", "world/203.js", "world/204.js", "world/205.js",
@@ -14,7 +14,6 @@ let modInfo = {
 		"world/302/3021.js", "world/302/3022.js", "world/302/3023.js", "world/302/3024.js",
 
 		"world/10102.js", "world/10103.js",
-		"world/10201.js",
 	],
 	discordName: "1001树游戏群",
 	discordLink: "https://qm.qq.com/q/ApvcgvPhN8",
@@ -24,12 +23,14 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.815,
-	name: "发布版v22"
+	num: 0.82,
+	name: "发布版v24"
 }
 
 let changelog = `
 	<h1>更新日志:</h1><br><br>
+	<h3>v24 | 0.82 | 2026/6/16</h3><br>
+	真·点击墙改为505世界,制作了四个增墙升级和六十七力量<br><br>
 	<h3>v22 | 0.815 | 2026/6/15</h3><br>
 	更新了10201:真·点击墙<br><br>
 	<h3>v21 | 0.814 | 2026/6/14</h3><br>
@@ -103,7 +104,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
 	"check11", "check12", "check13", "check14", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
-	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack",
+	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack", "getDiff", "diff","prestige"
 
 ]
 
@@ -252,10 +253,11 @@ function maxTickLength() {
 // 如果需要修复旧版本存档的数值膨胀问题,使用此函数.如果版本早于修复该问题的版本,
 // 你可以用此函数限制他们当前的资源.
 function fixOldSave(oldVersion) {
+	let rqReload = false
+
 	if (oldVersion <= 0.795) {
 		let ach = player.ach.points
 		player.main.points = player.main.points.add(ach)
-		alert(`在0.796版本的更新后,基于曾经完成的成就,你获得了${formatWhole(ach)}梦力!`)
 	}
 	if (oldVersion <= 0.796) {
 		if (player[this.layer].power) player[this.layer].power = _D(player[this.layer].power)
@@ -263,47 +265,22 @@ function fixOldSave(oldVersion) {
 	if (oldVersion <= 0.7972) {
 		if (getGridData('main', 501)) {
 			if (!player._501.lose && !player._501.complete) {
-				alert(`为什么你买了501但是没玩😱!不过,0.798版本新增了一个更强的挑战成就,想试试的话,去设置打开挑战者模式吧!`)
 			}
 			if (player._501.lose && player._501.complete) {
 				player._501.lose = false
 				player._501.complete = false
-				alert(`501限定成就愚人节玩笑进行了一次更新,尽管你已经无法完成它,但0.798版本重置了它,查看设置和成就里的新东西吧!`)
 			}
 			if (!player._501.lose && player._501.complete) {
 				options.truechallenger = true
-				alert(`看起来你已经完成愚人节玩笑成就了,不过,0.798版本新增了一个更强的挑战成就(你应该已经自动获得了它),想试试的话,就创建一个新存档,去设置打开挑战者模式吧!`)
 			}
 		}
 	}
 	if (oldVersion <= 0.803) {
+		rqReload = true
 		if (oldVersion <= 0.802) {
-			//迁移麦麦数据
 			player[10101] = player[405]
 		}
-		//迁移麦麦数据
-		player[405] = {
-			"resetTime": 0,
-			"unlocked": true,
-			"points": _D0,
-			"total": _D0,
-			"best": _D0,
-			"forceTooltip": false,
-			"buyables": {},
-			"noRespecConfirm": false,
-			"clickables": {},
-			"spentOnBuyables": _D0,
-			"upgrades": [],
-			"milestones": [],
-			"lastMilestone": null,
-			"achievements": [],
-			"challenges": {},
-			"grid": {},
-			"prevTab": ""
-		}
-		alert(`0.802版本尝试迁移了麦麦(原405,目前计划作为废稿~:重返梦树~内容)数据,但出现了一些问题.
-目前已知:ResetTime会报错,刷新无法解决(如果刷新解决了则无视它)
-以下是临时解决方法:导出存档,硬重置,导入存档;此方法应能解决上述报错问题`)
+		delete player[405]
 	}
 	if (oldVersion <= 0.805) {
 		let fox = player.book.fox
@@ -325,5 +302,15 @@ function fixOldSave(oldVersion) {
 		for (i of a) {
 			player.pause[i] = false
 		}
+	}
+	if (oldVersion <= 0.815) {
+		rqReload = true
+		delete player[10201]
+	}
+
+	if (rqReload) {
+		alert(`检测到需要刷新的游戏修复,正在自动刷新应用修复!`)
+		save()
+		window.location.reload()
 	}
 }

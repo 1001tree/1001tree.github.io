@@ -78,9 +78,6 @@ addLayer("204", {
     randomButton() {
         return [21, 22, 23, 24].sort(() => Math.random() - 0.5)
     },
-    update(diff) {
-        if (!getGridData('main', this.layer)||player.pause[this.layer]) return
-    },
     clickables: {
         11: {
             title() { return `开始答题!` },

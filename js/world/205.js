@@ -691,7 +691,7 @@ addLayer("205", {
         },
         25: {
             title: "能量献祭",
-            description: "每回合消耗1%能量并转换为基础分倍率",
+            description: "每回合消耗1%能量并转换为点数分倍率",
             cost: 7,
             unlocked() {
                 return hasUpgrade(this.layer, this.id) || player[this.layer].upgrade.includes(this.id)

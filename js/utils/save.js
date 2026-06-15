@@ -210,8 +210,9 @@ function load() {
 	setupTemp();
 	updateTemp();
 	updateTemp();
-	updateTabFormats()
+	updateTabFormats();
 	loadVue();
+	setTransitions();
 
 	document.body.style.setProperty("--Font", options.font);
 

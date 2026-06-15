@@ -22,7 +22,8 @@ function getStartOptions() {
 		songshown: true,
 		sloganshown: true,
 		newsshown: true,
-		
+
+		count: 0,
 		forceOneTab: false,
 		hcmode: 0,
 		hqTree: false,
@@ -87,6 +88,7 @@ function setTransitions() {
 			-webkit-transition-duration: unset !important;
 			-moz-transition-duration: unset !important;
 			-o-transition-duration: unset !important;
+			transition-property: none !important;
 		  }
 		  
 		  .v-enter-active,
@@ -98,9 +100,46 @@ function setTransitions() {
 		`;
 			document.head.appendChild(styleElement);
 		}
+		
+		// 添加 MutationObserver 来监控并移除 transform
+		if (!window.__transformObserver) {
+			const observer = new MutationObserver((mutations) => {
+				mutations.forEach((mutation) => {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+						const element = mutation.target;
+						const style = element.style;
+						if (style.transform && style.transform !== 'none') {
+							style.transform = 'none';
+						}
+					}
+				});
+			});
+			
+			observer.observe(document.body, {
+				attributes: true,
+				attributeFilter: ['style'],
+				subtree: true
+			});
+			
+			window.__transformObserver = observer;
+		}
+		
+		// 立即清除已有的 transform
+		document.querySelectorAll('*').forEach(el => {
+			if (el.style && el.style.transform && el.style.transform !== 'none') {
+				el.style.transform = 'none';
+			}
+		});
+		
 	} else {
 		if (styleElement) {
 			document.head.removeChild(styleElement);
+		}
+		
+		// 移除 observer
+		if (window.__transformObserver) {
+			window.__transformObserver.disconnect();
+			delete window.__transformObserver;
 		}
 	}
 }
