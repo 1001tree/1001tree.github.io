@@ -369,7 +369,7 @@ var systemComponents = {
 				<td><button class="opt" onclick="player.pause[502]=!player.pause[502]">{{ getGameName(502)[0] }}<br>暂停:{{ formatBoolean(player.pause[502]) }}</button></td>
 				<td><button class="opt" onclick="player.pause[503]=!player.pause[503]">{{ getGameName(503)[0] }}<br>暂停:{{ formatBoolean(player.pause[503]) }}</button></td>
 				<td><button class="optDark">{{ getGameName(504)[0] }}<br>破坏游戏内容<br>不允许暂停</button></td>
-				<td><button class="optDark">{{ getGameName(505)[0] }}<br>不依赖时钟<br>暂停无效</button></td>
+				<td><button class="optDark">{{ getGameName(505)[0] }}<br>破坏游戏内容<br>不允许暂停</button></td>
             </tr>
 			<br>
             <tr v-if="options.pauseclass">

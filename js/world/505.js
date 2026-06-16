@@ -2,6 +2,7 @@
 let layer505 = 16
 let upgrades505 = {}
 let tabformat505 = {}
+let buyable505 = {}
 let defined505 = false
 
 if (!(defined505)) define505()
@@ -18,33 +19,37 @@ function define505() {
                 let id = i * 10000 + j * 100 + k
                 upgrades505[id] = {
                     fullDisplay() {
-                        if (player[505].clca == this.id) return `<h2>Crack!</h2>`
+                        if (player[505].clca == this.id && buyableEffect(this.layer, 42)) return `<h2>Crack!</h2>`
                         else return `<h1>${randomString(4)}</h1>`
 
                     },
-                    cost: _D(0),
+                    cost: _D(-1),
                     style: {
                         minHeight: "38px",
                         width: "80px"
                     },
                     canAfford() {
-                        if (getBuyableAmount(this.layer, 21).gt(0)) {
+                        if (getBuyableAmount(this.layer, 21).gt(0.5)) {
                             if (buyableEffect(this.layer, 21).gte(seededRandom(this.id + player[this.layer].seed).value)) return false
                         }
                         return true
                     },
+                    unlocked() {
+                        if (getBuyableAmount(this.layer, 22).gt(0.5)) {
+                            if (buyableEffect(this.layer, 22).gte(seededRandom(this.id + player[this.layer].seed + 1).value)) return false
+                        }
+                        return true
+                    },
                     onPurchase() {
-                        player[this.layer].points = player[this.layer].points.add(1)
-
                         if (_DR().gt(buyableEffect(this.layer, 11))) player[this.layer].power = player[this.layer].power.add(1)
 
-                        if (getBuyableAmount(this.layer, 21).gt(0)) {
+                        if (getBuyableAmount(this.layer, 21).gt(0.5)) {
                             player[this.layer].seed = Date.now()
                         }
 
                         if (buyableEffect(this.layer, 31)) player.subtabs[this.layer].fox = randomBetween(0, layer505)
 
-                        if (player[505].clca == this.id) {
+                        if (player[505].clca == this.id && buyableEffect(this.layer, 42)) {
                             player[this.layer].clcpo = player[this.layer].clcpo.add(1)
                             makeParticles({
                                 time: 2,
@@ -91,12 +96,207 @@ function define505() {
             }
         }
     }
+
+    buyable505 = {
+        1: {
+            title() { return `困难的转生 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `转生需要的升级现在是 ${formatWhole(this.effect())}
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return true },
+            effect(x) { return x.pow(3) },
+            purchaseLimit() {
+                return Decimal.min(player[this.layer].diffh, 15)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                return Decimal.ceil(x.div(3)).add(1)
+            },
+            branches: [11, 21, 31],
+        },
+        11: {
+            title() { return `注定失败 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `购买升级 ${formatPersent(this.effect())} 概率不计购买数
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gt(1.5) },
+            effect(x) { return x.div(x.add(9)) },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.div(2)), 10)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                if (x.lt(2.5)) return x
+                return Decimal.floor(x.add(2).div(2))
+            },
+            branches: [12, 42],
+        },
+        12: {
+            title() { return `手指风暴 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `升级数每秒减少 ${format(this.effect())}
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gt(7.5) },
+            effect(x) {
+                if (x.gt(5.5)) return _D3
+                else if (x.gt(4.5)) return _D2
+                else if (x.gt(3.5)) return _D(5 / 4)
+                else if (x.gt(2.5)) return _D(2 / 3)
+                else if (x.gt(1.5)) return _D(1 / 2)
+                else if (x.gt(0.5)) return _D(1 / 5)
+                else return _D0
+            },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.sub(5).div(3)), 6)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                if (x.gt(5.5)) return x.add(2)
+                return x
+            },
+            branches: [],
+        },
+        21: {
+            title() { return `拒之门外 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `升级 ${formatPersent(this.effect())} 概率被禁购
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gte(2.5) },
+            effect(x) { return x.div(x.add(19)) },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.sub(1).div(2)), 10)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                if (x.lt(2.5)) return x
+                return Decimal.floor(x.add(2).div(2))
+            },
+            branches: [22, 42],
+        },
+        22: {
+            title() { return `空虚之眼 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `升级 ${formatPersent(this.effect())} 概率不显示
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            unlocked() { return player[this.layer].diffh.gt(9.5) },
+            effect(x) { return x.div(x.add(19)) },
+            purchaseLimit() {
+                return Decimal.min(Decimal.floor(player[this.layer].diffh.sub(8).div(2)), 10)
+            },
+            diff() {
+                let x = getBuyableAmount(this.layer, this.id)
+                return x
+            },
+            branches: [],
+        },
+        31: {
+            title() { return `悸动之心 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `每次购买升级都会切换页面
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            effect(x) { return x.gt(0.5) },
+            unlocked() { return player[this.layer].diffh.gt(3.5) },
+            purchaseLimit() {
+                if (player[this.layer].diffh.gt(4.5)) return _D1
+                return _D0
+            },
+            diff() {
+                return getBuyableAmount(this.layer, this.id).mul(2)
+            },
+            branches: [32],
+        },
+        32: {
+            title() { return `明晰之命 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `允许你在不清空转生升级数的情况下重置升级板
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            effect(x) { return x.gt(0.5) },
+            unlocked() { return player[this.layer].diffh.gt(14.5) },
+            purchaseLimit() {
+                if (player[this.layer].diffh.gt(15.5)) return _D1
+                return _D0
+            },
+            diff() {
+                return getBuyableAmount(this.layer, this.id).mul(-1)
+            },
+            branches: [33],
+        },
+        33: {
+            title() { return `世界低语 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `每次升级 1/256 概率完成世界
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            effect() { return _D(1 / 256) },
+            unlocked() { return player[this.layer].diffh.gt(18.5) },
+            purchaseLimit() {
+                if (player[this.layer].diffh.gt(19.5)) return _D1
+                return _D0
+            },
+            diff() {
+                return _D0
+            },
+            branches: [],
+        },
+        42: {
+            title() { return `夸嚓! 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() {
+                return `解锁夸嚓力量
+                难度价值 ${formatWhole(this.diff())}`
+            },
+            effect(x) { return x.gt(0.5) },
+            unlocked() { return player[this.layer].diffh.gt(5.5) },
+            purchaseLimit() {
+                if (player[this.layer].diffh.gt(6.5)) return _D1
+                return _D0
+            },
+            diff() {
+                return _D0
+            },
+            branches: [],
+        },
+    }
+
+    Object.keys(buyable505).forEach(key => {
+        let id = parseInt(key)
+        let item = buyable505[key]
+
+        item.style = { width: "156px", height: "72px" }
+        item.canAfford = function () {
+            if (player[this.layer].power.gt(0.5)) return false
+            return true
+        }
+        item.canSellOne = function () {
+            if (player[this.layer].power.gt(0.5)) return false
+            return getBuyableAmount(this.layer, this.id).gt(0.5)
+        }
+        item.buy = function () {
+            addBuyables(this.layer, this.id, _D1)
+            layers[this.layer].getDiff()
+        }
+        item.sellOne = function () {
+            addBuyables(this.layer, this.id, _D(-1))
+            layers[this.layer].getDiff()
+        }
+
+    })
 }
 
 addLayer("505", {
     symbol: "🆘",
     resource: "升级",
     color: "#d44",
+    update(diff) {
+        if (!getGridData('main', this.layer)) return
+        player[this.layer].power = Decimal.max(0, player[this.layer].power.sub(buyableEffect(this.layer, 12).mul(diff)))
+    },
     startData() {
         return {
             unlocked: true,
@@ -106,6 +306,7 @@ addLayer("505", {
             clcpo: _D0,
             diffh: _D0,
             diffn: _D1,
+            complete: false,
             clca: 0,
             seed: 0,
         }
@@ -113,11 +314,13 @@ addLayer("505", {
     type: "none",
     tabFormat: {
         "真·点击墙": { content: [["microtabs", "fox"]], style: { width: "1340px" } },
-        "新世代晋级": { content: [["microtabs", "pre"]], style: { width: "1340px" },
-        prestigeNotify() {
-            return player[505].power.gte(buyableEffect(505, 1)) && player[505].diffn.gt(player[505].diffh)
-        } },
-        "夸嚓力量": { content: [["microtabs", "clc"]], style: { width: "1340px" } },
+        "新世代晋级": {
+            content: [["microtabs", "pre"]], style: { width: "1340px" },
+            prestigeNotify() {
+                return player[505].power.gte(buyableEffect(505, 1).sub(0.5)) && player[505].diffn.gt(player[505].diffh) && buyableEffect(505, 42)
+            }
+        },
+        "夸嚓力量": { content: [["microtabs", "clc"]], style: { width: "1340px" }, unlocked() { return buyableEffect(505, 42) } },
     },
     microtabs: {
         fox: tabformat505,
@@ -139,8 +342,10 @@ addLayer("505", {
                     ["display-text", "你只能在未购买升级时修改难度"],
                     "blank",
                     ["buyable-tree", [
-                        [1], [11, 21, 31],
+                        [1], [11, 21, 31], [12, 42, 22, 32], [33]
                     ]],
+                    "blank",
+                    ["milestones", [0]],
                     "blank",
                 ],
                 style: { width: "1340px" }
@@ -158,6 +363,7 @@ addLayer("505", {
                     }],
                     "blank",
                     ["milestones", [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]],
+                    "blank",
                 ],
                 style: { width: "1340px" }
             }
@@ -209,15 +415,27 @@ addLayer("505", {
             fillStyle: {
                 backgroundColor: "#d323b0"
             },
-            instant: true
+            instant: true,
+            unlocked() {return buyableEffect(this.layer, 42)}
         },
     },
     milestones: {
+        0: {
+            requirementDescription: "雨之将倾,沉眠于梦",
+            effectDescription: "世界完成",
+            done() {
+                return player[this.layer].complete
+            },
+            onComplete() {
+                completeWorld(this.layer)
+            },
+            style: { width: "670px" }
+        },
         10: {
             requirementDescription: "叮!",
             effectDescription: "需求你获取一个夸嚓！",
             done() {
-                return player[this.layer].clcpo.gte(1)
+                return player[this.layer].clcpo.gt(0.5)
             }
         },
         11: {
@@ -306,7 +524,7 @@ addLayer("505", {
             },
             unlocked() { return true },
             canClick() {
-                return player[this.layer].power.gte(buyableEffect(this.layer, 1))
+                return player[this.layer].power.gte(buyableEffect(this.layer, 1).sub(0.5))
             },
             onClick() {
                 layers[this.layer].prestige(true)
@@ -324,6 +542,19 @@ addLayer("505", {
                 layers[this.layer].prestige(false)
             },
             style: { width: "140px", minHeight: "90px" },
+        },
+        13: {
+            title: "天火明命!",
+            display() {
+                return `祛尽邪魔!`
+            },
+            unlocked() { return buyableEffect(this.layer, 32) },
+            canClick() { return true },
+            onClick() {
+                player[this.layer].points = _D0
+                player[this.layer].upgrades = []
+            },
+            style: { width: "140px", minHeight: "90px" },
         }
     },
     prestige(gain) {
@@ -335,146 +566,7 @@ addLayer("505", {
             player[this.layer].diffh = Decimal.max(player[this.layer].diffn, player[this.layer].diffh)
         }
     },
-    buyables: {
-        1: {
-            title() { return `困难的转生 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
-            display() {
-                return `转生需要的升级现在是 ${formatWhole(this.effect())}
-                难度价值 ${formatWhole(this.diff())}`
-            },
-            unlocked() { return true },
-            style: { width: "156px", height: "72px" },
-            effect(x) { return x.pow(3) },
-            purchaseLimit() {
-                return Decimal.min(player[this.layer].diffh, 15)
-            },
-            canAfford() {
-                if (player[this.layer].power.gte(1)) return false
-                return true
-            },
-            canSellOne() {
-                if (player[this.layer].power.gte(1)) return false
-                return getBuyableAmount(this.layer, this.id).gt(0)
-            },
-            diff() {
-                let x = getBuyableAmount(this.layer, this.id)
-                return Decimal.ceil(x.div(3)).add(1)
-            },
-            buy() {
-                addBuyables(this.layer, this.id, _D1)
-                layers[this.layer].getDiff()
-            },
-            sellOne() {
-                addBuyables(this.layer, this.id, _D(-1))
-                layers[this.layer].getDiff()
-            },
-            branches: [11, 21, 31],
-        },
-        11: {
-            title() { return `注定失败 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
-            display() {
-                return `购买升级 ${formatPersent(this.effect())} 概率不计购买数
-                难度价值 ${formatWhole(this.diff())}`
-            },
-            unlocked() { return player[this.layer].diffh.gte(2) },
-            style: { width: "156px", height: "72px" },
-            effect(x) { return x.div(x.add(9)) },
-            purchaseLimit() {
-                return Decimal.min(Decimal.floor(player[this.layer].diffh.div(2)), 10)
-            },
-            canAfford() {
-                if (player[this.layer].power.gte(1)) return false
-                return true
-            },
-            canSellOne() {
-                if (player[this.layer].power.gte(1)) return false
-                return getBuyableAmount(this.layer, this.id).gt(0)
-            },
-            diff() {
-                let x = getBuyableAmount(this.layer, this.id)
-                if (x.lte(2)) return x
-                return Decimal.floor(x.add(1).div(2))
-            },
-            buy() {
-                addBuyables(this.layer, this.id, _D1)
-                layers[this.layer].getDiff()
-            },
-            sellOne() {
-                addBuyables(this.layer, this.id, _D(-1))
-                layers[this.layer].getDiff()
-            },
-            branches: [],
-        },
-        21: {
-            title() { return `拒之门外 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
-            display() {
-                return `升级 ${formatPersent(this.effect())} 概率不可用
-                难度价值 ${formatWhole(this.diff())}`
-            },
-            unlocked() { return player[this.layer].diffh.gte(3) },
-            style: { width: "156px", height: "72px" },
-            effect(x) { return x.div(x.add(19)) },
-            purchaseLimit() {
-                return Decimal.min(Decimal.floor(player[this.layer].diffh.div(1).div(2)), 10)
-            },
-            canAfford() {
-                if (player[this.layer].power.gte(1)) return false
-                return true
-            },
-            canSellOne() {
-                if (player[this.layer].power.gte(1)) return false
-                return getBuyableAmount(this.layer, this.id).gt(0)
-            },
-            diff() {
-                let x = getBuyableAmount(this.layer, this.id)
-                if (x.lte(2)) return x
-                return Decimal.floor(x.add(1).div(2))
-            },
-            buy() {
-                addBuyables(this.layer, this.id, _D1)
-                layers[this.layer].getDiff()
-            },
-            sellOne() {
-                addBuyables(this.layer, this.id, _D(-1))
-                layers[this.layer].getDiff()
-            },
-            branches: [],
-        },
-        31: {
-            title() { return `悸动之心 等级${formatWhole(getBuyableAmount(this.layer, this.id))}` },
-            display() {
-                return `每次购买升级都会切换页面
-                难度价值 ${formatWhole(this.diff())}`
-            },
-            effect(x) { return x.gt(0) },
-            unlocked() { return player[this.layer].diffh.gte(4) },
-            style: { width: "156px", height: "72px" },
-            purchaseLimit() {
-                if (player[this.layer].diffh.gte(5)) return _D1
-                return _D0
-            },
-            canAfford() {
-                if (player[this.layer].power.gte(1)) return false
-                return true
-            },
-            canSellOne() {
-                if (player[this.layer].power.gte(1)) return false
-                return getBuyableAmount(this.layer, this.id).gt(0)
-            },
-            diff() {
-                return getBuyableAmount(this.layer, this.id).mul(2)
-            },
-            buy() {
-                addBuyables(this.layer, this.id, _D1)
-                layers[this.layer].getDiff()
-            },
-            sellOne() {
-                addBuyables(this.layer, this.id, _D(-1))
-                layers[this.layer].getDiff()
-            },
-            branches: [],
-        },
-    },
+    buyables: buyable505,
     getDiff() {
         let b = layers[this.layer].buyables
         let d = _D0
@@ -486,7 +578,17 @@ addLayer("505", {
             }
         })
 
-        player[this.layer].diffn = d
+        let dmax = _DInf
+        if (getBuyableAmount(505, 1).lt(0.5)) dmax = _D1
+        else if (getBuyableAmount(505, 1).lt(1.5)) dmax = _D3
+        else if (getBuyableAmount(505, 1).lt(2.5)) dmax = _D6
+        else if (getBuyableAmount(505, 1).lt(3.5)) dmax = _D10
+        else if (getBuyableAmount(505, 1).lt(4.5)) dmax = _D15
+        else if (getBuyableAmount(505, 1).lt(5.5)) dmax = _D21
+        else if (getBuyableAmount(505, 1).lt(6.5)) dmax = _D28
+        else if (getBuyableAmount(505, 1).lt(7.5)) dmax = _D35
+
+        player[this.layer].diffn = Decimal.min(dmax, d)
     },
 });
 
