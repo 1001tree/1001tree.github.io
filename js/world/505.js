@@ -584,10 +584,10 @@ addLayer("505", {
         else if (getBuyableAmount(505, 1).lt(1.5)) dmax = _D3
         else if (getBuyableAmount(505, 1).lt(2.5)) dmax = _D6
         else if (getBuyableAmount(505, 1).lt(3.5)) dmax = _D10
-        else if (getBuyableAmount(505, 1).lt(4.5)) dmax = _D15
-        else if (getBuyableAmount(505, 1).lt(5.5)) dmax = _D21
-        else if (getBuyableAmount(505, 1).lt(6.5)) dmax = _D28
-        else if (getBuyableAmount(505, 1).lt(7.5)) dmax = _D35
+        else if (getBuyableAmount(505, 1).lt(4.5)) dmax = _D(15)
+        else if (getBuyableAmount(505, 1).lt(5.5)) dmax = _D(21)
+        else if (getBuyableAmount(505, 1).lt(6.5)) dmax = _D(28)
+        else if (getBuyableAmount(505, 1).lt(7.5)) dmax = _D(35)
 
         player[this.layer].diffn = Decimal.min(dmax, d)
     },
