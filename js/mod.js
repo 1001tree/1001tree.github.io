@@ -309,8 +309,7 @@ function fixOldSave(oldVersion) {
 	}
 
 	if (rqReload) {
-		alert(`检测到需要刷新的游戏修复,正在自动刷新应用修复!`)
+		alert(`检测到可能需要刷新的游戏修复,请刷新页面来应用修复!`)
 		save()
-		window.location.reload()
 	}
 }
