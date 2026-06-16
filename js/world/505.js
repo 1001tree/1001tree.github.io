@@ -92,7 +92,7 @@ function define505() {
                 ...tab],
             style: { width: "1340px", height: "760px" },
             prestigeNotify() {
-                return Math.floor(player[505].clca / 10000) + 1 == i + 1
+                return buyableEffect(505, 42) && (Math.floor(player[505].clca / 10000) + 1 == i + 1)
             }
         }
     }
@@ -317,7 +317,7 @@ addLayer("505", {
         "新世代晋级": {
             content: [["microtabs", "pre"]], style: { width: "1340px" },
             prestigeNotify() {
-                return player[505].power.gte(buyableEffect(505, 1).sub(0.5)) && player[505].diffn.gt(player[505].diffh) && buyableEffect(505, 42)
+                return player[505].power.gte(buyableEffect(505, 1).sub(0.5)) && player[505].diffn.gt(player[505].diffh) 
             }
         },
         "夸嚓力量": { content: [["microtabs", "clc"]], style: { width: "1340px" }, unlocked() { return buyableEffect(505, 42) } },
