@@ -119,7 +119,7 @@ addLayer("book", {
                     在读之前和我一起说<br>
                     <div class="zhangli" style="height:135px"><h1 class="b1">张力来!</h1></div>
                     我是1001树的主开发,也是项目发起人<br>
-                    欢迎来<a href="https://qhlg.flime.top" target="_blank">我的主页</a><br><br>
+                    欢迎来<a href="https://qhlg.flime.top" target="_blank" rel="noopener noreferrer">我的主页</a><br><br>
                     而且...<br>
                     <span style="color:#88888810;font-size:10px;">如果你正在做梦,那么你已经看到了他们惧怕的东西...<br></span>
                     我在游戏里放了一些有趣的内容(和无趣的内容)<br>

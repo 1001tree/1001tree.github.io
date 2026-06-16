@@ -282,6 +282,7 @@ function define505() {
             layers[this.layer].getDiff()
         }
         item.sellOne = function () {
+            if (getBuyableAmount(this.layer, this.id).lt(0.5)) return
             addBuyables(this.layer, this.id, _D(-1))
             layers[this.layer].getDiff()
         }
@@ -317,7 +318,7 @@ addLayer("505", {
         "新世代晋级": {
             content: [["microtabs", "pre"]], style: { width: "1340px" },
             prestigeNotify() {
-                return player[505].power.gte(buyableEffect(505, 1).sub(0.5)) && player[505].diffn.gt(player[505].diffh) 
+                return player[505].power.gte(buyableEffect(505, 1).sub(0.5)) && player[505].diffn.gt(player[505].diffh)
             }
         },
         "夸嚓力量": { content: [["microtabs", "clc"]], style: { width: "1340px" }, unlocked() { return buyableEffect(505, 42) } },
@@ -416,7 +417,7 @@ addLayer("505", {
                 backgroundColor: "#d323b0"
             },
             instant: true,
-            unlocked() {return buyableEffect(this.layer, 42)}
+            unlocked() { return buyableEffect(this.layer, 42) }
         },
     },
     milestones: {

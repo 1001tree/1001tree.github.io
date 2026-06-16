@@ -60,7 +60,7 @@ function define10103() {
             done() { return player[this.layer].power.gte(this.target) },
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             target: _D(400 * (i + 1) / 10),
-            style: { height: "104px", width: "244px" }
+            style: { height: "112px", width: "244px" }
         }
         milestones10103[i + 10] = {
             requirementDescription: `^${formatPersent((i + 1) / 10, 0)}的花费`,
@@ -73,7 +73,7 @@ function define10103() {
             done() { return player[this.layer].point.gte(this.target) },
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             target: _D(130271906898720 ** ((i + 1) / 10)),
-            style: { height: "104px", width: "244px" }
+            style: { height: "112px", width: "244px" }
         }
         milestones10103[i + 20] = {
             requirementDescription: `^${formatPersent(1 - (i + 1) / 10, 0)}+1的时间`,
@@ -87,7 +87,7 @@ function define10103() {
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             base() { return _D(130271906898720).sub(player[this.layer].point).sub(player[this.layer].points).div(layers[this.layer].getPoint()) },
             target: _D(130271906898720 ** (1 - (i + 1) / 10)).add(1),
-            style: { height: "104px", width: "244px" }
+            style: { height: "112px", width: "244px" }
         }
         milestones10103[i + 30] = {
             requirementDescription() { return `${formatWhole(i + 1)}行完成!` },
@@ -101,7 +101,7 @@ function define10103() {
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             base() { return player[this.layer].buy[0][i] },
             target: layer10103,
-            style: { height: "104px", width: "132px" }
+            style: { height: "112px", width: "132px" }
         }
         milestones10103[i + 40] = {
             requirementDescription() { return `${formatWhole(i + 11)}行完成!` },
@@ -115,7 +115,7 @@ function define10103() {
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             base() { return player[this.layer].buy[0][i + 10] },
             target: layer10103,
-            style: { height: "104px", width: "132px" }
+            style: { height: "112px", width: "132px" }
         }
         milestones10103[i + 50] = {
             requirementDescription() { return `${formatWhole(i + 1)}列完成!` },
@@ -129,7 +129,7 @@ function define10103() {
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             base() { return player[this.layer].buy[1][i] },
             target: layer10103,
-            style: { height: "104px", width: "132px" }
+            style: { height: "112px", width: "132px" }
         }
         milestones10103[i + 60] = {
             requirementDescription() { return `${formatWhole(i + 11)}列完成!` },
@@ -143,7 +143,7 @@ function define10103() {
             onComplete() { player[this.layer].milestone = player[this.layer].milestone.add(1) },
             base() { return player[this.layer].buy[1][i + 10] },
             target: layer10103,
-            style: { height: "104px", width: "132px" }
+            style: { height: "112px", width: "132px" }
         }
     }
 

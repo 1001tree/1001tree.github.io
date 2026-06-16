@@ -434,10 +434,4 @@ setInterval(() => {
 	player.global.achseed = Date.now()
 }, 10000)
 
-setInterval(() => {
-	try { 
-		if (getGridData('main', 404)) g404()
-	} catch { }
-}, 1)
-
 setInterval(function () { needCanvasUpdate = true }, 500)

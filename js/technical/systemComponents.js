@@ -164,16 +164,16 @@ var systemComponents = {
 		<br>
         <br>
 		本游戏基于模组树汉化制作<br>
-        The Modding Tree <a v-bind:href="'https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md'" target="_blank" class="link" v-bind:style = "{'font-size': '14px', 'display': 'inline'}" >{{TMT_VERSION.tmtNum}}</a> by Acamaeda and FlamemasterNXF
+        The Modding Tree <a v-bind:href="'https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md'" target="_blank" rel="noopener noreferrer" class="link" v-bind:style = "{'font-size': '14px', 'display': 'inline'}" >{{TMT_VERSION.tmtNum}}</a> by Acamaeda and FlamemasterNXF
         <br>
         The Prestige Tree made by Jacorb and Aarex
 		<br><br>
 		部分素材(包括背景音乐,音效,图片)来源于网络,如有侵权,请联系开发组删除
 		<br><br>
 		<div class="link" onclick="showTab('changelog-tab')">更新日志</div><br>
-        <span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink" target="_blank">{{modInfo.discordName}}</a><br></span>
-        <a class="link" href="https://discord.gg/F3xveHV" target="_blank" v-bind:style="modInfo.discordLink ? {'font-size': '16px'} : {}">模组树服务器</a><br>
-        <a class="link" href="http://discord.gg/wwQfgPa" target="_blank" v-bind:style="{'font-size': '16px'}">主声望树服务器</a><br>
+        <span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink" target="_blank" rel="noopener noreferrer">{{modInfo.discordName}}</a><br></span>
+        <a class="link" href="https://discord.gg/F3xveHV" target="_blank" rel="noopener noreferrer" v-bind:style="modInfo.discordLink ? {'font-size': '16px'} : {}">模组树服务器</a><br>
+        <a class="link" href="http://discord.gg/wwQfgPa" target="_blank" rel="noopener noreferrer" v-bind:style="{'font-size': '16px'}">主声望树服务器</a><br>
 		<br><br>
         游玩时间: {{ formatTime(player.timePlayed) }}<br><br>
         <h3>热键</h3><br>

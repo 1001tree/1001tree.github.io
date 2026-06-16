@@ -1,4 +1,4 @@
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
 
 <p align="center">
   <a href="https://circleci.com/gh/vuejs/vue/tree/dev"><img src="https://img.shields.io/circleci/project/github/vuejs/vue/dev.svg?sanitize=true" alt="Build Status"></a>
@@ -22,13 +22,13 @@ Vue.js is an MIT-licensed open source project with its ongoing development made 
 </p>
 
 <p align="center">
-  <a target="_blank" href="https://github.com/appwrite/appwrite">
+  <a target="_blank" rel="noopener noreferrer" href="https://github.com/appwrite/appwrite">
   <img alt="special sponsor appwrite" src="https://sponsors.vuejs.org/images/appwrite.svg" width="300">
   </a>
 </p>
 
 <p align="center">
-  <a target="_blank" href="https://vuejs.org/sponsor/">
+  <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/sponsor/">
     <img alt="sponsors" src="https://sponsors.vuejs.org/sponsors.svg?v3">
   </a>
 </p>

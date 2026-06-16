@@ -11,7 +11,6 @@ addLayer("404", {
             judge: 0,
             songid: 101,
             life: 1000,
-            mspt: 8,
             song: {
             }
         }
@@ -49,10 +48,6 @@ addLayer("404", {
                             return `延迟 ${player[this.layer].offset}`
                         }],
                         ["slider", ["offset", -300, 300]],
-                        ["display-text", function () {
-                            return `FPS ${formatWhole(1000 / player[this.layer].mspt)}`
-                        }],
-                        ["slider", ["mspt", 3, 100]],
                         "blank",
                         ["clickable", 11],
                         ["clickable", 12],
@@ -175,7 +170,6 @@ addLayer("404", {
             onClick() {
                 player[404].speed = 10
                 player[404].offset = 0
-                player[404].mspt = 8
             },
             canClick() { return true },
             style() {
@@ -365,7 +359,7 @@ addLayer("404", {
             }
         },
     },
-    
+
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
     hotkeys: [
         {
@@ -769,10 +763,19 @@ function clickTrack(t) {
 var tps = 0
 var c404
 var t404
+
+var tps = 0
+var c404
+var t404
 function g404() {
+    if(typeof player?.[404] == "undefined") {
+        requestAnimationFrame(g404)
+        return
+    }
+
     let t = Date.now() - d404.t
-    if (t + 1 < player[404].mspt) return
     d404.t = Date.now()
+    d404.sft += t
 
     d404.ft.unshift(t);
     d404.ft = d404.ft.slice(0, 50);
@@ -781,7 +784,10 @@ function g404() {
         try {
             c404 = document.getElementById('c404')
             t404 = c404.getContext('2d')
-        } catch { return }
+        } catch {
+            requestAnimationFrame(g404)
+            return
+        }
     }
 
     if (t > 500 && d404.s) { d404.s = false; clickClickable(404, 12); alert("异常:刻间隔过长,已自动结束游戏"); }
@@ -977,11 +983,15 @@ function g404() {
     t404.font = "28px Angus"
     t404.fillStyle = '#888888'
     t404.textAlign = "left";
-    if (d404.sft++ > 1000 / player[404].mspt) {
+    if (d404.sft > 1000) {
         tps = 1000 / d404.ft.reduce((sum, time) => sum + time, 0) * d404.ft.length;
         t404.fillText(formatWhole(tps), 10, 770)
         d404.sft = 0
     } else {
         t404.fillText(formatWhole(tps), 10, 770)
     }
+
+    requestAnimationFrame(g404)
 }
+
+requestAnimationFrame(g404)

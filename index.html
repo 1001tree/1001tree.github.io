@@ -68,10 +68,10 @@
 				class="longUpg can" onclick="keepGoing()">继续玩</button>
 			<br><br><br>
 			<span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink"
-					target="_blank">{{modInfo.discordName}}</a><br></span>
-			<a class="link" href="https://discord.gg/F3xveHV" target="_blank"
+					target="_blank" rel="noopener noreferrer">{{modInfo.discordName}}</a><br></span>
+			<a class="link" href="https://discord.gg/F3xveHV" target="_blank" rel="noopener noreferrer"
 				v-bind:style="modInfo.discordLink ? {'font-size': '16px'} : {}">模组树服务器</a><br>
-			<a class="link" href="http://discord.gg/wwQfgPa" target="_blank"
+			<a class="link" href="http://discord.gg/wwQfgPa" target="_blank" rel="noopener noreferrer"
 				v-bind:style="{'font-size': '16px'}">主声望树服务器</a><br>
 			<br><br>
 		</div>
@@ -95,13 +95,13 @@
 			<div id="info" v-if="player.tab!='info-tab'" class="overlayThing" onclick="showTab('info-tab')"><br>i</div>
 			<div id="discord" class="overlayThing">
 				<img onclick="window.open((modInfo.discordLink ? modInfo.discordLink : 'https://discord.gg/F3xveHV'),'mywindow')"
-					src="discord.png" target="_blank"></img>
+					src="discord.png" target="_blank" rel="noopener noreferrer"></img>
 				<ul id="discord-links">
 					<li v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink"
-							target="_blank">{{modInfo.discordName}}</a><br></li>
-					<li><a class="link" href="https://discord.gg/F3xveHV" target="_blank"
+							target="_blank" rel="noopener noreferrer">{{modInfo.discordName}}</a><br></li>
+					<li><a class="link" href="https://discord.gg/F3xveHV" target="_blank" rel="noopener noreferrer"
 							v-bind:style="modInfo.discordLink ? {'font-size': '16px'} : {}">模组树服务器</a><br></li>
-					<li><a class="link" href="http://discord.gg/wwQfgPa" target="_blank"
+					<li><a class="link" href="http://discord.gg/wwQfgPa" target="_blank" rel="noopener noreferrer"
 							v-bind:style="{'font-size': '16px'}">主声望树服务器</a></li>
 				</ul>
 			</div>
