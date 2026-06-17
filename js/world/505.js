@@ -69,10 +69,8 @@ function define505() {
 
                         player[this.layer].clca = rdupgid505()
 
-                        if (!player.world[this.layer]) {
-                            if(_DR().lt(buyableEffect(this.layer, 99))) {
-                                completeWorld(this.layer)
-                            }
+                        if (_DR().lt(buyableEffect(this.layer, 99))) {
+                            player[this.layer].complete = true
                         }
                     }
                 }
@@ -285,7 +283,7 @@ function define505() {
             display() {
                 return `每次升级 1/4096 概率完成世界`
             },
-            effect() { return _D(1 / 4096) },
+            effect(x) { return x.mul(_D(1 / 4096)) },
             unlocked() { return player[this.layer].diffh.gte(37) },
             purchaseLimit() {
                 if (player[this.layer].diffh.gte(20)) return _D1
