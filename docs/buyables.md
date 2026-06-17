@@ -6,7 +6,7 @@ buyable 通常是可以多次购买的价格增长物品,带有可选的按钮,�
 
 有关 buyable 与其增益的有用的函数:
 
-- getBuyableAmount(layer, id): 获取玩家已购买的指定 buyable 数量
+- : 获取玩家已购买的指定 buyable 数量
 - addBuyables(layer, id, amount): 增加 amount 个指定 buyable
 - setBuyableAmount(layer, id, amount): 设置指定 buyable 数量为 amount
 - buyableEffect(layer, id): 返回由指定 buyable 提供的 effect

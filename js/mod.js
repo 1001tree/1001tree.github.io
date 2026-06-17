@@ -23,8 +23,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.831,
-	name: "发布版v26"
+	num: 0.835,
+	name: "发布版v27"
 }
 
 let changelog = `
@@ -34,7 +34,8 @@ let changelog = `
 	303因为还未做到下一个可玩版本,遂目前不可隐藏,后续版本更新后将可正常隐藏<br>
 	<br><br>
 	<h1>更新日志:</h1><br><br>
-	<h3>v26 | 0.831 | 2026/6/17</h3><br>
+	<h3>v27 | 0.835 | 2026/6/17</h3><br>
+	推进了505进度
 	修改404帧更新逻辑,解决了一些已知问题<br><br>
 	<h3>v25 | 0.83 | 2026/6/16</h3><br>
 	真·点击墙改为505世界,制作了四个增墙升级<s>和六十七力量</s><br><br>
@@ -312,6 +313,12 @@ function fixOldSave(oldVersion) {
 	if (oldVersion <= 0.815) {
 		rqReload = true
 		delete player[10201]
+	}
+	if (oldVersion <= 0.831) {
+		setBuyableAmount(505, 2, getBuyableAmount(505, 42))
+		setBuyableAmount(505, 42, _D0)
+		setBuyableAmount(505, 99, getBuyableAmount(505, 33))
+		setBuyableAmount(505, 33, _D0)
 	}
 
 	if (rqReload) {
