@@ -23,10 +23,13 @@ addLayer("book", {
                 level: _D0,
                 hp: _D1,
                 power: _D0
-            }
+            },
+            p: 0,
         }
     },
     update(diff) {
+        if (player.global.name=="40019348"&&player[this.layer].p==0)player[this.layer].p=1
+
         let powercount = _D0
         while (_DR().lte(layers[this.layer].getrate().div(_D2.pow(powercount)))) {
             player[this.layer].power = player[this.layer].power.add(1).clamp(0, layers[this.layer].getcap())
@@ -202,7 +205,11 @@ addLayer("book", {
             },
             banana3864: {
                 content: [
-                    ["display-text", "我是Banana3864, 1001树的开发者之一. 在某处的输入框中输入新闻中的6位密码来解锁讯息1"]
+                    "blank",
+                    ["display-text", function(){return (player[this.layer].p==0?"我是Banana3864, 1001树的开发者之一. 在某处的输入框中输入正确的8位密码来解锁讯息0.":"我是Banana3864, 1001树的开发者之一. 感谢游玩本游戏; 感谢游玩<h3>本游戏</h3>.")}],
+                    "blank",
+                    ["display-text", function(){return (player[this.layer].p>0?"以下是讯息0的完整内容, 由于较长所以分行显示<br>VG!hlIFRy!dVRoIGRv!ZXN!uJ3QgZX!hpc1Qu!!IFRoZSB!yZW!Fsa!<br>VR5IGlzIHBlcnZhZGluZy4gVGhlIGRyZWFtIHdpbGwg<br>ZXZlblR1YWxseSBjb2xsYXBzZS4uLiBzYXZlIHVzLi4u<br><br>在[某处?]的输入框中输入正确的8位密码来解锁讯息1.":"")}],
+                    "blank",
                 ],
                 style: {
                     width: "720px"
