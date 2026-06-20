@@ -451,7 +451,7 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
             onClick() {
-                if (s[1]==""){player[403].log="组装命令失败<br>原因: 被替换的部分不能为空"}
+                if (player[403].s[1]==""){player[403].log="组装命令失败<br>原因: 被替换的部分不能为空";return}
                 let existed=false
                 player[403].extra.forEach(v=>{if(v==`${player[403].s[1]}→${player[403].s[2]}`)existed=true})
                 if (existed==true) {player[403].log="组装命令失败<br>原因: 此命令已存在"; return}
