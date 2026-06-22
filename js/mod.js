@@ -23,8 +23,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.835731415926535,
-	name: "发布版v27.18281828459"
+	num: 0.84,
+	name: "发布版v29"
 }
 
 let changelog = `
@@ -113,7 +113,7 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
 	"check11", "check12", "check13", "check14", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
-	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack", "getDiff", "diff","prestige"
+	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack", "getDiff", "diff", "prestige"
 
 ]
 
@@ -172,7 +172,6 @@ function addedPlayerData() {
 			import: false,
 			mynews: "请输入文本",
 			achseed: Date.now(),
-			tickTime: [],
 			click: 0
 		},
 		completeallachivement: false,
@@ -219,6 +218,10 @@ var displayThings = [
 					return `梦力生成器能量 ${formatWhole(player.book.power)} / ${formatWhole(layers.book.getcap())}`
 				case 2:
 					return `游玩时长 ${formatTime(player.timePlayed)}`
+				case 3:
+					return `生命 ${format(player.book.att.power)} / ${format(layers.book.getattack(true)[0])} ${player.book.att.power.gt(layers.book.getattack(true)[0])?`当前可一击毙命!`:`当前不可一击毙命`}`
+				case 4:
+					return `现在是 ${new Date().toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}`
 				case 99:
 					return ``
 			}
@@ -321,6 +324,9 @@ function fixOldSave(oldVersion) {
 		setBuyableAmount(505, 42, _D0)
 		setBuyableAmount(505, 99, getBuyableAmount(505, 33))
 		setBuyableAmount(505, 33, _D0)
+	}
+	if (oldVersion <= 0.836) {
+		options.timecount = options.shorttime ? 1 : 0
 	}
 
 	if (rqReload) {

@@ -174,20 +174,28 @@ function formatWhole(decimal) {
 }
 
 function formatTime(s) {
-    if (options.shorttime) {
-        if (s < 1) return formatWhole(s * 1000) + "毫秒"
-        else if (s < 60) return format(s) + "秒"
-        else if (s < 3600) return formatWhole(Math.floor(s / 60)).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
-        else if (s < 86400) return formatWhole(Math.floor(s / 3600)).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2,"0")
-        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
-        else return formatWhole(Math.floor(s / 31536000)) + "年" + formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
-    } else {
+    if (options.timecount == 0) {
         if (s < 1) return formatWhole(s * 1000) + "毫秒"
         else if (s < 60) return format(s) + "秒"
         else if (s < 3600) return formatWhole(Math.floor(s / 60)) + "分 " + format(s % 60) + "秒"
         else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + format(s % 60) + "秒"
         else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "小时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + formatWhole(s % 60) + "秒"
         else return formatWhole(Math.floor(s / 31536000)) + "年 " + formatWhole(Math.floor(s / 86400) % 365) + "天 " + formatWhole(Math.floor(s / 3600) % 24) + "时 " + formatWhole(Math.floor(s / 60) % 60) + "分 " + formatWhole(s % 60) + "秒"
+    } else if (options.timecount == 1) {
+        if (s < 1) return formatWhole(s * 1000) + "毫秒"
+        else if (s < 60) return format(s) + "秒"
+        else if (s < 3600) return formatWhole(Math.floor(s / 60)).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
+        else if (s < 86400) return formatWhole(Math.floor(s / 3600)).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
+        else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
+        else return formatWhole(Math.floor(s / 31536000)) + "年" + formatWhole(Math.floor(s / 86400) % 365).padStart(3, "0") + ":" + formatWhole(Math.floor(s / 3600) % 24).padStart(2, "0") + ":" + formatWhole(Math.floor(s / 60) % 60).padStart(2, "0") + ":" + formatWhole(s % 60).padStart(2, "0")
+    } else if (options.timecount == 2) {
+        let f = (Date.now() - 1115611200000) / 1000
+        return format(s / f, 8, true) + "狐"
+    } else if (options.timecount == 3) {
+        return format(s) + "秒"
+    } else if (options.timecount == 4) {
+        let sj = 3155695200
+        return format(s / sj, 9, true) + "世纪"
     }
 }
 

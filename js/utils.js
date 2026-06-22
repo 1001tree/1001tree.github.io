@@ -449,11 +449,11 @@ function pow10(pow) {
 }
 
 function ArrayMax(...array) {
-    return array.reduce((max, val) => Decimal.max(max, val), array[0])
+	return array.reduce((max, val) => Decimal.max(max, val), array[0])
 }
 
 function ArrayMin(...array) {
-    return array.reduce((min, val) => Decimal.min(min, val), array[0])
+	return array.reduce((min, val) => Decimal.min(min, val), array[0])
 }
 
 function randomBetween(min, max) {
@@ -484,31 +484,48 @@ function idtoxy(id) {
 	return { x: id % 100 - 1, y: ~~(id / 100) - 1 }
 }
 
+function createMovAvg(size) {
+	const values = [];
+	let sum = 0
+	let recal = 0
+
+	return function (value) {
+		values.push(value);
+
+		if (recal >= size) {
+			if (values.length > size) {
+				values.shift()
+			}
+			sum = 0
+			for (const val of values) {
+				sum += val;
+			}
+		} else {
+			sum += value;
+			if (values.length > size) {
+				const removed = values.shift()
+				sum -= removed
+			}
+		}
+
+		return sum / values.length;
+	};
+}
+let tickmovavgfun = createMovAvg(40)
+
 function updateTickTime(diff) {
-	player.global.tickTime.unshift(diff);
-	player.global.tickTime = player.global.tickTime.slice(0, 40);
+	player.global.tickTime = tickmovavgfun(diff)
 }
 
 function Cal_TPS() {
-	const tickTime = player.global.tickTime;
-
-	if (tickTime.length < 2) {
-		return [0, 0];
-	}
-
-	const totalTime = tickTime.reduce((sum, time) => sum + time, 0);
-
-	const aTT = 1000 * totalTime / tickTime.length;
-
-	const tps = 1000 / aTT;
-
-	return [Math.max(tps, 0), aTT];
+	const tick = player.global.tickTime
+	const tps = 1 / tick;
+	return [Math.max(tps, 0), tick * 1000];
 }
 
 function completeWorld(id) {
 	if (player.world[id]) {
-		console.log(`写给开发者的话:你在哪里,当然我猜是在世界${id
-			},重复调用了完成世界函数,你知道这会导致什么吗?你应该庆幸这里有一个错误检查`)
+		console.log(`写给开发者的话:你在哪里,当然我猜是在世界${id},重复调用了完成世界函数,你知道这会导致什么吗?你应该庆幸这里有一个错误检查`)
 		return
 	}
 	player.world[id] = true
@@ -578,7 +595,7 @@ function HEXtoRGB(h) {
 
 // 你知道的太多了(?)
 // 避免重复定义开销
-const randomString_chars = `ABCDEFGHJKLMNOPQRSTUWXYZabcdefghijklmnopqrstuwxyz1234567890?!;=+-/@#$%^&*~|"'()[]{},.`;
+const randomString_chars = `ABCDEFGHIJKLMNOPQRSTUWXYZabcdefghijklmnopqrstuwxyz1234567890?!;=+-/@#$%^&*~|"'()[]{},.`;
 function randomString(length) {
 	let result = '';
 

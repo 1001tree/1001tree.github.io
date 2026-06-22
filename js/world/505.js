@@ -84,7 +84,7 @@ function define505() {
                 ["bar", "prebar"],
                 ["bar", "clcbar"],
                 "blank",
-                ["display-text", `此游戏推荐打开取消渐变动画游玩`],
+                ["display-text", `此游戏推荐打开取消动画游玩`],
                 ...tab],
             style: { width: "1340px", height: "760px" },
             prestigeNotify() {
@@ -477,7 +477,7 @@ addLayer("505", {
             "夸嚓夸嚓!力量涌现在你!": {
                 content: [
                     ["display-text", function () {
-                        return `点击升级每次,夸嚓升级(更小的夸嚓!字)出现其他位置(也许你拥有,这发生在你拥有很多地方更频繁),获得夸嚓能量点击夸嚓升级时间!`
+                        return `点击升级每次,夸嚓升级(有夸嚓!字)出现其他位置(也许你拥有,这发生在你拥有很多地方更频繁),获得夸嚓能量点击夸嚓升级时间!`
                     }],
                     ["bar", "clcbar"],
                     ["display-text", function () {

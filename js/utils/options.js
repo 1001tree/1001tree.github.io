@@ -24,6 +24,7 @@ function getStartOptions() {
 		newsshown: true,
 
 		count: 0,
+		timecount: 0,
 		forceOneTab: false,
 		hcmode: 0,
 		hqTree: false,
@@ -100,7 +101,7 @@ function setTransitions() {
 		`;
 			document.head.appendChild(styleElement);
 		}
-		
+
 		// 添加 MutationObserver 来监控并移除 transform
 		if (!window.__transformObserver) {
 			const observer = new MutationObserver((mutations) => {
@@ -114,28 +115,28 @@ function setTransitions() {
 					}
 				});
 			});
-			
+
 			observer.observe(document.body, {
 				attributes: true,
 				attributeFilter: ['style'],
 				subtree: true
 			});
-			
+
 			window.__transformObserver = observer;
 		}
-		
+
 		// 立即清除已有的 transform
 		document.querySelectorAll('*').forEach(el => {
 			if (el.style && el.style.transform && el.style.transform !== 'none') {
 				el.style.transform = 'none';
 			}
 		});
-		
+
 	} else {
 		if (styleElement) {
 			document.head.removeChild(styleElement);
 		}
-		
+
 		// 移除 observer
 		if (window.__transformObserver) {
 			window.__transformObserver.disconnect();
@@ -202,6 +203,14 @@ function adjustCount() {
 	options.count = COUNT_SETTINGS[(COUNT_SETTINGS.indexOf(options.count) + 1) % COUNT_SETTINGS.length];
 }
 
+const TIME_COUNT_DISPLAYS = ["默认", "短", "狐历", "秒","世纪"];
+
+const TIME_COUNT_SETTINGS = [0, 1, 2,3,4];
+
+function adjustTimeCount() {
+	options.timecount = TIME_COUNT_SETTINGS[(TIME_COUNT_SETTINGS.indexOf(options.timecount) + 1) % TIME_COUNT_SETTINGS.length];
+}
+
 const NEWSSPEED_DISPLAYS = ["普通", "快", "很快", "瞬间", "很慢", "慢"];
 
 const NEWSSPEED_SETTINGS = [150, 100, 50, 0, 500, 250];
@@ -218,9 +227,9 @@ function adjustMode() {
 	options.hcmode = MODE_SETTINGS[(MODE_SETTINGS.indexOf(options.hcmode) + 1) % MODE_SETTINGS.length];
 }
 
-const HUD_DISPLAYS = ["刻速度", "梦力生成器", "游玩时长", "不显示"];
+const HUD_DISPLAYS = ["刻速度", "梦力生成器", "游玩时长", "生命值", "现在的时间", "不显示"];
 
-const HUD_SETTINGS = [0, 1, 2, 99];
+const HUD_SETTINGS = [0, 1, 2, 3, 4, 99];
 
 function adjustHud() {
 	options.hud = HUD_SETTINGS[(HUD_SETTINGS.indexOf(options.hud) + 1) % HUD_SETTINGS.length];

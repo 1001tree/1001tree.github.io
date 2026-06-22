@@ -250,7 +250,7 @@ var systemComponents = {
     				input.click();
 				">设置背景图<br>可能造成卡顿</button></td>
                 <td><button class="opt" onclick="options.bgi=null">清除背景图</button></td>
-                <td><button class="opt" onclick="toggleOpt('notrans');setTransitions()">防换主题卡顿<br>取消渐变动画<br>{{ formatOption('notrans') }}</button></td>
+                <td><button class="opt" onclick="toggleOpt('notrans');setTransitions()">取消动画<br>{{ formatOption('notrans') }}</button></td>
             </tr>
             <tr v-if="options.themeclass">
 				<td><button class="info" disabled>组件</button></td>
@@ -266,10 +266,10 @@ var systemComponents = {
 
             <tr v-if="options.tmtclass">
 				<td><button class="info" disabled>显示</button></td>
-                <td><button class="opt" onclick="adjustCount()">计数法<br>{{ COUNT_DISPLAYS[COUNT_SETTINGS.indexOf(options.count)] }}<br>文本描述不支<br>持特殊计数法</button></td>
+                <td><button class="opt" onclick="adjustCount()">计数法<br>{{ COUNT_DISPLAYS[COUNT_SETTINGS.indexOf(options.count)] }}</button></td>
+                <td><button class="opt" onclick="adjustTimeCount()">时间计数法<br>{{ TIME_COUNT_DISPLAYS[TIME_COUNT_SETTINGS.indexOf(options.timecount)] }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('forceOneTab'); needsCanvasUpdate = true">页面布局<br>{{ options.forceOneTab ? "强制单页面" : "优先双页面 窄屏单页面" }}</button></td>
                 <td><button class="opt" onclick="adjustMode()">世界选择器<br>{{ MODE_DISPLAYS[MODE_SETTINGS.indexOf(options.hcmode)] }}</button></td>
-                <td><button class="opt" onclick="toggleOpt('shorttime')">短时间表示<br>{{ formatOption('shorttime') }}</button></td>
                 <td><button class="opt" onclick="toggleOpt('hqTree')">高质量的树<br>{{ formatOption('hqTree') }}</button></td>
 			</tr>
             <tr v-if="options.tmtclass">
