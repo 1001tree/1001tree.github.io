@@ -146,7 +146,7 @@ addLayer("403", {
             display: "- 重试本关卡 -",
             unlocked() {return player[403].level!=0},
             canClick: true,
-            onClick() {player[403].program=[];player[403].log=""},
+            onClick() {player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""]},
             style() {return {"min-height":"88px","height":"88px","width":"120px","border-radius":"0px","color":"#1014A","background-color":"#A8FA77","border":"4px solid #255072"}}
         },
         14: {
@@ -309,28 +309,49 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[0])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         112: {
             title() {return player[403].extra[1]},
             unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[1])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         113: {
             title() {return player[403].extra[2]},
             unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[2])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         114: {
             title() {return player[403].extra[3]},
             unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[3])},
-            style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        115: {
+            title() {return player[403].extra[4]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[4])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        116: {
+            title() {return player[403].extra[5]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[5])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        117: {
+            title() {return player[403].extra[6]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[6])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         121: {
             title: "<h3>清 除</h3>",
@@ -340,7 +361,7 @@ addLayer("403", {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[0])?"":v}`)
                 player[403].extra[0]=""
             },
-            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         122: {
             title: "<h3>清 除</h3>",
@@ -350,7 +371,7 @@ addLayer("403", {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[1])?"":v}`)
                 player[403].extra[1]=""
             },
-            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         123: {
             title: "<h3>清 除</h3>",
@@ -360,7 +381,7 @@ addLayer("403", {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[2])?"":v}`)
                 player[403].extra[2]=""
             },
-            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         124: {
             title: "<h3>清 除</h3>",
@@ -370,7 +391,7 @@ addLayer("403", {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[3])?"":v}`)
                 player[403].extra[3]=""
             },
-            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         125: {
             title: "<h3>清 除</h3>",
@@ -380,15 +401,35 @@ addLayer("403", {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[4])?"":v}`)
                 player[403].extra[4]=""
             },
-            style() {return {"min-height":"38px","height":"38px","width":"82px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        126: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6},
+            canClick() {return player[403].extra[5]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[5])?"":v}`)
+                player[403].extra[5]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        127: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7},
+            canClick() {return player[403].extra[6]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[6])?"":v}`)
+                player[403].extra[6]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         131: {
             title() {return `<h2>${data403[player[403].level][5][1]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=1},
             canClick: true,
             onClick() {
-                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][1]
-                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][1]
+                if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][1]
+                if(!player[403].s[0]&&player[403].s[2].length<4)player[403].s[2]+=data403[player[403].level][5][1]
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
@@ -397,8 +438,8 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=2},
             canClick: true,
             onClick() {
-                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][2]
-                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][2]
+                if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][2]
+                if(!player[403].s[0]&&player[403].s[2].length<4)player[403].s[2]+=data403[player[403].level][5][2]
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
@@ -407,8 +448,8 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=3},
             canClick: true,
             onClick() {
-                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][3]
-                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][3]
+                if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][3]
+                if(!player[403].s[0]&&player[403].s[2].length<4)player[403].s[2]+=data403[player[403].level][5][3]
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
@@ -417,8 +458,8 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=4},
             canClick: true,
             onClick() {
-                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][4]
-                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][4]
+                if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][4]
+                if(!player[403].s[0]&&player[403].s[2].length<4)player[403].s[2]+=data403[player[403].level][5][4]
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
@@ -427,8 +468,8 @@ addLayer("403", {
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=5},
             canClick: true,
             onClick() {
-                if(player[403].s[0]&&player[403].s[1].length<3)player[403].s[1]+=data403[player[403].level][5][5]
-                if(!player[403].s[0]&&player[403].s[2].length<3)player[403].s[2]+=data403[player[403].level][5][5]
+                if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][5]
+                if(!player[403].s[0]&&player[403].s[2].length<4)player[403].s[2]+=data403[player[403].level][5][5]
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
