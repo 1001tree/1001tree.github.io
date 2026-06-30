@@ -582,6 +582,69 @@ addLayer("ach", {
             unlocked() { return true }
         },
         401: {
+            name: "<span class='ach'>这里有佚之狐</span>",
+            done() { return options.font == 'fox' && options.count == 4 && options.timecount == 2 && options.theme == 'fox' },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "使用FoxSize字体，狐狸计数法，狐狸主题" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/401.jpg)",
+            },
+            unlocked() { return true }
+        },
+        402: {
+            name: "<span class='ach'>知之为知之</span>",
+            done() { return player.answer520 != "" },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在没有题目的地方写下答案" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/402.jpg)",
+            },
+            unlocked() { return true }
+        },
+        403: {
+            name: "<span class='p9tx'>宇宙最终的答案</span>",
+            done() { return player.answer520 == "42" },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "在有题目的地方写下答案" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/403.jpg)",
+            },
+            unlocked() { return true }
+        },
+        404: {
+            name: "<span class='p9tx'>一节更比六节强</span>",
+            done() { return layers["book"].getcap().gte(6000) },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "梦力发生器上限达到6000" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/404.jpg)",
+            },
+            unlocked() { return true }
+        },
+        // - - - ->  =>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   405: {name:"<span class='ach'>大量文本出售</span>",done(){return player.a},onComplete(){achievementComplete()},tooltip(){if(hasAchievement(this.layer, this.id)){return "在设置输出新闻列表"}else{return "完成成就以查看"}},style:{backgroundImage:"linear-gradient(to bottom,#00000060,#00000000),url(resources/achpic/405.jpg)",},unlocked() { return true }},
+        // - - - ->  =>
+        406: {
+            name: "<span class='ach'>更新的一千零一树</span>",
+            done() { return player.global.updated == true },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "经历过一次版本更新" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/406.jpg)",
+            },
+            unlocked() { return true }
+        },  
+        407: {
+            name: "<span class='ach'>战斗的时光</span>",
+            done() { return player["book"].att.totalDamage.gte(10000) },
+            onComplete() { achievementComplete() },
+            tooltip() { if (hasAchievement(this.layer, this.id)) { return "累计造成10000伤害" } else { return "完成成就以查看" } },
+            style: {
+                backgroundImage: "linear-gradient(to bottom, #00000060, #00000000),url(resources/achpic/407.jpg)",
+            },
+            unlocked() { return true }
+        },
+        501: {
             name: "<span class='c1'>所有,除了这一个</span>",
             done() {
                 return player[this.layer].points.gte(999)

@@ -23,8 +23,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.84,
-	name: "发布版v29"
+	num: 0.85,
+	name: "发布版v30"
 }
 
 let changelog = `
@@ -34,6 +34,8 @@ let changelog = `
 	303因为还未做到下一个可玩版本,遂目前不可隐藏,后续版本更新后将可正常隐藏<br>
 	<br><br>
 	<h1>更新日志:</h1><br><br>
+	<h3>v30 | 0.85 | 2026/6/30</h3><br>
+	终于要放暑假了, 先水个更新!<br><br>
 	<h3>v27.18281828459 | 0.835731415926535 | 2026/6/17</h3><br>
 	推进时遇到阻力. [记录已修正-40019348-Banana3864]<br><br>
 	<h3>v27 | 0.835 | 2026/6/17</h3><br>
@@ -172,10 +174,13 @@ function addedPlayerData() {
 			import: false,
 			mynews: "请输入文本",
 			achseed: Date.now(),
-			click: 0
+			click: 0,
+			updated: false
 		},
 		completeallachivement: false,
 		gainpower: false,
+		answer520: "",
+		a: false
 	}
 }
 
@@ -265,6 +270,7 @@ function maxTickLength() {
 // 如果需要修复旧版本存档的数值膨胀问题,使用此函数.如果版本早于修复该问题的版本,
 // 你可以用此函数限制他们当前的资源.
 function fixOldSave(oldVersion) {
+	player.global.updated = true
 	let rqReload = false
 
 	if (oldVersion <= 0.795) {

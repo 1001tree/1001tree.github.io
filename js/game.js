@@ -434,4 +434,6 @@ setInterval(() => {
 	player.global.achseed = Date.now()
 }, 10000)
 
+//setInterval(()=>{alert("注意: 本次删档测试活动即将结束, 您的存档将在7天内被重置. 不要试图导出存档, 因为之后的存档格式将会发生改变.(此消息每30分钟提示一次, 可以在设置中关闭)")}, 1800000)
+
 setInterval(function () { needCanvasUpdate = true }, 500)

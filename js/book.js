@@ -22,7 +22,8 @@ addLayer("book", {
             att: {
                 level: _D0,
                 hp: _D1,
-                power: _D0
+                power: _D0,
+                totalDamage: _D0,
             },
             p: 0,
         }
@@ -338,6 +339,7 @@ addLayer("book", {
                     <input type="text"
  		            	maxlength="4"
  		            	size="16" 
+                        onchange="player.answer520 = this.value"
                     ></input><br><br>`]
                     ,
                     ["display-text",
@@ -704,6 +706,7 @@ addLayer("book", {
             },
             onClick() {
                 let result = layers[this.layer].getattack(true)
+                player[this.layer].att.totalDamage = player[this.layer].att.totalDamage.add(result[1])
                 player[this.layer].att.power = player[this.layer].att.power.sub(result[0])
                 player[this.layer].att.hp = player[this.layer].att.hp.sub()
 
@@ -727,6 +730,7 @@ addLayer("book", {
             },
             onClick() {
                 let result = layers[this.layer].getattack(false)
+                player[this.layer].att.totalDamage = player[this.layer].att.totalDamage.add(result[1])
                 player[this.layer].att.power = player[this.layer].att.power.sub(result[0])
                 player[this.layer].att.hp = player[this.layer].att.hp.sub(result[1])
 

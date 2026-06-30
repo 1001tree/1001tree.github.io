@@ -324,7 +324,7 @@ var systemComponents = {
 				<td><button class="opt" onclick="news.fadeStartTime=new Date('2005-05-09')">切换新闻</button></td>
 				<td><button class="opt" onclick="adjustSpeed()">新闻速度<br>{{ NEWSSPEED_DISPLAYS[NEWSSPEED_SETTINGS.indexOf(options.newsspeed)] }}</button></td>
 				<td><button class="opt" onclick="alert('用户自定义新闻重置完毕');player.global.mynews='请输入文本';reinitializeNews();">重置我的新闻</button></td>
-				<td><button class="opt" onclick="alert('当前已选中新闻列表已输出至控制台');console.log(getNewsList(),'部分内容来源网络,侵联删,谢谢!')">获取新闻列表</button></td>
+				<td><button class="opt" onclick="alert('当前已选中新闻列表已输出至控制台');console.log(getNewsList(),'部分内容来源网络,侵联删,谢谢!');player.a=true">获取新闻列表</button></td>
 				<td><button class="opt" onclick='alert(\`请前往"关于"中的1001树游戏群并联系管理员\`)'>贡献新闻</button></td>
             </tr>
 			<tr v-if="options.newclass">

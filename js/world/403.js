@@ -42,7 +42,7 @@ addLayer("403", {
     },
     executeCommand(c,str) { //执行单条命令
         let [x,y]=c.split("→")
-        if (player[403].cycleCount++>99999)return "*"
+        if (player[403].cycleCount++>262144)return "*"
         return str.replaceAll(x,y)
     },
     breakDown(c) {
@@ -155,6 +155,7 @@ addLayer("403", {
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {
+                if (player[403].program.length==0) {player[403].log=`运行失败: 程序为空`;return}
                 let h=0
                 let v=true
                 player[403].cycleCount=0
@@ -193,7 +194,7 @@ addLayer("403", {
             title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario} | `}目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
             unlocked() {return player[403].level!=0},
             canClick: false,
-            style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2][0]==1?"580px":"480px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
+            style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2][0]==1?"680px":"600px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         23: {
             title() {return `<h2>→</h2>`},
@@ -239,35 +240,35 @@ addLayer("403", {
             },
             unlocked() {return player[403].level!=0},
             canClick: false,
-            style() {return {"min-height":"300px","height":"300px","width":"480px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #87889E","text-align":"left"}}
+            style() {return {"min-height":"300px","height":`${player[403].program.length*24}px`,"width":"480px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #87889E","text-align":"left"}}
         },
         61: {
             title: "<h1>▲</h1>",
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].select--},
-            style() {return {"min-height":"60px","height":"60px","width":"60px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
+            style() {return {"min-height":"64px","height":"64px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         71: {
             title: "<h1>←</h1>",
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].program.splice(player[403].select--,1)},
-            style() {return {"min-height":"72px","height":"72px","width":"60px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
+            style() {return {"min-height":"72px","height":"72px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         81: {
             title: "<h1>+</h1>",
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"")},
-            style() {return {"min-height":"72px","height":"72px","width":"60px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
+            style() {return {"min-height":"72px","height":"72px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         91: {
             title: "<h1>▼</h1>",
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].select++},
-            style() {return {"min-height":"60px","height":"60px","width":"60px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
+            style() {return {"min-height":"64px","height":"64px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         101: {
             title() {return data403[player[403].level][1][1]},
