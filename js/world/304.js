@@ -14,6 +14,7 @@ addLayer("304", {
             player['304'].losetrig304 = true
             player['304'].losecnt++
             if(player['304'].lv==1) player['304'].achtrig=true
+            layers['304'].init304()
         }
         if(player['304'].started && player['304'].timeleft304 <= 0){//判断失败
             if(player['304'].lv>=2&&player['304'].fl2progress<100){
@@ -85,11 +86,12 @@ addLayer("304", {
                 if(player['304'].lv==23){
                     player['304'].achtrig2 = true
                 }
-                if(player['304'].lv<=21)player['304'].lv = Math.min(player['304'].lv,21)
+                if(player['304'].lv<=22)player['304'].lv = Math.min(player['304'].lv,21)
                 player['304'].lv=Math.min(player['304'].lv,23)
                 player['304'].hlv = Math.max(player['304'].lv,player['304'].hlv)
                 player['304'].started = false
             }
+            layers['304'].init304()
         }
         if(player['304'].started){
             if(player['304'].Fl==16) player['304'].fl22time+=diff
@@ -878,15 +880,10 @@ addLayer("304", {
         }
         return flg
     },
-    clickables:{
-        11: {
-            title() { return `开始工作` },
-            display: "",
-            onClick() {
+    init304(){
                 if(player['304'].lv==player['304'].hlv) player['304'].wptrig=[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
                 player['304'].Fl = 1
                 player['304'].timeleft304 = layers['304'].calc304left()
-                player['304'].started = true
                 player['304'].bomb5cnt = 0
                 player['304'].bombcnt = 0
                 player['304'].fl1fuel = (player['304'].lv>=17? 10:50)
@@ -932,6 +929,14 @@ addLayer("304", {
                 player['304'].fl22freq = chooseFromArray(player['304'].fl22req,3)
                 player['304'].lighttrig1=true
                 player['304'].lighttrig2=true
+    },
+    clickables:{
+        11: {
+            title() { return `开始工作` },
+            display: "",
+            onClick() {
+                init304()
+                player['304'].started = true
                 player['304'].losetrig304 = false
             },
             unlocked() { return !player['304'].started },

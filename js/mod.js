@@ -115,8 +115,8 @@ var doNotCallTheseFunctionsEveryTick = ['resetGame', 'getPrice', 'getEffect', 'e
 	"price", "getlvtext", "getfltext", "getfl3problem", "getfl6mult", "getfl7problem", "initfl11grid", "calc304left",
 	"getfl13gain", "execute", "executeLoop", "executeCommand", "breakDown", "assemble", "startChallenge", "endChallenge",
 	"check11", "check12", "check13", "check14", "clearIntervene", "getgain", "getgen", "getprice", "getrate", "getratebuff", "getcap", "getshopcap",
-	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack", "getDiff", "diff", "prestige"
-
+	"getFl22req", "getFl22trig", "attpower", "bossatt", "bossmaxhp", "bossdef", "bossgen", "powergen", "getattack", "getDiff", "diff", "prestige",
+	"init304","amtboost","getadder","getmulty","getpowie","buyableReset","getFinalMult"
 ]
 
 function getStartPoints() {
