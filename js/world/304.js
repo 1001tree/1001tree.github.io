@@ -935,7 +935,7 @@ addLayer("304", {
             title() { return `开始工作` },
             display: "",
             onClick() {
-                init304()
+                layers['304'].init304()
                 player['304'].started = true
                 player['304'].losetrig304 = false
             },
