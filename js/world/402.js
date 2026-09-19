@@ -31,19 +31,19 @@ addLayer("402", {
     ],
     milestones: {
         0: {
-            requirementDescription: "完成402中的第10关",
+            requirementDescription: "完成402中的第10关, 并完成世界!",
             done() { return player[402].maxLevel > 10 },
-            onComplete() { player.main.points = player.main.points.add(1) }
+            onComplete() { completeWorld(this.layer) }
         },
         1: {
-            requirementDescription: "完成402中的第20关",
+            requirementDescription: "完成402中的第20关, 还剩最后5关!",
             done() { return player[402].maxLevel > 20 },
             onComplete() { player.main.points = player.main.points.add(1) }
         },
         2: {
-            requirementDescription: "完成402中的第25关",
+            requirementDescription: "完成402中的第25关, 恭喜通关!",
             done() { return player[402].maxLevel > 25 },
-            onComplete() { completeWorld(this.layer) }
+            onComplete() { player.main.points = player.main.points.add(2) }
         },
     },
     clickables: {

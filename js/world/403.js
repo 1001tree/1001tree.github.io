@@ -73,19 +73,19 @@ addLayer("403", {
             onComplete() {player.main.points=player.main.points.add(1)}
         },
         1: {
-            requirementDescription: "完成403中的第8关",
+            requirementDescription: "完成403中的第8关, 并完成世界!",
             done() {return player[403].grid[204]==true},
-            onComplete() {player.main.points=player.main.points.add(1)}
+            onComplete() {completeWorld(this.layer)}
         },
         2: {
-            requirementDescription: "完成403中的第12关",
+            requirementDescription: "完成403中的第12关, 还剩4关!",
             done() {return player[403].grid[304]==true},
             onComplete() {player.main.points=player.main.points.add(1)}
         },
         3: {
-            requirementDescription: "完成403中的第16关",
+            requirementDescription: "完成403中的第16关, 恭喜通关!",
             done() {return player[403].grid[404]==true},
-            onComplete() {completeWorld(this.layer)}
+            onComplete() {player.main.points=player.main.points.add(2)}
         },
     },
     type: "none",
