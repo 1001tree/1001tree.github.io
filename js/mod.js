@@ -23,8 +23,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.85,
-	name: "发布版v30"
+	num: 0.86,
+	name: "发布版v31"
 }
 
 let changelog = `
@@ -34,6 +34,8 @@ let changelog = `
 	303因为还未做到下一个可玩版本,遂目前不可隐藏,后续版本更新后将可正常隐藏<br>
 	<br><br>
 	<h1>更新日志:</h1><br><br>
+	<h3>v31 | 0.86 | 2026/9/24</h3><br>
+	暑假期间开发者给自己放假了，所以没写更新日志——总之现在又有了！<br><br>
 	<h3>v30 | 0.85 | 2026/6/30</h3><br>
 	终于要放暑假了, 先水个更新!<br><br>
 	<h3>v27.18281828459 | 0.835731415926535 | 2026/6/17</h3><br>
@@ -272,7 +274,10 @@ function maxTickLength() {
 function fixOldSave(oldVersion) {
 	player.global.updated = true
 	let rqReload = false
-
+	if (oldVersion <= 0.85) {
+		if (player[402].maxLevel>10)completeWorld(402)
+		if (player[403].maxLevel>8)completeWorld(403)
+	}
 	if (oldVersion <= 0.795) {
 		let ach = player.ach.points
 		player.main.points = player.main.points.add(ach)

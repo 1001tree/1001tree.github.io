@@ -15,8 +15,11 @@ addLayer("403", {
             select: 0,
             program: [],
             cycleCount: 0,
-            extra: ["","","","","","",""],
-            s: [true, "", ""] //左真右假
+            extra: ["","","","","","","","","","","","","",""],
+            s: [true, "", ""], //左真右假
+            log: "",
+            hintTime: -999,
+            hint: false,
         }
     },
     execute(c,str) { //执行一串命令
@@ -91,7 +94,7 @@ addLayer("403", {
     type: "none",
     tabFormat: [
         ["blank","36px"],
-        ["display-text",function(){return player[403].level==0?"<h1>选 关 界 面</h1><br><h3>点击以进入关卡</h3>":data403[player[403].level][0]}],
+        ["display-text",function(){return player[403].level==0?"<h1>选 关 界 面</h1><br><h3>点击以进入关卡</h3>":data403[player[403].level][0]+`<br>${player[403].hint?"<br>提示: <br>"+data403[player[403].level][7]:""}`}],
         ["blank","14px"],
         ["clickables","1"],
         ["blank","10px"],
@@ -116,10 +119,14 @@ addLayer("403", {
         ["clickables",[11]],
         ["blank","8px"],
         ["clickables",[12]],
-        ["blank","96px"],
+        ["blank","12px"],
         ["clickables",[13]],
-        ["blank","16px"],
+        ["blank","8px"],
         ["clickables",[14]],
+        ["blank","96px"],
+        ["clickables",[15]],
+        ["blank","16px"],
+        ["clickables",[16]],
         ["blank","64px"],
         ["display-text",function(){
             if(player[403].level==0)return ""
@@ -131,7 +138,7 @@ addLayer("403", {
             display: "- 返回选关界面 -",
             unlocked() {return player[403].level!=0},
             canClick: true,
-            onClick() {player[403].level=0;player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""]},
+            onClick() {player[403].level=0;player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""];player[403].hintTime=-999;player[403].hint=false},
             style() {return {"min-height":"88px","height":"88px","width":"110px","border-radius":"0px","color":"#10142A","background-color":"#F0F475","border":"4px solid #255072"}}
         },
         12: {
@@ -147,7 +154,7 @@ addLayer("403", {
             unlocked() {return player[403].level!=0},
             canClick: true,
             onClick() {player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""]},
-            style() {return {"min-height":"88px","height":"88px","width":"120px","border-radius":"0px","color":"#1014A","background-color":"#A8FA77","border":"4px solid #255072"}}
+            style() {return {"min-height":"88px","height":"88px","width":"112px","border-radius":"0px","color":"#1014A","background-color":"#A8FA77","border":"4px solid #255072"}}
         },
         14: {
             title: "<h1>▶</h1>",
@@ -169,8 +176,11 @@ addLayer("403", {
                     let u=data403[player[403].level][2]
                     let p=layers[403].assemble(player[403].program)
                     let f=true
+                    let r=layers[403].execute(p,u[player[403].scenario][0])
+                    if (r=="*"){player[403].log=`${u[0]==1?"":`测试点${i}: `}程序运行超时, 自动中断`;f=false;return}
+                    if (r!=u[player[403].scenario][1]){player[403].log=`${u[0]==1?"":`测试点${player[403].scenario}: `}结果与目标不匹配<br>结果: ${layers[403].execute(p,u[player[403].scenario][0])}<br> ≠ ${u[player[403].scenario][1]}`;f=false;return}
                     for (let i=1;i<=u[0];i++){
-                        let r=layers[403].execute(p,u[i][0])
+                        r=layers[403].execute(p,u[i][0])
                         if (r=="*"){player[403].log=`${u[0]==1?"":`测试点${i}: `}程序运行超时, 自动中断`;f=false;break}
                         if (r!=u[i][1]){player[403].log=`${u[0]==1?"":`测试点${i}: `}结果与目标不匹配<br>结果: ${layers[403].execute(p,u[i][0])}<br> ≠ ${u[i][1]}`;f=false;break}
                     }
@@ -181,7 +191,18 @@ addLayer("403", {
                     }
                 }
             },
-            style() {return {"min-height":"88px","height":"88px","width":"120px","border-radius":"0px","color":"#1014A","background-color":"#91F09F","border":"4px solid #255072"}}
+            style() {return {"min-height":"88px","height":"88px","width":"112px","border-radius":"0px","color":"#1014A","background-color":"#91F09F","border":"4px solid #255072"}}
+        },
+        15: {
+            title: "<h1>💡</h1>",
+            display() {return `${player[403].hint?"提示已于上方展示":((player[403].resetTime-player[403].hintTime>6)?"点击 以获取提示":"不妨再思考一下?<br>(再次点击以查看)")}`},
+            unlocked() {return player[403].level!=0},
+            canClick: true,
+            onClick() {
+                if(player[403].resetTime-player[403].hintTime>6)player[403].hintTime=player[403].resetTime
+                else player[403].hint=true
+            },
+            style() {return {"min-height":"88px","height":"88px","width":"112px","border-radius":"0px","color":"#1014A","background-color":"#43C376","border":"4px solid #255072"}}
         },
         21: {
             title() {return `<h2>←</h2>`},
@@ -425,6 +446,125 @@ addLayer("403", {
             style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         131: {
+            title() {return player[403].extra[7]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[7])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        132: {
+            title() {return player[403].extra[8]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[8])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        133: {
+            title() {return player[403].extra[9]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[9])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        134: {
+            title() {return player[403].extra[10]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[10])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        135: {
+            title() {return player[403].extra[11]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[11])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        136: {
+            title() {return player[403].extra[12]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[12])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        137: {
+            title() {return player[403].extra[13]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14},
+            canClick: true,
+            onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[13])},
+            style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
+        },
+        141: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8},
+            canClick() {return player[403].extra[7]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[7])?"":v}`)
+                player[403].extra[7]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        142: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9},
+            canClick() {return player[403].extra[8]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[8])?"":v}`)
+                player[403].extra[8]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        143: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10},
+            canClick() {return player[403].extra[9]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[9])?"":v}`)
+                player[403].extra[9]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        144: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11},
+            canClick() {return player[403].extra[10]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[10])?"":v}`)
+                player[403].extra[10]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        145: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12},
+            canClick() {return player[403].extra[11]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[11])?"":v}`)
+                player[403].extra[11]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        146: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13},
+            canClick() {return player[403].extra[12]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[12])?"":v}`)
+                player[403].extra[12]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        147: {
+            title: "<h3>清 除</h3>",
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14},
+            canClick() {return player[403].extra[13]!=""},
+            onClick() {
+                player[403].program=player[403].program.map(v=>`${(v==player[403].extra[13])?"":v}`)
+                player[403].extra[13]=""
+            },
+            style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
+        },
+        151: {
             title() {return `<h2>${data403[player[403].level][5][1]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=1},
             canClick: true,
@@ -434,7 +574,7 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        132: {
+        152: {
             title() {return `<h2>${data403[player[403].level][5][2]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=2},
             canClick: true,
@@ -444,7 +584,7 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        133: {
+        153: {
             title() {return `<h2>${data403[player[403].level][5][3]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=3},
             canClick: true,
@@ -454,7 +594,7 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        134: {
+        154: {
             title() {return `<h2>${data403[player[403].level][5][4]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=4},
             canClick: true,
@@ -464,7 +604,7 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        135: {
+        155: {
             title() {return `<h2>${data403[player[403].level][5][5]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=5},
             canClick: true,
@@ -474,21 +614,21 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        141: {
+        161: {
             title: "<h1>X</h1>",
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
             onClick() {player[403].s[1]=""},
             style() {return {"min-height":"72px","height":"72px","width":"48px","border-radius":"2px","color":"#10140A","background-color":"#9092E1","border":"3px solid #243A37"}}
         },
-        142: {
+        162: {
             title() {return `<h2>${player[403].s[1]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
             onClick() {player[403].s[0]=true},
             style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#92B7F0":"#777470"}`,"border":"3px solid #243A37"}}
         },
-        143: {
+        163: {
             title: "<h1>→</h1>",
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
@@ -505,14 +645,14 @@ addLayer("403", {
             },
             style() {return {"min-height":"80px","height":"80px","width":"80px","border-radius":"40px","color":"#10140A","background-color":"#B1CAFF","border":"3px solid #C0B2FA"}}
         },
-        144: {
+        164: {
             title() {return `<h2>${player[403].s[2]}</h2>`},
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
             onClick() {player[403].s[0]=false},
             style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#777470":"#92B7F0"}`,"border":"3px solid #243A37"}}
         },
-        145: {
+        165: {
             title: "<h1>X</h1>",
             unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
             canClick: true,
