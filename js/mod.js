@@ -23,8 +23,8 @@ let modInfo = {
 
 // 在num和name中设置版本号
 let VERSION = {
-	num: 0.86,
-	name: "发布版v31"
+	num: 0.864,
+	name: "发布版v32"
 }
 
 let changelog = `
@@ -34,6 +34,8 @@ let changelog = `
 	303因为还未做到下一个可玩版本,遂目前不可隐藏,后续版本更新后将可正常隐藏<br>
 	<br><br>
 	<h1>更新日志:</h1><br><br>
+	<h3>v32 | 0.864 | 2026/9/24</h3><br>
+	完成了403的全部内容，添加了一些额外的解法存档相关功能<br><br>
 	<h3>v31 | 0.86 | 2026/9/24</h3><br>
 	暑假期间开发者给自己放假了，所以没写更新日志——总之现在又有了！<br><br>
 	<h3>v30 | 0.85 | 2026/6/30</h3><br>
@@ -274,10 +276,7 @@ function maxTickLength() {
 function fixOldSave(oldVersion) {
 	player.global.updated = true
 	let rqReload = false
-	if (oldVersion <= 0.85) {
-		if (player[402].maxLevel>10)completeWorld(402)
-		if (player[403].maxLevel>8)completeWorld(403)
-	}
+	//重置403 | if (oldVersion <= 1.0) {player[403]={    "unlocked": true,    "level": 0,    "scenario": 1,    "value": "",    "select": 0,    "program": [],    "cycleCount": 0,    "extra": [        "",        "",        "",        "",        "",        "",        "",        "",        "",        "",        "",        "",        "",        ""    ],    "s": [        true,        "",        ""    ],    "log": "",    "hintTime": -999,    "hint": false,    "autoSolution": {        "0": [],        "101": [],        "102": [],        "103": [],        "104": [],        "201": [],        "202": [],        "203": [],        "204": [],        "301": [],        "302": [],        "303": [],        "304": [],        "401": [],        "402": [],        "403": [],        "404": []    },    "solution": {        "0": [],        "101": [],        "102": [],        "103": [],        "104": [],        "201": [],        "202": [],        "203": [],        "204": [],        "301": [],        "302": [],        "303": [],        "304": [],        "401": [],        "402": [],        "403": [],        "404": []    },    "viewing": 0,    "w": false,    "total": "0",    "best": "0",    "resetTime": 72.77999999999862,    "forceTooltip": false,    "buyables": {},    "noRespecConfirm": false,    "clickables": {        "11": "",        "12": "",        "13": "",        "14": "",        "15": "",        "21": "",        "22": "",        "23": "",        "31": "",        "32": "",        "41": "",        "51": "",        "61": "",        "71": "",        "81": "",        "91": "",        "101": "",        "102": "",        "103": "",        "104": "",        "105": "",        "111": "",        "112": "",        "113": "",        "114": "",        "115": "",        "116": "",        "117": "",        "121": "",        "122": "",        "123": "",        "124": "",        "125": "",        "126": "",        "127": "",        "131": "",        "132": "",        "133": "",        "134": "",        "135": "",        "136": "",        "137": "",        "141": "",        "142": "",        "143": "",        "144": "",        "145": "",        "146": "",        "147": "",        "151": "",        "161": "",        "162": "",        "163": "",        "164": "",        "165": "",        "171": "",        "172": "",        "173": "",        "174": "",        "175": "",        "181": "",        "182": "",        "191": ""    },    "spentOnBuyables": "0",    "upgrades": [],    "milestones": [],    "lastMilestone": null,    "achievements": [],    "challenges": {},    "grid": {        "101": false,        "102": false,        "103": false,        "104": false,        "201": false,        "202": false,        "203": false,        "204": false,        "301": false,        "302": false,        "303": false,        "304": false,        "401": false,        "402": false,        "403": false,        "404": false    },    "prevTab": ""}}
 	if (oldVersion <= 0.795) {
 		let ach = player.ach.points
 		player.main.points = player.main.points.add(ach)

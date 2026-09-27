@@ -258,5 +258,7 @@ addLayer("402", {
     },
 
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
-
+    tooltip() {
+        return `第 ${formatWhole(player[this.layer].maxLevel)} 关`
+    },
 });

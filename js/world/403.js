@@ -1,5 +1,5 @@
 addLayer("403", {
-    symbol: "",
+    symbol: "/",
     resource: "",
     color: "#4A7FCF",
     update(diff) {
@@ -20,6 +20,11 @@ addLayer("403", {
             log: "",
             hintTime: -999,
             hint: false,
+            autoSolution: {0:[],101:[],102:[],103:[],104:[],201:[],202:[],203:[],204:[],301:[],302:[],303:[],304:[],401:[],402:[],403:[],404:[]},
+            solution: {0:[],101:[],102:[],103:[],104:[],201:[],202:[],203:[],204:[],301:[],302:[],303:[],304:[],401:[],402:[],403:[],404:[]},
+            saved: {0:[[],["","","","","","","","","","","","","",""]],101:[[],["","","","","","","","","","","","","",""]],102:[[],["","","","","","","","","","","","","",""]],103:[[],["","","","","","","","","","","","","",""]],104:[[],["","","","","","","","","","","","","",""]],201:[[],["","","","","","","","","","","","","",""]],202:[[],["","","","","","","","","","","","","",""]],203:[[],["","","","","","","","","","","","","",""]],204:[[],["","","","","","","","","","","","","",""]],301:[[],["","","","","","","","","","","","","",""]],302:[[],["","","","","","","","","","","","","",""]],303:[[],["","","","","","","","","","","","","",""]],304:[[],["","","","","","","","","","","","","",""]],401:[[],["","","","","","","","","","","","","",""]],402:[[],["","","","","","","","","","","","","",""]],403:[[],["","","","","","","","","","","","","",""]],404:[[],["","","","","","","","","","","","","",""]]},
+            viewing: 0,
+            w: false
         }
     },
     execute(c,str) { //执行一串命令
@@ -123,35 +128,51 @@ addLayer("403", {
         ["clickables",[13]],
         ["blank","8px"],
         ["clickables",[14]],
-        ["blank","96px"],
         ["clickables",[15]],
-        ["blank","16px"],
+        ["blank","64px"],
         ["clickables",[16]],
+        ["blank","16px"],
+        ["clickables",[17]],
+        ["blank","8px"],
+        ["clickables",[18]],
+        ["blank","32px"],
+        ["clickables",[19]],
         ["blank","64px"],
         ["display-text",function(){
-            if(player[403].level==0)return ""
+            if(player[403].level==0||player[403].viewing!=0)return ""
             else return `- 日志 -<br>${player[403].log}`}]
     ],
     clickables: {
         11: {
             title: "<h1>◀</h1>",
             display: "- 返回选关界面 -",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
-            onClick() {player[403].level=0;player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""];player[403].hintTime=-999;player[403].hint=false},
+            onClick() {
+                player[403].saved[player[403].level]=[player[403].program,player[403].extra]
+                player[403].level=0
+                player[403].program=[]
+                player[403].log=""
+                player[403].extra=["","","","","","","","","","","","","",""]
+                player[403].s=[true,"",""]
+                player[403].hintTime=-999
+                player[403].hint=false
+                player[403].w=false
+            },
             style() {return {"min-height":"88px","height":"88px","width":"110px","border-radius":"0px","color":"#10142A","background-color":"#F0F475","border":"4px solid #255072"}}
         },
         12: {
             title() {return ` <h2>关 卡 ${player[403].level%100+4*Math.floor(player[403].level/100)-4} </h2>`},
             display() {return ` <h3>- Level ${player[403].level%100+4*Math.floor(player[403].level/100)-4} ${player[403].grid[player[403].level]==false?"":"已通过! "}-</h3>`},
-            unlocked() {return player[403].level!=0},
-            canClick: false,
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
+            canClick() {return player[403].grid[player[403].level]},
+            onClick() {player[403].viewing=player[403].level},
             style() {return {"min-height":"88px","height":"88px","width":"160px","border-radius":"0px","color":"#10142A","background-color":`${player[403].grid[player[403].level]==false?"#EDDC60":"#70EF90"}`,"border":"4px solid #255072"}}
         },
         13: {
             title: "<h1>↺</h1>",
             display: "- 重试本关卡 -",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program=[];player[403].log="";player[403].extra=["","","","","","",""];player[403].s=[true,"",""]},
             style() {return {"min-height":"88px","height":"88px","width":"112px","border-radius":"0px","color":"#1014A","background-color":"#A8FA77","border":"4px solid #255072"}}
@@ -159,7 +180,7 @@ addLayer("403", {
         14: {
             title: "<h1>▶</h1>",
             display: "- 运行测试程序 -",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if (player[403].program.length==0) {player[403].log=`运行失败: 程序为空`;return}
@@ -185,9 +206,10 @@ addLayer("403", {
                         if (r!=u[i][1]){player[403].log=`${u[0]==1?"":`测试点${i}: `}结果与目标不匹配<br>结果: ${layers[403].execute(p,u[i][0])}<br> ≠ ${u[i][1]}`;f=false;break}
                     }
                     if (f==true){
-                        makeParticles(WINWINWIN,100)
+                        makeParticles(WINWINWIN,90)
                         setGridData(403,player[403].level,true)
-                        player[403].log=""
+                        player[403].log="检验通过, 解法已自动记录; 可手动存档"
+                        player[403].autoSolution[player[403].level]=[player[403].program,player[403].extra]
                     }
                 }
             },
@@ -196,7 +218,7 @@ addLayer("403", {
         15: {
             title: "<h1>💡</h1>",
             display() {return `${player[403].hint?"提示已于上方展示":((player[403].resetTime-player[403].hintTime>6)?"点击 以获取提示":"不妨再思考一下?<br>(再次点击以查看)")}`},
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].resetTime-player[403].hintTime>6)player[403].hintTime=player[403].resetTime
@@ -206,41 +228,41 @@ addLayer("403", {
         },
         21: {
             title() {return `<h2>←</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1&&player[403].viewing==0},
             canClick() {return player[403].scenario>1},
             onClick() {player[403].scenario--},
             style() {return {"min-height":"35px","height":"35px","width":"38px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         22: {
             title() {return `<h3>${data403[player[403].level][2][0]==1?"":`测试点 ${player[403].scenario} | `}目标：${data403[player[403].level][2][player[403].scenario][0]} → ${data403[player[403].level][2][player[403].scenario][1]}</h3>`},
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: false,
             style() {return {"min-height":"35px","height":"35px","width":`${data403[player[403].level][2][0]==1?"680px":"600px"}`,"border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         23: {
             title() {return `<h2>→</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][2][0]!=1&&player[403].viewing==0},
             canClick() {return player[403].scenario<10},
             onClick() {player[403].scenario++},
             style() {return {"min-height":"35px","height":"35px","width":"38px","border-radius":"1px","color":"#10140A","background-color":"#9A8FDF","border":"1px solid #295476"}}
         },
         31: {
             title: "<h1>{</h1>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][3]&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"{")},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
         },
         32: {
             title: "<h1>}</h1>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][3]},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][3]&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"}")},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5ADFC8","border":"3px solid #347486"}}            
         },
         41: {
             title() {return ` > 程序 | 第${player[403].level%100+4*Math.floor(player[403].level/100)-4}关`},
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: false,
             style() {return {"min-height":"32px","height":"32px","width":"480px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #71717F","text-align":"left"}}
         },
@@ -259,125 +281,125 @@ addLayer("403", {
                 }
                 return text
             },
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: false,
             style() {return {"min-height":"300px","height":`${player[403].program.length*24}px`,"width":"480px","border-radius":"0px","color":"#CCCCCF","background-color":"#030301","border":"2px solid #87889E","text-align":"left"}}
         },
         61: {
             title: "<h1>▲</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].select--},
             style() {return {"min-height":"64px","height":"64px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         71: {
             title: "<h1>←</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(player[403].select--,1)},
             style() {return {"min-height":"72px","height":"72px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         81: {
             title: "<h1>+</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,"")},
             style() {return {"min-height":"72px","height":"72px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#304050","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         91: {
             title: "<h1>▼</h1>",
-            unlocked() {return player[403].level!=0},
+            unlocked() {return player[403].level!=0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].select++},
             style() {return {"min-height":"64px","height":"64px","width":"64px","border-radius":"0px","color":"#CCCCCF","background-color":"#405060","border":"2px solid #87889E","transform":"scale(1,1)"}}
         },
         101: {
             title() {return data403[player[403].level][1][1]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=1&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][1])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         102: {
             title() {return data403[player[403].level][1][2]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=2},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=2&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][2])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         103: {
             title() {return data403[player[403].level][1][3]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=3},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=3&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][3])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         104: {
             title() {return data403[player[403].level][1][4]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=4},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=4&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][4])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         105: {
             title() {return data403[player[403].level][1][5]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=5},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][1][0]>=5&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,data403[player[403].level][1][5])},
             style() {return {"min-height":"82px","height":"82px","width":"82px","border-radius":"1px","color":"#10140A","background-color":"#5A8FDF","border":"3px solid #295476"}}
         },
         111: {
             title() {return player[403].extra[0]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[0])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         112: {
             title() {return player[403].extra[1]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[1])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         113: {
             title() {return player[403].extra[2]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[2])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         114: {
             title() {return player[403].extra[3]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[3])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         115: {
             title() {return player[403].extra[4]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[4])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         116: {
             title() {return player[403].extra[5]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[5])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         117: {
             title() {return player[403].extra[6]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[6])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         121: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=1&&player[403].viewing==0},
             canClick() {return player[403].extra[0]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[0])?"":v}`)
@@ -387,7 +409,7 @@ addLayer("403", {
         },
         122: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=2&&player[403].viewing==0},
             canClick() {return player[403].extra[1]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[1])?"":v}`)
@@ -397,7 +419,7 @@ addLayer("403", {
         },
         123: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=3&&player[403].viewing==0},
             canClick() {return player[403].extra[2]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[2])?"":v}`)
@@ -407,7 +429,7 @@ addLayer("403", {
         },
         124: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=4&&player[403].viewing==0},
             canClick() {return player[403].extra[3]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[3])?"":v}`)
@@ -417,7 +439,7 @@ addLayer("403", {
         },
         125: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=5&&player[403].viewing==0},
             canClick() {return player[403].extra[4]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[4])?"":v}`)
@@ -427,7 +449,7 @@ addLayer("403", {
         },
         126: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=6&&player[403].viewing==0},
             canClick() {return player[403].extra[5]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[5])?"":v}`)
@@ -437,7 +459,7 @@ addLayer("403", {
         },
         127: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=7&&player[403].viewing==0},
             canClick() {return player[403].extra[6]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[6])?"":v}`)
@@ -447,56 +469,56 @@ addLayer("403", {
         },
         131: {
             title() {return player[403].extra[7]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[7])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         132: {
             title() {return player[403].extra[8]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[8])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         133: {
             title() {return player[403].extra[9]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[9])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         134: {
             title() {return player[403].extra[10]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[10])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         135: {
             title() {return player[403].extra[11]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[11])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         136: {
             title() {return player[403].extra[12]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[12])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         137: {
             title() {return player[403].extra[13]},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].program.splice(++player[403].select,0,player[403].extra[13])},
             style() {return {"min-height":"82px","height":"82px","width":"96px","border-radius":"1px","color":"#10140A","background-color":"#5CA1B2","border":"3px solid #245877"}}
         },
         141: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=8&&player[403].viewing==0},
             canClick() {return player[403].extra[7]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[7])?"":v}`)
@@ -506,7 +528,7 @@ addLayer("403", {
         },
         142: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=9&&player[403].viewing==0},
             canClick() {return player[403].extra[8]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[8])?"":v}`)
@@ -516,7 +538,7 @@ addLayer("403", {
         },
         143: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=10&&player[403].viewing==0},
             canClick() {return player[403].extra[9]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[9])?"":v}`)
@@ -526,7 +548,7 @@ addLayer("403", {
         },
         144: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=11&&player[403].viewing==0},
             canClick() {return player[403].extra[10]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[10])?"":v}`)
@@ -536,7 +558,7 @@ addLayer("403", {
         },
         145: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=12&&player[403].viewing==0},
             canClick() {return player[403].extra[11]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[11])?"":v}`)
@@ -546,7 +568,7 @@ addLayer("403", {
         },
         146: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=13&&player[403].viewing==0},
             canClick() {return player[403].extra[12]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[12])?"":v}`)
@@ -556,7 +578,7 @@ addLayer("403", {
         },
         147: {
             title: "<h3>清 除</h3>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][6]>=14&&player[403].viewing==0},
             canClick() {return player[403].extra[13]!=""},
             onClick() {
                 player[403].program=player[403].program.map(v=>`${(v==player[403].extra[13])?"":v}`)
@@ -565,8 +587,19 @@ addLayer("403", {
             style() {return {"min-height":"38px","height":"38px","width":"96px","border-radius":"3px","color":"#20241A","background-color":"#6CA1D2","border":"2px solid #265A7F"}}
         },
         151: {
+            title() {return `当前查看第 ${player[403].level%100+4*Math.floor(player[403].level/100)-4} 关解法 | 点击此处返回关卡`},
+            unlocked() {return player[403].viewing!=0},
+            canClick: true,
+            onClick() {
+                player[403].level=player[403].viewing
+                player[403].viewing=0
+                player[403].w=false
+            },
+            style() {return {"min-height":"60px","height":"60px","width":"600px","border-radius":"2px","color":"#10140A","background-color":"#8BCFF8","border":"1px solid #295476"}}
+        },
+        161: {
             title() {return `<h2>${data403[player[403].level][5][1]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=1},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=1&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][1]
@@ -574,9 +607,9 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        152: {
+        162: {
             title() {return `<h2>${data403[player[403].level][5][2]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=2},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=2&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][2]
@@ -584,9 +617,9 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        153: {
+        163: {
             title() {return `<h2>${data403[player[403].level][5][3]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=3},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=3&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][3]
@@ -594,9 +627,9 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        154: {
+        164: {
             title() {return `<h2>${data403[player[403].level][5][4]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=4},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=4&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][4]
@@ -604,9 +637,9 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        155: {
+        165: {
             title() {return `<h2>${data403[player[403].level][5][5]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=5},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>=5&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if(player[403].s[0]&&player[403].s[1].length<4)player[403].s[1]+=data403[player[403].level][5][5]
@@ -614,23 +647,23 @@ addLayer("403", {
             },
             style() {return {"min-height":"76px","height":"76px","width":"76px","border-radius":"1px","color":"#10140A","background-color":"#80B08F","border":"3px solid #90626A"}}
         },
-        161: {
+        171: {
             title: "<h1>X</h1>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].s[1]=""},
             style() {return {"min-height":"72px","height":"72px","width":"48px","border-radius":"2px","color":"#10140A","background-color":"#9092E1","border":"3px solid #243A37"}}
         },
-        162: {
+        172: {
             title() {return `<h2>${player[403].s[1]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].s[0]=true},
             style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#92B7F0":"#777470"}`,"border":"3px solid #243A37"}}
         },
-        163: {
+        173: {
             title: "<h1>→</h1>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0&&player[403].viewing==0},
             canClick: true,
             onClick() {
                 if (player[403].s[1]==""){player[403].log="组装命令失败<br>原因: 被替换的部分不能为空";return}
@@ -645,19 +678,59 @@ addLayer("403", {
             },
             style() {return {"min-height":"80px","height":"80px","width":"80px","border-radius":"40px","color":"#10140A","background-color":"#B1CAFF","border":"3px solid #C0B2FA"}}
         },
-        164: {
+        174: {
             title() {return `<h2>${player[403].s[2]}</h2>`},
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].s[0]=false},
             style() {return {"min-height":"72px","height":"72px","width":"140px","border-radius":"2px","color":"#10140A","background-color":`${player[403].s[0]?"#777470":"#92B7F0"}`,"border":"3px solid #243A37"}}
         },
-        165: {
+        175: {
             title: "<h1>X</h1>",
-            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0},
+            unlocked() {return player[403].level!=0&&data403[player[403].level][5][0]>0&&player[403].viewing==0},
             canClick: true,
             onClick() {player[403].s[2]=""},
             style() {return {"min-height":"72px","height":"72px","width":"48px","border-radius":"2px","color":"#10140A","background-color":"#9092E1","border":"3px solid #243A37"}}
+        },
+        181: {
+            title: "<h2>点击加载 自动存档</h2>",
+            display: "此存档自动记录最近一次通过测试的解法, 每次通过自动覆盖",
+            unlocked() {return player[403].viewing!=0},
+            canClick: true,
+            onClick() {
+                if (player[403].autoSolution.length!=0){
+                    player[403].extra=player[403].autoSolution[player[403].viewing][1]
+                    player[403].program=player[403].autoSolution[player[403].viewing][0]
+                    player[403].log="已加载自动存档"
+                }
+                else player[403].log="自动存档为空, 加载失败"
+                player[403].viewing=0
+            },
+            style() {return {"height":"100px","width":"300px","border-radius":"3px","color":"#10140A","background-color":"#ABD2EF","border":"3px solid #4A7782"}}
+        },
+        182: {
+            title() {return player[403].solution[player[403].viewing].length==0?"<h2>手动存档为空</h2>":"<h2>点击加载 手动存档</h2>"},
+            display: "此存档可永久保存解法, 使用下方按钮存档",
+            unlocked() {return player[403].viewing!=0},
+            canClick() {return player[403].solution[player[403].viewing].length!=0},
+            onClick() {
+                player[403].extra=player[403].solution[player[403].viewing][1]
+                player[403].program=player[403].solution[player[403].viewing][0]
+                player[403].log="已加载自动存档"
+                player[403].viewing=0
+            },
+            style() {return {"height":"100px","width":"300px","border-radius":"3px","color":"#10140A","background-color":"#ABD2EF","border":"3px solid #4A7782"}}
+        },
+        191: {
+            title() {return player[403].w?"<h1>已覆盖!</h1>":"<h2>自动存档 → 手动存档</h2>"},
+            display: "将本次自动存档的内容写入手动存档(将被覆盖!)",
+            unlocked() {return player[403].viewing!=0},
+            canClick: true,
+            onClick() {
+                player[403].solution=player[403].autoSolution
+                player[403].w=true
+            },
+            style() {return {"min-height":"80px","height":"80px","width":"600px","border-radius":"2px","color":"#10140A","background-color":"#8BCFF8","border":"1px solid #295476"}}
         },
     },
     grid: {
@@ -669,7 +742,12 @@ addLayer("403", {
             if (id==101) return true
             return id%100==1?getGridData(403,id-97):getGridData(403,id-1)
         },
-        onClick(data,id){player[403].level=id;player[403].scenario=data403[id][4]},
+        onClick(data,id){
+            player[403].level=id
+            player[403].scenario=data403[id][4]
+            player[403].extra=player[403].saved[id][1]
+            player[403].program=player[403].saved[id][0]
+        },
         getTitle(data,id){return `<h1>${id%100+4*Math.floor(id/100)-4}</h1>`},
         getStyle(data,id){
             let bgColor="#777A7F"
@@ -680,5 +758,5 @@ addLayer("403", {
     },
     
     layerShown() { return getGridData('main', this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`]) },
-
+    tooltip: "\\"
 });
