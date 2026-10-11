@@ -291,11 +291,18 @@ var systemComponents = {
                 <td><button class="opt" onclick="toggleOpt('autopause')">完成世界<br>自动暂停<br>{{ formatOption('autopause') }}</button></td>
 				<td></td>
 				<td></td>
-                <td><button class="opt" onclick="player.global.click+=1">点击我!<br>{{ formatWhole(player.global.click) }}</button></td>
+                <td></td>
+			</tr>
+			<tr v-if="options.tmtclass">
+				<td><button class="info" disabled>反馈</button></td>
+                <td><button class="opt" onclick="inputRedeemCode()">输入兑换码</button></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><button class="opt" onclick="player.global.click+=1">点击我!<br>{{ formatWhole(player.global.click) }}</button></td>
 			</tr>
 			<tr v-if="options.tmtclass">
 			<br>
-			</tr>
 
             <tr v-if="options.newclass">
 				<td><button class="info" disabled>新闻内容</button></td>

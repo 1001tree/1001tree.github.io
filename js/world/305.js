@@ -14,77 +14,59 @@ addLayer("305", {
             energy: _D0,
             bestAscensions: _D0,
             charge: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            s2lock: false,
-            simulating2: false,
-            timeSimulated2: 0,
-            microEnergy: _D0,
-            highestMicroEnergy: _D0,
         }
     },
     type: "none",
     tabFormat: {
         Ascension: {
             content: [
-                ["display-text", function () {
-                    return `You performed ${String(player[305].simulation)} simulation${player[305].simulation > 1 ? "s" : ""}.`
-                }],
-                ["display-text", function () {
-                    return `Your highest ascension level is ${format(player[305].bestAscensions, 2)}, providing +${format(layers[305].getBestAscensionEffect(), 3)} base energy gain`
-                }],
+                ["display-text", function () {return `You performed ${String(player[305].simulation)} simulation${player[305].simulation > 1 ? "s" : ""}.`}],
+                ["display-text", function () {return `Your highest ascension level is ${format(player[305].bestAscensions, 2)}, providing +${format(layers[305].getBestAscensionEffect(), 3)} base energy gain`}],
                 "blank",
                 ["clickables", "1"],
                 "blank",
-                ["display-text",
-                    function () { return `Energy:${format(player[305].energy)}` }],
+                ["display-text", function () { return `Energy:${format(player[305].energy)}` }],
                 "buyables",
                 "blank",
                 ["bar", "c1"]
             ],
             buttonStyle: {
-                "height": "100px",
-                "width": "160px",
+                "height": "90px",
+                "width": "130px",
                 "border-radius": "2%",
-                "border": "10px solid",
+                "border": "4px solid",
                 "color": "#55EEFF",
                 "background-color": "#223355"
             }
         },
         Charger: {
             content: [
-                ["display-text", function () {
-                    return `You have ${format(layers[305].getAvailableCharges(), 0)}/${format(getBuyableAmount(305, 21), 0)} unspent charge`
-                }],
+                ["display-text", function () {return `You have ${format(layers[305].getAvailableCharges(), 0)}/${format(getBuyableAmount(305, 21), 0)} unspent charge`}],
                 ["blank", "50px"],
                 ["clickables", [2]],
                 ["clickables", [3, 4, 5]]
             ],
             unlocked() { return player[305].bestAscensions.gte(5) },
             buttonStyle: {
-                "height": "100px",
-                "width": "160px",
+                "height": "90px",
+                "width": "130px",
                 "border-radius": "2%",
-                "border": "10px solid",
+                "border": "4px solid",
                 "color": "#77FFFF",
                 "background-color": "#223355"
             }
         },
-        Recursion: {
+        Configuration: {
             content: [
-                ["display-text", "Now you can create a simulation inside a simulation!<br>Note that time speed is much faster(×7) in a simulated simulation."],
+                ["display-text", "You drew inspiration from the simulations..."],
                 "blank",
-                ["clickables", "8"],
-                "blank",
-                ["display-text", function () {
-                    return `Micro Energy: ${format(player[305].microEnergy,
-                        2)}<br><br>Highest Micro Energy: ${format(player[305].highestMicroEnergy)},<br>which boosts Energy production by x${format(player[305].highestMicroEnergy.pow(0.5).pow(layers[305].clickables[52].effect()).add(1), 2)}`
-                }],
             ],
             unlocked() { return player[305].bestAscensions.gte(72) },
             buttonStyle: {
-                "height": "100px",
-                "width": "160px",
+                "height": "90px",
+                "width": "130px",
                 "border-radius": "2%",
-                "border": "10px solid",
+                "border": "4px solid",
                 "color": "#AACCEE",
                 "background-color": "#223355"
             }
@@ -92,10 +74,10 @@ addLayer("305", {
         Statistics: {
             content: [["microtabs", "reward"]],
             buttonStyle: {
-                "height": "100px",
-                "width": "160px",
+                "height": "90px",
+                "width": "130px",
                 "border-radius": "2%",
-                "border": "10px solid",
+                "border": "4px solid",
                 "color": "#99FFEE",
                 "background-color": "#223355"
             }
@@ -108,10 +90,6 @@ addLayer("305", {
     },
     endSimulation() {
         if (player[305].simulating == false) return
-        player[305].simulating2 = false
-        player[305].timeSimulated2 = 0
-        player[305].highestMicroEnergy = _D0
-        player[305].microEnergy = _D0
         player[305].simulating = false
         player[305].timeSimulated = 0
         player[305].bestAscensions = player[305].bestAscensions.max(getBuyableAmount(305, 11))
@@ -121,7 +99,6 @@ addLayer("305", {
     getEnergyGain() {
         let gain = layers[305].getEnergyBase()
         gain = gain.mul(buyableEffect(305, 11)).mul(layers[305].clickables[31].effect())
-        gain = gain.mul(player[305].highestMicroEnergy.pow(0.5).pow(layers[305].clickables[52].effect()).add(1))
         return gain
     },
     getEnergyBase() {
@@ -138,23 +115,12 @@ addLayer("305", {
     update(diff) {
         if (!getGridData('main',
             this.layer) || player.pause[this.layer]) return
+        return
         if (player[305].energy < 0) player[305].energy = _D0
         diff *= layers[305].clickables[51].effect()
         if (player[305].simulating) {
             player[305].timeSimulated += diff
             player[305].energy = player[305].energy.add(layers[305].getEnergyGain().mul(diff))
-            if (player[305].simulating2) {
-                player[305].timeSimulated2 += 7 * diff
-                player[305].microEnergy = player[305].microEnergy.add(diff).mul(player[305].energy.add(10000).log(10000))
-                if (player[305].microEnergy.gte("1e36")) { player[305].microEnergy = player[305].microEnergy.pow(1.071) }
-                player[305].microEnergy = player[305].microEnergy.mul(layers[305].clickables[53].effect())
-                if (player[305].timeSimulated2 > 7) {
-                    player[305].simulating2 = false
-                    player[305].timeSimulated2 = 0
-                    player[305].highestMicroEnergy = player[305].highestMicroEnergy.max(player[305].microEnergy)
-                    player[305].microEnergy = _D0
-                }
-            }
             if (player[305].bestAscensions.gte(101)) layers[305].buyables[11].buy()
         }
         if (player[305].timeSimulated > 7) { layers[305].endSimulation() }
@@ -257,107 +223,6 @@ addLayer("305", {
                 }
             },
         },
-        51: {
-            title() { return `Charger:<br>Extension<br>Charge:${player[305].charge[4]}<br>` },
-            display() {
-                return `Reduce the time speed slightly. Tick rate remains.<br>-[Factor #1:Charge]<br>-Effect: *${format(this.effect(), 4)}`
-            },
-            unlocked() { return player[305].bestAscensions.gte(1001) },
-            tooltip: "Formula: *0.89<sup>charge</sup>",
-            canClick() { return layers[305].getAvailableCharges().gt(0) },
-            onClick() { player[305].charge[4]++ },
-            effect() {
-                return Math.pow(0.89,
-                    player[305].charge[4])
-            },
-            style() {
-                return {
-                    "height": "200px",
-                    "width": "140px",
-                    "border-radius": "2%",
-                    "border": "5px solid",
-                    "border-color": "#bbffdd",
-                    "background-color": (this.canClick() ? "#88bbbb" : "#336666")
-                }
-            },
-        },
-        52: {
-            title() { return `Charger:<br>Compression<br>Charge:${player[305].charge[5]}<br>` },
-            display() {
-                return `Improve the effect of Micro Energy.<br>-[Factor #1:Charge]<br>-Effect: ^${format(this.effect(), 1)}`
-            },
-            unlocked() { return player[305].bestAscensions.gte(101) },
-            tooltip: "Formula: ^(1+charge)",
-            canClick() { return layers[305].getAvailableCharges().gt(0) },
-            onClick() { player[305].charge[5]++ },
-            effect() { return _D1.add(player[305].charge[5]) },
-            style() {
-                return {
-                    "height": "200px",
-                    "width": "140px",
-                    "border-radius": "2%",
-                    "border": "5px solid",
-                    "border-color": "#bbeeee",
-                    "background-color": (this.canClick() ? "#88bbbb" : "#336666")
-                }
-            },
-        },
-        53: {
-            title() { return `Charger:<br>Dilation<br>Charge:${player[305].charge[6]}<br>` },
-            display() {
-                return `Enable Self-Replication for Micro Energy.<br>Warning: Replicates every tick.<br>-[Factor #1:Charge]<br>-Effect: *${format(this.effect(), 1)}/tick`
-            },
-            unlocked() { return player[305].bestAscensions.gte(1001) },
-            tooltip: "Formula: *2<sup>charge</sup>",
-            canClick() { return layers[305].getAvailableCharges().gt(0) },
-            onClick() { player[305].charge[6]++ },
-            effect() { return _D2.pow(player[305].charge[6]) },
-            style() {
-                return {
-                    "height": "200px",
-                    "width": "140px",
-                    "border-radius": "2%",
-                    "border": "5px solid",
-                    "border-color": "#bbddff",
-                    "background-color": (this.canClick() ? "#88bbbb" : "#336666")
-                }
-            },
-        },
-        81: {
-            title: "Start a new simulation inside current simulation.",
-            display() { return player[305].simulating ? `Remaining Lifespan: ${format(7 - player[305].timeSimulated2)} micro-seconds.` : "You must be in a simulation to do this!" },
-            unlocked() { return player[305].bestAscensions.gte(72) },
-            canClick() { return player[305].simulating && !(player[305].simulating2 && player[305].s2lock) },
-            onClick() {
-                if (!player[305].simulating2) { player[305].simulating2 = true; player[305].timeSimulated2 = 0 }
-                else { player[305].simulating2 = false; player[305].timeSimulated2 = 0; player[305].microEnergy = _D0 }
-            },
-            style() {
-                return {
-                    "height": "100px",
-                    "width": "450px",
-                    "border-radius": "1%",
-                    "border": "5px solid",
-                    "border-color": "#99DDCC"
-                }
-            }
-        },
-        82: {
-            title() { return player[305].s2lock ? "Enable Cancelling" : "Disable Cancelling" },
-            display: "Toggle whether you can cancel a simulation.",
-            unlocked() { return player[305].bestAscensions.gte(72) },
-            canClick: true,
-            onClick() { player[305].s2lock = !player[305].s2lock },
-            style() {
-                return {
-                    "height": "100px",
-                    "width": "100px",
-                    "border-radius": "1%",
-                    "border": "5px solid",
-                    "border-color": "#99DDCC"
-                }
-            }
-        }
     },
     buyables: {
         11: {
@@ -370,15 +235,11 @@ addLayer("305", {
             buy() {
                 if (player[305].bestAscensions.lt(33)) {
                     player[305].energy = player[305].energy.sub(this.cost())
-                    setBuyableAmount(305,
-                        this.id,
-                        getBuyableAmount(305,
-                            this.id).add(1))
+                    setBuyableAmount(305,this.id,getBuyableAmount(305,this.id).add(1))
                 }
                 else {
-                    setBuyableAmount(305,
-                        this.id,
-                        player[305].energy.sub(1.1).max(0.5).log(3.9).add(1).floor().max(6))
+                    setBuyableAmount(305,this.id,
+                    player[305].energy.sub(1.1).max(0.5).log(3.9).add(1).floor().max(6))
                 }
             },
             effect(x) { return new Decimal(2.5).pow(x) },
@@ -395,10 +256,7 @@ addLayer("305", {
 
             canAfford() { return player[305].energy.gte(this.cost()) },
             buy() {
-                setBuyableAmount(305,
-                    this.id,
-                    getBuyableAmount(305,
-                        this.id).add(1))
+                setBuyableAmount(305,this.id,getBuyableAmount(305,this.id).add(1))
             },
             unlocked() { return player[305].bestAscensions.gte(5) }
         }
@@ -422,6 +280,7 @@ addLayer("305", {
         }
     },
     layerShown() {
+        return false
         return getGridData('main',
             this.layer) && (!options.hideWorld || !player.world[this.layer]) && (!options[`line${Math.floor(this.layer / 100)}`])
     },

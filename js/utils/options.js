@@ -177,6 +177,28 @@ function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
 	needCanvasUpdate = true
 }
+function inputRedeemCode() {
+	let c = prompt("在下方输入兑换码:", "InputYourRedeemCodeHere")
+	if ((/^[\x00-\x7F]+$/.test(c)) == false) {
+		alert("无效的兑换码!")
+		return
+	}
+	let m=CryptoJS.MD5(c).toString()
+	if (player.usedRedeemCodes.includes(m)) {
+		alert("此兑换码已被使用!")
+		return
+	}
+	for (i in redeemCodes){
+		if (m == redeemCodes[i]) {
+			player.main.points = player.main.points.add(1)
+			player.usedRedeemCodes.push(m)
+			alert("兑换成功! 你获得了: 1 梦力")
+			return
+		}
+	}
+	alert("无效的兑换码!")
+	return
+}
 
 const MS_DISPLAYS = ["全部", "最新", "未完成", "无"];
 

@@ -42,6 +42,8 @@ function getGameName(id) {
 	return name
 }
 
+redeemCodes = ["dd6681810c93880277b8d95fc7b3896e", "de180584cf53a14a2df051c849bb2df7"]
+
 // 新闻
 function getNewsList() {
 	return [

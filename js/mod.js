@@ -184,7 +184,8 @@ function addedPlayerData() {
 		completeallachivement: false,
 		gainpower: false,
 		answer520: "",
-		a: false
+		a: false,
+		usedRedeemCodes: []
 	}
 }
 
