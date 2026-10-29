@@ -595,7 +595,7 @@ function HEXtoRGB(h) {
 
 // 你知道的太多了(?)
 // 避免重复定义开销
-const randomString_chars = `ABCDEFGHIJKLMNOPQRSTUWXYZabcdefghijklmnopqrstuwxyz1234567890?!;=+-/@#$%^&*~|"'()[]{},.`;
+const randomString_chars = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890?!;=+-/@#$%^&*~|"'()[]{},.`;
 function randomString(length) {
 	let result = '';
 

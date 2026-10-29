@@ -177,7 +177,7 @@ function define505() {
                 if (x.gte(6)) return _D3
                 else if (x.gte(5)) return _D2
                 else if (x.gte(4)) return _D(5 / 4)
-                else if (x.gte(3)) return _D(2 / 3)
+                else if (x.gte(3)) return _D(4 / 5)
                 else if (x.gte(2)) return _D(1 / 2)
                 else if (x.gte(1)) return _D(1 / 5)
                 else return _D0

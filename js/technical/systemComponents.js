@@ -111,7 +111,6 @@ var systemComponents = {
 				<span class="overlayThing"> {{modInfo.pointsName}}</span>
 			<br>
 			<div v-for="thing in tmp.displayThings" class="overlayThing"><span v-if="thing" v-html="thing"></span></div>
-			
 		</div>
 	`
 	},

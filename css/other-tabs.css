@@ -124,7 +124,3 @@ a {
 .opt:hover {
 	background-color: var(--highlight);
 }
-
-.opt_class:hover {
-	background-color: var(--highlight);
-}
